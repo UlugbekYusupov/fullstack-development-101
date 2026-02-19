@@ -52,3 +52,47 @@
 // let sum = a + b + d + e;
 
 // console.log(sum); // Fix this so the result is a valid number
+
+///////////////////////////////////////////////////////////////////////////////
+// LESSON 2
+// Challenge 1
+// evens = 0;
+// odds = 0;
+// num = prompt("enter number: ");
+
+// for(i = 1; i <= num; i++) {
+//     if (i % 2 == 0) {
+//         evens++;
+//     } else {
+//         odds++;
+//     }
+// }
+
+// console.log("Even nums: ", evens);
+// console.log("Odd nums: ", odds);
+
+// Challenge 2
+// num = prompt();
+// num = String(num);
+// newNum = "";
+
+// for(i = num.length - 1; i >= 0; i--) {
+//     newNum += num[i]
+// }
+
+// console.log(newNum);
+
+// Challenge 3
+// num = prompt();
+// num = String(num);
+
+// largest = num[0]
+
+// for (i = 0; i < num.length; i++) {
+//     if (largest < num[i]) {
+//         largest = num[i]
+//     }
+// }
+
+// console.log(largest);
+
