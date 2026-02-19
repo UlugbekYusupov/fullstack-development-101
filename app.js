@@ -62,5 +62,5 @@
 // let d = false;
 // let e = null;
 
-// let sum = a+b+c+d+e;
-// console.log(sum) // 423.14hellofalsenull
+// let sum = Number(a) + Number(b) + d + e;
+// console.log(sum) // 45.14
