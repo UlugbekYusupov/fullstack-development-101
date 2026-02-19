@@ -88,3 +88,79 @@ console.log(sum);
 
 // I didin't include c because it's not a number and would result in NaN, which would make the whole sum NaN.
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Operators in JS
+
+// 1
+let n = prompt("Enter a number:");
+
+let odd = 0;
+let even = 0;
+
+for (let i = 1; i <= n; i++) {
+    if (i % 2 === 0) {
+        even += i;
+    } else {
+        odd += i;   
+    }
+}
+
+console.log(`Sum of odd numbers from 1 to ${n}: ${odd}`);
+console.log(`Sum of even numbers from 1 to ${n}: ${even}`);
+
+// 2
+
+let numm = Number(prompt("Enter a number:"));
+let rev = 0;
+
+while (numm > 0) {
+  rev = rev * 10 + (numm % 10);
+  numm = Math.floor(numm / 10);
+}
+
+console.log(`Reversed number: ${rev}`);
+
+// 3
+let num2 = Number(prompt("Enter a number:"));
+let largest = 0;
+
+while  (num2 > 0) {
+    let digit =num2 % 10;
+
+    if(digit > largest){
+        largest = digit;
+    }
+    num2 = Math.floor(num2 / 10);
+    }
+// 4
+let num = Number(prompt("Enter a number:"));
+let sum1 = 0;
+
+if (num < 0) {
+  num = -num; // make it positive (optional)
+}
+
+while (num > 0) {
+  let digit = num % 10;
+  sum1 = sum1 + digit;         
+  num = Math.floor(num / 10); 
+}
+
+console.log(`Sum of digits: ${sum1}`);
+
+let num3 = Number(prompt("Enter a number:"));
+let count = 0;
+
+// 5
+
+if (num3 === 0) {
+  count = 1;
+} else {
+  while (num3 > 0) {
+    num3 = Math.floor(num3 / 10); 
+    count++;                      
+    }
+}
+
+console.log("Digits count:", count);
