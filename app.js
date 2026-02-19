@@ -11,12 +11,11 @@
 // console.log(5 + null); // 5
 // console.log(5 + undefined); //not a number
 
-
 // // task 2
 // console.log(Number('200') + 50);
 // console.log(25+' years old');
 // if ("false") {
-//    console.log(true);  
+//    console.log(true);
 // }
 // console.log("10" - true); // 9
 
@@ -45,7 +44,6 @@
 // console.log(null ?? "Fallback");
 // console.log(undefined ?? "Default Value");
 
-
 // // task 6
 // let a = Number('42')
 // let b = Number('3.14')
@@ -56,5 +54,30 @@
 // let sum = a+b+d+l
 // console.log(sum);
 
+// ==================== LESSON 2 =============================
 
+// // task 1
+// let givenNumber = Number(prompt("give me number: "));
+// // 9 / 2 = 4
+// // 9 % 2 = 1
 
+// if (givenNumber % 2 == 0) {
+//   console.log(`even numbers are ${givenNumber / 2}`);
+// } else {
+//   console.log(`odd numbers are ${(givenNumber-1) / 2 + 1}`);
+// }
+
+// task 2
+
+// let number = prompt('enter the number, i will reverse it');
+// let num = Number(number);
+// let l = number.length;
+// let reversed = '';
+
+// for (let i = 0; i < l; i++) {
+//    const daraja = 10 ** i;
+//    let digit = Math.trunc(num / daraja) % 10;
+//    reversed += digit;
+// }
+
+// console.log(Number(reversed));
