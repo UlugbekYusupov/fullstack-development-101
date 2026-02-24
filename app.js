@@ -204,7 +204,7 @@ For example, 371 is an Armstrong number since 3**3 + 7**3 + 1**3 = 371.
 //     }
 // }
 
-student =[
+let student =[
     {
         "name":"David",
         "marks" :80
