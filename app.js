@@ -77,3 +77,40 @@
 //Lesson 2 operators and expressions
 
 // Challenge 1
+
+// Task 1
+const N = Number(prompt("Enter a number:"));
+
+let evenCount = 0;
+let oddCount = 0;
+
+for (let i = 1; i <= N; i++) {
+  if (i % 2 === 0) {
+    evenCount++;
+  } else {
+    oddCount++;
+  }
+}
+// Task 2
+console.log(`Between 1 and ${N}:`);
+console.log(`Even numbers: ${evenCount}`);
+console.log(`Odd numbers: ${oddCount}`);
+
+
+// Challenge 2
+let n = Number(prompt("Enter an integer:"));
+{
+  const sign = n < 0 ? -1 : 1;
+  n = Math.abs(n);
+
+  let reversed = 0;
+
+  while (n > 0) {
+    const digit = n % 10;              // last digit
+    reversed = reversed * 10 + digit;  // add digit to reversed
+    n = Math.trunc(n / 10);            // remove last digit
+  }
+
+  reversed *= sign;
+  console.log("Reversed:", reversed);
+}
