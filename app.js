@@ -1,3 +1,4 @@
+const output = document.querySelector("#output")
 
 // ////////////////////////////////////////////////
 //!                Lesson #1
@@ -70,13 +71,58 @@
 
 
 // Challenge #3
-let num = 58329;
-let largest = 0;
-while (num > 0) {
-  let digit = num % 10;
-  if (digit > largest) {
-    largest = digit;
-  }
-  num = Math.floor(num / 10);
+// let num = 58329;
+// let largest = 0;
+// while (num > 0) {
+//   let digit = num % 10;
+//   if (digit > largest) {
+//     largest = digit;
+//   }
+//   num = Math.floor(num / 10);
+// }
+// console.log("Largest digit:", largest);
+
+
+// first task
+
+// const num1 = Number(prompt("Give me a number: "))
+// const num2 = Number(prompt("Give me a number: "))
+// const num3 = Number(prompt("Give me a number: "))
+
+// let nums = [num1, num2, num3]
+
+
+// function theChosenOne() {
+//   const nonPositive = nums.filter(num => num <= 0)
+
+//   output.textContent = `Your number is ${nonPositive}`
+// }
+
+// theChosenOne()
+
+
+// let nums = [0, -1, 4]
+
+// nums.sort(function(a, b){
+//   return b - a
+// })
+
+
+// program to check an Armstrong number of three digits
+
+let sum = 0;
+const number = prompt('Enter a three-digit positive integer: ');
+
+let temp = number;
+while (temp > 0) {
+  let remainder = temp % 10;
+  sum += remainder * remainder * remainder;
+  temp = parseInt(temp / 10);
 }
-console.log("Largest digit:", largest);
+
+if (sum == number) {
+  output.innerHTML = `${number} is an Armstrong number`
+}
+else {
+  output.innerHTML = `${number} is not an Armstrong number.`
+}
