@@ -60,43 +60,114 @@
 
 //task1
 
-let givenNum1=prompt('Enter a random number between 10-40')
+// let givenNum1=prompt('Enter a random number between 10-40')
 
-let evenCount = 0;
-let oddCount = 0;
+// let evenCount = 0;
+// let oddCount = 0;
 
-for (let num = 1; num <= givenNum1; num++) {
-    if (num % 2 === 0) {
-        evenCount++;
-    } else {
-        oddCount++;
+// for (let num = 1; num <= givenNum1; num++) {
+//     if (num % 2 === 0) {
+//         evenCount++;
+//     } else {
+//         oddCount++;
+//     }
+// }
+
+// console.log("Even numbers count:", evenCount);
+// console.log("Odd numbers count:", oddCount);
+
+// //task2
+
+// let givenNum2=prompt('Enter a number, i will return')
+// let reverse=0;
+// while(givenNum2>0){
+//     let digit=givenNum2%10;
+//     givenNum2=Math.floor(givenNum2/10);
+//     reverse=reverse*10+digit;
+// }
+// console.log(reverse)
+
+// //task3
+
+// let num = prompt('Enter a long number. I will find a biggest digit');
+// let largest = 0;
+// while (num > 0) {
+//   let digit = num % 10;
+//   if (digit > largest) {
+//     largest = digit;
+//   }
+//   num = Math.floor(num / 10);
+// }
+// console.log("Largest digit:", largest);
+
+
+//-----------------------------------------------3-DARS-----------------------------------------
+
+
+
+// for...in - object
+// for...of - array
+
+//-----------------------------------------------3-DARS-TASKS-----------------------------------------
+
+// task1
+let a=12
+let b=4
+if (a>b){
+    console.log(a)
+}
+else{
+    console.log(b)
+}
+
+// task2
+let ls=[3,-7,2]
+for (let i = 0; i < ls.length; i++) {
+    if (ls[i]<0){
+        const signed = ls[i];
+        console.log(signed)
     }
 }
 
-console.log("Even numbers count:", evenCount);
-console.log("Odd numbers count:", oddCount);
+// task3
+let ls2=[0,-1,4]
+let ls2Result=ls2.sort()
+console.log(ls2Result)
 
-//task2
-
-let givenNum2=prompt('Enter a number, i will return')
-let reverse=0;
-while(givenNum2>0){
-    let digit=givenNum2%10;
-    givenNum2=Math.floor(givenNum2/10);
-    reverse=reverse*10+digit;
+// task4
+for (let i = 0; i <= 15; i++) {
+    if (i%2==0){
+        console.log(`${i} is even`)
+    }
+    else {
+        console.log(`${i} is odd`)
+    }
 }
-console.log(reverse)
 
-//task3
-
-// Challenge #3
-let num = prompt('Enter a long number. I will find a biggest digit');
-let largest = 0;
-while (num > 0) {
-  let digit = num % 10;
-  if (digit > largest) {
-    largest = digit;
-  }
-  num = Math.floor(num / 10);
+// task5
+for (let i = 1; i <= 100; i++) {
+    if (i%3==0){
+        console.log(`Fizz`)
+    }
+    else if (i%5==0) {
+        console.log(`Buzz`)
+    }
+    else if (i%3==0 && i%5==0){
+        console.log(`FizzBuzz`)
+    }
 }
-console.log("Largest digit:", largest);
+
+// task6
+let rand=372
+let n=0
+let randString=String(rand).split("")
+for (let i = 0; i < randString.length; i++) {
+    let cubed=randString[i]**randString.length
+    n+=cubed
+}
+if(n==rand){
+    console.log(`Armstrong`)
+}
+else{
+    console.log(`Not armstrong number`)
+}
