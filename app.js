@@ -7,6 +7,7 @@
 //     age: 18,
 // };
 
+//Lecture 2  /  19.02.2026
 //Challenge 1
 // console.log('5' + 5);
 // console.log('5' - 5);
@@ -84,7 +85,7 @@
 // console.log(sum);
 
 
-//Second class
+//Lecture 3  /  19.02.2026
 //Challenge-1
 // let number = Number(prompt('Enter a number:'));
 // let evenCount = 0;
@@ -156,17 +157,163 @@
 
 
 //Challenge-5
-let number = Number(prompt("Enter a number:"));
-if (number < 0) {
-    number = -number;
+// let number = Number(prompt("Enter a number:"));
+// if (number < 0) {
+//     number = -number;
+// }
+// if (number === 0) {
+//     console.log("Digit count: 1");
+// } else {
+//     let count = 0;
+//     while (number > 0) {
+//         count++;
+//         number = Math.floor(number / 10);
+//     }
+//     console.log("Digit count:", count);
+// }
+
+
+// Lecture 4  / 24.02.2026 Control Structures
+//       Practice
+
+// for(let i = 0; i<10; i++) {
+//     console.log(i);
+// }
+
+// let i = 0;
+// while (i < 10) {
+//     console.log(i);
+//     i++;
+// }
+
+
+// const user = {
+//     username: "Ulug'bek",
+//     age: 18,
+//     country: "Uzbekistan",
+// };
+
+// for (const key in user) {
+//     const element = user[key];
+//     console.log(element, value);
+// }
+
+
+// Practice 1
+// let num1 = 10;
+// let num2 = 25;
+
+// if (num1 > num2) {
+//     console.log(num1);
+// } else {
+//     console.log(num2)
+// }
+
+// Practice 2
+// let num1 = 3;
+// let num2 = 5;
+// let num3 = 8;
+
+// let product = num1 * num2 * num3;
+
+// if (product > 0) {
+//     alert("The sign is +");
+// } else if(product < 0) {
+//     alert("The sign is -");
+// } else {
+//     alert("The sign is 0");
+// }
+
+// Practice 3
+// const numbers = [0, -1, 4];
+// let sortedNumbers = numbers.sort();
+// let reversedNumbers = sortedNumbers.reverse();
+// alert(reversedNumbers);
+
+// Challenge 4
+// for (let i = 0; i<=15; i++) {
+
+//     if (i%2 === 0) {
+//         console.log(i + " is even");
+//     } else {
+//         console.log(i + " is odd");
+//     }
+// }
+
+// Challenge 5
+// for(let i = 1; i<100; i++) {
+
+//     if ( i % 3 === 0 && i % 5 === 0) {
+//         console.log("FizzBuzz");
+//     }
+//     else if (i % 3 === 0) {
+//         console.log("Fizz")
+//     }
+//     else if (i % 5 === 0) {
+//         console.log("Buzz")
+//     }
+//     else {
+//         console.log(i)
+//     }
+// }
+
+// Practice 6
+// let number = prompt("Enter a number");
+// let armstrong = 0;
+// const daraja = number.length;
+
+// let  i = 0;
+
+// while (i < number.length) {
+//     let digit = Number(number[i]);
+//     armstrong += digit ** daraja;
+//     i++;
+// }
+
+// if (armstrong === Number(number)) {
+//     console.log(`The number (${number}) is armstrong`);
+// } else {
+//     console.log(`The number (${number}) is not armstrong`);
+// }
+
+// Practice 7
+let students = [
+    { name: "David", marks: 80 },
+    { name: "Vinoth", marks: 77 },
+    { name: "Divya", marks: 88 },
+    { name: "Ishitha", marks: 95 },
+    { name: "Thomas", marks: 68 }
+];
+
+let total = 0;
+
+for (let i = 0; i < students.length; i++) {
+    total += students[i].marks;
 }
-if (number === 0) {
-    console.log("Digit count: 1");
-} else {
-    let count = 0;
-    while (number > 0) {
-        count++;
-        number = Math.floor(number / 10);
-    }
-    console.log("Digit count:", count);
+
+let average = total / students.length;
+
+console.log("Average Marks: " + average);
+
+let grade;
+
+if (average < 60) {
+    grade = "F";
+} 
+else if (average < 70) {
+    grade = "D";
+} 
+else if (average < 80) {
+    grade = "C";
+} 
+else if (average < 90) {
+    grade = "B";
+} 
+else {
+    grade = "A";
 }
+
+console.log("Grade: " + grade);
+
+
+
