@@ -191,18 +191,20 @@ For example, 371 is an Armstrong number since 3**3 + 7**3 + 1**3 = 371.
 //     }
 // }
 // task 6
-// for (let i = 100; i <= 999; i++) {
-//     let sum = 0;
-//     let temp = i;
-//     while (temp > 0) {
-//         let digit = temp % 10;
-//         sum += digit ** 3;
-//         temp = Math.floor(temp / 10);
-//     }
-//     if (sum === i) {
-//         alert(i)
-//     }
-// }
+let number = Number(prompt("Enter a number"))
+    let sum = 0;
+    let temp = number;
+    while (temp > 0) {
+        let digit = temp % 10;
+        sum += digit ** String(number).length;
+        temp = Math.floor(temp / 10);
+    }
+    if (sum === number) {
+        alert("Armstrong number")
+    }else{
+        alert("Not an Armstrong number")
+    }
+
 
 let student =[
     {
