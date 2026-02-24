@@ -174,20 +174,91 @@
 //     j++;
 // } while (j < 10);
 
-const user = {
-    username: "Ulugbek",
-    age: 30,
-    country: "UZbekistan",
-};
+// const user = {
+//     username: "Ulugbek",
+//     age: 30,
+//     country: "UZbekistan",
+// };
 
-const keys = Object.keys(user);
-const values = Object.values(user);
+// const keys = Object.keys(user);
+// const values = Object.values(user);
 
-for (const key in user) {
-    const element = user [key];
-    console.log(element);
+// for (const key in user) {
+//     const element = user [key];
+//     console.log(element);
+// }
+
+// for (const element of keys) {
+//   console.log(element);
+// }
+
+
+// HW practice
+// 1
+// let n1 = 10, n2 = 20;
+// console.log(n1 > n2 ? n1 : n2);
+
+// 2
+// let x = 3, y = -7, z = 2;
+// let prod = x*y*z;
+// if (prod > 0) alert("The sign is +"); else if (prod < 0) alert("The sign is -");
+
+// 3
+// let a=0, b=-1, c=4;
+// if (c > a && c > b) {
+//     if (a > b) alert(`${c}, ${a}, ${b}`);
+//     else alert(`${c}, ${b}, ${a}`);
+// }
+
+// 4
+// for (let i = 0; i <= 15; i++) {
+//     console.log(i % 2 === 0 ? `${i} is even` : `${i} is odd`);
+// }
+
+// 5
+// for (let i = 1; i <= 100; i++) {
+//     if (i % 15 === 0) console.log("FizzBuzz");
+//     else if (i % 3 === 0) console.log("Fizz");
+//     else if (i % 5 === 0) console.log("Buzz");
+//     else console.log(i);
+// }
+
+// 6
+// for (let i = 100; i <= 999; i++) {
+//     let s = 0, t = i;
+//     while (t > 0) { s += (t % 10) ** 3; t = Math.floor(t / 10); }
+//     if (s === i) console.log(i + " is Armstrong");
+// }
+
+// 7
+const students = [
+    { name: "David", marks: 80 },
+    { name: "Vinoth", marks: 77 },
+    { name: "Divya", marks: 88 },
+    { name: "Ishitha", marks: 95 },
+    { name: "Thomas", marks: 68 }
+];
+
+let totalMarks = 0;
+
+for (let i = 0; i < students.length; i++) {
+    totalMarks += students[i].marks;
 }
 
-for (const element of keys) {
-  console.log(element);
+const average = totalMarks / students.length;
+console.log("Average Grade: " + average);
+
+if (average < 60) {
+    console.log("Grade: F");
+} else if (average < 70) {
+    console.log("Grade: D");
+} else if (average < 80) {
+    console.log("Grade: C");
+} else if (average < 90) {
+    console.log("Grade: B");
+} else if (average < 100) {
+    console.log("Grade: A");
 }
+
+
+
