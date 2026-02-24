@@ -1,3 +1,7 @@
+																			///////////////////////////
+																				// Lesson 1 Start
+																			///////////////////////////
+
 // console.log('5' + 5) // 55
 // console.log('5' - 5) // 0
 // console.log('5' * '2') // 10
@@ -61,12 +65,12 @@
 // console.log('Remaining balance:', remaining.toFixed(2))
 
 // 5
-console.log(!'h')
-console.log(!!'false' == !!'true') // true
-console.log(0 || 'JS') // 'JS'
-console.log(' ' && '100') // '100'
-console.log(null ?? 'Fallback') // 'Fallback'
-console.log(undefined ?? 'Default value') // 'Default value'
+// console.log(!'h')
+// console.log(!!'false' == !!'true') // true
+// console.log(0 || 'JS') // 'JS'
+// console.log(' ' && '100') // '100'
+// console.log(null ?? 'Fallback') // 'Fallback'
+// console.log(undefined ?? 'Default value') // 'Default value'
 
 // 6
 // let a = '42'
@@ -118,16 +122,8 @@ console.log(undefined ?? 'Default value') // 'Default value'
 // }
 // Challenge 3
 // With moduls
-// let num = Number(prompt('Enter a number:'))
-// let largest = 0
-// while (num > 0) {
-// 	let digit = num % 10
-// 	num = Math.floor(num / 10)
-// 	if (digit > largest) {
-// 		largest = digit
-// 	}
-// }
-// console.log(`The largest digit is: ${largest}`)
+// 
+
 // without moduls
 // let numString = prompt('Enter a number:')
 
@@ -140,17 +136,114 @@ console.log(undefined ?? 'Default value') // 'Default value'
 // }
 // console.log('The largest digit is:', largest)
 // Challange 4
-let num = 1234
-let sum = 0
+// let num = 1234
+// let sum = 0
 
-if (num < 0) {
-	num = -num
+// if (num < 0) {
+// 	num = -num
+// }
+
+// while (num > 0) {
+// 	let digit = num % 10
+	
+// 	sum = sum + digit
+// 	num = Math.floor(num / 10)
+// }
+
+// console.log(sum) // 10
+																			///////////////////////////
+																				// Lesson 1 End
+																			///////////////////////////
+
+																			///////////////////////////
+																				// Lesson 2 Start
+																			///////////////////////////
+
+// Task 1
+
+// let first = 3
+// let second = 4
+// if (first > second){
+// 	console.log(first)
+// }else{
+// 	console.log(second)
+// }
+// // Task 2
+
+// const num = [1, -3,4]
+
+// for (const element of num) {
+// 	if(element < 0)
+// 		alert(element)
+	
+// }
+// // Task 3
+// // alert(num1.sort())
+// const arr = [1, -3, 4, 2];
+
+// for (let i = 0; i < arr.length; i++) {
+//   for (let j = 0; j < arr.length - 1; j++) {
+//     if (arr[j] > arr[j + 1]) {
+//       let temp = arr[j];
+//       arr[j] = arr[j + 1];
+//       arr[j + 1] = temp;
+//     }
+//   }
+// }
+
+// alert(arr);
+
+// Task 4
+// const arr1 = [1, 2, 4, 6,8];
+// for (const element of arr1) {
+// 	if (element % 2 == 0) {
+// 		console.log(`${element} is even`)
+// 	}
+// 	else{
+// 		console.log(`${element} is odd`)
+// 	}
+// }
+// Task 5
+// for(let i = 0; i <= 100; i++){
+// 	if(i % 3 == 0){
+// 		console.log(`${i} is Fizz`)
+// 	}
+// 	else if(i % 5 == 0){
+// 		console.log(`${i} is Buzz`)
+// 	}
+// }
+// // Task 6
+// const number = prompt("Enter a number");
+// let sum = 0;
+// let temp = number;
+// let digits = number.length;
+
+// for (let digit of number) {
+//   sum += digit ** digits;
+// 	if (temp == sum) {
+// 		console.log(`${number} is an Armstrong number`);
+// 	} else {
+// 		console.log(`${number} is NOT an Armstrong number`);
+// 	}
+// }
+
+const users = {
+	"David": 80,
+	"Vinoth": 77,
+	"Divya": 88,
+	"Ishitha": 95,
+	"Thomas": 1
 }
 
-while (num > 0) {
-	let digit = num % 10
-	sum = sum + digit
-	num = Math.floor(num / 10)
-}
+for (const key in users) {
+  const score = users[key];
+  let grade;
 
-console.log(sum) // 10
+  if (score < 60) grade = "F";
+  else if (score < 70) grade = "D";
+  else if (score < 80) grade = "C";
+  else if (score < 90) grade = "B";
+  else grade = "A";
+
+  console.log(`${key} grade is ${grade}`);
+}
