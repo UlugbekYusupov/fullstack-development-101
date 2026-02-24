@@ -1,73 +1,117 @@
-// var a = undefined;
-// console.log(a);
-// var a = 40;
+// let number = 1;
 
-// let user = {
-//   username: "Ulugbek",
-//   age: 30,
+// for (let i = 0; i < 3; i++) {
+//   console.log(i);
+// }
+
+// const user = {
+//   name: "Saidakbar",
+//   age: 18,
+//   country: "Uzbekistan",
 // };
 
-// console.log(
-//   {
-//     username: "Ulugbel",
-//   } ==
-//     {
-//       username: "Ulugbel",
-//     }
+// for (const key in user) {
+//   const element = user[key];
+//   console.log(element);
+// }
+
+// const a = 5;
+// const b = 6;
+// if (a > b) {
+//   console.log(a);
+// } else if (a < b) {
+//   console.log(b);
+// } else {
+//   console.log(a);
+// }
+
+// const c = 5;
+// const d = 7;
+// const f = -9;
+
+// if (c < 0 || d < 0 || f < 0) {
+//   console.log("sign is: -");
+// } else {
+//   console.log("No number is signed !!!");
+// }
+
+// 5
+
+// let a = -2;
+// let b = 4;
+// let c = 2;
+// let d = 0;
+// if (b > a) {
+//   d = b;
+//   b = a;
+//   a = d;
+// }
+// if (c > b) {
+//   d = b;
+//   b = c;
+//   c = d;
+// }
+// if (c > a) {
+//   d = c;
+//   c = a;
+//   a = d;
+// }
+// console.log(a, b, c);
+
+// 4
+
+// for (let i = 0; i <= 15; i++) {
+//   if (i % 2 == 0) {
+//     console.log(i + " is even");
+//   } else if (i % 2 == 1) {
+//     console.log(i + " is odd");
+//   }
+// }
+
+// 4
+
+// for (let i = 0; i <= 100; i++) {
+//   if (i % 3 == 0 && i % 5 == 0) {
+//     console.log("FizzBuzz");
+//   } else if (i % 3 == 0) {
+//     console.log("Fizz");
+//   } else if (i % 5 == 0) {
+//     console.log("Buzz");
+//   } else {
+//     console.log(i);
+//   }
+// }
+
+// 6
+// let number = Number(
+//   prompt("Enter a number to check if it is an Armstrong number:"),
 // );
 
-// let number = 1234;
-// let reverse = 0;
+// let temp = number;
+// let sum = 0;
 
-// while (number > 0) {
-//   let digit = number % 10;
-//   number = Math.floor(number / 10);
-//   reverse = reverse * 10 + digit;
+// let digits = number.toString().length;
+
+// while (temp > 0) {
+//   let digit = temp % 10;
+//     sum += Math.pow(digit, digits);
+//   temp = Math.floor(temp / 10);
 // }
 
-// console.log(reverse);
-
-// task 1.1
-
-// let number = Number(prompt("Enter the Number"));
-// let count = 0;
-// while (number > 0) {
-//   number = Math.floor(number / 10);
-//   count++;
+// if (sum === number) {
+//   console.log(number + " is an Armstrong number.");
+// } else {
+//   console.log(number + " is not an Armstrong number.");
 // }
 
-// console.log(count);
-
-for (let i = 0; i < 10; i++) {
-  console.log(i);
-}
-
-let i = 0;
-while (i < 10) {
-  console.log(i);
-  i++;
-}
-
-let j = 0;
-do {
-  console.log(j);
-  j++;
-} while (j < 10);
-
-const user = {
-  username: "Ulugbek",
-  age: 30,
-  country: "Uzbekistan",
+// 7
+const students = {
+  David: 80,
+  Vinoth: 77,
+  Diviya: 88,
+  Ishitha: 95,
+  Thomas: 68,
 };
 
-const keys = Object.keys(user);
-const values = Object.values(user);
-
-for (const key in user) {
-  const element = user[key];
-  console.log(element);
-}
-
-for (const element of keys) {
-  console.log(element);
+for (const key of students) {
 }
