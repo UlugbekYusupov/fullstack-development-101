@@ -180,7 +180,7 @@
 //     } else {
 //         alert(i)
 //     }
-// }
+// } .
 // task 6
 let number = Number(prompt("Enter a number"))
     let sum = 0;
