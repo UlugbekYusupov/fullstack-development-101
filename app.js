@@ -45,10 +45,131 @@
 // console.log(null ?? "Fallback");
 // console.log(undefined ?? "Default Value");
 
-let a ='42'
-let b = '3.14'
-let c ='hello'
-let d = false
-let e = null
-let sum = Number(a) + Number(b) + Number(d) + Number(e);
-console.log(sum); 
+// let a ='42'
+// let b = '3.14'
+// let c ='hello'
+// let d = false
+// let e = null
+// let sum = Number(a) + Number(b) + Number(d) + Number(e);
+// console.log(sum); 
+// let f = {username:'jogn'}
+// let g = {username:'jogn'}
+// console.log(f == g);  
+
+
+// challenge 1
+// let a = 5
+// if (a % 2 === 0) {
+//     console.log('even numbers', a/2);
+//     console.log('odd numbers', a/2);
+// } 
+// else {
+//        console.log('even numbers', (a+1)/2);
+//     console.log('odd numbers', (a+1)/2);
+    
+// }
+
+
+
+// challenge 2
+// let number = 1234
+// let reverse= 0
+// while(number>0){
+//     let digit = number % 10
+//     number = Math.floor(number/10)
+//     reverse = reverse * 10 + digit
+// }
+// console.log(reverse);
+
+// for (let i = 0; i < number.toString().length; i++) {
+//     console.log(i);
+    
+// }
+
+
+// PRACTICE
+// 1)
+// f = 1
+// s = 2
+// if (f>s) {
+//     console.log("f is greater than s");
+// } else {
+//     console.log("s is greater than f");
+// }
+
+// 2)
+// let nums = [1,4,-4,2,1]
+// for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] < 0) {
+//         alert("-");
+//     }
+// }
+
+// 3)
+
+// let numsSort = [1,4,-4,2,1]
+// let a = numsSort.sort((a,b) => b-a)
+// console.log(a);
+
+// 4)
+// for (let i = 0; i != 15; i++) {
+//     if (i % 2 == 0) {
+//         console.log('even number', i);
+//     }
+//     else {
+//         console.log('odd number', i);
+//     }
+// }
+
+// 5)
+// for (let i = 1; i <=100; i++){
+//       if (i %3 ==0 && i %5 ==0) {
+//         console.log('FIZZBUZZ', i);
+//     }
+//     else if (i %3 ==0) {
+//         console.log('FIZZ', i);
+//     }
+//     else if (i %5 ==0) {
+//         console.log('BUZZ', i);
+//     }
+    
+// }
+
+// 6)
+// let num = +prompt()
+//     let hundreds = Math.floor(num / 100);
+//     let tens = Math.floor((num % 100) / 10);
+//     let ones = num % 10;
+//     let armstrong = hundreds**3 + tens**3 + ones**3;
+//     if (armstrong === num) {
+//         console.log(num);
+//     }
+
+
+// 7)
+// let students = [
+//     { name: "David", marks: 80 },
+//     { name: "Vinoth", marks: 77 },
+//     { name: "Divya", marks: 88 },
+//     { name: "Ishitha", marks: 95 },
+//     { name: "Thomas", marks: 68 }
+// ];
+// let sum = 0;
+// for (let student of students) {
+//     sum += student.marks;
+// }
+// let average = sum / students.length;
+// let grade;
+// if (average < 60) {
+//     grade = "F";
+// } else if (average < 70) {
+//     grade = "D";
+// } else if (average < 80) {
+//     grade = "C";
+// } else if (average < 90) {
+//     grade = "B";
+// } else {
+//     grade = "A";
+// }
+// console.log(`Average: ${average}`);
+// console.log(`Grade: ${grade}`);
