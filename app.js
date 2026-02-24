@@ -72,11 +72,11 @@
 // console.log(sum); 
 
 // LECTURE 3
-console.log(10%3)
+// console.log(10%3)
 
-let age = 20;
-let status = age >= 18 ? "Adult" : "Minor"; 
-console.log(status);
+// let age = 20;
+// let status = age >= 18 ? "Adult" : "Minor"; 
+// console.log(status);
 
 // PRACTICE
 // challange 1
@@ -151,3 +151,43 @@ console.log(status);
 
 // console.log(isPrime ? `${num5} is a Prime number` : `${num5} is NOT a Prime number`);
 
+
+
+
+
+// LECTURE 4
+
+// for(let i = 0; i < 10; i++) {
+//     console.log(i);
+// }
+
+// let i = 0;
+
+// while (i < 10) {
+//     console.log(i);
+//     i++;
+// }
+
+// let j = 0;
+// do {
+//     console.log(j);
+//     j++;
+// } while (j < 10);
+
+const user = {
+    username: "Ulugbek",
+    age: 30,
+    country: "UZbekistan",
+};
+
+const keys = Object.keys(user);
+const values = Object.values(user);
+
+for (const key in user) {
+    const element = user [key];
+    console.log(element);
+}
+
+for (const element of keys) {
+  console.log(element);
+}
