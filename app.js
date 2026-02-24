@@ -96,3 +96,95 @@
 
 // console.log(largest);
 
+/////////////////////////////////////////////////////////////////////////
+// LESSON 3
+// Practice
+// 1.
+// a = 20
+// b = 10
+// if (a > b) {
+//     console.log(a)
+// } else {
+//     console.log(b)
+// }
+
+// 2.
+// let a = 20;
+// let b = 10;
+// let c = -30
+
+// let product = a * b * c;
+
+// if (product > 0) {
+//     alert("The sign is +");
+// } else if (product < 0) {
+//     alert("The sign is -");
+// } else {
+//     alert("The sign is 0");
+// }
+
+// 3.
+// let a = 0;
+// let b = -1;
+// let c = 4;
+
+// let result = [];
+
+// if (a >= b && a >= c) {
+//     if (b >= c) {
+//         result.push(a, b, c);
+//     } else {
+//         result.push(a, c, b);
+//     }
+// } else if (b >= a && b >= c) {
+//     if (a >= c) {
+//         result.push(b, a, c);
+//     } else {
+//         result.push(b, c, a);
+//     }
+// } else {
+//     if (a >= b) {
+//         result.push(c, a, b);
+//     } else {
+//         result.push(c, b, a);
+//     }
+// }
+
+// alert(result);
+
+// 4.
+// for(i = 0; i <= 15; i++) {
+//     if(i % 2 == 0) {
+//         console.log(i + " is even");
+//     } else {
+//         console.log(i + " is odd");
+//     }
+// }
+
+// 5. 
+// for(i = 1; i <= 100; i++) {
+//     if(i % 3 == 0 && i % 5 == 0) {
+//         console.log(i + " - " + "Fizz Buzz");
+//     } else if (i % 3 == 0) {
+//         console.log(i + " - " + "Buzz");
+//     } else if (i % 3 == 0) {
+//         console.log(i + " - " + "Fizz");
+//     }
+// }
+
+// 6.
+// let num = 371;
+// let originalNum = num;
+
+// let sum = 0;
+
+// while(num>0) {
+//     let digit = num % 10;
+//     digit = digit**3
+//     sum += digit;
+//     num = Math.floor(num / 10);
+// }
+
+// if(sum == originalNum) {
+//     console.log("Armstrong");
+// } 
