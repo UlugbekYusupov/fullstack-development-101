@@ -147,3 +147,90 @@
 
 
 
+//LESSON 4
+
+//EXERCISE 1
+// let userInput = prompt("Enter the number: ")
+// let userInput2 = prompt("Enter the number: ")
+
+// if (userInput > userInput2){
+//     console.log(`${userInput} is larger than ${userInput2}`);
+// }else{
+//     console.log(`${userInput2} is larger than ${userInput}`)
+// }
+
+//EXERCISE 3
+// const numbers = [1,4,-1,-5,10]
+// alert(`Actual numbers${numbers}`)
+
+// numbers.sort(function(a, b) {
+//   return a - b
+// });
+
+// alert(`Sorted numbers ${numbers.join(", ")}`);
+
+
+//EXERCISE 4
+// for (let i = 0; i <= 15; i++ ){
+//     if (i %2 == 0){
+//         console.log(`${i} is even`)
+//     }else{
+//         console.log(`${i} is odd`)
+//     }
+// }
+
+
+//EXERCISE 5
+// for (let j = 0; j <= 100; j++ ){
+//     if (j % 3 == 0){
+//         console.log('Fizz')
+//     }else if (j % 5 == 0){
+//         console.log(`Buzz`)
+//     }else if (j % 3 == 0 && j % 5 == 0){
+//         console.log('FizzBuzz')
+//     }else{
+//         console.log(i)
+//     }
+// }
+
+
+//EXERCISE 6
+// function isArmstrong(number) {
+//     let armstrong = 0;
+//     let temp = number;
+//     while (temp > 0) {
+//         let remainder = temp % 10; 
+//         armstrong += remainder * remainder * remainder; 
+//         temp = Number(temp / 10); 
+//     }
+//     return armstrong === number; 
+// }
+
+// isArmstrong();
+
+// if (isArmstrong){
+//     console.log("this number is armstrong number.")
+// }
+
+//EXERCISE 7
+// const David = 80
+// const Vinoth = 77
+// const Divya = 88
+// const ishita = 95
+// const thomas = 68
+
+// if (David < 60){
+//     console.log("F")
+// }else if(David<70){
+//     console.log("D")
+// }else if (David < 80 ){
+//     console.log("C")
+// }else if (David < 90){
+//     console.log("B")
+// }else if (David < 100){
+//     console.log("A")
+// }
+
+
+
+
