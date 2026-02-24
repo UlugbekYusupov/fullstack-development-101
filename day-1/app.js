@@ -66,7 +66,7 @@ let num1  = prompt("Enter num: ")
 let even = 0
 let odd = 0
 for (let i = 1; i <= num1; i++) {
-  const element = i
+  const element = i 
 
   if (element % 2 == 0) {
     even+=1
