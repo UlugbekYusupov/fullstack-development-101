@@ -168,16 +168,7 @@
 //         alert(`${i} is odd`)
 //     }
 // }
-/*
-5.  Write a JavaScript program that iterates integers from 1 to 100.
-For multiples of 3 print "Fizz" instead of the number
-For multiples of 5 print "Buzz".
-For numbers multiples of both 3 and 5 print "FizzBuzz".
 
-6.  Write a JavaScript program to find the Armstrong numbers of 3 digits.
-Note : An Armstrong number of three digits is an integer such that the sum of the cubes of its digits is equal to the number itself.
-For example, 371 is an Armstrong number since 3**3 + 7**3 + 1**3 = 371.
-*/
 //task 5
 // for (let i = 1; i <= 100; i++) {
 //     if (i % 3 === 0 && i % 5 === 0) {
