@@ -180,3 +180,223 @@
 //     grade = 'F'
 // }
 // console.log(`Grade: ${grade}`)
+
+// ===============================================================
+// feb 26 lecture 1
+
+// challenge 1
+// function greet(name){
+//     console.log(`Hello, ${name}!`)
+// }
+// greet("Alice")
+
+// let greet = function(name) {
+//     console.log(`Hello, ${name}!`)
+// }
+// greet("Bob")
+
+// let greet = (name) => {
+//     console.log(`Hello, ${name}!`)
+// }
+// greet("Charlie")
+
+// let greet = new Function("name", "console.log(`Hello, ${name}!`)")
+// greet("David")
+
+// (function(name) {
+//     console.log(`Hello, ${name}!`)
+// })("Eve")
+
+// challange 2
+
+// function isPrime(num) {
+//     if (num <= 1) return false
+//     for (let i = 2; i < num; i++) {
+//         if (num % i === 0) return false
+//     }
+//     return true
+// }
+// console.log(isPrime(7)) // true
+// console.log(isPrime(10)) // false
+
+// challenge 3
+
+// function countDigits(num) {
+//     let count = 0
+//     while (num > 0) {
+//         num = Math.floor(num / 10)
+//         count++
+//     }
+//     return count
+// }
+// console.log(countDigits(12345)) // 5
+// console.log(countDigits(0)) // 1
+
+// challenge 4
+
+// function isPalindrome(num) {
+//     let original = num
+//     let reversed = 0
+//     while (num > 0) {
+//         let digit = num % 10
+//         reversed = (reversed * 10) + digit
+//         num = Math.floor(num / 10)
+//     }
+//     return original === reversed
+// }
+// console.log(isPalindrome(121)) // true
+// console.log(isPalindrome(-121)) // false
+// console.log(isPalindrome(10)) // false
+
+
+// challenge 5
+
+// function isArmstrong(num) {
+//     let original = num
+//     let sum = 0
+//     let digits = String(num).length
+//     while (num > 0) {
+//         let digit = num % 10
+//         sum += digit ** digits
+//         num = Math.floor(num / 10)
+//     }
+//     return original === sum
+// }
+// console.log(isArmstrong(153)) // true
+// console.log(isArmstrong(9474)) // true
+// console.log(isArmstrong(123)) // false
+
+
+// challenge 6
+
+// function createCounter(start) {
+//   let count = start;
+
+//   return {
+//     increment() {
+//       count++;
+//     },
+//     decrement() {
+//       count--;
+//     },
+//     getCount() {
+//       return count;
+//     }
+//   };
+// }
+// let a = createCounter(5)
+// a.increment()
+// a.increment()
+// a.decrement()
+// console.log(a.getCount())
+
+// challenge 7
+
+// function orderFood(name, address, food) {
+//     console.log(`Order placed: ${food} for ${name} at ${address}`)
+// }
+// orderFood(prompt("Enter your name: "), prompt("Enter your address: "), prompt("Enter the food you want to order: "))
+
+// challenge 8
+
+// function lazyAdder(num){
+//     return function(b){
+//         num+=b
+//         return num
+//     }
+// }
+// const add5 = lazyAdder(5)
+// console.log(add5(10))
+// console.log(add5(15))
+// console.log(add5(32))
+
+// assigbnment 1
+
+// function shoppingCart() {
+//     let total = 0
+//     let itemcount = 0
+//     function addItem(price) {
+//         total += price
+//         itemcount++
+//     }
+//     function getTotal() {
+//         if (itemcount > 5){
+//             return total * 0.8
+//         } else if (itemcount > 3) { 
+//             return total * 0.9
+//         } else {
+//             return total
+//         }
+//     }
+//     return {
+//         addItem,
+//         getTotal
+//     }
+// }
+
+// let cart = shoppingCart()
+// cart.addItem(100)
+// cart.addItem(200)
+// cart.addItem(300)
+// cart.addItem(400)
+// console.log(cart.getTotal())
+
+// assignment 2
+
+// function checkPassword(psw){
+//     let points = 0
+//     if (psw.length() >= 8){
+//         points++
+//     }
+//     for(i in psw){
+//         if (psw[i] < "A" && psw[i] > "Z"){
+//             points++
+//             break
+//         }
+//     }
+//     for (i in psw){
+//         if (psw[i] < "0" && psw[i] > "9"){
+//             points++
+//             break
+//         }
+//     }
+//     let specialChars = "!@#$%^&*()_+{}|:<>?-=[]\\;',./"
+//     for (i in psw){
+//         if (specialChars.includes(psw[i])){
+//             points++
+//             break
+//         }
+//     }
+//     if (points >= 4){
+//         console.log("Strong password")
+//     } else if (points >= 3){
+//         console.log("Moderate password")
+//     } else {
+//         console.log("Weak password")
+//     }
+    
+// }
+
+// assignment 3
+
+// function atm(wdw){
+//     if (wdw % 10 !== 0){
+//         console.log("Invalid amount. Please enter a multiple of 10.")
+//         return
+//     }
+//     let notes = [100, 50, 20, 10]
+//     let result = {}
+//     for (let note of notes){
+//         if (wdw >= note){
+//             result[note] = Math.floor(wdw / note)
+//             wdw = wdw % note
+//         }
+//     }
+//     console.log("Dispensed notes:")
+//     for (let note in result){
+//         console.log(`${note}: ${result[note]}`)
+//     }
+// }
+// atm(Number(prompt("Enter the amount to withdraw: ")))
+
+
