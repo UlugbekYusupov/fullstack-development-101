@@ -182,49 +182,170 @@
 //     }
 // } .
 // task 6
-let number = Number(prompt("Enter a number"))
-    let sum = 0;
-    let temp = number;
-    while (temp > 0) {
-        let digit = temp % 10;
-        sum += digit ** String(number).length;
-        temp = Math.floor(temp / 10);
-    }
-    if (sum === number) {
-        alert("Armstrong number")
-    }else{
-        alert("Not an Armstrong number")
-    }
+// let number = Number(prompt("Enter a number"))
+//     let sum = 0;
+//     let temp = number;
+//     while (temp > 0) {
+//         let digit = temp % 10;
+//         sum += digit ** String(number).length;
+//         temp = Math.floor(temp / 10);
+//     }
+//     if (sum === number) {
+//         alert("Armstrong number")
+//     }else{
+//         alert("Not an Armstrong number")
+//     }
+//
+//
+// let student =[
+//     {
+//         "name":"David",
+//         "marks" :80
+//     },{
+//         "name":"Vinoth",
+//         "marks" :77
+//     },{
+//         "name":"Divya 88",
+//         "marks" :80
+//     },{
+//         "name":"Ishitha",
+//         "marks" :95
+//     },{
+//         "name":"Thomas",
+//         "marks" :68
+//     },
+// ]
+// for (let i = 0; i < student.length; i++) {
+//     if(student[i].marks < 60){
+//         console.log(`${student[i].name} has failed`)
+//     }else if(student[i].marks < 70){
+//         console.log(`${student[i].name} has passed with a D grade`)
+//     }else if(student[i].marks < 80){
+//         console.log(`${student[i].name} has passed with a C grade`)
+//     }else if(student[i].marks < 90){
+//         console.log(`${student[i].name} has passed with an B grade`)
+//     }else{
+//         console.log(`${student[i].name} has passed with an A grade`)
+//     }
+// }
+// challenge 1
+// function greet(name) {
+//     return `Hello, ${name}!`;
+// }
+// let greet2 = function (name) {
+//     return `Hello, ${name}!`;
+// }
+// let greet3 = (name) => {
+//     return `Hello, ${name}!`;
+// }
+// let greet4 = new Function("name", "return 'Hello, " + name + "!'")
+// // Challenge 2
+// function isPrime(n){
+//     if (n <= 1) return false;
+//     for (let i = 2; i <= Math.sqrt(n); i++) {
+//         if (n % i === 0) return false;
+//     }
+//     return true;
+// }
+//
+// console.log(isPrime(11))
+// // challenge 3
+// function countDigits(n){
+//     return String(n).length;
+// }
+// // challenge 4
+// function isPalindrome(n){
+//     let str = String(n);
+//     let reversed = str.split('').reverse().join('');
+//     return str === reversed;
+// }
+// // challenge 5
+// function isArmstrong(n){
+//     let sum = 0;
+//     let temp = n;
+//     let digits = String(n).length;
+//
+//     while (temp > 0) {
+//         let digit = temp % 10;
+//         sum += digit ** digits;
+//         temp = Math.floor(temp / 10);
+//     }
+//
+//     return sum === n;
+// }
+
+/*Challenge 6 - Create a function createCounter(start) that returns an object with three methods:
+increment() ➝ Increases the count
+decrement() ➝ Decreases the count
+getCount() ➝ Returns the current count
+
+Challenge 7 – Create a function that order food, the program asks for name, address and what do 	you want to order, then the output should be “Dear (name), your ordered food (food you 	entered) will be ready in 15 minuts and will be delivered to your address(address you 		entered)”
+
+Challenge 8 - Create a function lazyAdder(a) that returns another function that adds b when called.
+const add5 = lazyAdder(5);
+console.log(add5(10));  - > 15
+console.log(add5(20));  -> 25
+*/
 
 
-let student =[
-    {
-        "name":"David",
-        "marks" :80
-    },{
-        "name":"Vinoth",
-        "marks" :77
-    },{
-        "name":"Divya 88",
-        "marks" :80
-    },{
-        "name":"Ishitha",
-        "marks" :95
-    },{
-        "name":"Thomas",
-        "marks" :68
-    },
-]
-for (let i = 0; i < student.length; i++) {
-    if(student[i].marks < 60){
-        console.log(`${student[i].name} has failed`)
-    }else if(student[i].marks < 70){
-        console.log(`${student[i].name} has passed with a D grade`)
-    }else if(student[i].marks < 80){
-        console.log(`${student[i].name} has passed with a C grade`)
-    }else if(student[i].marks < 90){
-        console.log(`${student[i].name} has passed with an B grade`)
-    }else{
-        console.log(`${student[i].name} has passed with an A grade`)
-    }
-}
+// challenge 6
+// function createCounter(star){
+//     let count = star
+//     function increment(){
+//         count++;
+//
+//     }
+//     function Decreases(){
+//         count--;
+//     }
+//     function getCount(){
+//         return count;
+//     }
+//     return {
+//         increment,
+//         Decreases,
+//         getCount
+//     }
+// }
+//
+// // challenge 7
+//
+// function orderFood(address,name,order){
+//     return `Dear ${name}, your ordered food ${order} will be ready in 15 minuts and will be delivered to your address ${address}`
+// }
+//
+// // challenge 8
+// function lazyAdder(a){
+//     return function(b){
+//         return a + b;
+//     }
+// }
+// let add5 = lazyAdder(5);
+// console.log(add5(10));
+// console.log(add5(20));
+//
+
+
+/*
+
+Challenge 1 - Dynamic Pricing Calculation
+Scenario: Create a function that calculates the total price of an online shopping cart, applying discounts based on quantity.
+Example: If a user buys 3+ items, apply a 10% discount; if 5+, apply 20%.
+
+Challenge 2 - Password Strength Checker
+Scenario: Build a function to check password strength based on conditions:
+Minimum 8 characters
+At least one uppercase letter
+At least one number
+At least one special character
+Return "Weak", "Medium", or "Strong" based on conditions.
+
+Challenge 3 - ATM Cash Withdrawal System
+Scenario: Simulate an ATM that dispenses the least number of bills for a given amount (e.g., $130 → 1x $100, 1x $20, 1x $10).
+if the requested amount is not in multiples of 10, return an error.
+
+ */
+
+
+// Challenge 1
+
