@@ -81,3 +81,110 @@
 // }
 
 // console.log(Number(reversed));
+
+// ====================================== LESSON 3 =====================================
+
+// CONTROL OPERATORS
+
+// task 2
+
+// n = [3. -7, 2]
+
+// for (let i = 0; i < n.length; i++) {
+//    const element = n[i];
+//    if (element < 0) {
+//       console.log(`the sign is - ${element}`);
+//    }
+// }
+
+// task 1
+
+// let n1 = 12
+// let n2 = 13
+
+// if (n1>n2) {
+//    console.log(`n1 is bigger`);
+// } else {
+//    console.log(`n2 is bigger`);
+// }
+
+// task 3
+// let n = [0, 12, -4]
+// let b = n.sort()
+// console.log(b.reverse());
+
+// task 4
+
+// for (let index = 0; index <= 15; index++) {
+//    if (index % 2 == 0) {
+//       console.log(`${index} is even`);
+//    }else{
+//       console.log(`${index} is odd`);
+//    }
+// }
+
+// Task 5
+// for (let i = 0; i <= 100; i++) {
+//    if (i % 3 == 0) {
+//       console.log('bizz');
+//    }else if (i % 5) {
+//       console.log('fizz');
+//    }else if (i % 5 ==0  && i % 3 ==0) {
+//       console.log('bizzfizz');
+//    }
+// }
+
+// task 6
+// let n = 371
+// let nArr = String(n).split('')
+// let nNew = 0
+// for (let i = 0; i < nArr.length; i++) {
+//    const element = Number(nArr[i]);
+//    nNew = nNew + element**3
+//    if(nNew == n){
+//       console.log('Armstrong number');
+//    }
+// }
+
+// task 7
+
+// let arrOfObjs = [
+//   {
+//     name: "David",
+//     mark: 80,
+//   },
+//   {
+//     name: "Said",
+//     mark: 55,
+//   },
+//   {
+//     name: "Anna",
+//     mark: 88,
+//   },
+//   {
+//     name: "Dinya",
+//     mark: 99,
+//   },
+//   {
+//     name: "Thomas",
+//     mark: 68,
+//   },
+// ];
+
+// for (let i = 0; i < arrOfObjs.length; i++) {
+//   const element = arrOfObjs[i];
+
+//   if (element.mark < 60) {
+//     console.log(element.name + " " + "F");
+//   } else if (element.mark < 60) {
+//     console.log(element.name + " " + "E");
+//   } else if (element.mark < 70) {
+//     console.log(element.name + " " + "D");
+//   } else if (element.mark < 80) {
+//     console.log(element.name + " " + "C");
+//   } else if (element.mark < 90) {
+//     console.log(element.name + " " + "B");
+//   } else if (element.mark < 100) {
+//     console.log(element.name + " " + "A");
+//   }
+// }
