@@ -147,7 +147,6 @@
 // }
 
 // task 7
-
 // let arrOfObjs = [
 //   {
 //     name: "David",
@@ -188,3 +187,101 @@
 //     console.log(element.name + " " + "A");
 //   }
 // }
+
+// ======================================== lesson 4 ========================================
+// task 1
+// let greeting = (name) => {
+//    console.log(`Hello, ${name}`);
+// };
+// greeting('hello')
+// greeting('Aziz')
+// greeting('Olma')
+// greeting('Sardor')
+// greeting('Sanjar')
+
+// Task 2
+// const isPrime = (n) => {
+//   if (n <= 1) return false;
+//   for (let i = 2; i <= Math.sqrt(n); i++) {
+//     if (n % i === 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// console.log(isPrime(12))
+
+// task 3
+
+// function countDigits(n) {
+//   if (typeof n === "number") {
+//     return String(n).length;
+//   } else {
+//     return "you should write number, no other things";
+//   }
+// }
+// console.log(`this given number have ${countDigits(121233)}`);
+
+// task 4
+
+// function isPolindrome(n) {
+//    const reversedN = String(n).split('').reverse().join('')
+//    if (reversedN == n) {
+//       return (`${n} number is Palindrome`)
+//    }else{
+//       return (`${n} number is not Palindrome`)
+//    }
+// }
+// console.log(isPolindrome(121));
+
+// Task 5
+// function isArmstrong(n) {
+//    const arrDigits = String(n).split('')
+//    let sumofPoweredDigits = 0
+//    arrDigits.forEach(e => sumofPoweredDigits = sumofPoweredDigits + Number(e) ** arrDigits.length)
+//    if( sumofPoweredDigits == n){
+//       return 'this number is armstrong'
+//    }else{
+//       return 'this number is not armstrong'
+//    }
+// }
+// console.log(isArmstrong(370));
+
+// Task 6
+// function createCounter(start) {
+//    return {
+//       increment: () => start + 1,
+//       discrement: () => start - 1,
+//       getCount: () => start
+//    }
+// }
+
+// console.log(createCounter(3).discrement());
+
+// Task 7
+// function orderFood() {
+//    let obj = {
+//       name: ()=>{
+//          return prompt('what is your name: ')
+//       },
+//       address: ()=>{
+//          return prompt('what is your address: ')
+//       },
+//       food: ()=>{
+//          return prompt('what food: ')
+//       }
+//    }
+//    console.log(`Dear ${obj.name()}, your ordered food "${obj.food()}" will be ready in 15 minuts and will be delivered to your address ${obj.address()}`);
+// }
+// orderFood()
+
+// task 8
+// function lazyAdder(a) {
+//    return function add5() {
+//       return 5 + a;
+//    };
+// }
+// console.log(lazyAdder(123)());
+
+
+// task 
