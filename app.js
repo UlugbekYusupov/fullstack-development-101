@@ -188,3 +188,138 @@
 // if(sum == originalNum) {
 //     console.log("Armstrong");
 // } 
+
+// Lesson 5 - Function, Closures, Scopes in JavaScript
+// (function () {
+//     return a + b
+// } ());
+
+// console.log(sum(2, 5));
+
+// let sum = function(a,b) {
+//     return a + b;
+// }
+
+// console.log(sum(3, 4));
+
+//  Challenge 1
+// function greet(name) {
+//     console.log(`Hello, ${name}`);
+// }
+
+// (function(name) {
+//     console.log(`Hello, ${name}`);
+// }, ("Ali"));
+
+// let greet = function(name) {
+//     console.log(`Hello, ${name}`);
+// }
+
+// const greet = (name) => {
+//     console.log(`Hello, ${name}`);
+// }
+
+// let greet = new Function(
+//     'name',
+//     'console.log(`Hello, ${name}`);'
+// )
+
+// person1 = greet("Ali");
+
+// Challenge 2
+// function isPrime(num) {
+//     if(num < 2) return false;
+//     if(num == 2) return true;
+//     if(num % 2 == 0) return false;
+//     for(i = 2; i*i <= num; i++) {
+//         if(num % i == 0) {
+//             return false
+//             break;
+//         }
+//     }
+
+//     return true;
+// }
+
+// console.log(isPrime(1));
+
+// Challenge 3
+
+// function countDigits(n) {
+//     if(n == 1) return 1;
+//     n = Math.abs(n);
+//     let count = 0;
+//     while(n>0) {
+//         n = Math.floor(n / 10);
+//         count++;
+//     }
+
+//     return count;
+// }
+
+// console.log(countDigits(2043432));
+
+// Challenge 4
+
+// function isPalindrome(n) {
+//     str = Math.abs(n).toString();
+//     return str === str.split("").reverse().join("");
+// }
+
+// console.log(isPalindrome(2222332));
+
+// Challenge 5
+// function isArmstrong(n) {
+//     let originalN = n;
+//     let sum = 0;
+
+//     while(n>0) {
+//         let digit = n % 10;
+//         sum += digit**3;
+//         n = Math.floor(n/10);
+//     }
+
+//     return sum == originalN;
+// }
+
+// console.log(isArmstrong(153)); 
+
+// Challenge 6
+// function createCounter(start) {
+//     let count = start;
+//     function increment() {
+//         return ++count;
+//     }
+//     function decrement() {
+//         return --count;
+//     }
+//     function getCount() {
+//         return count;
+//     }
+//     return {increment, decrement, getCount};
+// }
+
+// let counter = createCounter(15);
+// console.log(counter.getCount());
+// console.log(counter.decrement());
+// console.log(counter.decrement());
+// console.log(counter.increment());
+
+// Challenge 7
+// function orderFood(name, address, food) {
+//     return `Dear ${name}, your ordered food - ${food} will be ready in 15 minuts and will be delivered to your address - ${address}`;
+// }
+
+// console.log(orderFood('Ali', 'Booton 123', 'Lavash'));
+
+
+// Challenge 8
+// function lazyAdder(a) {
+//     return function(b) {
+//         return a + b;
+//     }
+// }
+
+// const add5 = lazyAdder(5); 
+// console.log(add5(10));
+// console.log(add5(20));
