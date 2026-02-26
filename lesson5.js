@@ -61,4 +61,43 @@
 // }
 // isArmstrong(num)
 
+//Task 6
 
+function createCounter(start) {
+    let count = start;
+
+    return {
+        increment() {
+            count++;
+        },
+        decrement() {
+            count--;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+let counter  = createCounter(12);
+counter.increment();
+console.log(counter.getCount());
+
+//Task 7
+const orderFood=()=>{
+    const name = prompt("Enter your name");
+    const address = prompt("Enter your address");
+    const food = prompt("What do you want?");
+
+    return `Dear ${name}, your ordered food ${food} will be ready in 15 minuts and will be delivered to your address ${address}`
+}
+console.log(orderFood())
+
+//Task 8
+const lazyAdder=(n)=>{
+    return (function (num){
+        return num+n;
+    })
+}
+const add5 = lazyAdder(5);
+console.log(add5(10));
+console.log(add5(20));
