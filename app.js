@@ -227,23 +227,210 @@
 // 	}
 // }
 
-const users = {
-	"David": 80,
-	"Vinoth": 77,
-	"Divya": 88,
-	"Ishitha": 95,
-	"Thomas": 1
+// Task 7
+
+// const users = {
+// 	"David": 80,
+// 	"Vinoth": 77,
+// 	"Divya": 88,
+// 	"Ishitha": 95,
+// 	"Thomas": 1
+// }
+
+// for (const key in users) {
+//   const score = users[key]
+//   let grade
+
+//   if (score < 60) grade = "F"
+//   else if (score < 70) grade = "D"
+//   else if (score < 80) grade = "C"
+//   else if (score < 90) grade = "B"
+//   else grade = "A"
+
+//   console.log(`${key} grade is ${grade}`)
+// }
+///////
+// function getGrade(score) {
+//   if (score < 60) return "F"
+//   if (score < 70) return "D"
+//   if (score < 80) return "C"
+//   if (score < 90) return "B"
+//   return "A"
+// }
+
+// for (const [name, score] of Object.entries(users)) {
+//   console.log(`${name} grade is ${getGrade(score)}`)
+// }
+																			///////////////////////////
+																				// Lesson 2 End
+																			///////////////////////////
+
+																			///////////////////////////
+																				// Lesson 3 Start
+																			///////////////////////////
+	
+
+
+// console.log(first(1,2))		
+// function first(a,b){
+// 	return a + b
+// }					
+
+// let second = function(a,b){
+// 	return a + b
+// }						
+// console.log(second(1,2))	
+
+// let third = (a,b) => {
+// 	return a + b
+// }						
+// console.log(third(1,2))		
+
+// (function(a,b){
+// 	return sum = a + b
+// })(console.log(1,2))
+
+// let sum = new Function(
+// 	"a",
+// 	"b",
+// 	"return a+b"
+// )
+// console.log(sum(1,2))		
+// Challenge 1
+
+// greet("Oybek")
+// function greet(name){
+// 	console.log(`Helo ${name}`)
+// }
+// // Challenge 2
+// function isPrime(n) {
+//   if (n <= 1) return false
+
+//   for (let i = 2; i < n; i++) {
+//     if (n % i === 0) {
+//       return false
+//     }
+//   }
+//   return true
+// }
+
+// console.log(isPrime(7)) 
+// console.log(isPrime(10))
+
+// // Challenge 3
+// function countDigits(n) {
+//   let sum = 0;
+//   for (let digit of n) {
+//     sum += Number(digit)
+//   }
+//   console.log(sum)
+// }
+
+// countDigits(prompt("Enter a number"))
+
+// // Challenge 4
+// const isPalindrome = (n) => {
+// 	return n == n.toString().split("").reverse().join("")
+// } 
+// console.log(isPalindrome(1211))
+
+// // Challenge 5
+// function isArmstrong(n){ 
+// let sum = 0
+// let copy = n.toString()
+// let digits = n.length
+
+
+// for (let digit of n) {
+//   sum += digit ** digits
+// 	if (copy == sum) {
+// 		console.log(`${n} is an Armstrong number`)
+// 	} else {
+// 		console.log(`${n} is NOT an Armstrong number`)
+// 	}
+// }
+// }
+// isArmstrong(prompt("Enter a number"))
+// // Challenge 6
+// function createCounter(start) {
+// 	return {
+// 			increment() {
+// 					for (let n = 0; n <= start; n++) {
+// 							console.log(n)
+// 					}
+// 			},
+// 			decrement() {
+// 					for (let n = start; n >= 0; n--) {
+// 							console.log(n)
+// 					}
+// 			},
+// 			getCount() {
+// 					console.log(start)
+// 					return start
+// 			}
+// 	}
+// }
+
+
+// const counter = createCounter(12)
+// counter.increment()
+// counter.decrement()
+// counter.getCount()
+
+// // Challenge 7
+// function letter() {
+// 	let name
+// 	let address
+// 	let food
+
+// 	return {
+// 			setName() {
+// 					name = prompt("Your name")
+// 			},
+// 			setAddress() {
+// 					address = prompt("Your address")
+// 			},
+// 			setFood() {
+// 					food = prompt("What do you want?")
+// 			},
+// 			print() {
+// 					console.log(`Dear ${name}, your order "${food}" will be addressed to ${address}.`)
+// 			}
+// 	}
+// }
+
+// const order = letter()
+
+// order.setName()
+// order.setAddress()
+// order.setFood()
+// order.print()
+// // Challenge 7
+
+// function lazyAdder(a){
+// 	return function addFive(b){
+// 		return	a + b
+// 	}
+// }
+// const add5 = lazyAdder(5)
+// console.log(add5())
+
+// Assignment 
+
+function calc(){
+	let price = 100
+	let sale = 0
+	let quantite = prompt("How muvh are you wont to buy?")
+	if (quantite >= 3){
+		sale = 0.1
+	}
+	else if (quantite >= 5){
+		sale = 0.2
+	}
+	let total = price * quantite * (1 - sale);
+	console.log(`Your total price is $${total}`);
 }
+calc()
 
-for (const key in users) {
-  const score = users[key];
-  let grade;
 
-  if (score < 60) grade = "F";
-  else if (score < 70) grade = "D";
-  else if (score < 80) grade = "C";
-  else if (score < 90) grade = "B";
-  else grade = "A";
 
-  console.log(`${key} grade is ${grade}`);
-}
