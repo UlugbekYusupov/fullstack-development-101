@@ -277,43 +277,587 @@
 // }
 
 // Practice 7
-let students = [
-    { name: "David", marks: 80 },
-    { name: "Vinoth", marks: 77 },
-    { name: "Divya", marks: 88 },
-    { name: "Ishitha", marks: 95 },
-    { name: "Thomas", marks: 68 }
-];
+// let students = [
+//     { name: "David", marks: 80 },
+//     { name: "Vinoth", marks: 77 },
+//     { name: "Divya", marks: 88 },
+//     { name: "Ishitha", marks: 95 },
+//     { name: "Thomas", marks: 68 }
+// ];
 
-let total = 0;
+// let total = 0;
 
-for (let i = 0; i < students.length; i++) {
-    total += students[i].marks;
+// for (let i = 0; i < students.length; i++) {
+//     total += students[i].marks;
+// }
+
+// let average = total / students.length;
+
+// console.log("Average Marks: " + average);
+
+// let grade;
+
+// if (average < 60) {
+//     grade = "F";
+// } 
+// else if (average < 70) {
+//     grade = "D";
+// } 
+// else if (average < 80) {
+//     grade = "C";
+// } 
+// else if (average < 90) {
+//     grade = "B";
+// } 
+// else {
+//     grade = "A";
+// }
+
+// console.log("Grade: " + grade);
+
+
+
+//Lecture 5: Functions,Closures and  Scopes in JavaScript
+
+//                               Types of  Functions
+// 1: Function Declaration
+// function sum (a,b) {
+//     return a+ b;
+// }
+// sum(2,3)
+
+// 2: Function Expression
+// let sum = function (a,b) {
+//     return a+b;
+// };
+// console.log(sum(2,3));
+
+// 3: Arrow function
+// let sum = (a,b) => {
+//     return  a + b;
+// };
+// console.log(sum(2,3));
+
+
+//                            Closures
+// function outer() {
+//     let count = 0;
+
+//     return function inner() {
+//         count++;
+//         console.log(count);
+//     };
+// }
+
+// const counter = outer();
+// counter();
+// counter();
+// counter();
+
+
+
+//                    Practice exercises of Lecture 4
+
+// Challenge 1
+//  1: Function Declaration
+// function greet1(name) {
+//     return "Hello, " + name + "!";
+// };
+// console.log(greet1("Ulug'bek"));
+
+// 2: Function Expression 
+// const greet2 = function(name) {
+//     return "Hello, " + name;
+// };
+// console.log(greet2("Ulug'bek"));
+
+// 3: Arrow function
+// const greet3 = (name) => {
+//     return "Hello, " + name;
+// };
+// console.log(greet3("Ulug'bek"));
+
+// 4: Arrow function (Very short)
+// const greet4 = name => "Hello, " + name;
+// console.log(greet4("Ulug'bek"))
+
+// 5: IIFE(Immediately Invoked Function Expression)
+// const greet5 = (function() {
+//     return function(name) {
+//         return "Hello, " + name;
+//     };
+// })();
+// console.log(greet5("Ulug'bek"));
+
+
+// Challenge 2
+// function isPrime(n) {
+//     if (n <= 1) return false;
+//     if (n === 2) return true;
+//     if (n%2 === 0) return false;
+
+//     for(let i=3; i<= Math.sqrt(n); i+=2) {
+//         if (n%i===0) return false;
+//     }
+
+//     return true;
+// }
+
+// console.log(isPrime(2));   
+// console.log(isPrime(7));   
+// console.log(isPrime(10)); 
+// console.log(isPrime(13));  
+// console.log(isPrime(1));
+
+
+// Challenge 3
+// function countDigits(n) {
+
+//     return Math.abs(n).toString().length;
+// }
+
+// console.log(countDigits(12345));   
+// console.log(countDigits(7));      
+// console.log(countDigits(-9876));   
+// console.log(countDigits(1000000)); 
+
+// Challenge 4
+// function isPalindrome(n) {
+//     const str = Math.abs(n).toString();
+//     const reversed = str.split("").reverse().join("");
+//     return str === reversed;
+// }
+
+// console.log(isPalindrome(121));   
+// console.log(isPalindrome(1331));  
+// console.log(isPalindrome(123));   
+// console.log(isPalindrome(12321)); 
+// console.log(isPalindrome(-121));
+// console.log(isPalindrome(325325))
+
+//  Challenge 5
+// function isArmstrong(n) {
+//     let original = n;
+
+//     let temp = n;
+//     let digitCount = 0;
+//     while (temp > 0) {
+//         temp = Math.floor(temp / 10);
+//         digitCount++
+//     }
+
+//     let sum = 0;
+//     temp = n;
+
+//     while (temp > 0) {
+//         let lastDigit = temp % 10;
+//         let power = 1;
+//         for (let i = 0; i < digitCount; i++) {
+//             power = power * lastDigit;
+//         }
+
+//         sum = sum + power;
+//         temp = Math.floor(temp/10);
+//     }
+//     return sum === original;
+// }
+
+// console.log(isArmstrong(153)); 
+// console.log(isArmstrong(370));  
+// console.log(isArmstrong(100)); 
+
+
+// Challenge 6
+// function createCounter(start) {
+//     let count = start;
+
+//     return {
+//         increment: function() {
+//             count = count + 1;
+//             console.log("Hisob: " + count);
+//         },
+//         decrement: function() {
+//             count = count - 1;
+//             console.log("Hison: " + count);
+//         },
+//         getCount: function() {
+//             return count;
+//         }
+//     };
+// }
+
+// const counter = createCounter(20);
+// counter.increment();             
+// counter.increment();             
+// counter.decrement();   
+// counter.increment();          
+// console.log(counter.getCount());
+
+// Challenge 7
+// function orderFood(name, address, food) {
+//     return "Dear " + name + ", your ordered food " + food + " will be ready in 15 minutes and will be delivered to your address: " + address;
+// }
+
+// console.log(orderFood("Ali", "Toshkent, Chilonzor 5", "Plov"));
+
+// Challenge 8
+// function lazyAdder(a) {
+//     return function(b) {
+//         return a + b;
+//     };
+// }
+
+// const add5 = lazyAdder(5);
+// console.log(add5(10));
+// console.log(add5(20));
+
+// const add100 = lazyAdder(100);
+// console.log(add100(50));
+
+
+//                                  Assignment
+
+// Challenge 1
+// function calculateTotal(price, quantity) {
+//     let total = price * quantity;
+//     let discount = 0;
+
+//     if (quantity >= 5) {
+//         discount = 20;
+//     }else if (quantity >= 3) {
+//         discount = 10;
+//     }else {
+//         discount = 0;
+//     }
+//     let discountAmount = total * discount/100;
+
+//     let finalPrice = total -discountAmount;
+
+//      console.log("Mahsulot narxi: $" + price);
+//     console.log("Miqdori: " + quantity + " ta");
+//     console.log("Chegirmasiz narx: $" + total);
+//     console.log("Chegirma: " + discount + "%  ($" + discountAmount + ")");
+//     console.log("To'lash kerak: $" + finalPrice);
+//     console.log("---");
+
+//     return finalPrice;
+// }
+// calculateTotal(50, 2); 
+// calculateTotal(50, 3);  
+// calculateTotal(50, 5);  
+// calculateTotal(30, 7); 
+
+// Challenge 2
+// function checkPassword(password) {
+
+//     let hasLength = password.length >= 8;
+
+//     let hasUpperCase = false;
+//     for (let i=0; i<password.length; i++) {
+//         let char = password[i];
+//         if(char >= 'A' && char <= 'Z') {
+//             hasUpperCase = true;
+//         }
+//     }
+
+//     let hasNumber = false;
+//     for(let i = 0; i<password.length; i++) {
+//         let char = password[i];
+//         if (char >= '0' && char <= '9') {
+//             hasNumber = true;
+//         }
+//     }
+
+//     let hasSpecial = false;
+//     let specialChars = "!@#$%^&_*";
+
+//     for (let i=0; i<password.length; i++) {
+//         let char = password[i];
+
+//         for (let j=0; j<specialChars.length; j++) {
+//             if (char === specialChars[j]) {
+//                 hasSpecial = true;
+//             }
+//         }
+//     }
+
+//     let score = 0;
+//     if (hasLength)  score = score+1;
+//     if(hasUpperCase) score = score+1;
+//     if(hasNumber) score = score+1;
+//     if(hasSpecial) score = score+1;
+
+//     let result = "";
+//     if (score === 4) {
+//         result = "Strong";
+//     } else if (score >= 2) {
+//         result = "Medium";
+//     }else{
+//         result = "Weak";
+//     }
+
+//         console.log("Parol: " + password);
+//     console.log("8+ belgi:       " + hasLength);
+//     console.log("Katta harf:     " + hasUpperCase);
+//     console.log("Raqam:          " + hasNumber);
+//     console.log("Maxsus belgi:   " + hasSpecial);
+//     console.log("Natija: " + result);
+//     console.log("---");
+
+//     return result;  
+// }
+
+// checkPassword("ulugbek");             
+// checkPassword("ulugbek11");       
+// checkPassword("Ulugbek08");       
+// checkPassword("Uz_20081108");
+
+
+//  Challenge 3
+
+// function atm(amount) {
+//     if (amount % 10 !== 0) {
+//         console.log("Xato: "+ amount + " dollar 10 ning karralisi emas!")
+//         return;
+//     }
+//     let hundreds = Math.floor(amount/100);
+//     amount = amount - hundreds * 100;
+
+//     let fifties =Math.floor(amount/50);
+//     amount = amount - fifties * 50;
+
+//     let twenties = Math.floor(amount/20);
+//     amount = amount - twenties * 20
+
+//     let tens = Math.floor(amount/10);
+
+//       console.log("Berildi:");
+//     if (hundreds > 0) console.log("  $100 x " + hundreds);
+//     if (fifties  > 0) console.log("  $50  x " + fifties);
+//     if (twenties > 0) console.log("  $20  x " + twenties);
+//     if (tens     > 0) console.log("  $10  x " + tens);
+// }
+
+// console.log("\n=== CHALLENGE 3: BANKOMAT ===");
+// atm(130);  
+// atm(250);  
+// atm(180);  
+// atm(135);  
+// atm(370);  
+
+
+// Challenge 4
+// function startTrafficLight() {
+//     function showRed() {
+//         console.log("Red - To'xta! (5 soniya)");
+//         setTimeout(function() {
+//             showYellow();
+//         }, 5000);
+//     }
+
+//     function showYellow() {
+//         console.log("Yellow - Tayyorlan! 3(soniya)");
+//         setTimeout(function() {
+//             showGreen();
+//         }, 3000);
+//     }
+
+//     function showGreen() {
+//         console.log("Green - Yur! (2 soniya");
+//         setTimeout(function() {
+//             showRed();
+//         }, 2000)
+//     }
+//     showRed();
+// }
+// console.log("Svetofor yoqildi!");
+// startTrafficLight();
+
+
+// Challenge 5
+// function isLongEnough(password) {
+//     if (password.length >= 8) {
+//         return true;
+//     }
+//     return false;
+// }
+
+// function hasUpperCase(password) {
+//     for(let i = 0; i<password.length; i++) {
+//         let char = password[i];
+//         if (char >= 'A' && char <= 'Z') {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+// function hasDigit(password) {
+//     for(let i=0; i < password.length; i++) {
+//         let char = password[i];
+//         if (char >= '0' && char <= '9') {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+// function hasSpecialChar(password) {
+//     let specialChars = "!@#$%^&_*";
+//     for (let i = 0; i < password.length; i++) {
+//         for (let j = 0; j < specialChars.length; j++) {
+//             if (password[i] === specialChars[j]) {
+//                 return true;
+//             }
+//         }
+//     }
+//     return false;
+// }
+
+// function checkPasswordStrength(password) {
+//     let score = 0;
+//     if(isLongEnough(password))  score = score + 1;
+//     if (hasUpperCase(password)) score = score + 1;
+//     if (hasDigit(password))         score = score + 1;
+//     if (hasSpecialChar(password))   score = score + 1;
+
+//        console.log("Parol: " + password + "score: " + score + "/4");
+
+//     if (score === 4) {
+//         return "Strong";
+//     } else if (score >= 2) {
+//         return "Medium";
+//     } else {
+//         return "Weak";
+//     }
+// }
+
+// console.log(checkPasswordStrength("ulugbek"));
+// console.log(checkPasswordStrength("ulugbek8"));
+// console.log(checkPasswordStrength("Ulugbek11"));
+// console.log(checkPasswordStrength("Ulugbek_2008"));
+
+//  Challenge 6
+// function BankAccount(startingBalance) {
+//     let balance = startingBalance;
+
+//     return {
+//         deposit: function(amount) {
+//             if (amount <= 0) {
+//                 console.log("XATO: Qo'yiladigan pul 0 dan katta bo'lishi kerak!");
+//                 return;
+//             }
+//             balance = balance + amount;
+//             console.log("+" + amount + "$ qo'yildi. Balans: " + balance + "$");
+//         },
+//         withdraw: function(amount) {
+//             if(amount <= 0) {
+//                 console.log("XATO: Olinadigan pul 0 dan katta bo'lishi kerak!");
+//                 return;
+//             }
+//             if (amount > balance) {
+//                 console.log("XATO: Yetarli pul yo'q! Balans: " + balance + "$");
+//                 return;
+//             }
+//             balance = balance = amount;
+//             console.log("-" + amount + "$ olindi. Balans: " + balance + "$");
+//         },
+//         getBalance: function() {
+//             console.log("Joriy balans: " + balance + "$");
+//             return balance;
+//         }
+//     };
+// }
+
+// const myAccount = BankAccount(100); 
+
+// myAccount.getBalance();     
+// myAccount.deposit(50);       
+// myAccount.withdraw(30);     
+// myAccount.withdraw(200);     
+// myAccount.deposit(-10);      
+// myAccount.getBalance();
+
+//  Challenge 7
+// function createUser(name,role) {
+//     return {
+//         name: name,
+//         role: role,
+
+//         doAction: function(action) {
+//             let adminActions   = ["add", "edit", "delete", "view"];
+//             let editorActions  = ["edit", "view"];
+//             let viewerActions  = ["view"];
+
+//             let allowedActions = [];
+//                  if (role === "admin") {
+//                 allowedActions = adminActions;
+//             } else if (role === "editor") {
+//                 allowedActions = editorActions;
+//             } else if (role === "viewer") {
+//                 allowedActions = viewerActions;
+//             } else {
+//                 console.log("XATO: Bunday rol mavjud emas!");
+//                 return;
+//             }
+//             let isAllowed = false;
+
+//             for(let i = 0; i<allowedActions.length; i++) {
+//                 if (allowedActions[i] === action) {
+//                     isAllowed = true;
+//                 }
+//             }
+
+//             if (isAllowed) {
+//                 console.log(name + " (" + role + ") → '" + action + "'  Ruxsat bor!")
+//             }else {
+//                 console.log(name + " (" + role + ") → '" + action + "'  Ruxsat yo'q!")
+//             }
+//         }
+//     };
+// }
+
+// const admin  = createUser("Ali",    "admin");
+// const editor = createUser("Kamola", "editor");
+// const viewer = createUser("Jasur",  "viewer");
+
+// admin.doAction("add");    
+// admin.doAction("delete");  
+
+// editor.doAction("edit");    
+// editor.doAction("delete");  
+
+// viewer.doAction("view");  
+// viewer.doAction("edit");    
+// viewer.doAction("add");
+
+
+//  Challenge 8
+function calculateTax(salary) {
+    let taxPercent = 0;
+    let taxAmount = 0;
+    let netSalary = 0;
+
+    if (salary < 10000) {
+        taxPercent = 0;
+    }else if (salary <= 50000) {
+        taxPercent = 10;
+    }else {
+        taxPercent = 20;
+    }
+
+    taxAmount = salary * taxPercent / 100;
+
+    netSalary = salary - taxAmount;
+     console.log("Maosh:          $" + salary);
+    console.log("Soliq foizi:    " + taxPercent + "%");
+    console.log("Soliq summasi:  $" + taxAmount);
+    console.log("Qo'lga tegadi:  $" + netSalary);
+    console.log("---");
+
+    return netSalary;
 }
 
-let average = total / students.length;
-
-console.log("Average Marks: " + average);
-
-let grade;
-
-if (average < 60) {
-    grade = "F";
-} 
-else if (average < 70) {
-    grade = "D";
-} 
-else if (average < 80) {
-    grade = "C";
-} 
-else if (average < 90) {
-    grade = "B";
-} 
-else {
-    grade = "A";
-}
-
-console.log("Grade: " + grade);
-
-
-
+calculateTax(5000);   // 0%  soliq → $5000
+calculateTax(30000);  // 10% soliq → $27000
+calculateTax(80000);
