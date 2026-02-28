@@ -249,11 +249,12 @@
 
 // Task 6
 // function createCounter(start) {
-//    return {
+//    let obj ={
 //       increment: () => start + 1,
 //       discrement: () => start - 1,
 //       getCount: () => start
 //    }
+//    return obj
 // }
 
 // console.log(createCounter(3).discrement());
@@ -283,5 +284,118 @@
 // }
 // console.log(lazyAdder(123)());
 
+// Home Tasks
 
-// task 
+// task 1
+// function DynamicPricingCalculation(carts) {
+//   let countOfCarts = 0;
+//   let totatSum = 0;
+//   carts.forEach(({ price, id, count }) => {
+//     countOfCarts += count;
+//     totatSum += price * count;
+//   });
+//   if (countOfCarts > 5) {
+//     return `20% discount for 5+ is ${totatSum * 0.8}`;
+//   } else if (countOfCarts > 3) {
+//     return `10% discount for 3+ is ${totatSum * 0.9}`;
+//   } else {
+//     return `total sum is ${totatSum}`;
+//   }
+// }
+
+// console.log(
+//   DynamicPricingCalculation([
+//     {
+//       price: 4000,
+//       id: 1,
+//       count: 1,
+//     },
+//     {
+//       price: 6400,
+//       id: 2,
+//       count: 1,
+//     },
+//     {
+//       price: 14000,
+//       id: 3,
+//       count: 1,
+//     },
+//     {
+//       price: 4000,
+//       id: 4,
+//       count: 1,
+//     },
+//   ]),
+// );
+
+// task 2
+// function checkPassword(password) {
+//    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+//    if (regex.test(password)) {
+//       console.log('password is strong');
+//    } else {
+//       console.log('password is weak');
+
+//    }
+// }
+// checkPassword('1231!Asas')
+
+// task 3
+// function withdrawATM(amount) {
+//   if (amount % 10 !== 0) {
+//     return "Error: Amount must be a multiple of $10.";
+//   }
+
+//   const bills = [100, 50, 20, 10];
+//   let result = {};
+//   let remaining = amount;
+
+//   bills.forEach(bill => {
+//     let count = Math.floor(remaining / bill);
+//     if (count > 0) {
+//       result[`$${bill}`] = count;
+//       remaining -= count * bill;
+//     }
+//   });
+
+//   return result;
+// }
+
+// task 6
+
+// function bankAccount(balance) {
+//    return {
+//       balance: balance,
+//       deposit: (e)=>balance + e,
+//       withdraw: (e)=>balance - e,
+//       viewBalange: ()=>balance,
+//    }
+// }
+// console.log(bankAccount(1000).withdraw(10))
+
+// TASK 7
+// function RoleBasedAccessSystem(role) {
+//    switch (role) {
+//       case 'admin':
+//          console.log('can add, edit, delete content');
+//          break;
+//       case 'editor':
+//          console.log('can add, view');
+//          break;
+//       default:
+//          console.log('can only view');
+//          break;
+//    }
+// }
+
+// task 9
+
+function dinamicTaxCalculator(income) {
+  if (income > 10000) {
+    console.log("no tax");
+  } else if (income > 5000) {
+    console.log("10% tax");
+  } else {
+    console.log(`20% tax`);
+  }
+}
