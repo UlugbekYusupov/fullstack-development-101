@@ -231,34 +231,210 @@
 // }
 
 // 7
-const students = [
-    { name: "David", marks: 80 },
-    { name: "Vinoth", marks: 77 },
-    { name: "Divya", marks: 88 },
-    { name: "Ishitha", marks: 95 },
-    { name: "Thomas", marks: 68 }
-];
+// const students = [
+//     { name: "David", marks: 80 },
+//     { name: "Vinoth", marks: 77 },
+//     { name: "Divya", marks: 88 },
+//     { name: "Ishitha", marks: 95 },
+//     { name: "Thomas", marks: 68 }
+// ];
 
-let totalMarks = 0;
+// let totalMarks = 0;
 
-for (let i = 0; i < students.length; i++) {
-    totalMarks += students[i].marks;
-}
+// for (let i = 0; i < students.length; i++) {
+//     totalMarks += students[i].marks;
+// }
 
-const average = totalMarks / students.length;
-console.log("Average Grade: " + average);
+// const average = totalMarks / students.length;
+// console.log("Average Grade: " + average);
 
-if (average < 60) {
-    console.log("Grade: F");
-} else if (average < 70) {
-    console.log("Grade: D");
-} else if (average < 80) {
-    console.log("Grade: C");
-} else if (average < 90) {
-    console.log("Grade: B");
-} else if (average < 100) {
-    console.log("Grade: A");
-}
+// if (average < 60) {
+//     console.log("Grade: F");
+// } else if (average < 70) {
+//     console.log("Grade: D");
+// } else if (average < 80) {
+//     console.log("Grade: C");
+// } else if (average < 90) {
+//     console.log("Grade: B");
+// } else if (average < 100) {
+//     console.log("Grade: A");
+// }
+
+// LECTURE 5
+// FUNCTIONS
+// 1.funstion declaration
+// function sum  (a, b){
+//     return a + b;
+// }
+
+// console.log(sum(2,5));
+
+// 2. function expression
+// let sum = function(a,b){
+//     return a+b;
+// }
+// console.log(sum(2,3));
+
+//3. Arrow function
+// let sum = (a, b) => {
+//     return a + b;
+// }
+// console.log(sum(2,7));
+
+// 4. IIFE function
+// (function (a,b) {
+//     return a+b;
+// }) (2,3) //5
+
+// 5. Function constructor
+// let sum = new Function (
+//     'a',
+//     'b',
+//     'return a + b'
+// );
+// console.log(sum (2,3));
+
+
+// function outer(){
+
+// }
+
+// Array.prototype.greet = function(){
+//     console.log(this);
+//     console.log("It is coming from prototype");
+// }
+
+
+// Practice Challenges
+
+// ---First challenge ---
+// 1st way
+// function greet(name) {
+//     return `Hello, ${name}`;
+// }
+// console.log(greet('Rayhona'));
+// 2nd way
+// let greet = function (name) {
+//     return `Hello, ${name}`;
+// }
+// console.log(greet('Rayhona'));
+// 3rd way
+// let greet = (name) => {
+//     return `Helloooo, ${name}`;
+// }
+// console.log(greet('Rayhonaaa'));
+// 4th way
+// let greet = new Function(
+//     'name',
+//     'return "Hello, " + name +"!"'
+// );
+// console.log(greet('Rayhona'));
+
+// ---Second challenge---
+// function isPrime(a){
+//     for (let i = 2; i <= Math.sqrt(a); i++) {
+//         if (a % i === 0) 
+//             return false;
+//     }
+//     return true
+// }
+// console.log(isPrime(7));
+
+// ---Third challenge---
+// function countDigits(n) {
+//     return Math.abs(n).toString().length
+// }
+
+// console.log(countDigits(8765));
+
+// ---Fourth Challenge---
+// function isPalindrome(n) {
+//     let str = n.toString();
+//     let reversedStr = "";
+//     for (let i = str.length - 1; i>=0; i--) {
+//         reversedStr += str[i];
+//     }
+//     if (str == reversedStr){
+//         return true; 
+//     }
+//     else {
+
+//         return false;
+//     }
+// }
+// console.log(isPalindrome(1234321));
+
+// ---Fifth challenge---
+// function isArmstrong(n) {
+//     let  str = n.toString();
+//     let power = str.length;
+//     let sum = 0;
+
+//     for (let i = 0; i< str.length; i++){
+//         let digit = parseInt(str[i]);
+
+//         sum += Math.pow(digit, power);
+//     }
+//     return sum === n;
+// }
+// console.log(isArmstrong(987654));
+
+// ---Sixth challenge---
+// function createCounter() {
+//     let count = 0; 
+//     return {
+//         increment: () => ++count,
+//         decrement: () => --count,
+//         getCount: () => count
+//     };
+// }
+// const counter = createCounter();
+// console.log(counter.increment()); 
+// console.log(counter.increment()); 
+// console.log(counter.decrement()); 
+// console.log(counter.getCount());  
+
+// ---Seventh Challange---
+
+// function orderFood() {
+
+//     const name = prompt("What is your name?");
+//     const address = prompt("What is your address?");
+//     const food = prompt("What would you like to order?");
+    
+//     return `Dear ${name}, your order (${food}) will be ready in 15 minutes and will be delivered to your address: ${address}.`;
+// }
+
+// console.log(orderFood());
+
+// ---Eightth challange---
+// function lazyAdder(a) {
+//     return function(b) {
+//         return a + b;
+//     };
+// }
+// const add10 = lazyAdder(10);
+// console.log(add10(5)); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
