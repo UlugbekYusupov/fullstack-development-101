@@ -417,39 +417,77 @@ const button3 = document.getElementById("button3");
 
 // #6 banking system
 
-function createBankAccount(initialName, initialBalance) {
-  let balance = initialBalance;
-  let accountHolder = initialName;
+// function createBankAccount(initialName, initialBalance) {
+//   let balance = initialBalance;
+//   let accountHolder = initialName;
 
-  return {
-    deposit: function (amount) {
-      if (amount > 0) {
-        balance += amount;
-        console.log(`Deposited $${amount}. New balance: $${balance}`);
-      } else {
-        console.log("Deposit amount must be positive.");
-      }
-    },
+//   return {
+//     deposit: function (amount) {
+//       if (amount > 0) {
+//         balance += amount;
+//         console.log(`Deposited $${amount}. New balance: $${balance}`);
+//       } else {
+//         console.log("Deposit amount must be positive.");
+//       }
+//     },
 
-    withdraw: function (amount) {
-      if (amount > balance) {
-        console.log("Insufficient funds!");
-      } else if (amount <= 0) {
-        console.log("Please enter a valid amount to withdraw.");
-      } else {
-        balance -= amount;
-        console.log(`Withdrew $${amount}. Remaining balance: $${balance}`);
-      }
-    },
+//     withdraw: function (amount) {
+//       if (amount > balance) {
+//         console.log("Insufficient funds!");
+//       } else if (amount <= 0) {
+//         console.log("Please enter a valid amount to withdraw.");
+//       } else {
+//         balance -= amount;
+//         console.log(`Withdrew $${amount}. Remaining balance: $${balance}`);
+//       }
+//     },
 
-    viewBalance: function () {
-      return `Account Holder: ${accountHolder} | Balance: $${balance}`;
-    },
-  };
+//     viewBalance: function () {
+//       return `Account Holder: ${accountHolder} | Balance: $${balance}`;
+//     },
+//   };
+// }
+
+// const myAccount = createBankAccount("Aziz", 100);
+
+// myAccount.deposit(50);
+// myAccount.withdraw(20);
+// console.log(myAccount.viewBalance());
+
+// 7#  Role-Based Access System
+
+// button1.textContent = "Admin";
+// button2.textContent = "Editor";
+// button3.textContent = "User";
+
+// function updateOutput(resp) {
+//   output.textContent = resp;
+// }
+
+// button1.addEventListener("click", function () {
+//   updateOutput("You can add, edit, delete content");
+// });
+
+// button2.addEventListener("click", function () {
+//   updateOutput("You can edit, view content");
+// });
+
+// button3.addEventListener("click", function () {
+//   updateOutput("You can view content");
+// });
+
+// 8# Dynamic Tax Calculator
+
+function calcTax() {
+  let income = Number(input.value);
+
+  if (income < 10000) {
+    output.textContent = "No tax for you buddy";
+  } else if (income >= 10000 && income < 50000) {
+    output.textContent = "You got yourself 10% tax!";
+  } else {
+    output.textContent = "We giving you 20% tax. ";
+  }
 }
 
-const myAccount = createBankAccount("Aziz", 100);
-
-myAccount.deposit(50);
-myAccount.withdraw(20);
-console.log(myAccount.viewBalance());
+input.addEventListener("input", calcTax);
