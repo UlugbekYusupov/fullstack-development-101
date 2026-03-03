@@ -833,31 +833,31 @@
 
 
 //  Challenge 8
-function calculateTax(salary) {
-    let taxPercent = 0;
-    let taxAmount = 0;
-    let netSalary = 0;
+// function calculateTax(salary) {
+//     let taxPercent = 0;
+//     let taxAmount = 0;
+//     let netSalary = 0;
 
-    if (salary < 10000) {
-        taxPercent = 0;
-    }else if (salary <= 50000) {
-        taxPercent = 10;
-    }else {
-        taxPercent = 20;
-    }
+//     if (salary < 10000) {
+//         taxPercent = 0;
+//     }else if (salary <= 50000) {
+//         taxPercent = 10;
+//     }else {
+//         taxPercent = 20;
+//     }
 
-    taxAmount = salary * taxPercent / 100;
+//     taxAmount = salary * taxPercent / 100;
 
-    netSalary = salary - taxAmount;
-     console.log("Maosh:          $" + salary);
-    console.log("Soliq foizi:    " + taxPercent + "%");
-    console.log("Soliq summasi:  $" + taxAmount);
-    console.log("Qo'lga tegadi:  $" + netSalary);
-    console.log("---");
+//     netSalary = salary - taxAmount;
+//      console.log("Maosh:          $" + salary);
+//     console.log("Soliq foizi:    " + taxPercent + "%");
+//     console.log("Soliq summasi:  $" + taxAmount);
+//     console.log("Qo'lga tegadi:  $" + netSalary);
+//     console.log("---");
 
-    return netSalary;
-}
+//     return netSalary;
+// }
 
-calculateTax(5000);   // 0%  soliq → $5000
-calculateTax(30000);  // 10% soliq → $27000
-calculateTax(80000);
+// calculateTax(5000);   
+// calculateTax(30000);  
+// calculateTax(80000);
