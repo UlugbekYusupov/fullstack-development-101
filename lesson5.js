@@ -105,18 +105,80 @@
 //   return total;
 // }
 
-//CHELLANGE 2
+// // Challenge 2
 // function checkPasswordStrength(password) {
-//   let score = 0;
+//     let score = 0;
 
-//   if (password.length >= 8) score++;
-//   if (/[A-Z]/.test(password)) score++;
-//   if (/[0-9]/.test(password)) score++;
-//   if (/[^A-Za-z0-9]/.test(password)) score++;
+//     if (password.length >= 8) score++;
+//     if (/[A-Z]/.test(password)) score++;
+//     if (/[0-9]/.test(password)) score++;
+//     if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score++;
 
-//   if (score <= 2) return "Weak";
-//   if (score === 3) return "Medium";
-//   return "Strong";
+//     if (score <= 1) return "Weak";
+//     if (score <= 3) return "Medium";
+//     return "Strong";
 // }
+
+// console.log(checkPasswordStrength("amin12"));
+// console.log(checkPasswordStrength("wW2&"));
+// console.log(checkPasswordStrength("Amin12ets"));
+// console.log(checkPasswordStrength("Amin123%"));
+
+// // Challenge 3
+// function bankAccount(initialBalance) {
+//     let balance = initialBalance;
+
+//     return {
+//         deposit(amount) {
+//             if (amount > 0) {
+//                 balance += amount;
+//                 return balance;
+//             }
+//             return "Not enough money!";
+//         },
+
+//         withdraw(amount) {
+//             if (balance > amount && amount > 0) {
+//                 balance -= amount;
+//                 return balance;
+//             }
+//             return "Insuffient amount!"
+//         },
+
+//         getBalance() {
+//             return balance;
+//         }
+//     }
+// }
+// const account = bankAccount(500);
+// console.log(account.getBalance());
+// console.log(account.deposit(200));
+// console.log(account.withdraw(100));
+
+// // Challenge 4
+// let accessSystem = (status) => {
+//     const permissions = ["view", "edit", "delete"];
+
+//     if (status == "user") return permissions.slice(0, 1);
+//     else if (status == "admin") return permissions.slice(0, 2);
+//     else if (status == "root") return permissions.slice(0, 3);
+// }
+// console.log(accessSystem("user"));
+// console.log(accessSystem("admin"));
+// console.log(accessSystem("root"));
+
+// // Challenge 5
+// let taxClaculator = (salary) => {
+//     let tax = 0;
+//     if (salary < 0) return "Invalid amount entered!";
+//     else if (salary > 10000 && salary < 50000) tax = 10;
+//     else if (salary > 50000) tax = 20;
+    
+//     let total = salary * (tax / 100);
+//     return `Your salary is ${salary}, and income tax will be $${total}.`;
+// }
+// console.log(taxClaculator(500));
+// console.log(taxClaculator(30000));
+// console.log(taxClaculator(500000));
 
  
