@@ -399,4 +399,78 @@
 // }
 // atm(Number(prompt("Enter the amount to withdraw: ")))
 
+// assignment 4
+
+// function trafficLight() {
+//     console.log("Red");
+//     setTimeout(() => {
+//         console.log("Green");
+//         setTimeout(() => {
+//             console.log("Yellow");
+//             setTimeout(trafficLight, 2000);
+//         }, 3000);
+//     }, 5000);
+// }
+
+// trafficLight();
+
+
+// assignemnt 5
+
+// function checkPassword(p) {
+//     let score = 0;
+//     if (p.length >= 8) score++;
+//     if (/[A-Z]/.test(p)) score++;
+//     if (/\d/.test(p)) score++;
+//     if (/[^A-Za-z0-9]/.test(p)) score++;
+
+//     return score <= 2 ? "Weak" : score === 3 ? "Medium" : "Strong";
+// }
+// console.log(checkPassword("Abc12345"));
+
+
+// function bankAccount(initial = 0) {
+//     let balance = initial;
+
+//     return {
+//         deposit: amount => balance += amount,
+//         withdraw: amount => amount <= balance
+//             ? balance -= amount
+//             : "Insufficient funds",
+//         getBalance: () => balance
+//     };
+// }
+
+// const acc = bankAccount(100);
+
+// acc.deposit(50);
+// acc.withdraw(30);
+// console.log(acc.getBalance());
+
+// function createUser(role) {
+//     const permissions = {
+//         admin: ["add", "edit", "delete", "view"],
+//         editor: ["edit", "view"],
+//         viewer: ["view"]
+//     };
+
+//     return {
+//         can: action => permissions[role]?.includes(action)
+//     };
+// }
+
+// const user = createUser("editor");
+
+// console.log(user.can("edit"));
+// console.log(user.can("delete"))
+
+
+// function calculateTax(income) {
+//     if (income < 10000) return 0;
+//     if (income <= 50000) return income * 0.1;
+//     return income * 0.2;
+// }
+// console.log(calculateTax(8000));
+// console.log(calculateTax(20000));
+// console.log(calculateTax(60000));
 
