@@ -451,12 +451,145 @@ if the requested amount is not in multiples of 10, return an error.
 
 // task 9
 
-function dinamicTaxCalculator(income) {
-  if (income > 10000) {
-    console.log("no tax");
-  } else if (income > 5000) {
-    console.log("10% tax");
-  } else {
-    console.log(`20% tax`);
-  }
+// function dinamicTaxCalculator(income) {
+//   if (income > 10000) {
+//     console.log("no tax");
+//   } else if (income > 5000) {
+//     console.log("10% tax");
+//   } else {
+//     console.log(`20% tax`);
+//   }
+// }
+
+// lesson 6
+
+
+// challenge 1
+function first(arr, n) {
+    if (n === undefined) {
+        return arr[0];
+    }
+    if (n < 0) {
+        return n;
+    }
+    return arr.slice(0, n);
 }
+
+console.log(first([7, 9, 0, -2])); // 7
+console.log(first([], 3)); // []
+console.log(first([7, 9, 0, -2], 3)); // [7,9,0]
+console.log(first([7, 9, 0, -2], 6)); // [7,9,0,-2]
+console.log(first([7, 9, 0, -2], -3)); // -3
+
+// challenge 2
+function last(arr, n) {
+    if (n === undefined) {
+        return arr[arr.length - 1];
+    }
+    return arr.slice(-n);
+}
+
+console.log(last([7, 9, 0, -2])); // -2
+console.log(last([7, 9, 0, -2], 3)); // [9,0,-2]
+console.log(last([7, 9, 0, -2], 6)); // [7,9,0,-2]
+
+function joinArray(arr) {
+    return arr.join(',');
+}
+
+
+myColor = ["Red", "Green", "White", "Black"];
+console.log(joinArray(myColor));
+
+
+// Challenge 4
+function insertDashes(number) {
+    return String(number).split('').join('-');
+}
+
+console.log(insertDashes(25468)); // "2-5-4-6-8"
+
+// Challenge 5
+function sortArray(arr) {
+    return arr.slice().sort((a, b) => a - b);
+}
+
+var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+console.log(sortArray(arr1)); // [-4,-3,1,2,3,5,6,7,8]
+
+// Challenge 6
+function findMostFrequent(arr) {
+    const frequency = {};
+    let maxCount = 0;
+    let mostFrequent = null;
+
+    for (const item of arr) {
+        frequency[item] = (frequency[item] || 0) + 1;
+        if (frequency[item] > maxCount) {
+            maxCount = frequency[item];
+            mostFrequent = item;
+        }
+    }
+
+    return `${mostFrequent} (${maxCount} times)`;
+}
+
+var arr2 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+console.log(findMostFrequent(arr2)); // "a (5 times)"
+
+// Challenge 7
+function swapCase(str) {
+    return str.split('').map(char => {
+        if (char === char.toUpperCase()) {
+            return char.toLowerCase();
+        } else {
+            return char.toUpperCase();
+        }
+    }).join('');
+}
+
+console.log(swapCase('The Quick Brown Fox'));
+
+
+// Challenge 8
+function displayColors() {
+    const color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+    const o = ["th", "st", "nd", "rd"];
+
+    color.forEach((colorName, index) => {
+        const position = index + 1;
+        let ordinal;
+
+        if (position === 1) {
+            ordinal = o[1]; // "st"
+        } else if (position === 2) {
+            ordinal = o[2]; // "nd"
+        } else if (position === 3) {
+            ordinal = o[3]; // "rd"
+        } else {
+            ordinal = o[0]; // "th"
+        }
+
+        console.log(`${position}${ordinal} choice is ${colorName.trim()}.`);
+    });
+}
+
+displayColors();
+
+// Challenge 9
+function sumArrayIndices(arr1, arr2) {
+    const maxLength = Math.max(arr1.length, arr2.length);
+    const result = [];
+
+    for (let i = 0; i < maxLength; i++) {
+        const val1 = arr1[i] || 0;
+        const val2 = arr2[i] || 0;
+        result.push(val1 + val2);
+    }
+
+    return result;
+}
+
+const array1 = [1, 0, 2, 3, 4];
+const array2 = [3, 5, 6, 7, 8, 13];
+console.log(sumArrayIndices(array1, array2)); // [4, 5, 8, 10, 12, 13]
