@@ -478,16 +478,29 @@ const button3 = document.getElementById("button3");
 
 // 8# Dynamic Tax Calculator
 
-function calcTax() {
-  let income = Number(input.value);
+// function calcTax() {
+//   let income = Number(input.value);
 
-  if (income < 10000) {
-    output.textContent = "No tax for you buddy";
-  } else if (income >= 10000 && income < 50000) {
-    output.textContent = "You got yourself 10% tax!";
-  } else {
-    output.textContent = "We giving you 20% tax. ";
-  }
-}
+//   if (income < 10000) {
+//     output.textContent = "No tax for you buddy";
+//   } else if (income >= 10000 && income < 50000) {
+//     output.textContent = "You got yourself 10% tax!";
+//   } else {
+//     output.textContent = "We giving you 20% tax. ";
+//   }
+// }
 
-input.addEventListener("input", calcTax);
+// input.addEventListener("input", calcTax);
+
+// *****************************
+// ! lecture #6 ****************
+// *****************************
+
+array = [6, 47, 7, 6, 5, 4, 3];
+
+array.push(69);
+array.pop();
+const filtered = array.filter((word) => word > 6);
+const mapped = array.map((x) => x * 2);
+array.shift();
+array.unshift(3, 4, 5);
