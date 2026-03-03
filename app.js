@@ -517,3 +517,4 @@ function calculateTax(income) {
 console.log(calculateTax(8000));
 console.log(calculateTax(20000));
 console.log(calculateTax(60000));
+
