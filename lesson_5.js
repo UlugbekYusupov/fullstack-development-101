@@ -150,3 +150,23 @@ const add5 = lazyAdder(5);
 
 console.log(add5(10));
 console.log(add5(20));
+
+
+
+// Assignment 
+
+//challenge 1
+
+function calculateTotalPrice(price, quantity) {
+    let total = price * quantity;
+
+    if (quantity >= 5) {
+        total = total * 0.80; // 20% discount
+    } else if (quantity >= 3) {
+        total = total * 0.90; // 10% discount
+    }
+
+    return total;
+}
+console.log(calculateTotalPrice(50, 5));
+
