@@ -417,6 +417,130 @@
 // console.log(add10(5)); 
 
 
+// ASSIGNMENT HW
+
+// challange 1
+// function calculateTotal(quantity, pricePerItem) {
+//     let subtotal = quantity * pricePerItem;
+//     let discount = 0;
+
+//     if (quantity >= 5) {
+//         discount = 0.20; // 20%
+//     } else if (quantity >= 3) {
+//         discount = 0.10; // 10%
+//     }
+
+//     return subtotal - (subtotal * discount);
+// }
+
+// console.log(calculateTotal(3, 500));
+
+//challange 2
+
+// function checkPassword(password) {
+//     let score = 0;
+//     if (password.length >= 8) score++;
+//     if (/[A-Z]/.test(password)) score++;
+//     if (/[0-9]/.test(password)) score++;
+//     if (/[^A-Za-z0-9]/.test(password)) score++;
+
+//     if (score >= 4) return "Strong";
+//     if (score >= 2) return "Medium";
+//     return "Weak";
+// }
+
+// console.log(checkPassword());
+
+// challange 3
+
+// function atmWithdrawal(amount) {
+//     if (amount % 10 !== 0) return "Error: Must be multiple of 10";
+    
+//     let hundreds = Math.floor(amount / 100);
+//     amount %= 100;
+    
+//     let twenties = Math.floor(amount / 20);
+//     amount %= 20;
+    
+//     let tens = Math.floor(amount / 10);
+    
+//     return `${hundreds}x$100, ${twenties}x$20, ${tens}x$10`;
+// }
+
+// console.log(atmWithdrawal(450));
+
+// challange 4
+
+// function startTrafficLight() {
+//     function showRed() {
+//         console.log("Red");
+//         setTimeout(showGreen, 5000); 
+//     }
+//     function showGreen() {
+//         console.log("Green");
+//         setTimeout(showYellow, 3000); 
+//     }
+//     function showYellow() {
+//         console.log("Yellow");
+//         setTimeout(showRed, 2000); 
+//     }
+//     showRed();
+// }
+
+// console.log(startTrafficLight());
+
+// challange 5
+
+// function checkPasswordStrength(password) {
+//     let hasUpper = /[A-Z]/.test(password);
+//     let hasNumber = /[0-9]/.test(password);
+//     let hasSpecial = /[^A-Za-z0-9]/.test(password);
+//     let isLongEnough = password.length >= 8;
+
+//     if (isLongEnough && hasUpper && hasNumber && hasSpecial) return "Strong";
+//     if (isLongEnough && (hasUpper || hasNumber || hasSpecial)) return "Medium";
+//     return "Weak";
+// }
+
+// console.log(checkPasswordStrength());
+
+// challange 6
+
+// function bankAccount(initialBalance) {
+//     let balance = initialBalance; // Private variable
+
+//     return {
+//         deposit: (amount) => { balance += amount; },
+//         withdraw: (amount) => {
+//             if (amount <= balance) balance -= amount;
+//             else console.log("Insufficient funds");
+//         },
+//         viewBalance: () => balance
+//     };
+// }
+
+// challange 7
+
+// function getPermissions(role) {
+//     const actions = {
+//         admin: ["add", "edit", "delete", "view"],
+//         editor: ["edit", "view"],
+//         viewer: ["view"]
+//     };
+//     return () => actions[role] || ["None"];
+// }
+
+// challange 8
+
+function calculateTax(income) {
+    if (income < 10000) return 0;
+    if (income <= 50000) return income * 0.10;
+    return income * 0.20;
+}
+
+console.log(calculateTax(11800));
+
+
 
 
 
