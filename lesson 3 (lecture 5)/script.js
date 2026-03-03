@@ -133,3 +133,133 @@
 // const add = lazyAdder(5);
 // console.log(add(10));
 
+// Assignment 1
+// const calculateTotalPrice = (quantity, unitPrice) => {
+//     let discount = 1;
+//
+//     if (quantity >= 5) {
+//         discount = 0.8;
+//     } else if (quantity >= 3) {
+//         discount = 0.9;
+//     }
+//
+//     return quantity * unitPrice * discount;
+// };
+//
+// console.log(calculateTotalPrice(7, 100));
+
+
+// Assignment 2
+// const validatePassword = (password) => {
+//     const criteria = [
+//         password.length >= 8,
+//         /[A-Z]/.test(password),
+//         /[0-9]/.test(password),
+//         /[^A-Za-z0-9]/.test(password)
+//     ];
+//
+//     const score = criteria.filter(Boolean).length;
+//
+//     if (score <= 2) return "Weak";
+//     if (score === 3) return "Medium";
+//     return "Strong";
+// };
+
+
+// Assignment 3
+// const atmWithdrawal = (amount) => {
+//     const denominations = [100, 50, 20, 10];
+//     const distribution = {};
+//     let remaining = amount;
+//
+//     for (const bill of denominations) {
+//         distribution[bill] = Math.floor(remaining / bill);
+//         remaining %= bill;
+//     }
+//
+//     return remaining === 0
+//         ? distribution
+//         : "Error: Amount cannot be dispensed with available bills.";
+// };
+//
+// console.log(atmWithdrawal(370));
+
+
+// Assignment 4
+// const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+//
+// async function runTrafficLight() {
+//     while (true) {
+//         console.log("Status: Red");
+//         await wait(5000);
+//
+//         console.log("Status: Green");
+//         await wait(3000);
+//
+//         console.log("Status: Yellow");
+//         await wait(2000);
+//     }
+// }
+
+
+// Assignment 5
+// const evaluateSecurity = (pw) => {
+//     const hasUpper = /[A-Z]/.test(pw);
+//     const hasNum = /[0-9]/.test(pw);
+//     const hasSpec = /[^A-Za-z0-9]/.test(pw);
+//     const isLong = pw.length >= 8;
+//
+//     const totalPoints = [hasUpper, hasNum, hasSpec, isLong].filter(v => v).length;
+//
+//     const ranking = { 0: "Weak", 1: "Weak", 2: "Weak", 3: "Medium", 4: "Strong" };
+//     return ranking[totalPoints];
+// };
+//
+
+
+// Assignment 6
+// const createBankAccount = (initialBalance = 0) => {
+//     let balance = initialBalance;
+//
+//     return {
+//         deposit: (amount) => {
+//             if (amount > 0) {
+//                 balance += amount;
+//                 console.log(`Success: $${amount} added. Balance: $${balance}`);
+//             }
+//         },
+//         withdraw: (amount) => {
+//             if (amount > balance) {
+//                 console.log("Alert: Insufficient funds.");
+//             } else if (amount > 0) {
+//                 balance -= amount;
+//                 console.log(`Success: $${amount} withdrawn. Balance: $${balance}`);
+//             }
+//         },
+//         getBalance: () => `Current Balance: $${balance}`
+//     };
+// };
+//
+// const account = createBankAccount(100);
+// account.deposit(50);
+// account.withdraw(30);
+// console.log(account.getBalance());
+//
+
+
+// Assignment 8
+const generateTaxReport = (salary) => {
+    const rate = salary > 50000 ? 0.20 : (salary >= 10000 ? 0.10 : 0);
+    const taxTotal = salary * rate;
+
+    return {
+        grossSalary: salary,
+        taxPercentage: `${rate * 100}%`,
+        totalTax: taxTotal,
+        netPay: salary - taxTotal
+    };
+};
+
+console.log(generateTaxReport(8000));
+console.log(generateTaxReport(25000));
+console.log(generateTaxReport(60000));
