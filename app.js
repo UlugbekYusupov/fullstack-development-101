@@ -561,13 +561,13 @@ function displayColors() {
         let ordinal;
 
         if (position === 1) {
-            ordinal = o[1]; // "st"
+            ordinal = o[1];
         } else if (position === 2) {
-            ordinal = o[2]; // "nd"
+            ordinal = o[2];
         } else if (position === 3) {
-            ordinal = o[3]; // "rd"
+            ordinal = o[3];
         } else {
-            ordinal = o[0]; // "th"
+            ordinal = o[0];
         }
 
         console.log(`${position}${ordinal} choice is ${colorName.trim()}.`);
