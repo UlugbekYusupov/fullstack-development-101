@@ -757,22 +757,22 @@
 
 // roleChecker();
 
-// 8:
+// // 8:
 
-const salary = Number(prompt("Enter your salary"));
-let tax = 0;
-const TaxCalculator = function(a) {
-    if (a < 10000) {
-        alert(`You shold not pay any TAX. Your budget: $${a}`);
-    } else if (a > 10000 && a < 50000) {
-        tax = a * 0.1;
-        a -= tax;
-        alert(`You shold  pay 10% TAX ($${tax}). Your budget: $${a}`);
-    } else {
-        tax = a * 0.2;
-        a -= tax;
-        alert(`You shold  pay 20% TAX ($${tax}). Your budget: $${a}`);
-    };
-};
+// const salary = Number(prompt("Enter your salary"));
+// let tax = 0;
+// const TaxCalculator = function(a) {
+//     if (a < 10000) {
+//         alert(`You shold not pay any TAX. Your budget: $${a}`);
+//     } else if (a > 10000 && a < 50000) {
+//         tax = a * 0.1;
+//         a -= tax;
+//         alert(`You shold  pay 10% TAX ($${tax}). Your budget: $${a}`);
+//     } else {
+//         tax = a * 0.2;
+//         a -= tax;
+//         alert(`You shold  pay 20% TAX ($${tax}). Your budget: $${a}`);
+//     };
+// };
 
-TaxCalculator(salary);
+// TaxCalculator(salary);
