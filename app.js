@@ -532,13 +532,205 @@
 
 // challange 8
 
-function calculateTax(income) {
-    if (income < 10000) return 0;
-    if (income <= 50000) return income * 0.10;
-    return income * 0.20;
-}
+// function calculateTax(income) {
+//     if (income < 10000) return 0;
+//     if (income <= 50000) return income * 0.10;
+//     return income * 0.20;
+// }
 
-console.log(calculateTax(11800));
+// console.log(calculateTax(11800));
+
+
+// // LECTURE 6
+
+// LESSON : ARRAYS
+
+// let colors = ["Red", "Green", "Blue"];
+// console.log(colors);
+
+// let nums = new Array(5);
+// nums.push(2);
+// nums.push(5);
+// nums.push(7);
+// nums.push(3);
+// nums.push(4);
+// nums.push(9);
+// nums.push(23);
+
+// console.log(nums.length);
+
+// let names = new Array("Alice", "Bob");
+// names.push("John")
+// console.log(names);
+
+// let original = [1,2,3];
+// let copy = [...original];
+
+// console.log(copy);
+
+
+// let numbers = Array.of(5,4,3,2)
+// console.log(numbers);
+
+// ARRAY METHOD
+
+// console.log(numbers.push(1));
+// console.log(numbers.pop());
+
+// let numberss =  numbers.map(function (element){
+//     return element **2; 
+// })
+// console.log(numberss);
+
+// --filter--
+// let nums = [2,5,8,3,4,7,2,4,9];
+// let result = nums.filter((nums) => nums > 5);
+
+// console.log(result);
+
+// --reduce--
+// const array = [1, 2, 3, 4];
+
+// const initialValue = 0;
+// const sumWithInitial = array.reduce(
+//   (accumulator, currentValue) => accumulator + currentValue,
+//   initialValue,
+// );
+
+// console.log(sumWithInitial);
+
+// --sort()--
+// const months = ["March", "Jan", "Feb", "Dec"];
+// months.sort();
+// console.log(months);
+
+// --reverse()--
+// const array = ["one", "two", "three"];
+// console.log("array:", array);
+
+// const reversed = array.reverse();
+// console.log("reversed:", reversed);
+
+// --slice()--
+
+// const animals = ["ant", "bison", "camel", "duck", "elephant"];
+
+// console.log(animals.slice(2));
+// console.log(animals.slice(2, 4));
+// console.log(animals.slice(1, 5));
+// console.log(animals.slice(-2));
+// console.log(animals.slice(2, -1));
+// console.log(animals.slice());
+
+// --splice()--
+// const months = ["Jan", "March", "April", "June"];
+// months.splice(1, 0, "Feb");
+// console.log(months);
+
+// months.splice(4, 1, "May");
+// console.log(months);
+
+
+// PRACTICE CHALLANGES
+
+// First ->
+// arr = [2,5,8,3,7,4]
+// function first(arr, n) {
+//     if (n === undefined) return arr[0];
+//     if (n < 0) return [];
+//     return arr.slice(0, n);
+// }
+// console.log(first(arr, 4));
+
+// Second ->
+// function last(arr, n) {
+//     if (n === undefined) return arr[arr.length - 1];
+//     if (n < 0) return [];
+//     return arr.slice(-n);
+// }
+// console.log(last(arr,4));
+
+// Third ->
+// myColor= ["Red", "Green", "White", "Black"]
+// function joinArray(myColor) {
+//     return myColor.join(",");
+// }
+// console.log(joinArray(myColor));
+
+// Fourth ->
+// num = 25468;
+// function withDashes(num) {
+//     return num.toString().split('').join('-');
+// }
+
+// console.log(withDashes(num));
+
+// Fifth ->
+// let arr1 = [3,8,7,6,5,3,2,3,6,5,8,-4,-3,2,1];
+// function sortArray(arr1) {
+//     return arr1.sort();
+// }
+// console.log(sortArray(arr1));
+
+// Sixth ->
+// function findMostFrequent(arr1) {
+//     let counts = {};
+//     let maxCount = 0;
+//     let mostFrequent;
+
+//     for (let item of arr1) {
+//         counts[item] = (counts[item] || 0) + 1;
+//         if (counts[item] > maxCount) {
+//             maxCount = counts[item];
+//             mostFrequent = item;
+//         }
+//     }
+//     return mostFrequent;
+// }
+
+// console.log(findMostFrequent(arr1));
+
+// Seventh ->
+// const str = ["RaYHoNa"]
+// function swapCase(str) {
+//     return str.split('').map(char => {
+//         return char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();
+//     }).join('');
+// }
+
+// console.log(swapCase(str[0]));
+
+// Eightth ->
+// let colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+// let o = ["st", "nd", "rd", "th"]
+// function showChoices(colors, o) {
+//     colors.forEach((color, index) => {
+//         console.log(`${index + 1}${o[index]} choice is ${color}.`);
+//     });
+// }
+// console.log(showChoices(colors, o));
+
+// Nineth ->
+let arr1 = [1,0,2,3,4];
+let arr2 = [3,5,6,7,8,13];
+function sumArrays(arr1, arr2) {
+    return arr1.map((val, index) => val + arr2[index]);
+}
+console.log(sumArrays(arr1, arr2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
