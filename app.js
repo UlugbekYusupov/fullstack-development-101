@@ -406,21 +406,80 @@
 //   };
 // }
 
+// task 4
 
+// let inp = prompt('enter the numbers: ')
 
+// let dashed = inp.split('').join('-')
+// console.log(dashed);
 
+// task 5
+// var arr1 = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
+// console.log(arr1.sort());
 
+// task 6
+// var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+// var mf = 1;
+// var m = 0;
+// var item;
+// for (var i = 0; i < arr1.length; i++) {
+//   for (var j = i; j < arr1.length; j++) {
+//     if (arr1[i] == arr1[j]) m++;
+//     if (mf < m) {
+//       mf = m;
+//       item = arr1[i];
+//     }
+//   }
+//   m = 0;
+// }
+// console.log(`${item} ( ${mf} times )`);
 
+// task 7
+// let inp = prompt('enter the text: ')
+// let reversed = inp.split('').map(e => e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase()).join()
+// console.log(reversed);
 
+// task 8
+// let color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
 
+// color.map((e, i)=>{
+//    if ((i+1)%10 == 1 && (i+1) !== 11) {
+//       console.log(`${i+1}st choice is ${e}`);
+//    }else if((i+1)%10 == 2 && (i+1) !== 12){
+//       console.log(`${i+1}nd choice is ${e}`);
+//    }else if((i+1)%10 == 3 && (i+1) !== 13){
+//       console.log(`${i+1}rd choice is ${e}`);
+//    }else{
+//       console.log(`${i+1}th choice is ${e}`);
+//    }
+// })
+// console.log(1%10 ==1 && !11);
 
+// task 9
+let array_1 = [1, 2, 3, 5, 6];
+let array_2 = [3, 5, 6, 7, 8, 13];
 
+let newarr = [];
 
-// Array Methods
-
-
-let goal = ["Arsenal", "Bayern", "Barcelona", "PSG", "Chelsea", "Real Madrid"]
-goal.push("Manchester city")
-
-
-
+if (array_1.length > array_2.length) {
+  newarr = array1.map((e, i) => {
+    if (array_1[i] === undefined) {
+      return 0 + array_2[i];
+    } else if (array_2[i] === undefined) {
+      return 0 + array_1[i];
+    } else {
+      return array_1[i] + array_2[i];
+    }
+  });
+} else {
+  newarr = array_2.map((e, i) => {
+    if (array_1[i] === undefined) {
+      return 0 + array_1[i];
+    } else if (array_2[i] === undefined) {
+      return 0 + array_1[i];
+    } else {
+      return array_1[i] + array_2[i];
+    }
+  });
+}
+console.log(newarr);
