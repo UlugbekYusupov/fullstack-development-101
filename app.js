@@ -503,4 +503,4 @@ array.pop();
 const filtered = array.filter((word) => word > 6);
 const mapped = array.map((x) => x * 2);
 array.shift();
-array.unshift(3, 4, 5);
+array.unshift(1, 2, 3, 4, 5);
