@@ -191,266 +191,398 @@
 
 //-----------------------------------------------5-DARS-TASKS-----------------------------------------
 
-// task1 (1)
-function greet(name){
-    console.log(`hello ${name}`)
+// // task1 (1)
+// function greet(name){
+//     console.log(`hello ${name}`)
+// }
+// greet('Aziz')
+
+// // task1 (2)
+// let greet1=function(name){
+//     return `Helloo ${name}`
+// }
+// console.log(greet1('Bexruz'))
+
+// // task1 (3)
+// let greet2=(name) =>{
+//     return `Hello ${name}`
+// }
+// console.log(greet2('Farrux'))
+
+
+// // task2
+
+// let d = 0;
+// function isPrime(a) {
+//   for (let i = 1; i <= a; i++) {
+//     if (a % i == 0) {
+//       d++;
+//     }
+//   }
+//   if (d == 2) {
+//     return true;
+//   } else return false;
+// }
+
+// console.log(isPrime(19));
+
+// // task3
+
+
+// // task4
+// function isPalindrome(n) {
+//     if (n < 0) return false;
+
+//     let original = n;
+//     let reversed = 0;
+
+//     while (n > 0) {
+//         reversed = reversed * 10 + (n % 10);
+//         n = Math.floor(n / 10);
+//     }
+
+//     return original === reversed;
+// }
+// console.log(isPalindrome(1234))
+
+// // task5
+
+// let rand=372
+// let n=0
+// let randString=String(rand).split("")
+// for (let i = 0; i < randString.length; i++) {
+//     let cubed=randString[i]**randString.length
+//     n+=cubed
+// }
+// if(n==rand){
+//     console.log(`Armstrong`)
+// }
+// else{
+//     console.log(`Not armstrong number`)
+// }
+
+// // #1 Dynamic Pricing Calculation
+
+// function setUp() {
+//   const prodInfo = document.createElement("p");
+//   prodInfo.textContent = "1 product = $10";
+//   document.body.appendChild(prodInfo);
+// }
+
+// function calculations() {
+//   let quantity = Number(inputElement.value);
+//   let price = 10;
+//   let discount = 0;
+//   let sum = quantity * price;
+
+//   if (quantity > 3) {
+//     discount = quantity * price * 0.1;
+//   } else if (quantity > 5) {
+//     discount = quantity * price * 0.05;
+//   } else {
+//     discount = 0;
+//   }
+
+//   output.textContent = `Overall value is $${sum - discount}`;
+// }
+
+// setUp();
+
+// inputElement.addEventListener("input", calculations);
+
+// // #2 Password Strength Checker
+
+// function checkPasswordStrength(password) {
+//   let score = 0;
+
+//   if (password.length >= 8) {
+//     score++;
+//   }
+
+//   let hasUpper = false;
+//   let hasNumber = false;
+//   let hasSpecial = false;
+
+//   const specialChars = "!@#$%^&*()-+";
+
+//   for (let i = 0; i < password.length; i++) {
+//     let char = password[i];
+
+//     if (char >= "A" && char <= "Z") {
+//       hasUpper = true;
+//     } else if (char >= "0" && char <= "9") {
+//       hasNumber = true;
+//     } else if (specialChars.includes(char)) {
+//       hasSpecial = true;
+//     }
+//   }
+
+//   if (hasUpper) score++;
+//   if (hasNumber) score++;
+//   if (hasSpecial) score++;
+
+//   if (score <= 2) {
+//     output.textContent = "Weak";
+//   } else if (score === 3) {
+//     output.textContent = "Medium";
+//   } else {
+//     output.textContent = "Strong";
+//   }
+// }
+
+// inputElement.addEventListener("input", () => {
+//   checkPasswordStrength(inputElement.value);
+// });
+
+// // #3 ATM Cash Withdrawal System
+// function withdrawCash(amount) {
+//   if (amount % 10 !== 0 || amount <= 0) {
+//     return null;
+//   }
+
+//   let hundreds = 0,
+//     fifties = 0,
+//     twenties = 0,
+//     tens = 0;
+//   let remaining = amount;
+
+//   while (remaining >= 100) {
+//     hundreds++;
+//     remaining -= 100;
+//   }
+//   while (remaining >= 50) {
+//     fifties++;
+//     remaining -= 50;
+//   }
+//   while (remaining >= 20) {
+//     twenties++;
+//     remaining -= 20;
+//   }
+//   while (remaining >= 10) {
+//     tens++;
+//     remaining -= 10;
+//   }
+
+//   return { hundreds, fifties, twenties, tens };
+// }
+
+// inputElement.addEventListener("input", () => {
+//   const amount = Number(inputElement.value);
+//   const result = withdrawCash(amount);
+
+//   if (!result) {
+//     output.textContent = "Error: Please enter a multiple of $10";
+//     return;
+//   }
+
+//   output.textContent = `Dispensing:
+//     $100 x ${result.hundreds}
+//     $50 x ${result.fifties}
+//     $20 x ${result.twenties}
+//     $10 x ${result.tens}`;
+// });
+
+// // #4 traffic light simulation
+
+// function startTrafficLight() {
+//   showRed();
+// }
+
+// function showRed() {
+//   output.textContent = "STOP: RED";
+//   output.style.color = "red";
+
+//   setTimeout(() => {
+//     showGreen();
+//   }, 5000);
+// }
+
+// function showGreen() {
+//   output.textContent = "GO: GREEN";
+//   output.style.color = "green";
+
+//   setTimeout(() => {
+//     showYellow();
+//   }, 3000);
+// }
+
+// function showYellow() {
+//   output.textContent = "CAUTION: YELLOW";
+//   output.style.color = "orange";
+
+//   setTimeout(() => {
+//     showRed();
+//   }, 2000);
+// }
+
+// startTrafficLight();
+
+// // #6 banking system
+
+// function createBankAccount(initialName, initialBalance) {
+//   let balance = initialBalance;
+//   let accountHolder = initialName;
+
+//   return {
+//     deposit: function (amount) {
+//       if (amount > 0) {
+//         balance += amount;
+//         console.log(`Deposited $${amount}. New balance: $${balance}`);
+//       } else {
+//         console.log("Deposit amount must be positive.");
+//       }
+//     },
+
+//     withdraw: function (amount) {
+//       if (amount > balance) {
+//         console.log("Insufficient funds!");
+//       } else if (amount <= 0) {
+//         console.log("Please enter a valid amount to withdraw.");
+//       } else {
+//         balance -= amount;
+//         console.log(`Withdrew $${amount}. Remaining balance: $${balance}`);
+//       }
+//     },
+//     viewBalance: function () {
+//       return `Account Holder: ${accountHolder} | Balance: $${balance}`;
+//     },
+//   };
+// }
+
+// const myAccount = createBankAccount("Aziz", 100);
+
+// myAccount.deposit(50);
+// myAccount.withdraw(20);
+// console.log(myAccount.viewBalance());
+
+
+
+//-----------------------------------------------6-DARS-----------------------------------------
+
+let colors=['red','blue','yellow']
+console.log(colors)
+
+let nums =new Array(5)
+let numbers =new Array(2,4,5,7)
+
+console.log(numbers)
+
+nums.push(777)
+nums.push(33)
+nums.push(8)
+nums.push(0)
+
+console.log(nums)
+
+
+
+let origin=[1,2,3]
+let copyOrigin=[...origin]
+
+console.log(origin)
+console.log(copyOrigin)
+
+
+
+let nums1=Array.of(5,4,3,2,1)
+console.log(nums1)
+nums1.push(222)
+console.log(nums1.push(222));
+console.log(nums1)
+
+//-----------------------------------------------6-DARS-TASKS-----------------------------------------
+
+// task 1
+function getFIRSTeL(arr) {
+  return arr[0];
 }
-greet('Aziz')
+console.log(getFIRSTeL([1, 2, 3]));
 
-// task1 (2)
-let greet1=function(name){
-    return `Helloo ${name}`
+// task 2
+function getLastEl(arr, n) {
+  return arr.slice(arr.length - n);
 }
-console.log(greet1('Bexruz'))
+console.log(getLastEl([1, 2, 3], 2));
 
-// task1 (3)
-let greet2=(name) =>{
-    return `Hello ${name}`
-}
-console.log(greet2('Farrux'))
+// task 3
+let myColor = ["Red", "Green", "White", "Black"];
 
-
-// task2
-
-let d = 0;
-function isPrime(a) {
-  for (let i = 1; i <= a; i++) {
-    if (a % i == 0) {
-      d++;
-    }
-  }
-  if (d == 2) {
-    return true;
-  } else return false;
-}
-
-console.log(isPrime(19));
-
-// task3
-
+let string = myColor.join(',')
+console.log(string);
 
 // task4
-function isPalindrome(n) {
-    if (n < 0) return false;
+let input = prompt('enter the numbers: ')
 
-    let original = n;
-    let reversed = 0;
+let dashed = inp.split('').join('-')
+console.log(dashed);
 
-    while (n > 0) {
-        reversed = reversed * 10 + (n % 10);
-        n = Math.floor(n / 10);
-    }
+// task 5
+var arr1 = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
+console.log(arr1.sort());
 
-    return original === reversed;
-}
-console.log(isPalindrome(1234))
-
-// task5
-
-let rand=372
-let n=0
-let randString=String(rand).split("")
-for (let i = 0; i < randString.length; i++) {
-    let cubed=randString[i]**randString.length
-    n+=cubed
-}
-if(n==rand){
-    console.log(`Armstrong`)
-}
-else{
-    console.log(`Not armstrong number`)
-}
-
-// #1 Dynamic Pricing Calculation
-
-function setUp() {
-  const prodInfo = document.createElement("p");
-  prodInfo.textContent = "1 product = $10";
-  document.body.appendChild(prodInfo);
-}
-
-function calculations() {
-  let quantity = Number(inputElement.value);
-  let price = 10;
-  let discount = 0;
-  let sum = quantity * price;
-
-  if (quantity > 3) {
-    discount = quantity * price * 0.1;
-  } else if (quantity > 5) {
-    discount = quantity * price * 0.05;
-  } else {
-    discount = 0;
-  }
-
-  output.textContent = `Overall value is $${sum - discount}`;
-}
-
-setUp();
-
-inputElement.addEventListener("input", calculations);
-
-// #2 Password Strength Checker
-
-function checkPasswordStrength(password) {
-  let score = 0;
-
-  if (password.length >= 8) {
-    score++;
-  }
-
-  let hasUpper = false;
-  let hasNumber = false;
-  let hasSpecial = false;
-
-  const specialChars = "!@#$%^&*()-+";
-
-  for (let i = 0; i < password.length; i++) {
-    let char = password[i];
-
-    if (char >= "A" && char <= "Z") {
-      hasUpper = true;
-    } else if (char >= "0" && char <= "9") {
-      hasNumber = true;
-    } else if (specialChars.includes(char)) {
-      hasSpecial = true;
+// task 6
+var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+var mf = 1;
+var m = 0;
+var item;
+for (var i = 0; i < arr1.length; i++) {
+  for (var j = i; j < arr1.length; j++) {
+    if (arr1[i] == arr1[j]) m++;
+    if (mf < m) {
+      mf = m;
+      item = arr1[i];
     }
   }
-
-  if (hasUpper) score++;
-  if (hasNumber) score++;
-  if (hasSpecial) score++;
-
-  if (score <= 2) {
-    output.textContent = "Weak";
-  } else if (score === 3) {
-    output.textContent = "Medium";
-  } else {
-    output.textContent = "Strong";
-  }
+  m = 0;
 }
+console.log(`${item} ( ${mf} times )`);
 
-inputElement.addEventListener("input", () => {
-  checkPasswordStrength(inputElement.value);
-});
+// task 7
+let inp = prompt('enter the text: ')
+let reversed = inp.split('').map(e => e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase()).join()
+console.log(reversed);
 
-// #3 ATM Cash Withdrawal System
-function withdrawCash(amount) {
-  if (amount % 10 !== 0 || amount <= 0) {
-    return null;
-  }
+// task 8
+let color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
 
-  let hundreds = 0,
-    fifties = 0,
-    twenties = 0,
-    tens = 0;
-  let remaining = amount;
+color.map((e, i)=>{
+   if ((i+1)%10 == 1 && (i+1) !== 11) {
+      console.log(`${i+1}st choice is ${e}`);
+   }else if((i+1)%10 == 2 && (i+1) !== 12){
+      console.log(`${i+1}nd choice is ${e}`);
+   }else if((i+1)%10 == 3 && (i+1) !== 13){
+      console.log(`${i+1}rd choice is ${e}`);
+   }else{
+      console.log(`${i+1}th choice is ${e}`);
+   }
+})
+console.log(1%10 ==1 && !11);
 
-  while (remaining >= 100) {
-    hundreds++;
-    remaining -= 100;
-  }
-  while (remaining >= 50) {
-    fifties++;
-    remaining -= 50;
-  }
-  while (remaining >= 20) {
-    twenties++;
-    remaining -= 20;
-  }
-  while (remaining >= 10) {
-    tens++;
-    remaining -= 10;
-  }
+// task 9
+let array1 = [1, 0, 2, 3, 4];
+let array2 = [3, 5, 6, 7, 8, 13];
 
-  return { hundreds, fifties, twenties, tens };
+let newarr = [];
+
+if (array1.length > array2.length) {
+  newarr = array1.map((e, i) => {
+    if (array1[i] === undefined) {
+      return 0 + array2[i];
+    } else if (array2[i] === undefined) {
+      return 0 + array1[i];
+    } else {
+      return array1[i] + array2[i];
+    }
+  });
+} else {
+  newarr = array2.map((e, i) => {
+    if (array1[i] === undefined) {
+      return 0 + array2[i];
+    } else if (array2[i] === undefined) {
+      return 0 + array1[i];
+    } else {
+      return array1[i] + array2[i];
+    }
+  });
 }
-
-inputElement.addEventListener("input", () => {
-  const amount = Number(inputElement.value);
-  const result = withdrawCash(amount);
-
-  if (!result) {
-    output.textContent = "Error: Please enter a multiple of $10";
-    return;
-  }
-
-  output.textContent = `Dispensing:
-    $100 x ${result.hundreds}
-    $50 x ${result.fifties}
-    $20 x ${result.twenties}
-    $10 x ${result.tens}`;
-});
-
-// #4 traffic light simulation
-
-function startTrafficLight() {
-  showRed();
-}
-
-function showRed() {
-  output.textContent = "STOP: RED";
-  output.style.color = "red";
-
-  setTimeout(() => {
-    showGreen();
-  }, 5000);
-}
-
-function showGreen() {
-  output.textContent = "GO: GREEN";
-  output.style.color = "green";
-
-  setTimeout(() => {
-    showYellow();
-  }, 3000);
-}
-
-function showYellow() {
-  output.textContent = "CAUTION: YELLOW";
-  output.style.color = "orange";
-
-  setTimeout(() => {
-    showRed();
-  }, 2000);
-}
-
-startTrafficLight();
-
-// #6 banking system
-
-function createBankAccount(initialName, initialBalance) {
-  let balance = initialBalance;
-  let accountHolder = initialName;
-
-  return {
-    deposit: function (amount) {
-      if (amount > 0) {
-        balance += amount;
-        console.log(`Deposited $${amount}. New balance: $${balance}`);
-      } else {
-        console.log("Deposit amount must be positive.");
-      }
-    },
-
-    withdraw: function (amount) {
-      if (amount > balance) {
-        console.log("Insufficient funds!");
-      } else if (amount <= 0) {
-        console.log("Please enter a valid amount to withdraw.");
-      } else {
-        balance -= amount;
-        console.log(`Withdrew $${amount}. Remaining balance: $${balance}`);
-      }
-    },
-    viewBalance: function () {
-      return `Account Holder: ${accountHolder} | Balance: $${balance}`;
-    },
-  };
-}
-
-const myAccount = createBankAccount("Aziz", 100);
-
-myAccount.deposit(50);
-myAccount.withdraw(20);
-console.log(myAccount.viewBalance());
+console.log(newarr);
