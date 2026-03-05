@@ -396,7 +396,7 @@ function throttle(fn, interval) {
   }
 }
 
-//task 3
+//bonus
 function taskScheduler() {
   let tasks = []
 
