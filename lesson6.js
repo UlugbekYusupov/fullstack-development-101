@@ -8,8 +8,9 @@ function first(arr, n) {
 //Task 2
 function last(arr, n) {
     if (n == null) return arr[arr.length - 1];
-    return arr.slice(Math.max(arr.length - n, 0));
+    return arr.slice((arr.length - n));
 }
+console.log(last([1, 2, 3,2,23,2,12,2,321,2],11));
 
 //Task 3
 let myColor = ["Red", "Green", "White", "Black"];
