@@ -305,3 +305,109 @@ function changeLetters(word) {
 // }
 // console.log(joinArray(arr1, arr2));
 
+let car = {
+  brand: "Tesla",
+  model: "Model S",
+  year: 2026,
+  start: function () {
+    console.log("Car is starting...");
+  },
+};
+
+console.log(car.brand);
+
+car.start();
+
+let person = new Object();
+
+person.name = "Alice";
+person.age = 25;
+person.greet = function () {
+  return `Hello, my name is ${this.name}`;
+};
+
+console.log(person.greet());
+
+// console.log(this)
+
+function createPerson(name, age) {
+  return {
+    name,
+    age,
+    greet() {
+      return `Hi, I'm ${this.name} and I'm ${this.age} years old!`;
+    },
+  };
+}
+
+let person1 = createPerson("Ulugbek", 30);
+console.log(person1.greet());
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.greet = function () {
+    return `Hi, I'm ${this.name} and I'm ${this.age} years old!`;
+  };
+}
+
+let person2 = new Person("Ulugbek", 29);
+console.log(person2.greet());
+
+let animal = {
+  type: "mammals",
+  makeSound: function () {
+    console.log("Some generic animal sound");
+  },
+};
+
+let dog = Object.create(animal);
+dog.breed = "Golden Retriever";
+dog.makeSound();
+console.log(dog.type);
+
+class Persons {
+  constructor(name, age) {
+    ((this.name = name), (this.age = age));
+  }
+
+  greet() {
+    return `Hello I'm ${this.name} and I'm ${this.age} years old`;
+  }
+}
+
+let person3 = new Persons("Alice", 29);
+
+console.log(person3.greet());
+
+const config = Object.freeze({
+  theme: "dark",
+  version: "1.0.0",
+});
+
+config.theme = "light";
+console.log(config.theme);
+
+const target = {
+  country: "Uzbekistan",
+  name: "Kimdir",
+};
+
+const source = {
+  name: "Ulugbek",
+  age: 30,
+};
+
+Object.assign(target, source);
+
+console.log(target);
+
+const products = [
+  { id: 1, name: "Apple", price: "$2" },
+  { id: 2, name: "Banana", price: "$1" },
+  { id: 3, name: "Orange", price: "$4" },
+];
+
+products.map(function (product) {
+  console.log(product.name, product.price);
+});
