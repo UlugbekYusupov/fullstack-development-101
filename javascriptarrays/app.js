@@ -26,8 +26,5 @@ function last(arr, n){
 
 // 3
 
+
 // 4
-
-// 5
-
-// 6
