@@ -171,30 +171,30 @@
 
 // console.log(reversedWord);
 
-// // 8:
+// // // 8:
 
-const color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
-const o = ["th","st","nd","rd"];
-let index = 0;
-let belgi = "";
+// const color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+// const o = ["th","st","nd","rd"];
+// let index = 0;
+// let belgi = "";
 
-for (let i = 0; i < color.length; i++) {
-    index += 1;
+// for (let i = 0; i < color.length; i++) {
+//     index += 1;
 
-    if (index === 1){
-        belgi = o[0];
-        console.log(`${index}${belgi} choice is ${color[i]}`);
-    } else if (index === 2) {
-        belgi = o[1];
-        console.log(`${index}${belgi} choice is ${color[i]}`);
-    } else if ( index === 3) {
-        belgi = o[2];
-        console.log(`${index}${belgi} choice is ${color[i]}`);
-    } else {
-        belgi = o[3];
-        console.log(`${index}${belgi} choice is ${color[i]}`);
-    };
-};
+//     if (index === 1){
+//         belgi = o[0];
+//         console.log(`${index}${belgi} choice is ${color[i]}`);
+//     } else if (index === 2) {
+//         belgi = o[1];
+//         console.log(`${index}${belgi} choice is ${color[i]}`);
+//     } else if ( index === 3) {
+//         belgi = o[2];
+//         console.log(`${index}${belgi} choice is ${color[i]}`);
+//     } else {
+//         belgi = o[3];
+//         console.log(`${index}${belgi} choice is ${color[i]}`);
+//     };
+// };
 
 // // 9:
 
