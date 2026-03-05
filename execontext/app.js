@@ -1,3 +1,4 @@
+/*
 // 1
 function greet(name) {
   return `Hello, ${name}`;
@@ -28,3 +29,32 @@ let greet5 = new Function(
 );
 
 console.log(greet5("Jahonjj"));
+
+*/
+
+// 2
+function isPrime(n) {
+  if (n <= 1) return false;
+
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+// console.log(isPrime(7));
+
+// 3
+function countDigits(n) {
+  return Math.abs(n).toString().length;
+}
+// console.log(countDigits(12345));
+// console.log(countDigits(-90));  
+
+// 4
+let newArr = []
+function isPalindrome(n){
+  console.log(newArr.push(n).split().reverse())
+}
+isPalindrome(12329)
