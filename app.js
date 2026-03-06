@@ -557,3 +557,62 @@
 //     }
 //     return res
 // }
+
+// function getOrdinal(n) {
+//     if (n % 100 >= 11 && n % 100 <= 13) return "th";
+
+//     switch (n % 10) {
+//         case 1: return "st";
+//         case 2: return "nd";
+//         case 3: return "rd";
+//         default: return "th";
+//     }
+// }
+
+// function displayColors() {
+//     const colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+
+//     for (let i = 1; i <= 1000; i++) {
+//         const color = colors[(i - 1) % colors.length];
+//         const ordinal = getOrdinal(i);
+
+//         console.log(`${i}${ordinal} choice is ${color}.`);
+//     }
+// }
+
+// displayColors();
+
+for (let i = 1; i <= 1004; i++) {
+    if (i % 100 >= 11 && i % 100 <= 13) {
+        console.log(`${i}th choice is ${["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"][(i - 1) % 7]}.`);
+    } else {
+        switch (i % 10) {
+            case 1:
+                console.log(`${i}st choice is ${["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"][(i - 1) % 7]}.`);
+                break;
+            case 2:
+                console.log(`${i}nd choice is ${["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"][(i - 1) % 7]}.`);
+                break;
+            case 3:
+                console.log(`${i}rd choice is ${["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"][(i - 1) % 7]}.`);
+                break;
+            default:
+                console.log(`${i}th choice is ${["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"][(i - 1) % 7]}.`);
+        }
+    }
+}
+function displayColors() {
+    const colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+
+    for (let i = 1; i <= 1000; i++) {
+        let suffix = "th";
+
+        if (i % 10 === 1 && i % 100 !== 11) suffix = "st";
+        else if (i % 10 === 2 && i % 100 !== 12) suffix = "nd";
+        else if (i % 10 === 3 && i % 100 !== 13) suffix = "rd";
+
+        console.log(`${i}${suffix} choice is ${colors[(i - 1) % colors.length]}`);
+    }
+}
+
+displayColors();
