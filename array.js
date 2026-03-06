@@ -159,12 +159,19 @@ console.log(last([2,3,4,5,-8]));
 
 
 //    Challenge 5
-var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+// var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
 
-arr1.sort(function(a,b) {
-    return a - b;
-});
-console.log(arr1);
+// arr1.sort(function(a,b) {
+//     return a - b;
+// });
+// console.log(arr1);
+
+
+//    Second way
+function sortArray(arr) {
+    return arr.sort()
+}
+console.log(sortArray([2,3,4,5,1,3,-4,-3]))
 
 // Challenge 6
 function mostFrequent(arr) {
@@ -227,7 +234,7 @@ for (let i = 0; i < color.length; i++) {
     else {
         ordinal = position + o[0];
     }
-    console.log(ordinal + " choice is " + color[i]);
+    console.log(ordinal + " color " + color[i]);
     
 }
 
@@ -248,6 +255,7 @@ for (let i = 0; i < maxLength; i++) {
     result.push(val1 + val2);
 }
 console.log(result);
+
 
 
 
