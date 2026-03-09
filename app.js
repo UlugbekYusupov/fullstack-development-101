@@ -501,30 +501,187 @@
 // console.log(1%10 ==1 && !11);
 
 // task 9
-let array1 = [1, 0, 2, 3, 4];
-let array2 = [3, 5, 6, 7, 8, 13];
+// let array1 = [1, 0, 2, 3, 4];
+// let array2 = [3, 5, 6, 7, 8, 13];
 
-let newarr = [];
+// let newarr = [];
 
-if (array1.length > array2.length) {
-  newarr = array1.map((e, i) => {
-    if (array1[i] === undefined) {
-      return 0 + array2[i];
-    } else if (array2[i] === undefined) {
-      return 0 + array1[i];
-    } else {
-      return array1[i] + array2[i];
-    }
-  });
-} else {
-  newarr = array2.map((e, i) => {
-    if (array1[i] === undefined) {
-      return 0 + array2[i];
-    } else if (array2[i] === undefined) {
-      return 0 + array1[i];
-    } else {
-      return array1[i] + array2[i];
-    }
-  });
+// if (array1.length > array2.length) {
+//   newarr = array1.map((e, i) => {
+//     if (array1[i] === undefined) {
+//       return 0 + array2[i];
+//     } else if (array2[i] === undefined) {
+//       return 0 + array1[i];
+//     } else {
+//       return array1[i] + array2[i];
+//     }
+//   });
+// } else {
+//   newarr = array2.map((e, i) => {
+//     if (array1[i] === undefined) {
+//       return 0 + array2[i];
+//     } else if (array2[i] === undefined) {
+//       return 0 + array1[i];
+//     } else {
+//       return array1[i] + array2[i];
+//     }
+//   });
+// }
+// console.log(newarr);
+
+// ============================= Objects ============================
+
+// task 1
+// const students = [
+//   { name: "Alice", scores: [80, 90, 100] },
+//   { name: "Bob", scores: [50, 60, 70] },
+//   { name: "Charlie", scores: [30, 40, 20] },
+// ];
+
+// let topStudent = "";
+// let topScore = 0;
+// students.forEach((e) => {
+//   const scores = e.scores;
+//   let sum = 0;
+//   scores.forEach((e) => {
+//     return (sum += e);
+//   });
+//   const average = sum / scores.length;
+
+//   if (average > topScore) {
+//     topStudent = e.name;
+//     topScore = average;
+//   }
+//   console.log(
+//     `${e.name}'s average score is ${average}. ${average >= 50 ? "He passed the exam." : "he didnot passed the exam."} The top student is ${topStudent}`,
+//   );
+// });
+
+// task 2
+// const cart = [
+//   { id: 1, name: "Laptop", price: 900, quantity: 1 },
+//   { id: 2, name: "Mouse", price: 50, quantity: 3 },
+//   { id: 3, name: "Keyboard", price: 80, quantity: 1 },
+//   { id: 4, name: "Monitor", price: 100, quantity: 2 },
+// ];
+
+// let total = 0;
+// let discountedTotal;
+// let theMostExpensiveItem = cart[0];
+// cart.map((e) => {
+//   return (total += e.price * e.quantity);
+// });
+// if (total > 100) {
+//   discountedTotal = total * 0.9;
+// }
+// cart.map(e=>{
+//   if (e.price > theMostExpensiveItem.price) {
+//     return theMostExpensiveItem = e
+//   }
+// })
+
+// task 3
+// const products = [{ id: 1, name: "Laptop", price: 1200, stock: 10 }];
+
+// function addProduct(newProduct) {
+//   return (products = [...products, newProduct]);
+// }
+
+// function deleteProduct(productsID) {
+//   return (products = products.filter((e) => e.id !== productsID));
+// }
+
+// function updateProduct(updatedProduct) {
+//   products = products.map((e) => {
+//     if (e.id === updatedProduct.id) {
+//       return (e = updatedProduct);
+//     }
+//   });
+//   return products;
+// }
+// function findProduct(productID) {
+//   return products.find((e) => e.id === productID);
+// }
+
+// task 4
+// const posts = [
+//   {
+//     author: "Ali",
+//     likes: 120,
+//     comments: [
+//       { user: "Vali", message: "Zo'r post!" },
+//       { user: "Sami", message: "Gap yo'q" },
+//     ],
+//     shares: 15,
+//   },
+//   {
+//     author: "Zarina",
+//     likes: 250,
+//     comments: [{ user: "Ali", message: "Juda yaxshi" }],
+//     shares: 40,
+//   },
+//   {
+//     author: "Bekzod",
+//     likes: 180,
+//     comments: [
+//       { user: "Zarina", message: "Like!" },
+//       { user: "Ali", message: "Respect" },
+//       { user: "Sami", message: "Top" },
+//     ],
+//     shares: 25,
+//   },
+// ];
+// const getMostLikedPost = (posts) =>
+//   posts.reduce((max, post) => (post.likes > max.likes ? post : max));
+
+// console.log("Most liked post:", getMostLikedPost(posts));
+
+// const getTotalEngagement = (posts) =>
+//   posts.reduce(
+//     (sum, post) => sum + post.likes + post.comments.length + post.shares,
+//     0,
+//   );
+// console.log("Total engagement:", getTotalEngagement(posts));
+
+// Task 5
+// const teams = [
+//   { name: "Team A", wins: 5, losses: 2, points: 15 },
+//   { name: "Team B", wins: 6, losses: 1, points: 18 },
+//   { name: "Team C", wins: 4, losses: 3, points: 12 }
+// ];
+// function sortTeamsByRanking(teams) {
+//   return [...teams].sort((a, b) => b.points - a.points);
+// }
+
+// const ranking = sortTeamsByRanking(teams);
+// console.log(ranking);
+// function getBestTeam(teams) {
+//   const sorted = sortTeamsByRanking(teams);
+//   return sorted[0];
+// }
+
+// console.log(getBestTeam(teams));
+
+// task 6
+const inventory = [
+  { itemName: "Laptop", category: "Electronics", stock: 5 },
+  { itemName: "Phone", category: "Electronics", stock: 10 },
+  { itemName: "Shirt", category: "Clothing", stock: 20 },
+  { itemName: "Jeans", category: "Clothing", stock: 8 },
+  { itemName: "Apple", category: "Food", stock: 30 }
+];
+function totalStockByCategory(category) {
+  return inventory
+    .filter(item => item.category === category)
+    .reduce((sum, item) => sum + item.stock, 0);
 }
-console.log(newarr);
+
+console.log(totalStockByCategory("Electronics"));
+console.log(totalStockByCategory("Clothing"));
+
+
+function lowStockItems(threshold = 10) {
+  return inventory.filter(item => item.stock < threshold);
+}
+
+console.log(lowStockItems()); 
