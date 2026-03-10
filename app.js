@@ -555,10 +555,6 @@ const button3 = document.getElementById("button3");
 
 // console.log(arr1.join(","));
 
-
-
-
-
 // var arr1 = [3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3];
 
 // function findMostFrequent(arr) {
@@ -579,9 +575,6 @@ const button3 = document.getElementById("button3");
 
 // console.log(findMostFrequent(arr1));
 
-
-
-
 // function swapCase(str) {
 //   let result = "";
 
@@ -597,10 +590,131 @@ const button3 = document.getElementById("button3");
 
 // console.log(swapCase("The Quick Brown Fox"));
 
+// ! //////////////// Objects homework
+// const students = [
+//   { name: "Alice", scores: [85, 90, 78] },
+//   { name: "Bob", scores: [45, 52, 30] },
+//   { name: "Charlie", scores: [92, 88, 95] },
+//   { name: "Diana", scores: [60, 55, 62] },
+// ];
 
+// let passedStuds = students
+//   .filter((student) => {
+//     const score = student.scores.reduce((acc, current) => {
+//       return acc + current;
+//     }, 0);
+//     const average = score / student.scores.length;
+//     return average >= 50;
+//   })
+//   .map((student) => {
+//     return student.name;
+//   });
 
+// console.log(passedStuds);
 
+// const cart = [
+//   { id: 1, name: "Laptop", price: 900, quantity: 1 },
+//   { id: 2, name: "Mouse", price: 50, quantity: 2 },
+//   { id: 3, name: "Keyboard", price: 100, quantity: 1 },
+// ];
 
+// const total = cart
+//   .map((item) => {
+//     return (subTotal = item.price * item.quantity);
+//   })
+//   .map((item) => {
+//     if (item > 100) {
+//       return item * 1.1;
+//     } else {
+//       return item;
+//     }
+//   })
+//   .reduce((acc, current) => {
+//     return acc + current;
+//   }, 0);
 
+// console.log(total);
 
+// let inventory = [
+//   { id: 1, name: "Laptop", price: 999, stock: 10 },
+//   { id: 2, name: "Mouse", price: 25, stock: 50 },
+//   { id: 3, name: "Keyboard", price: 75, stock: 20 },
+// ];
 
+// function addProduct(newProduct) {
+//   inventory.push(newProduct);
+// }
+// function deleteProduct(idToDelete) {
+//   inventory = inventory.filter((product) => product.id !== idToDelete);
+// }
+// function findProduct(name) {
+//   return inventory.find((product) => product.name === name);
+// }
+
+// const found = findProduct("Laptop");
+// deleteProduct(1);
+// addProduct({ id: 4, name: "Monitor", price: 200, stock: 15 });
+
+// const posts = [
+//   { author: "Alice", likes: 100, comments: 20, shares: 5 },
+//   { author: "Bob", likes: 200, comments: 50, shares: 10 },
+// ];
+
+// function mostLiked() {
+//   const response = posts.sort((a, b) => b.likes - a.likes);
+//   console.log(response);
+// }
+
+// function totalEngagement() {
+//   const result = posts.map((post) => {
+//     return {
+//       name: post.author,
+//       engagement: post.likes + post.comments + post.shares,
+//     };
+//   });
+//   console.table(result);
+// }
+
+// mostLiked();
+// totalEngagement();
+
+// const teams = [
+//   { name: "Team A", wins: 5, losses: 2, points: 15 },
+//   { name: "Team B", wins: 6, losses: 1, points: 18 },
+// ];
+
+// function sortByRanking() {
+//   const result = teams.sort((a, b) => b.wins - a.wins);
+//   console.log("Winning team:");
+//   console.table(result);
+// }
+// sortByRanking();
+
+// function sortByPoints() {
+//   const result = teams.sort((a, b) => b.points - a.points);
+//   console.log("Team with most points:");
+//   console.table(result);
+// }
+// sortByPoints();
+
+const inventory = [
+  { itemName: "Hammer", category: "Tools", stock: 15 },
+  { itemName: "Drill", category: "Tools", stock: 4 },
+  { itemName: "Plywood", category: "Lumber", stock: 20 },
+  { itemName: "Oak Plank", category: "Lumber", stock: 2 },
+  { itemName: "Screws", category: "Hardware", stock: 100 },
+];
+
+function getTotalStockByCategory(items) {
+  return items.reduce((totals, item) => {
+    const { category, stock } = item;
+    if (!totals[category]) {
+      totals[category] = 0;
+    }
+    totals[category] += stock;
+    return totals;
+  }, {});
+}
+
+const categoryTotals = getTotalStockByCategory(inventory);
+console.log("Stock by Category:", categoryTotals);
