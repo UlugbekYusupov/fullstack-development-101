@@ -267,147 +267,300 @@
 // }
 // const add5 = lazyAdder(5);
 // console.log(add5(10));
-// console.log(add5(20));
-//challenge 1
-function calculateTotal(price, quantity) {
-  let total = price * quantity
-  if (quantity >= 5) total *= 0.8
-  else if (quantity >= 3) total *= 0.9
-  return total
-}
+// // console.log(add5(20));
+// //challenge 1
+// function calculateTotal(price, quantity) {
+//   let total = price * quantity
+//   if (quantity >= 5) total *= 0.8
+//   else if (quantity >= 3) total *= 0.9
+//   return total
+// }
 
-//challenge 2
-function checkPasswordStrength(password) {
-  let score = 0
-  if (password.length >= 8) score++
-  if (/[A-Z]/.test(password)) score++
-  if (/[0-9]/.test(password)) score++
-  if (/[^A-Za-z0-9]/.test(password)) score++
+// //challenge 2
+// function checkPasswordStrength(password) {
+//   let score = 0
+//   if (password.length >= 8) score++
+//   if (/[A-Z]/.test(password)) score++
+//   if (/[0-9]/.test(password)) score++
+//   if (/[^A-Za-z0-9]/.test(password)) score++
 
-  if (score <= 2) return "Weak"
-  if (score === 3) return "Medium"
-  return "Strong"
-}
+//   if (score <= 2) return "Weak"
+//   if (score === 3) return "Medium"
+//   return "Strong"
+// }
 
-//challenge 3
-function atmWithdraw(amount) {
-  if (amount % 10 !== 0) return "Error"
+// //challenge 3
+// function atmWithdraw(amount) {
+//   if (amount % 10 !== 0) return "Error"
 
-  let bills = {}
-  bills[100] = Math.floor(amount / 100)
-  amount %= 100
-  bills[20] = Math.floor(amount / 20)
-  amount %= 20
-  bills[10] = Math.floor(amount / 10)
+//   let bills = {}
+//   bills[100] = Math.floor(amount / 100)
+//   amount %= 100
+//   bills[20] = Math.floor(amount / 20)
+//   amount %= 20
+//   bills[10] = Math.floor(amount / 10)
 
-  return bills
-}
+//   return bills
+// }
 
-//challenge 4
-function trafficLight() {
-  function red() {
-    console.log("Red")
-    setTimeout(green, 5000)
-  }
-  function green() {
-    console.log("Green")
-    setTimeout(yellow, 3000)
-  }
-  function yellow() {
-    console.log("Yellow")
-    setTimeout(red, 2000)
-  }
-  red()
-}
+// //challenge 4
+// function trafficLight() {
+//   function red() {
+//     console.log("Red")
+//     setTimeout(green, 5000)
+//   }
+//   function green() {
+//     console.log("Green")
+//     setTimeout(yellow, 3000)
+//   }
+//   function yellow() {
+//     console.log("Yellow")
+//     setTimeout(red, 2000)
+//   }
+//   red()
+// }
 
-//challenge 5
-function checkPasswordStrength2(password) {
-  let score = 0
-  if (password.length >= 8) score++
-  if (/[A-Z]/.test(password)) score++
-  if (/[0-9]/.test(password)) score++
-  if (/[^A-Za-z0-9]/.test(password)) score++
+// //challenge 5
+// function checkPasswordStrength2(password) {
+//   let score = 0
+//   if (password.length >= 8) score++
+//   if (/[A-Z]/.test(password)) score++
+//   if (/[0-9]/.test(password)) score++
+//   if (/[^A-Za-z0-9]/.test(password)) score++
 
-  if (score <= 2) return "Weak"
-  if (score === 3) return "Medium"
-  return "Strong"
-}
+//   if (score <= 2) return "Weak"
+//   if (score === 3) return "Medium"
+//   return "Strong"
+// }
 
-//challenge 6
-function bankAccount(initialBalance = 0) {
-  let balance = initialBalance
+// //challenge 6
+// function bankAccount(initialBalance = 0) {
+//   let balance = initialBalance
 
-  return {
-    deposit(amount) {
-      balance += amount
-      return balance
-    },
-    withdraw(amount) {
-      if (amount > balance) return "Insufficient funds"
-      balance -= amount
-      return balance
-    },
-    viewBalance() {
-      return balance
-    }
-  }
-}
+//   return {
+//     deposit(amount) {
+//       balance += amount
+//       return balance
+//     },
+//     withdraw(amount) {
+//       if (amount > balance) return "Insufficient funds"
+//       balance -= amount
+//       return balance
+//     },
+//     viewBalance() {
+//       return balance
+//     }
+//   }
+// }
 
-//challenge 7
-function createUser(role) {
-  return {
-    role,
-    can(action) {
-      const permissions = {
-        admin: ["add", "edit", "delete", "view"],
-        editor: ["edit", "view"],
-        viewer: ["view"]
-      }
-      return permissions[role]?.includes(action) || false
-    }
-  }
-}
+// //challenge 7
+// function createUser(role) {
+//   return {
+//     role,
+//     can(action) {
+//       const permissions = {
+//         admin: ["add", "edit", "delete", "view"],
+//         editor: ["edit", "view"],
+//         viewer: ["view"]
+//       }
+//       return permissions[role]?.includes(action) || false
+//     }
+//   }
+// }
 
-//challenge 8
-function calculateTax(income) {
-  if (income < 10000) return 0
-  if (income <= 50000) return income * 0.1
-  return income * 0.2
-}
+// //challenge 8
+// function calculateTax(income) {
+//   if (income < 10000) return 0
+//   if (income <= 50000) return income * 0.1
+//   return income * 0.2
+// }
 
-//task 1
-function debounce(fn, delay) {
-  let timeout
-  return function (...args) {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => fn.apply(this, args), delay)
-  }
-}
+// //task 1
+// function debounce(fn, delay) {
+//   let timeout
+//   return function (...args) {
+//     clearTimeout(timeout)
+//     timeout = setTimeout(() => fn.apply(this, args), delay)
+//   }
+// }
 
-//task 2
-function throttle(fn, interval) {
-  let lastTime = 0
-  return function (...args) {
-    const now = Date.now()
-    if (now - lastTime >= interval) {
-      lastTime = now
-      fn.apply(this, args)
-    }
-  }
-}
+// //task 2
+// function throttle(fn, interval) {
+//   let lastTime = 0
+//   return function (...args) {
+//     const now = Date.now()
+//     if (now - lastTime >= interval) {
+//       lastTime = now
+//       fn.apply(this, args)
+//     }
+//   }
+// }
 
-//bonus
-function taskScheduler() {
-  let tasks = []
+// //bonus
+// function taskScheduler() {
+//   let tasks = []
 
-  return {
-    schedule(task, delay) {
-      const id = setTimeout(task, delay)
-      tasks.push(id)
-    },
-    cancelAll() {
-      tasks.forEach(id => clearTimeout(id))
-      tasks = []
-    }
-  }
-}
+//   return {
+//     schedule(task, delay) {
+//       const id = setTimeout(task, delay)
+//       tasks.push(id)
+//     },
+//     cancelAll() {
+//       tasks.forEach(id => clearTimeout(id))
+//       tasks = []
+//     }
+//   }
+// }
+
+// let final = [];
+
+// function changeLetters(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i];
+//     if (char === char.toUpperCase()) {
+//       char = char.toLowerCase();
+//     } else {
+//       char = char.toUpperCase();
+//     } 
+//     final.push(char);7
+//   }
+//   console.log(final.join('')); 
+// }
+
+// changeLetters('Hello, World!');
+
+
+const students = [
+    { name: "Alice", scores: [80, 90, 100] },
+    { name: "Bob", scores: [50, 60, 70] },
+    { name: "Charlie", scores: [30, 40, 20] }
+];
+
+const studentsWithAvg = students.map(student => {
+    const avg = student.scores.reduce((sum, score) => sum + score, 0) / student.scores.length;
+    return {
+        name: student.name,
+        average: avg,
+        passed: avg >= 50
+    };
+});
+
+const topStudent = studentsWithAvg.reduce((best, current) => 
+    current.average > best.average ? current : best
+);
+
+console.log(`${topStudent.name} has the highest average: ${topStudent.average}`);
+
+
+const cart = [
+    { id: 1, name: "Laptop", price: 900, quantity: 1 },
+    { id: 2, name: "Mouse", price: 50, quantity: 2 },
+    { id: 3, name: "Keyboard", price: 100, quantity: 1 }
+];
+
+const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+const finalTotal = total > 100 ? total * 0.9 : total;
+
+const mostExpensive = cart.reduce((most, item) => 
+    item.price > most.price ? item : most
+);
+
+console.log(`Total Price: $${finalTotal} (after discount)`);
+console.log(`Most expensive item: ${mostExpensive.name} - $${mostExpensive.price}`);
+
+
+
+
+let products = [
+    { id: 1, name: "Laptop", price: 1200, stock: 10 },
+    { id: 2, name: "Phone", price: 700, stock: 15 },
+];
+
+const addProduct = (newProduct) => {
+    products = [...products, { ...newProduct, id: products.length + 1 }];
+};
+
+const updateStock = (productId, newStock) => {
+    products = products.map(product => 
+        product.id === productId ? { ...product, stock: newStock } : product
+    );
+};
+
+const deleteProduct = (productId) => {
+    products = products.filter(product => product.id !== productId);
+};
+
+const findProduct = (productName) => {
+    return products.find(product => 
+        product.name.toLowerCase() === productName.toLowerCase()
+    );
+};
+
+addProduct({ name: "Tablet", price: 500, stock: 8 });
+updateStock(1, 5);
+console.log(findProduct("Phone"));
+deleteProduct(2);
+console.log(products);
+
+
+
+
+const posts = [
+    { author: "Alice", likes: 100, comments: 20, shares: 5 },
+    { author: "Bob", likes: 200, comments: 50, shares: 10 },
+    { author: "Charlie", likes: 150, comments: 30, shares: 8 }
+];
+
+const findMostLikedPost = () => {
+    return posts.reduce((most, post) => 
+        post.likes > most.likes ? post : most
+    );
+};
+
+const totalEngagement = () => {
+    return posts.reduce((total, post) => 
+        total + post.likes + post.comments + post.shares, 0
+    );
+};
+
+const postsWithCommentsArray = [
+    { author: "Alice", likes: 100, comments: [{user: "user1", message: "Great!"}], shares: 5 },
+    { author: "Bob", likes: 200, comments: [{user: "user2", message: "Nice!"}], shares: 10 }
+];
+
+console.log("Most liked:", findMostLikedPost());
+console.log("Total engagement:", totalEngagement());
+
+
+
+
+const teams = [
+    { name: "Team A", wins: 5, losses: 2, points: 15 },
+    { name: "Team B", wins: 6, losses: 1, points: 18 },
+    { name: "Team C", wins: 4, losses: 3, points: 12 }
+];
+
+const sortTeamsByRanking = () => {
+    return [...teams].sort((a, b) => b.points - a.points);
+};
+
+const findBestTeam = () => {
+    return teams.reduce((best, team) => 
+        team.points > best.points ? team : best
+    );
+};
+
+const teamsWithGoals = [
+    { name: "Team A", wins: 5, losses: 2, points: 15, goalsScored: 20, goalsConceded: 10 },
+    { name: "Team B", wins: 6, losses: 1, points: 18, goalsScored: 25, goalsConceded: 8 }
+];
+
+const bestGoalDifference = teamsWithGoals.reduce((best, team) => {
+    const goalDiff = team.goalsScored - team.goalsConceded;
+    const bestGoalDiff = best.goalsScored - best.goalsConceded;
+    return goalDiff > bestGoalDiff ? team : best;
+});
+
+console.log("Rankings:", sortTeamsByRanking());
+console.log("Best team:", findBestTeam());
+console.log("Best goal difference:", bestGoalDifference);
