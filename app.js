@@ -19,13 +19,10 @@ console.log("10" - true); // 9 cause true is converted to 1 but if it was "+" th
 const celsius = Number(prompt("Enter temperature in Celsius: "));
 // const celsius = 25;
 
-
 const fahrenheit = (celsius * 9 / 5) + 32;
 
 console.log(`Celsius: ${celsius}°C`);
 console.log(`Fahrenheit: ${fahrenheit}°F`);
-
-// when i change the celsius value to 26, the output will be:
 
 // 4
 let budget = Number(prompt("Enter your total budget:"));
@@ -59,20 +56,11 @@ if (Number.isNaN(budget)) {
 }
 
 // 5
-console.log(!!"false" == !!"true"); // true
-// both are non-empty strings
-
-console.log(0 || "JavaScript"); // "JavaScript"
-// 0 is falsey → returns the next value
-
-console.log("" + 100); // "100"
-// + with a string makes a string
-
-console.log(null ?? "Fallback"); // "Fallback"
-// null uses the fallback
-
-console.log(undefined ?? "Default Value"); // "Default Value"
-// undefined uses the fallback
+console.log(!!"false" == !!"true"); 
+console.log(0 || "JavaScript"); 
+console.log("" + 100); 
+console.log(null ?? "Fallback"); 
+console.log(undefined ?? "Default Value"); 
 
 // 6
 let a = 42;
@@ -81,14 +69,11 @@ let c = "hello";
 let d = false;
 let e = null;
 
-// convert to numbers and add
 let sum = a + Number(b) + Number(d) + Number(e);
 
 console.log(sum);
 
-// I didin't include c because it's not a number and would result in NaN, which would make the whole sum NaN.
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/////////////////////////////////////////////////////////////////
 
 // Operators in JS
 
@@ -132,13 +117,14 @@ while  (num2 > 0) {
         largest = digit;
     }
     num2 = Math.floor(num2 / 10);
-    }
+}
+
 // 4
 let num = Number(prompt("Enter a number:"));
 let sum1 = 0;
 
 if (num < 0) {
-  num = -num; // make it positive (optional)
+  num = -num;
 }
 
 while (num > 0) {
@@ -243,6 +229,7 @@ for (let i = 1; i <= 100; i++) {
     console.log(i);
   }
 }
+
 // 6
   
 for (let num = 100; num <= 999; num++) {
@@ -260,21 +247,11 @@ for (let num = 100; num <= 999; num++) {
 // 7
 
 const student =[
-    {   "name":"David",
-        "marks" :80
-    },
-    {   "name":"Vinoth",
-        "marks" :77
-    },
-    {   "name":"Divya 88",
-        "marks" :80
-    },
-    {   "name":"Ishitha",
-        "marks" :95
-    },
-    {   "name":"Thomas",
-        "marks" :68
-    }
+    { "name":"David","marks" :80 },
+    { "name":"Vinoth","marks" :77 },
+    { "name":"Divya 88","marks" :80 },
+    { "name":"Ishitha","marks" :95 },
+    { "name":"Thomas","marks" :68 }
 ]
   
 for (let i = 0; i < student.length; i++) {
@@ -296,6 +273,7 @@ for (let i = 0; i < student.length; i++) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // 26.03.2026
 
 // Task 1
@@ -367,17 +345,12 @@ function createCounter(start) {
     let count = start;
 
     return {
-        increment() {
-            count++;
-        },
-        decrement() {
-            count--;
-        },
-        getCount() {
-            return count;
-        }
+        increment() { count++; },
+        decrement() { count--; },
+        getCount() { return count; }
     };
 }
+
 let counter  = createCounter(12);
 counter.increment();
 console.log(counter.getCount());
@@ -398,123 +371,112 @@ const lazyAdder=(n)=>{
         return num+n;
     })
 }
+
 const add5 = lazyAdder(5);
 console.log(add5(10));
 console.log(add5(20));
 
-Assignment
-// Task 1
-const dynamicPricingCalculation=(itemsCount)=>{
-    if(itemsCount <= 0 ) return false;
-    if(itemsCount > 5){
-        return "20% Discount"
-    }else if(itemsCount > 3){
-        return "10% Discount"
-    }
-}
-console.log(dynamicPricingCalculation(4))
+////////////////////////////////////////////////////////////
 
-//
-  
-// Task 2
-const passwordStrengthChecker=(pw)=>{
-    if(pw.length>=8 && /[A-Z]/.test(pw) && /[0-9]/.test(pw) && /[!@#$%^&*(),.?":{}|<>]/.test(pw)){
-        return "Strong"
-    }else if(pw.length>=8 && /[A-Z]/.test(pw) && /[0-9]/.test(pw)){
-        return "Medium"
-    }else if(pw.length>=8){
-        return "Weak"
-    }else{
-        return "Password must be at least 8 characters"
-    }
-}
-console.log(passwordStrengthChecker("ffffffffF2."))
+// Challenge 1
+const original = [1, 2, 3];
+const copy = [...original];
+console.log(copy);
 
-// Task 3
-const atm=(amount)=>{
-    if (amount%10!==0) return false
-    banknotes = [100,50,20,10]
-    for (const n of banknotes) {
-        if(amount%n>=0){
-            let count = Math.floor(amount/n)
-            count>0?console.log(`${n} dan ${count} ta`): null
-            amount-=(n*count)
+// Challenge 2
+function getFirstEl(array) {
+    return array?.[0];
+}
+console.log(getFirstEl([4, 5, 6, 1]));
+
+// Challenge 3
+function last(arr) {
+    return arr?.[arr.length - 1];
+}
+console.log(last([4, 5, 6, 1]));
+
+// Challenge 4
+function add(colors) {
+    return colors.join(", ");
+}
+const myColors = ["red", "green", "blue"];
+console.log(add(myColors));
+
+// Challenge 5
+function dashBetween(num) {
+    return String(num).split("").join("-");
+}
+const numberInput = window.prompt("Enter any number:");
+console.log(dashBetween(numberInput));
+
+// Challenge 6
+function findMode(arr) {
+    const count = {};
+    let maxItem = arr[0];
+    let maxCount = 0;
+
+    for (const item of arr) {
+        count[item] = (count[item] || 0) + 1;
+
+        if (count[item] > maxCount) {
+            maxCount = count[item];
+            maxItem = item;
         }
     }
 
-}
-atm(350)
-
-// Task 4
-function trafficLight() {
-    console.log("Red");
-    setTimeout(() => {
-        console.log("Green");
-        setTimeout(() => {
-            console.log("Yellow");
-            setTimeout(trafficLight, 2000);
-        }, 3000);
-    }, 5000);
+    return `${maxItem} (${maxCount} times)`;
 }
 
-trafficLight();
+const arr = [3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3];
+console.log(findMode(arr));
 
-// Task 5
-function checkPassword(p) {
-    let score = 0;
-    if (p.length >= 8) score++;
-    if (/[A-Z]/.test(p)) score++;
-    if (/\d/.test(p)) score++;
-    if (/[^A-Za-z0-9]/.test(p)) score++;
-
-    return score <= 2 ? "Weak" : score === 3 ? "Medium" : "Strong";
-}
-console.log(checkPassword("Abc12345"));
-
-// Task 6
-function bankAccount(initial = 0) {
-    let balance = initial;
-
-    return {
-        deposit: amount => balance += amount,
-        withdraw: amount => amount <= balance
-            ? balance -= amount
-            : "Insufficient funds",
-        getBalance: () => balance
-    };
+// Challenge 7
+function swapCase(text) {
+    return text
+        .split("")
+        .map(char =>
+            char === char.toUpperCase()
+                ? char.toLowerCase()
+                : char.toUpperCase()
+        )
+        .join("");
 }
 
-const acc = bankAccount(100);
+console.log(swapCase(window.prompt("Enter any text:")));
 
-acc.deposit(50);
-acc.withdraw(30);
-console.log(acc.getBalance());
+// Challenge 8
+function displayOrder(colors) {
+    const suffix = ["th", "st", "nd", "rd"];
 
-// Task 7
-function createUser(role) {
-    const permissions = {
-        admin: ["add", "edit", "delete", "view"],
-        editor: ["edit", "view"],
-        viewer: ["view"]
-    };
+    colors.forEach((color, i) => {
+        const index = i + 1;
+        const ord =
+            index % 100 >= 11 && index % 100 <= 13
+                ? "th"
+                : suffix[index % 10] || "th";
 
-    return {
-        can: action => permissions[role]?.includes(action)
-    };
+        console.log(`${index}${ord} choice is ${color}`);
+    });
 }
 
-const user = createUser("editor");
+const colors = ["red", "green", "blue", "yellow", "orange"];
+displayOrder(colors);
 
-console.log(user.can("edit"));
-console.log(user.can("delete"))
+// Challenge 9
+function sum(arr1, arr2) {
+    const maxLength = Math.max(arr1.length, arr2.length);
+    const result = [];
 
-// Task 8
-function calculateTax(income) {
-    if (income < 10000) return 0;
-    if (income <= 50000) return income * 0.1;
-    return income * 0.2;
+    for (let i = 0; i < maxLength; i++) {
+        const a = arr1[i] ?? 0;
+        const b = arr2[i] ?? 0;
+        result.push(a + b);
+    }
+
+    return result;
 }
-console.log(calculateTax(8000));
-console.log(calculateTax(20000));
-console.log(calculateTax(60000));
 
+const arr1 = [1, 0, 2, 3, 4];
+const arr2 = [3, 5, 6, 7, 8, 13];
+
+console.log(sum(arr1, arr2));
