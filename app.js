@@ -779,52 +779,55 @@
 // LECTURE 7 HW 
 
 // challange 1
-const students = [
-    { name: "Alice", scores: [80, 90, 100]},
-    { name: "Bob", scores: [50, 60, 70]},
-    { name: "Charlie", scores: [30, 40, 20]}
-];
+// const students = [
+//     { name: "Alice", scores: [80, 90, 100]},
+//     { name: "Bob", scores: [50, 60, 70]},
+//     { name: "Charlie", scores: [30, 40, 20]}
+// ];
 
-console.log(students);
+// console.log(students);
 
-const studentStats = students.map(s => {
-    let avg = s.scores.reduce((sum, score) => sum + score, 0) / s.scores.length;
-    return { ...s, avg, passed: avg >= 50 };
-});
+// const studentStats = students.map(s => {
+//     let avg = s.scores.reduce((sum, score) => sum + score, 0) / s.scores.length;
+//     return { ...s, avg, passed: avg >= 50 };
+// });
 
-const topStudent = studentStats.reduce((top, current) => 
-    current.avg > top.avg ? current : top
-);
+// const topStudent = studentStats.reduce((top, current) => 
+//     current.avg > top.avg ? current : top
+// );
 
-console.log(`${topStudent.name} has the highest average: ${topStudent.avg}`);
+// console.log(`${topStudent.name} has the highest average: ${topStudent.avg}`);
 
 
-// Challange 2
-const cart = [
-    { id: 1, name: "Laptop", price: 900, quantity: 1},
-    { id: 2, name: "Mouse", price: 50, quantity: 2},
-    { id: 3, name: "Keyboard", price: 100, quantity: 1}
-];
-console.log(cart);
+// // Challange 2
+// const cart = [
+//     { id: 1, name: "Laptop", price: 900, quantity: 1},
+//     { id: 2, name: "Mouse", price: 50, quantity: 2},
+//     { id: 3, name: "Keyboard", price: 100, quantity: 1}
+// ];
+// console.log(cart);
 
-let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+// let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-if (total > 100) {
-    total = total * 0.9;
-}
+// if (total > 100) {
+//     total = total * 0.9;
+// }
 
-const mostExpensive = cart.reduce((max, item) => 
-    item.price > max.price ? item : max
-);
+// const mostExpensive = cart.reduce((max, item) => 
+//     item.price > max.price ? item : max
+// );
 
-console.log(`Total Price: ${total} (after discount)`);
-console.log(`Most Expensive Item: ${mostExpensive.name}`);
+// console.log(`Total Price: ${total} (after discount)`);
+// console.log(`Most Expensive Item: ${mostExpensive.name}`);
 
 // challange 3
 let inventory = [
     { id: 1, name: "Laptop", price: 1000, stock: 5 },
     { id: 2, name: "Mouse", price: 25, stock: 50 }
 ];
+
+console.log(inventory);
+
 
 function addProduct(product) {
     inventory.push(product);
@@ -842,6 +845,10 @@ function deleteProduct(id) {
 function findProduct(name) {
     return inventory.find(p => p.name === name);
 }
+
+
+
+
 
 // challange 4
 let posts = [
@@ -873,44 +880,43 @@ function getTotalEngagement() {
         return total + post.likes + post.shares + post.comments.length;
     }, 0);
 }
-// challange 5
+// // challange 5
 
-let teams = [
-    { name: "Lions", wins: 5, losses: 1, points: 15 },
-    { name: "Tigers", wins: 7, losses: 0, points: 21 },
-    { name: "Bears", wins: 2, losses: 4, points: 6 }
-];
+// let teams = [
+//     { name: "Lions", wins: 5, losses: 1, points: 15 },
+//     { name: "Tigers", wins: 7, losses: 0, points: 21 },
+//     { name: "Bears", wins: 2, losses: 4, points: 6 }
+// ];
 
-function sortTeamsByPoints() {
-    return teams.sort((a, b) => b.points - a.points);
-}
+// function sortTeamsByPoints() {
+//     return teams.sort((a, b) => b.points - a.points);
+// }
 
-function getBestTeam() {
-    let sorted = sortTeamsByPoints();
-    return sorted[0];
-}
+// function getBestTeam() {
+//     let sorted = sortTeamsByPoints();
+//     return sorted[0];
+// }
 
-// challange 6
+// // challange 6
 
-const warehouse = [
-    { itemName: "Laptop", category: "Electronics", stock: 2 },
-    { itemName: "Monitor", category: "Electronics", stock: 15 },
-    { itemName: "Desk", category: "Furniture", stock: 1 }
-];
+// const warehouse = [
+//     { itemName: "Laptop", category: "Electronics", stock: 2 },
+//     { itemName: "Monitor", category: "Electronics", stock: 15 },
+//     { itemName: "Desk", category: "Furniture", stock: 1 }
+// ];
 
-function getTotalStock(category) {
-    return warehouse
-        .filter(item => item.category === category)
-        .reduce((sum, item) => sum + item.stock, 0);
-}
+// function getTotalStock(category) {
+//     return warehouse
+//         .filter(item => item.category === category)
+//         .reduce((sum, item) => sum + item.stock, 0);
+// }
 
-function checkLowStock() {
-    const lowStockItems = warehouse.filter(item => item.stock < 5);
-    lowStockItems.forEach(item => {
-        console.log(`ALERT: ${item.itemName} is low on stock! (${item.stock} left)`);
-    });
-}
-
+// function checkLowStock() {
+//     const lowStockItems = warehouse.filter(item => item.stock < 5);
+//     lowStockItems.forEach(item => {
+//         console.log(`ALERT: ${item.itemName} is low on stock! (${item.stock} left)`);
+//     });
+// }
 
 
 
