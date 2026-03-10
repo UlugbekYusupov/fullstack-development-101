@@ -1,4 +1,4 @@
-// // // // ___________________Lecture 6 (Arrays)_____________________________
+// // // // _____________________________Lecture 6 (Arrays)_____________________________
 
 // // const numbers = [1,2,3,10,4,5,6];
 // // console.log(numbers);
@@ -138,42 +138,51 @@
 
 // // 6:
 
-// let arr = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+// let array1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
 
-// let count = {};
-// let max = 0;
-// let result;
+// function mostFrequent(arr) {
+//     let count = {};
+//     let max = 0;
+//     let item;
 
-// for (let a of arr) {
-//     count[a] = (count[a] || 0) + 1;
+//     for (let i = 0; i < arr.length; i++) {
+//         count[arr[i]] = (count[arr[i]] || 0) + 1;
 
-//     if (count[a] > max) {
-//         max = count[a];
-//         result = a;
+//         if (count[arr[i]] > max) {
+//             max = count[arr[i]];
+//             item = arr[i];
+//         }
 //     }
+
+//     return item + " ( " + max + " times )";
 // }
 
-// console.log(result);
+
+// console.log(mostFrequent(array1));
 
 // // 7:
 
 // const word = "The Quick Brown Fox";
 
-// let reversedWord = "";
+// function something(arr) {
 
-// for (let i = 0; i < word.length; i++) {
-//     if (word[i] === word[i].toUpperCase()) {
-//         reversedWord += word[i].toLowerCase();
-//     } else {
-//         reversedWord += word[i].toUpperCase();
-//     }
-// }
+//     let reversedWord = "";
 
-// console.log(reversedWord);
+//     for (let i = 0; i < word.length; i++) {
+//         if (word[i] === word[i].toUpperCase()) {
+//             reversedWord += word[i].toLowerCase();
+//         } else {
+//             reversedWord += word[i].toUpperCase();
+//         };
+//     };
+//     return reversedWord;
+// };
+
+// console.log(something(word));
 
 // // // 8:
 
-// const color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+// const color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
 // const o = ["th","st","nd","rd"];
 // let index = 0;
 // let belgi = "";
@@ -201,13 +210,196 @@
 // const array1 = [1,0,2,3,4];
 // const array2 = [3,5,6,7,8,13];
 
-// let combinedArray = [];
+// function something (arr1, arr2) {
+//     let combinedArray = [];
 
-// for (let i = 0; i < array1.length || i < array2.length; i++) {
-//     let num1 = array1[i] || 0;
-//     let num2 = array2[i] || 0;
+//     for (let i = 0; i < array1.length || i < array2.length; i++) {
+//         let num1 = array1[i] || 0;
+//         let num2 = array2[i] || 0;
 
-//     combinedArray.push(num1 + num2);
+//         combinedArray.push(num1 + num2);
+//     };
+//     return combinedArray;
 // }
 
-// console.log(combinedArray);
+// console.log(something(array1, array2));
+
+// // // // ____________________________ Lecture 7 (Objects) ________________________________
+
+// let car = {
+//     brand: "Tesla",
+//     model: "Model S",
+//     year: 2024,
+//     start: function() {
+//         console.log("Car is starting...");
+//     }
+// };
+
+// console.log(car['brand']);
+// car.start();
+
+
+// // Practises
+
+// // 1:
+
+// const students = [
+//     { name: "Alice", scores: [80, 90, 100] },
+//     { name: "Bob", scores: [50, 60, 70] },
+//     { name: "Charlie", scores: [30, 40, 20] }
+// ];
+
+// function averageGrade() {
+
+//     let result = [];
+
+//     for (const student of students) {
+//         let score = 0;
+
+//         for (const grade of student.scores) {
+//             score += grade;
+//         }
+
+//         let average = score / student.scores.length;
+
+//         result.push({
+//             name: student.name,
+//             average: average
+//         });
+//     }
+
+//     return result;
+// }
+
+// function isPassed() {
+
+//     const averages = averageGrade();
+
+//     let result = [];
+
+//     for (const student of averages) {
+
+//         let status = student.average >= 50 ? "Passed" : "Failed";
+
+//         result.push({
+//             name: student.name,
+//             average: student.average,
+//             status: status
+//         });
+//     }
+
+//     return result;
+// }
+
+// const result = isPassed();
+
+// for (const student of result) {
+//     console.log(student.name, student.average, student.status);
+// }
+
+// // 2:
+
+// const cart = [
+//     { id: 1, name: "Laptop", price: 80, quantity: 1 },
+//     { id: 2, name: "Mouse", price: 20, quantity: 2 },
+//     { id: 3, name: "Keyboard", price: 40, quantity: 1 }
+// ];
+
+// const totalPrice = cart.reduce((total, item) =>
+//     total + item.price * item.quantity, 0);
+
+// let finalPrice = totalPrice;
+
+// if (totalPrice > 100) {
+//     finalPrice = totalPrice - totalPrice * 0.1;
+// }
+
+// const mostExpensive = cart.reduce((max, item) =>
+//     item.price > max.price ? item : max
+// );
+
+// console.log(`Total: ${totalPrice}`);
+// console.log(`After Discount: ${finalPrice}`);
+// console.log('Most Expensive:', mostExpensive);
+
+// // 3:
+
+// let products = [
+//     { id: 1, name: "Phone", price: 500, stock: 10 },
+//     { id: 2, name: "Tablet", price: 300, stock: 5 }
+// ];
+
+// function addProduct(product) {
+//     products.push(product);
+// }
+
+// function updateStock(id, newStock) {
+//     const product = products.find(p => p.id === id);
+//     if (product) product.stock = newStock;
+// }
+
+// function deleteProduct(id) {
+//     products = products.filter(p => p.id !== id);
+// }
+// function findProduct(name) {
+//     return products.find(p => p.name === name);
+// }
+
+// addProduct({ id: 3, name: "Laptop", price: 900, stock: 4 });
+// updateStock(1, 20);
+// deleteProduct(2);
+
+// console.log(findProduct("Laptop"));
+// console.log(products);
+
+// // 4:
+
+// const posts = [
+//     { author: "Ali", likes: 120, comments: 30, shares: 10 },
+//     { author: "Vali", likes: 200, comments: 40, shares: 20 },
+//     { author: "Sami", likes: 150, comments: 25, shares: 15 }
+// ];
+
+// const mostLiked = posts.reduce((max, post) =>
+//     post.likes > max.likes ? post : max
+// );
+
+// const totalEngagement = posts.reduce((sum, post) =>
+//     sum + post.likes + post.comments + post.shares, 0);
+
+// console.log("Most liked:", mostLiked);
+// console.log("Total engagement:", totalEngagement);
+
+// // 5:
+
+// const teams = [
+//     { name: "Team A", wins: 5, losses: 1, points: 15 },
+//     { name: "Team B", wins: 4, losses: 2, points: 12 },
+//     { name: "Team C", wins: 6, losses: 0, points: 18 }
+// ];
+
+// const ranking = teams.sort((a, b) => b.points - a.points);
+
+// const bestTeam = ranking[0];
+
+// console.log("Ranking:", ranking);
+// console.log("Best Team:", bestTeam);
+
+// // 6:
+
+// const inventory = [
+//     { itemName: "Apple", category: "Food", stock: 50 },
+//     { itemName: "Banana", category: "Food", stock: 20 },
+//     { itemName: "Laptop", category: "Electronics", stock: 5 },
+//     { itemName: "Mouse", category: "Electronics", stock: 15 }
+// ];
+
+// const stockByCategory = inventory.reduce((acc, item) => {
+//     acc[item.category] = (acc[item.category] || 0) + item.stock;
+//     return acc;
+// }, {});
+
+// const lowStock = inventory.filter(item => item.stock < 10);
+
+// console.log("Stock by Category:", stockByCategory);
+// console.log("Low Stock Items:", lowStock);
