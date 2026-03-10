@@ -44,7 +44,6 @@ function findMode(arr){
     let maxCount=0
     for(let i=0; i<arr.length; i++){
         let item=arr[i]
-       
 
         if (count[item]){
              count[item]++;
