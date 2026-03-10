@@ -128,10 +128,12 @@
 
 
 
-//CHALLANGE 4
+// CHALLANGE 4
 // function insertDashes(num) {
 //   return num.toString().split("").join("-");
 // }
+
+// console.log(insertDashes(1234))
 
 
 //CHALLANGE 5
