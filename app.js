@@ -642,13 +642,16 @@
 // }
 // console.log(first(arr, 4));
 
+
 // Second ->
+
+// arr = [7,9,0,-2];
 // function last(arr, n) {
 //     if (n === undefined) return arr[arr.length - 1];
 //     if (n < 0) return [];
 //     return arr.slice(-n);
 // }
-// console.log(last(arr,4));
+// console.log(last(arr,2));
 
 // Third ->
 // myColor= ["Red", "Green", "White", "Black"]
@@ -663,7 +666,7 @@
 //     return num.toString().split('').join('-');
 // }
 
-// console.log(withDashes(num));
+// console.log(withDashes(25468));
 
 // Fifth ->
 // let arr1 = [3,8,7,6,5,3,2,3,6,5,8,-4,-3,2,1];
@@ -698,7 +701,7 @@
 //     }).join('');
 // }
 
-// console.log(swapCase(str[0]));
+// console.log(swapCase("RaYHoNa"));
 
 // Eightth ->
 // let colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
@@ -711,12 +714,202 @@
 // console.log(showChoices(colors, o));
 
 // Nineth ->
-let arr1 = [1,0,2,3,4];
-let arr2 = [3,5,6,7,8,13];
-function sumArrays(arr1, arr2) {
-    return arr1.map((val, index) => val + arr2[index]);
+// let arr1 = [1,0,2,3,4];
+// let arr2 = [3,5,6,7,8,13];
+// function sumArrays(arr1, arr2) {
+//     return arr1.map((val, index) => val + arr2[index]);
+// }
+// console.log(sumArrays(arr1, arr2));
+
+
+// Lecture 7 OBJECTS 
+
+
+// 1. Object Literal ({})
+
+// let car = {
+//     brand: "Tesla",
+//     model: "Model S",
+//     year: 2024,
+//     start: function () {
+//         console.log("Car is starting...");
+//     }
+// };
+// console.log(car.brand);
+// car.start();
+
+// 2. Using new object ();
+// let person = new Object();
+// person.name = "Alice";
+// person.age = 25;
+// person.greet = function() {
+//     return `Hello, my name is ${this.name}`;
+// };
+// console.log(person.greet());
+
+// 3.Factory Function
+// function createPerson(name, age) {
+//     return {
+//         name,
+//         age,
+//         greet (){
+//             return `Hi, I'm ${this.name}, and I'm ${this.age} years old.`;
+//         }
+//     };
+// }
+// let person1 = createPerson("Alice", 25);
+// let person2 = createPerson("Bob", 30);
+// console.log(person1.greet());
+// console.log(person2.greet());
+
+// 4. Constructor Function
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+//     this.greet = function () {
+//         return `Hi, I'm ${this.name}, and I'm ${this.age} years old.`;
+//     };
+// }
+
+// let person1 = new Person("Alice", 25);
+// let person2 = new Person("Bob", 40);
+// console.log(person1.greet());
+// console.log(person2.greet());
+
+// LECTURE 7 HW 
+
+// challange 1
+const students = [
+    { name: "Alice", scores: [80, 90, 100]},
+    { name: "Bob", scores: [50, 60, 70]},
+    { name: "Charlie", scores: [30, 40, 20]}
+];
+
+console.log(students);
+
+const studentStats = students.map(s => {
+    let avg = s.scores.reduce((sum, score) => sum + score, 0) / s.scores.length;
+    return { ...s, avg, passed: avg >= 50 };
+});
+
+const topStudent = studentStats.reduce((top, current) => 
+    current.avg > top.avg ? current : top
+);
+
+console.log(`${topStudent.name} has the highest average: ${topStudent.avg}`);
+
+
+// Challange 2
+const cart = [
+    { id: 1, name: "Laptop", price: 900, quantity: 1},
+    { id: 2, name: "Mouse", price: 50, quantity: 2},
+    { id: 3, name: "Keyboard", price: 100, quantity: 1}
+];
+console.log(cart);
+
+let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+if (total > 100) {
+    total = total * 0.9;
 }
-console.log(sumArrays(arr1, arr2));
+
+const mostExpensive = cart.reduce((max, item) => 
+    item.price > max.price ? item : max
+);
+
+console.log(`Total Price: ${total} (after discount)`);
+console.log(`Most Expensive Item: ${mostExpensive.name}`);
+
+// challange 3
+let inventory = [
+    { id: 1, name: "Laptop", price: 1000, stock: 5 },
+    { id: 2, name: "Mouse", price: 25, stock: 50 }
+];
+
+function addProduct(product) {
+    inventory.push(product);
+}
+
+function updateStock(id, newStock) {
+    let product = inventory.find(p => p.id === id);
+    if (product) product.stock = newStock;
+}
+
+function deleteProduct(id) {
+    inventory = inventory.filter(p => p.id !== id);
+}
+
+function findProduct(name) {
+    return inventory.find(p => p.name === name);
+}
+
+// challange 4
+let posts = [
+    { 
+        author: "Alice", 
+        likes: 10, 
+        shares: 1,
+
+        comments: [
+            { user: "Bob", message: "Great post!" },
+            { user: "Charlie", message: "Agreed!" }
+        ] 
+    },
+    { 
+        author: "Bob", 
+        likes: 50, 
+        shares: 3,
+        comments: [{ user: "Alice", message: "Nice!" }] 
+    }
+];
+
+function getMostLiked() {
+    return posts.reduce((prev, current) => (current.likes > prev.likes ? current : prev));
+}
+
+function getTotalEngagement() {
+    return posts.reduce((total, post) => {
+
+        return total + post.likes + post.shares + post.comments.length;
+    }, 0);
+}
+// challange 5
+
+let teams = [
+    { name: "Lions", wins: 5, losses: 1, points: 15 },
+    { name: "Tigers", wins: 7, losses: 0, points: 21 },
+    { name: "Bears", wins: 2, losses: 4, points: 6 }
+];
+
+function sortTeamsByPoints() {
+    return teams.sort((a, b) => b.points - a.points);
+}
+
+function getBestTeam() {
+    let sorted = sortTeamsByPoints();
+    return sorted[0];
+}
+
+// challange 6
+
+const warehouse = [
+    { itemName: "Laptop", category: "Electronics", stock: 2 },
+    { itemName: "Monitor", category: "Electronics", stock: 15 },
+    { itemName: "Desk", category: "Furniture", stock: 1 }
+];
+
+function getTotalStock(category) {
+    return warehouse
+        .filter(item => item.category === category)
+        .reduce((sum, item) => sum + item.stock, 0);
+}
+
+function checkLowStock() {
+    const lowStockItems = warehouse.filter(item => item.stock < 5);
+    lowStockItems.forEach(item => {
+        console.log(`ALERT: ${item.itemName} is low on stock! (${item.stock} left)`);
+    });
+}
 
 
 
