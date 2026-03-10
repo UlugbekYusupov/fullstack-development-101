@@ -459,130 +459,266 @@
 
 //-----------------------------------------------6-DARS-----------------------------------------
 
-let colors=['red','blue','yellow']
-console.log(colors)
+// let colors=['red','blue','yellow']
+// console.log(colors)
 
-let nums =new Array(5)
-let numbers =new Array(2,4,5,7)
+// let nums =new Array(5)
+// let numbers =new Array(2,4,5,7)
 
-console.log(numbers)
+// console.log(numbers)
 
-nums.push(777)
-nums.push(33)
-nums.push(8)
-nums.push(0)
+// nums.push(777)
+// nums.push(33)
+// nums.push(8)
+// nums.push(0)
 
-console.log(nums)
-
-
-
-let origin=[1,2,3]
-let copyOrigin=[...origin]
-
-console.log(origin)
-console.log(copyOrigin)
+// console.log(nums)
 
 
 
-let nums1=Array.of(5,4,3,2,1)
-console.log(nums1)
-nums1.push(222)
-console.log(nums1.push(222));
-console.log(nums1)
+// let origin=[1,2,3]
+// let copyOrigin=[...origin]
 
-//-----------------------------------------------6-DARS-TASKS-----------------------------------------
+// console.log(origin)
+// console.log(copyOrigin)
 
-// task 1
-function getFIRSTeL(arr) {
-  return arr[0];
-}
-console.log(getFIRSTeL([1, 2, 3]));
 
-// task 2
-function getLastEl(arr, n) {
-  return arr.slice(arr.length - n);
-}
-console.log(getLastEl([1, 2, 3], 2));
 
-// task 3
-let myColor = ["Red", "Green", "White", "Black"];
+// let nums1=Array.of(5,4,3,2,1)
+// console.log(nums1)
+// nums1.push(222)
+// console.log(nums1.push(222));
+// console.log(nums1)
 
-let string = myColor.join(',')
-console.log(string);
+// //-----------------------------------------------6-DARS-TASKS-----------------------------------------
 
-// task4
-let input = prompt('enter the numbers: ')
+// // task 1
+// function getFIRSTeL(arr) {
+//   return arr[0];
+// }
+// console.log(getFIRSTeL([1, 2, 3]));
 
-let dashed = inp.split('').join('-')
-console.log(dashed);
+// // task 2
+// function getLastEl(arr, n) {
+//   return arr.slice(arr.length - n);
+// }
+// console.log(getLastEl([1, 2, 3], 2));
 
-// task 5
-var arr1 = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
-console.log(arr1.sort());
+// // task 3
+// let myColor = ["Red", "Green", "White", "Black"];
 
-// task 6
-var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
-var mf = 1;
-var m = 0;
-var item;
-for (var i = 0; i < arr1.length; i++) {
-  for (var j = i; j < arr1.length; j++) {
-    if (arr1[i] == arr1[j]) m++;
-    if (mf < m) {
-      mf = m;
-      item = arr1[i];
-    }
-  }
-  m = 0;
-}
-console.log(`${item} ( ${mf} times )`);
+// let string = myColor.join(',')
+// console.log(string);
 
-// task 7
-let inp = prompt('enter the text: ')
-let reversed = inp.split('').map(e => e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase()).join()
-console.log(reversed);
+// // task4
+// let input = prompt('enter the numbers: ')
 
-// task 8
-let color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+// let dashed = inp.split('').join('-')
+// console.log(dashed);
 
-color.map((e, i)=>{
-   if ((i+1)%10 == 1 && (i+1) !== 11) {
-      console.log(`${i+1}st choice is ${e}`);
-   }else if((i+1)%10 == 2 && (i+1) !== 12){
-      console.log(`${i+1}nd choice is ${e}`);
-   }else if((i+1)%10 == 3 && (i+1) !== 13){
-      console.log(`${i+1}rd choice is ${e}`);
-   }else{
-      console.log(`${i+1}th choice is ${e}`);
-   }
-})
-console.log(1%10 ==1 && !11);
+// // task 5
+// var arr1 = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
+// console.log(arr1.sort());
 
-// task 9
-let array1 = [1, 0, 2, 3, 4];
-let array2 = [3, 5, 6, 7, 8, 13];
+// // task 6
+// var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+// var mf = 1;
+// var m = 0;
+// var item;
+// for (var i = 0; i < arr1.length; i++) {
+//   for (var j = i; j < arr1.length; j++) {
+//     if (arr1[i] == arr1[j]) m++;
+//     if (mf < m) {
+//       mf = m;
+//       item = arr1[i];
+//     }
+//   }
+//   m = 0;
+// }
+// console.log(`${item} ( ${mf} times )`);
 
-let newarr = [];
+// // task 7
+// let inp = prompt('enter the text: ')
+// let reversed = inp.split('').map((e, I) => {
+//  RETUrN e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase()).join()
+// }
+// console.log(reversed);
 
-if (array1.length > array2.length) {
-  newarr = array1.map((e, i) => {
-    if (array1[i] === undefined) {
-      return 0 + array2[i];
-    } else if (array2[i] === undefined) {
-      return 0 + array1[i];
-    } else {
-      return array1[i] + array2[i];
-    }
-  });
-} else {
-  newarr = array2.map((e, i) => {
-    if (array1[i] === undefined) {
-      return 0 + array2[i];
-    } else if (array2[i] === undefined) {
-      return 0 + array1[i];
-    } else {
-      return array1[i] + array2[i];
-    }
-  });
-}
-console.log(newarr);
+// // task 8
+// let color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+
+// color.map((e, i)=>{
+//    if ((i+1)%10 == 1 && (i+1) !== 11) {
+//       console.log(`${i+1}st choice is ${e}`);
+//    }else if((i+1)%10 == 2 && (i+1) !== 12){
+//       console.log(`${i+1}nd choice is ${e}`);
+//    }else if((i+1)%10 == 3 && (i+1) !== 13){
+//       console.log(`${i+1}rd choice is ${e}`);
+//    }else{
+//       console.log(`${i+1}th choice is ${e}`);
+//    }
+// })
+// console.log(1%10 ==1 && !11);
+
+// // task 9
+// let array1 = [1, 0, 2, 3, 4];
+// let array2 = [3, 5, 6, 7, 8, 13];
+
+// let newarr = [];
+
+// if (array1.length > array2.length) {
+//   newarr = array1.map((e, i) => {
+//     if (array1[i] === undefined) {
+//       return 0 + array2[i];
+//     } else if (array2[i] === undefined) {
+//       return 0 + array1[i];
+//     } else {
+//       return array1[i] + array2[i];
+//     }
+//   });
+// } else {
+//   newarr = array2.map((e, i) => {
+//     if (array1[i] === undefined) {
+//       return 0 + array2[i];
+//     } else if (array2[i] === undefined) {
+//       return 0 + array1[i];
+//     } else {
+//       return array1[i] + array2[i];
+//     }
+//   });
+// }
+// console.log(newarr);
+
+
+// //-----------------------------------------------7-DARS-----------------------------------------
+
+// ! //////////////// Objects homework
+// const students = [
+//   { name: "Alice", scores: [85, 90, 78] },
+//   { name: "Bob", scores: [45, 52, 30] },
+//   { name: "Charlie", scores: [92, 88, 95] },
+//   { name: "Diana", scores: [60, 55, 62] },
+// ];
+
+// let passedStuds = students
+//   .filter((student) => {
+//     const score = student.scores.reduce((acc, current) => {
+//       return acc + current;
+//     }, 0);
+//     const average = score / student.scores.length;
+//     return average >= 50;
+//   })
+//   .map((student) => {
+//     return student.name;
+//   });
+
+// console.log(passedStuds);
+
+// const cart = [
+//   { id: 1, name: "Laptop", price: 900, quantity: 1 },
+//   { id: 2, name: "Mouse", price: 50, quantity: 2 },
+//   { id: 3, name: "Keyboard", price: 100, quantity: 1 },
+// ];
+
+// const total = cart
+//   .map((item) => {
+//     return (subTotal = item.price * item.quantity);
+//   })
+//   .map((item) => {
+//     if (item > 100) {
+//       return item * 1.1;
+//     } else {
+//       return item;
+//     }
+//   })
+//   .reduce((acc, current) => {
+//     return acc + current;
+//   }, 0);
+
+// console.log(total);
+
+// let inventory = [
+//   { id: 1, name: "Laptop", price: 999, stock: 10 },
+//   { id: 2, name: "Mouse", price: 25, stock: 50 },
+//   { id: 3, name: "Keyboard", price: 75, stock: 20 },
+// ];
+
+// function addProduct(newProduct) {
+//   inventory.push(newProduct);
+// }
+// function deleteProduct(idToDelete) {
+//   inventory = inventory.filter((product) => product.id !== idToDelete);
+// }
+// function findProduct(name) {
+//   return inventory.find((product) => product.name === name);
+// }
+
+// const found = findProduct("Laptop");
+// deleteProduct(1);
+// addProduct({ id: 4, name: "Monitor", price: 200, stock: 15 });
+
+// const posts = [
+//   { author: "Alice", likes: 100, comments: 20, shares: 5 },
+//   { author: "Bob", likes: 200, comments: 50, shares: 10 },
+// ];
+
+// function mostLiked() {
+//   const response = posts.sort((a, b) => b.likes - a.likes);
+//   console.log(response);
+// }
+
+// function totalEngagement() {
+//   const result = posts.map((post) => {
+//     return {
+//       name: post.author,
+//       engagement: post.likes + post.comments + post.shares,
+//     };
+//   });
+//   console.table(result);
+// }
+
+// mostLiked();
+// totalEngagement();
+
+// const teams = [
+//   { name: "Team A", wins: 5, losses: 2, points: 15 },
+//   { name: "Team B", wins: 6, losses: 1, points: 18 },
+// ];
+
+// function sortByRanking() {
+//   const result = teams.sort((a, b) => b.wins - a.wins);
+//   console.log("Winning team:");
+//   console.table(result);
+// }
+// sortByRanking();
+
+// function sortByPoints() {
+//   const result = teams.sort((a, b) => b.points - a.points);
+//   console.log("Team with most points:");
+//   console.table(result);
+// }
+// sortByPoints();
+
+// const inventory = [
+//   { itemName: "Hammer", category: "Tools", stock: 15 },
+//   { itemName: "Drill", category: "Tools", stock: 4 },
+//   { itemName: "Plywood", category: "Lumber", stock: 20 },
+//   { itemName: "Oak Plank", category: "Lumber", stock: 2 },
+//   { itemName: "Screws", category: "Hardware", stock: 100 },
+// ];
+
+// function getTotalStockByCategory(items) {
+//   return items.reduce((totals, item) => {
+//     const { category, stock } = item;
+//     if (!totals[category]) {
+//       totals[category] = 0;
+//     }
+//     totals[category] += stock;
+//     return totals;
+//   }, {});
+// }
+
+// const categoryTotals = getTotalStockByCategory(inventory);
+// console.log("Stock by Category:", categoryTotals);
+
+
