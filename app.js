@@ -465,131 +465,295 @@ if the requested amount is not in multiples of 10, return an error.
 
 
 // challenge 1
-function first(arr, n) {
-    if (n === undefined) {
-        return arr[0];
-    }
-    if (n < 0) {
-        return n;
-    }
-    return arr.slice(0, n);
+// function first(arr, n) {
+//     if (n === undefined) {
+//         return arr[0];
+//     }
+//     if (n < 0) {
+//         return n;
+//     }
+//     return arr.slice(0, n);
+// }
+//
+// console.log(first([7, 9, 0, -2])); // 7
+// console.log(first([], 3)); // []
+// console.log(first([7, 9, 0, -2], 3)); // [7,9,0]
+// console.log(first([7, 9, 0, -2], 6)); // [7,9,0,-2]
+// console.log(first([7, 9, 0, -2], -3)); // -3
+//
+// // challenge 2
+// function last(arr, n) {
+//     if (n === undefined) {
+//         return arr[arr.length - 1];
+//     }
+//     return arr.slice(-n);
+// }
+//
+// console.log(last([7, 9, 0, -2])); // -2
+// console.log(last([7, 9, 0, -2], 3)); // [9,0,-2]
+// console.log(last([7, 9, 0, -2], 6)); // [7,9,0,-2]
+//
+// function joinArray(arr) {
+//     return arr.join(',');
+// }
+//
+//
+// myColor = ["Red", "Green", "White", "Black"];
+// console.log(joinArray(myColor));
+//
+//
+// // Challenge 4
+// function insertDashes(number) {
+//     return String(number).split('').join('-');
+// }
+//
+// console.log(insertDashes(25468)); // "2-5-4-6-8"
+//
+// // Challenge 5
+// function sortArray(arr) {
+//     return arr.slice().sort((a, b) => a - b);
+// }
+//
+// var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+// console.log(sortArray(arr1)); // [-4,-3,1,2,3,5,6,7,8]
+//
+// // Challenge 6
+// function findMostFrequent(arr) {
+//     const frequency = {};
+//     let maxCount = 0;
+//     let mostFrequent = null;
+//
+//     for (const item of arr) {
+//         frequency[item] = (frequency[item] || 0) + 1;
+//         if (frequency[item] > maxCount) {
+//             maxCount = frequency[item];
+//             mostFrequent = item;
+//         }
+//     }
+//
+//     return `${mostFrequent} (${maxCount} times)`;
+// }
+//
+// var arr2 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+// console.log(findMostFrequent(arr2)); // "a (5 times)"
+//
+// // Challenge 7
+// function swapCase(str) {
+//     return str.split('').map(char => {
+//         if (char === char.toUpperCase()) {
+//             return char.toLowerCase();
+//         } else {
+//             return char.toUpperCase();
+//         }
+//     }).join('');
+// }
+//
+// console.log(swapCase('The Quick Brown Fox'));
+//
+//
+// // Challenge 8
+// function displayColors() {
+//     const color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+//     const o = ["th", "st", "nd", "rd"];
+//
+//     color.forEach((colorName, index) => {
+//         const position = index + 1;
+//         let ordinal;
+//
+//         if (position === 1) {
+//             ordinal = o[1];
+//         } else if (position === 2) {
+//             ordinal = o[2];
+//         } else if (position === 3) {
+//             ordinal = o[3];
+//         } else {
+//             ordinal = o[0];
+//         }
+//
+//         console.log(`${position}${ordinal} choice is ${colorName.trim()}.`);
+//     });
+// }
+//
+// displayColors();
+//
+// // Challenge 9
+// function sumArrayIndices(arr1, arr2) {
+//     const maxLength = Math.max(arr1.length, arr2.length);
+//     const result = [];
+//
+//     for (let i = 0; i < maxLength; i++) {
+//         const val1 = arr1[i] || 0;
+//         const val2 = arr2[i] || 0;
+//         result.push(val1 + val2);
+//     }
+//
+//     return result;
+// }
+//
+// const array1 = [1, 0, 2, 3, 4];
+// const array2 = [3, 5, 6, 7, 8, 13];
+// console.log(sumArrayIndices(array1, array2));
+
+
+
+// challenge 1
+const students = [
+    { name: "Alice", scores: [85, 92, 78] },
+    { name: "Bob", scores: [90, 88, 94] },
+    { name: "Charlie", scores: [76, 82, 79] }
+];
+
+function calculateAverage(scores) {
+    const sum = scores.reduce((total, score) => total + score, 0);
+    return sum / scores.length;
 }
 
-console.log(first([7, 9, 0, -2])); // 7
-console.log(first([], 3)); // []
-console.log(first([7, 9, 0, -2], 3)); // [7,9,0]
-console.log(first([7, 9, 0, -2], 6)); // [7,9,0,-2]
-console.log(first([7, 9, 0, -2], -3)); // -3
-
-// challenge 2
-function last(arr, n) {
-    if (n === undefined) {
-        return arr[arr.length - 1];
-    }
-    return arr.slice(-n);
+function hasPassed(average) {
+    return average >= 50;
 }
 
-console.log(last([7, 9, 0, -2])); // -2
-console.log(last([7, 9, 0, -2], 3)); // [9,0,-2]
-console.log(last([7, 9, 0, -2], 6)); // [7,9,0,-2]
+function findTopStudent(students) {
+    let topStudent = null;
+    let highestAverage = -1;
 
-function joinArray(arr) {
-    return arr.join(',');
-}
-
-
-myColor = ["Red", "Green", "White", "Black"];
-console.log(joinArray(myColor));
-
-
-// Challenge 4
-function insertDashes(number) {
-    return String(number).split('').join('-');
-}
-
-console.log(insertDashes(25468)); // "2-5-4-6-8"
-
-// Challenge 5
-function sortArray(arr) {
-    return arr.slice().sort((a, b) => a - b);
-}
-
-var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
-console.log(sortArray(arr1)); // [-4,-3,1,2,3,5,6,7,8]
-
-// Challenge 6
-function findMostFrequent(arr) {
-    const frequency = {};
-    let maxCount = 0;
-    let mostFrequent = null;
-
-    for (const item of arr) {
-        frequency[item] = (frequency[item] || 0) + 1;
-        if (frequency[item] > maxCount) {
-            maxCount = frequency[item];
-            mostFrequent = item;
+    students.forEach(student => {
+        const average = calculateAverage(student.scores);
+        if (average > highestAverage) {
+            highestAverage = average;
+            topStudent = student;
         }
-    }
-
-    return `${mostFrequent} (${maxCount} times)`;
-}
-
-var arr2 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
-console.log(findMostFrequent(arr2)); // "a (5 times)"
-
-// Challenge 7
-function swapCase(str) {
-    return str.split('').map(char => {
-        if (char === char.toUpperCase()) {
-            return char.toLowerCase();
-        } else {
-            return char.toUpperCase();
-        }
-    }).join('');
-}
-
-console.log(swapCase('The Quick Brown Fox'));
-
-
-// Challenge 8
-function displayColors() {
-    const color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
-    const o = ["th", "st", "nd", "rd"];
-
-    color.forEach((colorName, index) => {
-        const position = index + 1;
-        let ordinal;
-
-        if (position === 1) {
-            ordinal = o[1];
-        } else if (position === 2) {
-            ordinal = o[2];
-        } else if (position === 3) {
-            ordinal = o[3];
-        } else {
-            ordinal = o[0];
-        }
-
-        console.log(`${position}${ordinal} choice is ${colorName.trim()}.`);
     });
+
+    return {
+        student: topStudent,
+        average: highestAverage
+    };
 }
 
-displayColors();
+students.forEach(student => {
+    const average = calculateAverage(student.scores);
+    const passed = hasPassed(average);
 
-// Challenge 9
-function sumArrayIndices(arr1, arr2) {
-    const maxLength = Math.max(arr1.length, arr2.length);
-    const result = [];
+    console.log(`${student.name}:`);
+    console.log(`  Scores: ${student.scores.join(', ')}`);
+    console.log(`  Average: ${average.toFixed(2)}`);
+    console.log(`  Status: ${passed ? 'Passed' : 'Failed'}`);
+    console.log('---');
+});
 
-    for (let i = 0; i < maxLength; i++) {
-        const val1 = arr1[i] || 0;
-        const val2 = arr2[i] || 0;
-        result.push(val1 + val2);
-    }
+const topStudent = findTopStudent(students);
+console.log(`\nTop Student: ${topStudent.student.name}`);
+console.log(`Average Score: ${topStudent.average.toFixed(2)}`);
 
-    return result;
+
+//task 2
+const cart = [
+  { id: 1, name: "Laptop", price: 900, quantity: 1 },
+  { id: 2, name: "Mouse", price: 50, quantity: 2 },
+  { id: 3, name: "Keyboard", price: 100, quantity: 1 }
+];
+
+let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+if (total > 100) {
+  total = total * 0.9;
 }
 
-const array1 = [1, 0, 2, 3, 4];
-const array2 = [3, 5, 6, 7, 8, 13];
-console.log(sumArrayIndices(array1, array2)); // [4, 5, 8, 10, 12, 13]
+const mostExpensive = cart.reduce((max, item) =>
+  item.price > max.price ? item : max
+);
+
+console.log("Total Price:", `$${total}`);
+console.log("Most Expensive Item:", mostExpensive.name);
+
+//task 3
+
+let products = [
+  { id: 1, name: "Laptop", price: 1200, stock: 10 },
+  { id: 2, name: "Phone", price: 700, stock: 15 }
+];
+
+function addProduct(product) {
+  products = [...products, product];
+}
+
+function updateStock(id, newStock) {
+  products = products.map(p =>
+    p.id === id ? { ...p, stock: newStock } : p
+  );
+}
+
+function deleteProduct(id) {
+  products = products.filter(p => p.id !== id);
+}
+
+function findProduct(name) {
+  return products.find(p => p.name.toLowerCase() === name.toLowerCase());
+}
+
+addProduct({ id: 3, name: "Tablet", price: 500, stock: 8 });
+updateStock(1, 20);
+deleteProduct(2);
+
+console.log(products);
+console.log(findProduct("Laptop"));
+
+//task 4
+const posts = [
+  { author: "Alice", likes: 100, comments: 20, shares: 5 },
+  { author: "Bob", likes: 200, comments: 50, shares: 10 }
+];
+
+function mostLikedPost(posts) {
+  return posts.reduce((max, post) =>
+    post.likes > max.likes ? post : max
+  );
+}
+
+function totalEngagement(posts) {
+  return posts.reduce(
+    (sum, post) => sum + post.likes + post.comments + post.shares,
+    0
+  );
+}
+
+console.log(mostLikedPost(posts));
+console.log(totalEngagement(posts));
+//task 5
+const teams = [
+  { name: "Team A", wins: 5, losses: 2, points: 15 },
+  { name: "Team B", wins: 6, losses: 1, points: 18 }
+];
+
+function sortTeamsByRanking(teams) {
+  return [...teams].sort((a, b) => b.points - a.points);
+}
+
+function bestTeam(teams) {
+  return teams.reduce((best, team) =>
+    team.points > best.points ? team : best
+  );
+}
+
+console.log(sortTeamsByRanking(teams));
+console.log(bestTeam(teams));
+
+
+// task 6
+const inventory = [
+  { itemName: "Laptop", category: "Electronics", stock: 5 },
+  { itemName: "Phone", category: "Electronics", stock: 10 }
+];
+
+function totalStockByCategory(category) {
+  return inventory
+    .filter(item => item.category === category)
+    .reduce((sum, item) => sum + item.stock, 0);
+}
+
+function lowStockItems(limit) {
+  return inventory.filter(item => item.stock < limit);
+}
+
+console.log(totalStockByCategory("Electronics"));
+console.log(lowStockItems(6));
