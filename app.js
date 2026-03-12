@@ -417,20 +417,238 @@
 
 // Assignment 
 
-function calc(){
-	let price = 100
-	let sale = 0
-	let quantite = prompt("How muvh are you wont to buy?")
-	if (quantite >= 3){
-		sale = 0.1
-	}
-	else if (quantite >= 5){
-		sale = 0.2
-	}
-	let total = price * quantite * (1 - sale);
-	console.log(`Your total price is $${total}`);
-}
-calc()
+// function calc(){
+// 	let price = 100
+// 	let sale = 0
+// 	let quantite = prompt("How muvh are you wont to buy?")
+// 	if (quantite >= 3){
+// 		sale = 0.1
+// 	}
+// 	else if (quantite >= 5){
+// 		sale = 0.2
+// 	}
+// 	let total = price * quantite * (1 - sale);
+// 	console.log(`Your total price is $${total}`);
+// }
+// calc()
+
+
+// 3
+
+// function checkPasswordStrength(password) {
+//   let score = 0;
+
+//   if (password.length >= 8) {
+//     score++;
+//   }
+
+//   let hasUpper = false;
+//   let hasNumber = false;
+//   let hasSpecial = false;
+
+//   const specialChars = "!@#$%^&*()-+";
+
+//   for (let i = 0; i < password.length; i++) {
+//     let char = password[i];
+
+//     if (char >= "A" && char <= "Z") {
+//       hasUpper = true;
+//     } else if (char >= "0" && char <= "9") {
+//       hasNumber = true;
+//     } else if (specialChars.includes(char)) {
+//       hasSpecial = true;
+//     }
+//   }
+
+//   if (hasUpper) score++;
+//   if (hasNumber) score++;
+//   if (hasSpecial) score++;
+
+//   if (score <= 2) {
+//     output.textContent = "Weak";
+//   } else if (score === 3) {
+//     output.textContent = "Medium";
+//   } else {
+//     output.textContent = "Strong";
+//   }
+// }
+
+// inputElement.addEventListener("input", () => {
+//   checkPasswordStrength(inputElement.value);
+// });
+
+// 4
+// function withdrawCash(amount) {
+//   if (amount % 10 !== 0 || amount <= 0) {
+//     return null;
+//   }
+
+//   let hundreds = 0,
+//     fifties = 0,
+//     twenties = 0,
+//     tens = 0;
+//   let remaining = amount;
+
+//   while (remaining >= 100) {
+//     hundreds++;
+//     remaining -= 100;
+//   }
+//   while (remaining >= 50) {
+//     fifties++;
+//     remaining -= 50;
+//   }
+//   while (remaining >= 20) {
+//     twenties++;
+//     remaining -= 20;
+//   }
+//   while (remaining >= 10) {
+//     tens++;
+//     remaining -= 10;
+//   }
+
+//   return { hundreds, fifties, twenties, tens };
+// }
+
+// inputElement.addEventListener("input", () => {
+//   const amount = Number(inputElement.value);
+//   const result = withdrawCash(amount);
+
+//   if (!result) {
+//     output.textContent = "Error: Please enter a multiple of $10";
+//     return;
+//   }
+
+//   output.textContent = `Dispensing:
+//     $100 x ${result.hundreds}
+//     $50 x ${result.fifties}
+//     $20 x ${result.twenties}
+//     $10 x ${result.tens}`;
+// });
+
+// 5
+
+// function startTrafficLight() {
+//   showRed();
+// }
+
+// function showRed() {
+//   output.textContent = "STOP: RED";
+//   output.style.color = "red";
+
+//   setTimeout(() => {
+//     showGreen();
+//   }, 5000);
+// }
+
+// function showGreen() {
+//   output.textContent = "GO: GREEN";
+//   output.style.color = "green";
+
+//   setTimeout(() => {
+//     showYellow();
+//   }, 3000);
+// }
+
+// function showYellow() {
+//   output.textContent = "CAUTION: YELLOW";
+//   output.style.color = "orange";
+
+//   setTimeout(() => {
+//     showRed();
+//   }, 2000);
+// }
+
+// startTrafficLight();
+
+// 6
+
+// function createBankAccount(initialName, initialBalance) {
+//   let balance = initialBalance;
+//   let accountHolder = initialName;
+
+//   return {
+//     deposit: function (amount) {
+//       if (amount > 0) {
+//         balance += amount;
+//         console.log(`Deposited $${amount}. New balance: $${balance}`);
+//       } else {
+//         console.log("Deposit amount must be positive.");
+//       }
+//     },
+
+//     withdraw: function (amount) {
+//       if (amount > balance) {
+//         console.log("Insufficient funds!");
+//       } else if (amount <= 0) {
+//         console.log("Please enter a valid amount to withdraw.");
+//       } else {
+//         balance -= amount;
+//         console.log(`Withdrew $${amount}. Remaining balance: $${balance}`);
+//       }
+//     },
+
+//     viewBalance: function () {
+//       return `Account Holder: ${accountHolder} | Balance: $${balance}`;
+//     },
+//   };
+// }
+
+// const myAccount = createBankAccount("Aziz", 100);
+
+// myAccount.deposit(50);
+// myAccount.withdraw(20);
+// console.log(myAccount.viewBalance());
+
+// 7
+
+// button1.textContent = "Admin";
+// button2.textContent = "Editor";
+// button3.textContent = "User";
+
+// function updateOutput(resp) {
+//   output.textContent = resp;
+// }
+
+// button1.addEventListener("click", function () {
+//   updateOutput("You can add, edit, delete content");
+// });
+
+// button2.addEventListener("click", function () {
+//   updateOutput("You can edit, view content");
+// });
+
+// button3.addEventListener("click", function () {
+//   updateOutput("You can view content");
+// });
+
+// 8
+
+// function calcTax() {
+//   let income = Number(input.value);
+
+//   if (income < 10000) {
+//     output.textContent = "No tax for you buddy";
+//   } else if (income >= 10000 && income < 50000) {
+//     output.textContent = "You got yourself 10% tax!";
+//   } else {
+//     output.textContent = "We giving you 20% tax. ";
+//   }
+// }
+
+// input.addEventListener("input", calcTax);
+
+																			///////////////////////////
+																				// Lecture 6 Start
+																			///////////////////////////
+
+array = [6, 47, 7, 6, 5, 4, 3];
+
+array.push(69);
+array.pop();
+const filtered = array.filter((word) => word > 6);
+const mapped = array.map((x) => x * 2);
+array.shift();
+array.unshift(3, 4, 5);
 
 
 
