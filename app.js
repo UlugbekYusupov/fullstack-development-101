@@ -610,7 +610,7 @@ const button3 = document.getElementById("button3");
 //     return student.name;
 //   });
 
-// console.log(passedStuds);
+// console.table(passedStuds);
 
 // const cart = [
 //   { id: 1, name: "Laptop", price: 900, quantity: 1 },
@@ -697,24 +697,161 @@ const button3 = document.getElementById("button3");
 // }
 // sortByPoints();
 
-const inventory = [
-  { itemName: "Hammer", category: "Tools", stock: 15 },
-  { itemName: "Drill", category: "Tools", stock: 4 },
-  { itemName: "Plywood", category: "Lumber", stock: 20 },
-  { itemName: "Oak Plank", category: "Lumber", stock: 2 },
-  { itemName: "Screws", category: "Hardware", stock: 100 },
+// const inventory = [
+//   { itemName: "Hammer", category: "Tools", stock: 15 },
+//   { itemName: "Drill", category: "Tools", stock: 4 },
+//   { itemName: "Plywood", category: "Lumber", stock: 20 },
+//   { itemName: "Oak Plank", category: "Lumber", stock: 2 },
+//   { itemName: "Screws", category: "Hardware", stock: 100 },
+// ];
+
+// function getTotalStockByCategory(items) {
+//   return items.reduce((totals, item) => {
+//     const { category, stock } = item;
+//     if (!totals[category]) {
+//       totals[category] = 0;
+//     }
+//     totals[category] += stock;
+//     return totals;
+//   }, {});
+// }
+
+// const categoryTotals = getTotalStockByCategory(inventory);
+// console.log("Stock by Category:", categoryTotals);
+
+// to-do list app
+
+const app_title = document.createElement("h1");
+const toDo_container = document.createElement("div");
+const addTaskBtn = document.createElement("button");
+const addTaskModalBg = document.createElement("div");
+const addTaskModal = document.createElement("div");
+const inputEl = document.createElement("input");
+const addTaskBtn2 = document.createElement("button");
+const body = document.querySelector("body");
+
+let tasks = [
+  { id: 1, title: "My First task", isDone: false },
+  { id: 2, title: "Do some Coding", isDone: false },
+  { id: 3, title: "Something else", isDone: false },
 ];
 
-function getTotalStockByCategory(items) {
-  return items.reduce((totals, item) => {
-    const { category, stock } = item;
-    if (!totals[category]) {
-      totals[category] = 0;
-    }
-    totals[category] += stock;
-    return totals;
-  }, {});
+body.append(app_title, toDo_container, addTaskBtn, addTaskModalBg);
+addTaskModalBg.appendChild(addTaskModal);
+addTaskModal.append(inputEl, addTaskBtn2);
+
+app_title.textContent = "To-Do App";
+app_title.style.textAlign = "center";
+app_title.style.fontWeight = "900";
+app_title.style.fontSize = "3rem";
+app_title.style.color = "red";
+
+toDo_container.style.width = "400px";
+toDo_container.style.border = "1px solid #0002";
+toDo_container.style.background = "#0001";
+toDo_container.style.boxShadow = "0 5px 15px -5px #0002";
+toDo_container.style.padding = "20px";
+toDo_container.style.borderRadius = "10px";
+toDo_container.style.display = "grid";
+toDo_container.style.gap = "10px";
+
+body.style.minHeight = "100vh";
+body.style.display = "grid";
+body.style.placeContent = "center";
+body.style.gap = "1.5rem";
+
+addTaskBtn.textContent = "Add task";
+addTaskBtn.style.padding = "10px 20px";
+addTaskBtn.style.borderRadius = "8px";
+addTaskBtn.style.background = "skyblue";
+addTaskBtn.style.cursor = "pointer";
+addTaskBtn.style.border = "none";
+addTaskBtn.style.fontSize = "1rem";
+
+addTaskBtn.onmousedown = () => {
+  addTaskBtn.style.scale = 0.95;
+};
+addTaskBtn.onmouseup = () => {
+  addTaskBtn.style.scale = 1;
+};
+
+addTaskModalBg.style.position = "fixed";
+addTaskModalBg.style.inset = "0";
+addTaskModalBg.style.background = "#0005";
+addTaskModalBg.style.zIndex = "1";
+addTaskModalBg.style.display = "grid";
+addTaskModalBg.style.placeContent = "center";
+
+addTaskModal.style.width = "400px";
+addTaskModal.style.padding = "20px";
+addTaskModal.style.background = "#f4f4f4";
+addTaskModal.style.borderRadius = "10px";
+addTaskModal.style.boxShadow = "0 5px 15px -5px #0003";
+addTaskModal.style.display = "grid";
+addTaskModal.style.gap = "1rem";
+
+inputEl.style.height = "40px";
+inputEl.style.paddingLeft = "7px";
+
+addTaskBtn2.textContent = "Add task";
+addTaskBtn2.style.background = "limegreen";
+addTaskBtn2.style.padding = "7px 20px";
+addTaskBtn2.style.borderRadius = "7px";
+addTaskBtn2.style.border = "none";
+addTaskBtn2.style.cursor = "pointer";
+
+function initApp() {
+  tasks.forEach((task) => {
+    const taskCard = document.createElement("div");
+    taskCard.innerHTML = `  
+    <h1>${task.id}. ${task.title}</h1>
+    <ul>
+      <button>Delete</button>
+      <button>Done</button>
+    </ul>
+  `;
+    toDo_container.appendChild(taskCard);
+
+    taskCard.style.display = "flex";
+    taskCard.style.padding = "10px";
+    taskCard.style.justifyContent = "space-between";
+    taskCard.style.border = "1px solid #0002";
+    taskCard.style.borderRadius = "8px";
+    taskCard.style.background = "#0001";
+    taskCard.style.boxShadow = "0 3px 10px #0001";
+
+    const headerText = taskCard.querySelector("h1");
+    const ul = taskCard.querySelector("ul");
+    const buttons = taskCard.querySelectorAll("button");
+
+    headerText.style.fontSize = "1.2rem";
+    ul.style.display = "grid";
+    ul.style.gap = "5px";
+    buttons.forEach((button) => {
+      button.style.padding = "5px 17px";
+      button.style.borderRadius = "5px";
+      button.style.cursor = "pointer";
+
+      button.onmousedown = () => {
+        button.style.scale = 0.95;
+      };
+      button.onmouseup = () => {
+        button.style.scale = 1;
+      };
+    });
+  });
 }
 
-const categoryTotals = getTotalStockByCategory(inventory);
-console.log("Stock by Category:", categoryTotals);
+initApp();
+
+function toggleModal(e) {
+  if (e.target !== addTaskModalBg) {
+    return; // Exit the function and do nothing
+  }
+  addTaskModalBg.style.display = "none";
+}
+
+addTaskModalBg.onclick = toggleModal;
+addTaskBtn.onclick = () => {
+  addTaskModalBg.style.display = "grid";
+};
