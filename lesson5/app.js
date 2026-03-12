@@ -1,18 +1,18 @@
 //Challenge 1
 
-// function getFirstElement(arr) {
-//     return arr[0]
-// }
+function getFirstElement(arr) {
+    return arr[0]
+}
 
-// console.log(getFirstElement([1, 2, 3, 4, 5]))
+console.log(getFirstElement([1, 2, 3, 4, 5]))
 
 //Challenge 2
 
-// function getLastElement(arr) {
-//     return arr[arr.length - 1]
-// }
+function getLastElement(arr) {
+    return arr[arr.length - 1]
+}
 
-// console.log(getLastElement([1, 2, 3, 4, 5]));
+console.log(getLastElement([1, 2, 3, 4, 5]));
 
 
 //Challenge 3
@@ -72,7 +72,7 @@
 //       console.log(`${i+1}th choice is ${e}`);
 //    }
 // })
-// console.log(1%10 ==1 && !11);
+// console.log(1%10 ==1 && !11); 
 
 // Challenge 9
 let array1 = [1, 0, 2, 3, 4];
