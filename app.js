@@ -641,14 +641,99 @@
 																				// Lecture 6 Start
 																			///////////////////////////
 
-array = [6, 47, 7, 6, 5, 4, 3];
+// array = [6, 47, 7, 6, 5, 4, 3];
 
-array.push(69);
-array.pop();
-const filtered = array.filter((word) => word > 6);
-const mapped = array.map((x) => x * 2);
-array.shift();
-array.unshift(3, 4, 5);
+// array.push(69);
+// array.pop();
+// const filtered = array.filter((word) => word > 6);
+// const mapped = array.map((x) => x * 2);
+// array.shift();
+// array.unshift(3, 4, 5);
+
+// ! Homework start
+// function first(array, n) {
+//   if (array.length === 0) return [];
+//   if (n === undefined) return array[0];
+//   if (n < 0) return [];
+//   return array.slice(0, n);
+// }
+
+// console.log(first([7, 9, 0, -2]));
+// console.log(first([], 3));
+// console.log(first([7, 9, 0, -2], 3));
+// console.log(first([7, 9, 0, -2], 6));
+// console.log(first([7, 9, 0, -2], -3));
+
+// function last(array, n) {
+//   if (n === undefined) return array[array.length - 1];
+
+//   return array.slice(Math.max(array.length - n, 0));
+// }
+
+// console.log(last([7, 9, 0, -2]));
+// console.log(last([7, 9, 0, -2], 3));
+// console.log(last([7, 9, 0, -2], 6));
+
+// const myColor = ["Red", "Green", "White", "Black"];
+// const result = myColor.join(",");
+// console.log(result);
+
+// function insertDashes(num) {
+//   const str = num.toString();
+//   let result = "";
+
+//   for (let i = 0; i < str.length; i++) {
+//     result += str[i];
+//     if (parseInt(str[i]) % 2 === 0 && i !== str.length - 1) {
+//       result += "-";
+//     }
+//   }
+//   return result;
+// }
+// console.log(insertDashes(25468));
+
+// var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+
+// arr1.sort(function (a, b) {
+//   return a - b;
+// });
+
+// console.log(arr1.join(","));
+
+// var arr1 = [3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3];
+
+// function findMostFrequent(arr) {
+//   let counts = {};
+//   let maxItem = arr[0];
+//   let maxCount = 0;
+
+//   for (let item of arr) {
+//     counts[item] = (counts[item] || 0) + 1;
+
+//     if (counts[item] > maxCount) {
+//       maxCount = counts[item];
+//       maxItem = item;
+//     }
+//   }
+//   return `${maxItem} ( ${maxCount} times )`;
+// }
+
+// console.log(findMostFrequent(arr1));
+
+// function swapCase(str) {
+//   let result = "";
+
+//   for (let char of str) {
+//     if (char === char.toUpperCase()) {
+//       result += char.toLowerCase();
+//     } else {
+//       result += char.toUpperCase();
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(swapCase("The Quick Brown Fox"));
 
 
 
