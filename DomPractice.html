@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO do List</title>
+    <link rel="stylesheet" href="DOMPractice.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div id="todoBox">
+            <h1 id="title"> Interactive TO-Do list</h1>
+            <div id="tasks">
+                <div class="tasks_item">
+                    <h3 class="task_title">Task 1 </h1>
+                    <p class="taskDes"> Description for task 1 </p>
+
+                    <div class="taskStatus">
+                        pending
+                    </div>
+                    <button class="DeleteBtn">Delete</button>
+                </div>
+
+                <div class="tasks_item">
+                    <h3 class="task_title">Task 1 </h1>
+                    <p class="taskDes"> Description for task 1 </p>
+
+                    <div class="taskStatus">
+                        pending
+                    </div>
+                    <button class="DeleteBtn">Delete</button>
+                </div>
+                <div class="tasks_item">
+                    <h3 class="task_title">Task 1 </h1>
+                    <p class="taskDes"> Description for task 1 </p>
+
+                    <div class="taskStatus">
+                        pending
+                    </div>
+                    <button class="DeleteBtn">Delete</button>
+                </div>
+            </div>
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+    </div>
+
+    <div id="modalOverlay" class="hidden">
+        <div id="modal">
+            <h2>Add Task</h2>
+            <input type="text" id="newTaskTitle" placeholder="Task Title">
+            <textarea id="newTaskDesc" placeholder="Task Description"></textarea>
+
+            <select id="newTaskStatus">
+                <option value="pending">Pending</option>
+                <option value="progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <button id="saveTaskBtn">Save Task</button>
+            <button id="closeBtn">Close</button>
+        </div>
+    </div>
+    <script src="DomPractice.js"></script>
+</body>
+</html>

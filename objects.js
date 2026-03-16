@@ -40,78 +40,78 @@ console.log(`the result is $${total}`)
 
 // task 3
 
-//  class Products{
-//     products=[
-//         {id:1, name:"laptop", price:1200,stock:10},
-//         {id:2, name:"Phone", price:700,stock:15}
-//     ]
-//     // constructor(name,price,stock){
-//     //     this.name=name;
-//     //     this.price=price;
-//     //     this.stock=stock
-//     // }
+ class Products{
+    products=[
+        {id:1, name:"laptop", price:1200,stock:10},
+        {id:2, name:"Phone", price:700,stock:15}
+    ]
+    // constructor(name,price,stock){
+    //     this.name=name;
+    //     this.price=price;
+    //     this.stock=stock
+    // }
 
-//     addProduct(){
-//         const name=window.prompt("Enter the name of the product: ");
-//         const price=window.prompt("Enter the price of the product: ");
-//         const stock=window.prompt("Enter the stock of the product: ");
+    addProduct(){
+        const name=window.prompt("Enter the name of the product: ");
+        const price=window.prompt("Enter the price of the product: ");
+        const stock=window.prompt("Enter the stock of the product: ");
         
-//         const newProduct = {
-//             id: this.products.length + 1,
-//             name: name,
-//             price: price,
-//             stock: stock
-//         };
+        const newProduct = {
+            id: this.products.length + 1,
+            name: name,
+            price: price,
+            stock: stock
+        };
 
-//         this.products.push(newProduct); 
-//         console.log(" ✅ Added Successfully ") 
-//     }
-//     updateStock(){
-//         const idP=Number(window.prompt("Enter the id of the product: "));
-//         let found = false;
+        this.products.push(newProduct); 
+        console.log(" ✅ Added Successfully ") 
+    }
+    updateStock(){
+        const idP=Number(window.prompt("Enter the id of the product: "));
+        let found = false;
 
-//         for(let i = 0; i < this.products.length; i++){
-//             if(this.products[i].id === idP){
-//                 const stockLevel = Number(window.prompt("Enter the new stock: "));
-//                 this.products[i].stock = stockLevel;
-//                 console.log("✅ Updated Successfully");
-//                 found = true;
-//                 break;
-//             }
-//         }
+        for(let i = 0; i < this.products.length; i++){
+            if(this.products[i].id === idP){
+                const stockLevel = Number(window.prompt("Enter the new stock: "));
+                this.products[i].stock = stockLevel;
+                console.log("✅ Updated Successfully");
+                found = true;
+                break;
+            }
+        }
     
-//         if(!found){
-//             console.log("❗ Product not found");
-//         }
-//     }
-//     deleteProduct(){
-//         const idP=window.prompt("Enter the id of the product: ");
-//         const index = this.products.findIndex(item => item.id === idP);
-//         if (index!==-1){
-//             this.products.splice(index, 1);
-//             console.log(" ✅ Deleted Successfully ")
-//         }else{
-//             console.log("❗️ Failed  ")
-//         }
-//     }
-//     findProduct(){
-//         const nameF=window.prompt("Enter the name of the product: ")
-//         const product = this.products.find(item => item.name.toLowerCase() === nameF.toLowerCase());
-//         if (product){
-//             console.log(this.products.id, this.products.name, this.products.stock)
-//         }else{
-//             console.log("❗️ Not Found  ")
-//         }
-//     }
+        if(!found){
+            console.log("❗ Product not found");
+        }
+    }
+    deleteProduct(){
+        const idP=window.prompt("Enter the id of the product: ");
+        const index = this.products.findIndex(item => item.id === idP);
+        if (index!==-1){
+            this.products.splice(index, 1);
+            console.log(" ✅ Deleted Successfully ")
+        }else{
+            console.log("❗️ Failed  ")
+        }
+    }
+    findProduct(){
+        const nameF=window.prompt("Enter the name of the product: ")
+        const product = this.products.find(item => item.name.toLowerCase() === nameF.toLowerCase());
+        if (product){
+            console.log(this.products.id, this.products.name, this.products.stock)
+        }else{
+            console.log("❗️ Not Found  ")
+        }
+    }
 
 
-// }
+}
 
-// const product1=new Products()
-// console.log(product1.products);
-// // product1.addProduct();
-// console.log(product1.products);
-// product1.updateStock();
+const product1=new Products()
+console.log(product1.products);
+// product1.addProduct();
+console.log(product1.products);
+product1.updateStock();
 
 // task 6
 

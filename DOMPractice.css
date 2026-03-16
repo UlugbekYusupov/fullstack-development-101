@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: serif;
+    /* font-size: 20px; */
+}
+.container{
+    width: 80% ;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#todoBox{
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px 4px aliceblue;
+    width: 50%;
+    padding: 2rem;
+  
+}
+#title{
+    text-align: center;
+    font-weight: 600;
+}
+#tasks{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 2rem;
+}
+.tasks_item{
+    width: 100%;
+    border: 1px solid lightgray;
+    padding: 1rem;
+    border-radius: 20px;
+    position: relative;
+}
+.taskStatus{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: orange;
+    color: white;
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+.DeleteBtn{
+    margin-top: 1rem;
+    padding:.5rem 2rem ;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+#addTaskBtn{
+    width: 100%;
+    margin-top: 2rem;
+    height: 40px;
+    border-radius: 10px;
+    border:none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: blue;
+}
+
+#modalOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal{
+    background-color: white;
+    width: 400px;
+    padding: 2rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#modal h2{
+    text-align: center;
+}
+
+#modal input,
+#modal textarea,
+#modal select{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+#modal textarea{
+    resize: none;
+    height: 100px;
+}
+
+#saveTaskBtn{
+    background-color: #2b7cff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#closeBtn{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.pending{
+    background-color: orange;
+}
+
+.progress{
+    background-color: blue;
+}
+
+.completed{
+    background-color: green;
+}
+
+
+
