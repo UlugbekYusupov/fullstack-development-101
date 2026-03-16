@@ -719,139 +719,331 @@ const button3 = document.getElementById("button3");
 // const categoryTotals = getTotalStockByCategory(inventory);
 // console.log("Stock by Category:", categoryTotals);
 
-// to-do list app
+// ! to-do list app
+// * Practice 1
 
-const app_title = document.createElement("h1");
-const toDo_container = document.createElement("div");
-const addTaskBtn = document.createElement("button");
-const addTaskModalBg = document.createElement("div");
-const addTaskModal = document.createElement("div");
-const inputEl = document.createElement("input");
-const addTaskBtn2 = document.createElement("button");
-const body = document.querySelector("body");
+// const app_title = document.createElement("h1");
+// const toDo_container = document.createElement("ol");
+// const addTaskBtn = document.createElement("button");
+// const addTaskModalBg = document.createElement("div");
+// const addTaskModal = document.createElement("div");
+// const inputEl = document.createElement("input");
+// const addTaskBtn2 = document.createElement("button");
+// const body = document.querySelector("body");
 
-let tasks = [
-  { id: 1, title: "My First task", isDone: false },
-  { id: 2, title: "Do some Coding", isDone: false },
-  { id: 3, title: "Something else", isDone: false },
-];
+// let tasks = [
+//   { id: 1, title: "My First task", isDone: false },
+//   { id: 2, title: "Do some Coding", isDone: false },
+//   { id: 3, title: "Something else", isDone: false },
+// ];
 
-body.append(app_title, toDo_container, addTaskBtn, addTaskModalBg);
-addTaskModalBg.appendChild(addTaskModal);
-addTaskModal.append(inputEl, addTaskBtn2);
+// body.append(app_title, toDo_container, addTaskBtn, addTaskModalBg);
+// addTaskModalBg.appendChild(addTaskModal);
+// addTaskModal.append(inputEl, addTaskBtn2);
 
-app_title.textContent = "To-Do App";
-app_title.style.textAlign = "center";
-app_title.style.fontWeight = "900";
-app_title.style.fontSize = "3rem";
-app_title.style.color = "red";
+// app_title.textContent = "To-Do App";
+// app_title.style.textAlign = "center";
+// app_title.style.fontWeight = "900";
+// app_title.style.fontSize = "3rem";
+// app_title.style.color = "red";
 
-toDo_container.style.width = "400px";
-toDo_container.style.border = "1px solid #0002";
-toDo_container.style.background = "#0001";
-toDo_container.style.boxShadow = "0 5px 15px -5px #0002";
-toDo_container.style.padding = "20px";
-toDo_container.style.borderRadius = "10px";
-toDo_container.style.display = "grid";
-toDo_container.style.gap = "10px";
+// toDo_container.style.width = "400px";
+// toDo_container.style.border = "1px solid #0002";
+// toDo_container.style.background = "#0001";
+// toDo_container.style.boxShadow = "0 5px 15px -5px #0002";
+// toDo_container.style.padding = "20px";
+// toDo_container.style.borderRadius = "10px";
+// toDo_container.style.display = "grid";
+// toDo_container.style.gap = "10px";
 
-body.style.minHeight = "100vh";
-body.style.display = "grid";
-body.style.placeContent = "center";
-body.style.gap = "1.5rem";
+// body.style.minHeight = "100vh";
+// body.style.display = "grid";
+// body.style.placeContent = "center";
+// body.style.gap = "1.5rem";
 
-addTaskBtn.textContent = "Add task";
-addTaskBtn.style.padding = "10px 20px";
-addTaskBtn.style.borderRadius = "8px";
-addTaskBtn.style.background = "skyblue";
-addTaskBtn.style.cursor = "pointer";
-addTaskBtn.style.border = "none";
-addTaskBtn.style.fontSize = "1rem";
+// addTaskBtn.textContent = "Add task";
+// addTaskBtn.style.padding = "10px 20px";
+// addTaskBtn.style.borderRadius = "8px";
+// addTaskBtn.style.background = "skyblue";
+// addTaskBtn.style.cursor = "pointer";
+// addTaskBtn.style.border = "none";
+// addTaskBtn.style.fontSize = "1rem";
 
-addTaskBtn.onmousedown = () => {
-  addTaskBtn.style.scale = 0.95;
-};
-addTaskBtn.onmouseup = () => {
-  addTaskBtn.style.scale = 1;
-};
+// addTaskBtn.onmousedown = () => {
+//   addTaskBtn.style.scale = 0.95;
+// };
+// addTaskBtn.onmouseup = () => {
+//   addTaskBtn.style.scale = 1;
+// };
 
-addTaskModalBg.style.position = "fixed";
-addTaskModalBg.style.inset = "0";
-addTaskModalBg.style.background = "#0005";
-addTaskModalBg.style.zIndex = "1";
-addTaskModalBg.style.display = "grid";
-addTaskModalBg.style.placeContent = "center";
+// addTaskModalBg.style.position = "fixed";
+// addTaskModalBg.style.inset = "0";
+// addTaskModalBg.style.background = "#0006";
+// addTaskModalBg.style.zIndex = "1";
+// addTaskModalBg.style.display = "none";
+// addTaskModalBg.style.placeContent = "center";
+// addTaskModalBg.style.backdropFilter = "blur(10px)";
 
-addTaskModal.style.width = "400px";
-addTaskModal.style.padding = "20px";
-addTaskModal.style.background = "#f4f4f4";
-addTaskModal.style.borderRadius = "10px";
-addTaskModal.style.boxShadow = "0 5px 15px -5px #0003";
-addTaskModal.style.display = "grid";
-addTaskModal.style.gap = "1rem";
+// addTaskModal.style.width = "400px";
+// addTaskModal.style.padding = "20px";
+// addTaskModal.style.background = "#f4f4f4";
+// addTaskModal.style.borderRadius = "10px";
+// addTaskModal.style.boxShadow = "0 5px 15px -5px #0003";
+// addTaskModal.style.display = "grid";
+// addTaskModal.style.gap = "1rem";
 
-inputEl.style.height = "40px";
-inputEl.style.paddingLeft = "7px";
+// inputEl.style.height = "40px";
+// inputEl.style.paddingLeft = "7px";
 
-addTaskBtn2.textContent = "Add task";
-addTaskBtn2.style.background = "limegreen";
-addTaskBtn2.style.padding = "7px 20px";
-addTaskBtn2.style.borderRadius = "7px";
-addTaskBtn2.style.border = "none";
-addTaskBtn2.style.cursor = "pointer";
+// addTaskBtn2.textContent = "Add task";
+// addTaskBtn2.style.background = "limegreen";
+// addTaskBtn2.style.padding = "7px 20px";
+// addTaskBtn2.style.borderRadius = "7px";
+// addTaskBtn2.style.border = "none";
+// addTaskBtn2.style.cursor = "pointer";
 
-function initApp() {
-  tasks.forEach((task) => {
-    const taskCard = document.createElement("div");
-    taskCard.innerHTML = `  
-    <h1>${task.id}. ${task.title}</h1>
-    <ul>
-      <button>Delete</button>
-      <button>Done</button>
-    </ul>
-  `;
-    toDo_container.appendChild(taskCard);
+// function initApp() {
+//   toDo_container.innerHTML = "";
 
-    taskCard.style.display = "flex";
-    taskCard.style.padding = "10px";
-    taskCard.style.justifyContent = "space-between";
-    taskCard.style.border = "1px solid #0002";
-    taskCard.style.borderRadius = "8px";
-    taskCard.style.background = "#0001";
-    taskCard.style.boxShadow = "0 3px 10px #0001";
+//   tasks.forEach((task) => {
+//     const taskCard = document.createElement("li");
 
-    const headerText = taskCard.querySelector("h1");
-    const ul = taskCard.querySelector("ul");
-    const buttons = taskCard.querySelectorAll("button");
+//     taskCard.innerHTML = `
+//     <h1>${task.title}</h1>
+//     <ul>
+//       <button id="delete">Delete</button>
+//       <button id="done">Done</button>
+//     </ul>
+//   `;
 
-    headerText.style.fontSize = "1.2rem";
-    ul.style.display = "grid";
-    ul.style.gap = "5px";
-    buttons.forEach((button) => {
-      button.style.padding = "5px 17px";
-      button.style.borderRadius = "5px";
-      button.style.cursor = "pointer";
+//     taskCard.style.display = "flex";
+//     taskCard.style.padding = "10px";
+//     taskCard.style.justifyContent = "space-between";
+//     taskCard.style.border = "1px solid #0002";
+//     taskCard.style.borderRadius = "8px";
+//     taskCard.style.background = "#0001";
+//     taskCard.style.boxShadow = "0 3px 10px #0001";
 
-      button.onmousedown = () => {
-        button.style.scale = 0.95;
-      };
-      button.onmouseup = () => {
-        button.style.scale = 1;
-      };
-    });
-  });
+//     const headerText = taskCard.querySelector("h1");
+//     const ul = taskCard.querySelector("ul");
+//     const buttons = taskCard.querySelectorAll("button");
+
+//     headerText.style.fontSize = "1.2rem";
+//     ul.style.display = "grid";
+//     ul.style.gap = "5px";
+//     buttons.forEach((button) => {
+//       button.style.padding = "5px 17px";
+//       button.style.borderRadius = "5px";
+//       button.style.cursor = "pointer";
+
+//       button.onmousedown = () => {
+//         button.style.scale = 0.95;
+//       };
+//       button.onmouseup = () => {
+//         button.style.scale = 1;
+//       };
+//     });
+
+//     if (task.isDone) {
+//       headerText.style.textDecoration = "line-through";
+//       headerText.style.opacity = 0.5;
+
+//       buttons[1].textContent = "Undone";
+//     }
+
+//     const deleteBtn = taskCard.querySelector("#delete");
+//     const editBtn = taskCard.querySelector("#done");
+
+//     deleteBtn.onclick = () => deleteTask(task.id);
+//     editBtn.onclick = () => editTask(task.id);
+
+//     taskCard.onclick = () => {
+//       task.isDone = !task.isDone;
+//       initApp();
+//     };
+
+//     toDo_container.appendChild(taskCard);
+//   });
+// }
+
+// initApp();
+
+// function toggleModal(e) {
+//   if (e.target !== addTaskModalBg) {
+//     return;
+//   }
+//   addTaskModalBg.style.display = "none";
+// }
+
+// addTaskModalBg.onclick = toggleModal;
+// addTaskBtn.onclick = () => {
+//   addTaskModalBg.style.display = "grid";
+// };
+
+// function deleteTask(id) {
+//   tasks = tasks.filter((task) => task.id !== id);
+//   initApp();
+// }
+
+// function addTask() {
+//   const title = inputEl.value.trim();
+
+//   if (title === "") {
+//     alert("Please enter a task name.");
+//     return;
+//   }
+
+//   const newTask = {
+//     id: Date.now(),
+//     title: title,
+//     isDone: false,
+//   };
+
+//   tasks.push(newTask);
+
+//   initApp();
+//   inputEl.value = "";
+//   addTaskModalBg.style.display = "none";
+// }
+
+// addTaskBtn2.onclick = addTask;
+
+// ! Password strenth check
+// * Practice 2
+
+// const passwordContainer = document.createElement("div");
+// const appTitle = document.createElement("h1");
+// const passwordInp = document.createElement("input");
+// const passwordStatus = document.createElement("span");
+
+// document.body.append(passwordContainer);
+// passwordContainer.append(appTitle, passwordInp, passwordStatus);
+
+// function UiInit() {
+//   passwordContainer.style.width = "400px";
+//   passwordContainer.style.padding = "20px";
+//   passwordContainer.style.boxShadow = "0 7px 15px -5px #0003";
+//   passwordContainer.style.borderRadius = "10px";
+//   passwordContainer.style.background = "#fff";
+//   passwordContainer.style.border = "1px solid #0001";
+//   passwordContainer.style.display = "grid";
+//   passwordContainer.style.gap = "1rem";
+
+//   appTitle.textContent = "Password checker";
+//   appTitle.style.textAlign = "center";
+//   appTitle.style.fontFamily = "Arial";
+
+//   passwordInp.style.height = "35px";
+//   passwordInp.style.borderRadius = "8px";
+//   passwordInp.style.background = "#0001";
+//   passwordInp.style.boxShadow = "0 5px 10px -3px #0002";
+//   passwordInp.style.border = "1px solid #0001";
+//   passwordInp.style.paddingLeft = "7px";
+//   passwordInp.style.fontSize = "1rem";
+
+//   passwordStatus.textContent = "Weak";
+//   passwordStatus.style.width = "fit-content";
+//   passwordStatus.style.padding = "8px 25px";
+//   passwordStatus.style.margin = "auto";
+//   passwordStatus.style.borderRadius = "8px";
+//   passwordStatus.style.background = "#fd2c3d";
+//   passwordStatus.style.fontFamily = "Arial";
+//   passwordStatus.style.fontWeight = "700";
+//   passwordStatus.style.color = "#fff";
+// }
+// UiInit();
+
+// function checkPasswordInit() {
+//   const password = passwordInp.value;
+//   let strength = 0;
+
+//   if (password.length >= 8) {
+//     strength++;
+//   }
+
+//   let hasUpper = false;
+//   let hasNumber = false;
+//   let hasSpecial = false;
+
+//   const specialChars = "!@#$%^&*()-+";
+
+//   for (let i = 0; i < password.length; i++) {
+//     let char = password[i];
+
+//     if (char >= "A" && char <= "Z") {
+//       hasUpper = true;
+//     } else if (char >= "0" && char <= "9") {
+//       hasNumber = true;
+//     } else if (specialChars.includes(char)) {
+//       hasSpecial = true;
+//     }
+//   }
+
+//   if (hasUpper) strength++;
+//   if (hasNumber) strength++;
+//   if (hasSpecial) strength++;
+
+//   if (password.length === 0) {
+//     passwordStatus.textContent = "Empty";
+//     passwordStatus.style.background = "#aaa";
+//   } else if (strength <= 2) {
+//     passwordStatus.textContent = "Weak";
+//     passwordStatus.style.background = "#fd2c3d";
+//   } else if (strength === 3) {
+//     passwordStatus.textContent = "Medium";
+//     passwordStatus.style.background = "#fedf42";
+//   } else {
+//     passwordStatus.textContent = "Strong";
+//     passwordStatus.style.background = "#2aff3f";
+//   }
+// }
+
+// passwordInp.addEventListener("input", () => {
+//   checkPasswordInit();
+// });
+
+// ! Password strenth check
+// * Practice 3
+
+const calcContainer = document.createElement("div");
+const calcDisplay = document.createElement("span");
+const calcButtonGrid = document.createElement("div");
+
+document.body.append(calcContainer);
+calcContainer.append(calcDisplay, calcButtonGrid);
+
+for (i = 0; calcButtonGrid.childElementCount < 19; i++) {
+  const calcBtn = document.createElement("button");
+  calcButtonGrid.append(calcBtn);
+  calcBtn.style.width = "100%";
+  calcBtn.style.height = "60px";
+  calcBtn.style.cursor = "pointer";
 }
 
-initApp();
+function uiSetup() {
+  calcContainer.style.width = "400px";
+  calcContainer.style.background = "#fff";
+  calcContainer.style.padding = "20px";
+  calcContainer.style.display = "grid";
+  calcContainer.style.gap = "10px";
+  calcContainer.style.boxShadow = "0 5px 15px -3px #0002";
+  calcContainer.style.borderRadius = "10px";
 
-function toggleModal(e) {
-  if (e.target !== addTaskModalBg) {
-    return; // Exit the function and do nothing
-  }
-  addTaskModalBg.style.display = "none";
+  calcDisplay.style.width = "100%";
+  calcDisplay.style.height = "70px";
+  calcDisplay.style.background = "#0003";
+  calcDisplay.style.fontSize = "1.3rem";
+  calcDisplay.style.padding = "6px";
+  calcDisplay.style.borderRadius = "8px";
+
+  calcButtonGrid.style.width = "100%";
+  calcButtonGrid.style.display = "grid";
+  calcButtonGrid.style.gridTemplateColumns = "repeat(4, 1fr)";
+  calcButtonGrid.style.gap = "6px";
+  calcButtonGrid.style.marginTop = "10px";
+
+  calcButtonGrid.lastElementChild.style.gridColumn = "3/5";
+  calcButtonGrid.lastElementChild.style.background = "orange";
 }
 
-addTaskModalBg.onclick = toggleModal;
-addTaskBtn.onclick = () => {
-  addTaskModalBg.style.display = "grid";
-};
+uiSetup();
