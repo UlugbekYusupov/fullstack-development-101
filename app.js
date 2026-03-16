@@ -38,7 +38,7 @@
 // console.log('Celsius:', celsius)
 // console.log('Fahrenheit:', fahrenheit)
 // // If we change the value of celsius to 30
-// celsius = 30; // TypeError: Assignment to constant variable.
+// celsius = 30; // TypeError: Assignment to constant constiable.
 // Bonus chelange
 // const celsius = Number(prompt('Enter temperature in Celsius:'))
 // const fahrenheit = (celsius * 9) / 5 + 32
@@ -692,7 +692,7 @@
 // }
 // console.log(insertDashes(25468));
 
-// var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+// const arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
 
 // arr1.sort(function (a, b) {
 //   return a - b;
@@ -700,7 +700,7 @@
 
 // console.log(arr1.join(","));
 
-// var arr1 = [3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3];
+// const arr1 = [3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3];
 
 // function findMostFrequent(arr) {
 //   let counts = {};
@@ -863,5 +863,227 @@
 
 // const categoryTotals = getTotalStockByCategory(inventory);
 // console.log("Stock by Category:", categoryTotals);
+
+
+// Homework 
+const tasks = [
+  { id: 1, title: 'Task 1', desc: 'Description for Task 1', status: 'pending' },
+  { id: 2, title: 'Task 2', desc: 'Description for Task 2', status: 'in progress' },
+  { id: 3, title: 'Task 3', desc: 'Description for Task 3', status: 'completed' }
+];
+ 
+
+const app = document.createElement('div');
+app.className = 'app';
+document.body.appendChild(app);
+ 
+const h1 = document.createElement('h1');
+h1.textContent = 'Interactive To-Do List';
+app.appendChild(h1);
+ 
+const taskList = document.createElement('div');
+taskList.className = 'task-list';
+app.appendChild(taskList);
+ 
+const btnAdd = document.createElement('button');
+btnAdd.className = 'btn-add';
+btnAdd.textContent = '+ Add Task';
+btnAdd.onclick = openModal;
+app.appendChild(btnAdd);
+ 
+const overlay = document.createElement('div');
+overlay.className = 'overlay';
+overlay.onclick = function(e) { if(e.target == "Add") closeModal()};
+document.body.appendChild(overlay);
+const modal = document.createElement('div');
+modal.className = 'modal';
+overlay.appendChild(modal);
+ 
+const mTitle = document.createElement('h2');
+mTitle.textContent = 'Add Task';
+modal.appendChild(mTitle);
+ 
+function makeField(labelText, el) {
+  const wrap = document.createElement('div');
+  wrap.className = 'field';
+  const lbl = document.createElement('label');
+  lbl.textContent = labelText;
+  wrap.appendChild(lbl);
+  wrap.appendChild(el);
+  modal.appendChild(wrap);
+  return el;
+}
+ 
+const inputTitle = makeField('Title', document.createElement('input'), { type: 'text', placeholder: 'Task title' });
+const inputDesc  = makeField('Description', document.createElement('textarea'), { placeholder: 'Task description' });
+const inputStatus = makeField('Status', document.createElement('select'));
+const progresses = [['pending','Pending'], ['in progress','In Progress'], ['completed','Completed']]
+progresses.forEach(function(s) {
+  const opt = document.createElement('option');
+  opt.value = s[0]; opt.textContent = s[1];
+  inputStatus.appendChild(opt);
+});
+ 
+const actions = document.createElement('div');
+actions.className = 'modal-actions';
+modal.appendChild(actions);
+ 
+const btnSave = document.createElement('button');
+btnSave.className = 'btn-save';
+btnSave.textContent = 'Save Task';
+btnSave.onclick = saveTask;
+actions.appendChild(btnSave);
+ 
+const btnClose = document.createElement('button');
+btnClose.className = 'btn-close';
+btnClose.textContent = 'Close';
+btnClose.onclick = closeModal;
+actions.appendChild(btnClose);
+ 
+function badgeClass(s) {
+  return s === 'pending' ? 'badge-pending' : s === 'in progress' ? 'badge-progress' : 'badge-completed';
+}
+function render(){
+  taskList.innerHTML = '';
+  if (!tasks.length) {
+    const empty = document.createElement('p');
+    empty.className = 'empty';
+    empty.textContent = 'No tasks yet. Add one!';
+    taskList.appendChild(empty);
+    return;
+  }
+  tasks.forEach(function(t) {
+    const card = document.createElement('div');
+    card.className = 'task-card';
+    card.id = 'task-' + t.id;
+ 
+    const header = document.createElement('div');
+    header.className = 'task-header';
+ 
+    const titleEl = document.createElement('span');
+    titleEl.className = 'task-title';
+    titleEl.textContent = t.title;
+ 
+    const badge = document.createElement('span');
+    badge.className = 'badge ' + badgeClass(t.status);
+    badge.textContent = t.status;
+ 
+    header.appendChild(titleEl);
+    header.appendChild(badge);
+ 
+    const descEl = document.createElement('p');
+    descEl.className = 'task-desc';
+    descEl.textContent = t.desc;
+// Delate 
+    const del = document.createElement('button');
+    del.className = 'btn-delete';
+    del.textContent = 'Delete';
+    del.onclick = (function(id) {
+      return function() {
+				
+        const c = document.getElementById('task-' + id);
+        if (c) {
+          c.style.display = 'none';
+            tasks = tasks.filter(function(x) { return x.id !== id; });
+            render();
+        }
+console.log(tasks)
+
+      };
+    })(t.id);
+ 
+    card.appendChild(header);
+    card.appendChild(descEl);
+    card.appendChild(del);
+    taskList.appendChild(card);
+  });
+}
+function openModal() {
+  inputTitle.value = '';
+  inputDesc.value = '';
+  inputStatus.value = 'pending';
+  overlay.classList.add('open');
+}
+ 
+function closeModal() {
+  overlay.classList.remove('open');
+}
+var newId = 4;
+
+function saveTask() {
+  const title = inputTitle.value;
+  if (!title) { return false; }
+  tasks.push({ id: newId++, title: title, desc: inputDesc.value.trim(), status: inputStatus.value });
+  render();
+  closeModal();
+console.log(tasks)
+
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal();if(e.key === 'Enter') saveTask() });
+render()
+ 
+console.log(tasks)
+
+const style = document.createElement('style');
+style.textContent = [
+  "*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }",
+  ":root { --bg:#387e; --card:#fff; --text:#1a1a1a; --muted:#888; --border:#e8e4dc;--app-bg:#e0eeff;",
+  "   --pending-c:#b45309;",
+  "   --progress-c:#1d4ed8;",
+  "   --done-c:#166534;",
+  "  --danger:#ef4444; --danger-h:#dc2626;",
+  "  --blue:#2563eb; --blue-h:#1d4ed8; }",
+  "body { font-family:'DM Sans',sans-serif; background:var(--bg); min-height:100vh;",
+  "  display:flex; align-items:flex-start; justify-content:center; padding:48px 16px; color:var(--text); }",
+  ".app { width:100%; max-width:520px; background-color:var(--app-bg);padding: 14px;",
+   "border-radius: 12px; }",
+  "h1 { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; text-align:center; margin-bottom:28px; }",
+  ".task-list {max-height:500px; display:flex; flex-direction:column; gap:12px; margin-bottom:20px;overflow:auto }",
+  ".task-card { background:var(--card); border-radius:16px; border:1px solid var(--border);",
+  "  padding:18px 20px; box-shadow:0 2px 16px rgba(0,0,0,.07); display:flex; flex-direction:column;",
+  "  gap:10px; animation:slideIn .25s ease; transition:box-shadow .2s; }",
+  ".task-card:hover { box-shadow:0 4px 24px rgba(0,0,0,.11); }",
+  "@keyframes slideIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }",
+  ".task-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }",
+  ".task-title { font-family:'Syne',sans-serif; font-weight:700; font-size:16px; }",
+  ".task-desc { font-size:14px; color:var(--muted); line-height:1.5; }",
+  ".badge { display:inline-block; padding:6px 12px; border-radius:10px; font-size:13px; font-weight:500; white-space:nowrap; flex-shrink:0; }",
+  ".badge-pending { background:var(--pending-c); color:var(--card); }",
+  ".badge-progress { background:var(--progress-c); color:var(--card); }",
+  ".badge-completed { background:var(--done-c); color:var(--card); }",
+  ".btn-delete { background:var(--danger); color:#fff; border:none; border-radius:10px;",
+  "  padding:7px 18px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;",
+  "  cursor:pointer; align-self:flex-start; transition:background .18s,transform .1s; }",
+  ".btn-delete:hover { background:var(--danger-h); }",
+  ".btn-delete:active { transform:scale(.97); }",
+  ".btn-add { width:100%; background:var(--blue-h); color:#fff; border:none; border-radius:16px;",
+  "  padding:15px; font-family:'Syne',sans-serif; font-size:15px; font-weight:800; cursor:pointer;",
+  "  transition:background .18s,transform .1s; box-shadow:0 2px 10px rgba(42, 52, 190, 0.13); }",
+  ".btn-add:hover { background:#333; box-shadow:0 4px 20px rgba(0,0,0,.18); }",
+  ".overlay { display:none; position:fixed; inset:0; background:rgba(20,20,20,.55);",
+  "  backdrop-filter:blur(3px); z-index:100; align-items:center; justify-content:center; padding:16px; }",
+  ".overlay.open { display:flex; }",
+  ".modal { background:var(--bg); border-radius:16px; padding:32px 28px; width:100%; max-width:440px;",
+  "  box-shadow:0 20px 60px rgba(0,0,0,.2); animation:popIn .22s cubic-bezier(.34,1.4,.64,1); }",
+  "@keyframes popIn { from{opacity:0;transform:scale(.93) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }",
+  ".modal h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; text-align:center; margin-bottom:24px; }",
+  ".field { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }",
+  ".field label { font-size:12px; font-weight:500; color:var(--card); text-transform:uppercase; letter-spacing:.5px; }",
+  ".field input, .field textarea, .field select { border:1.5px solid var(--border); border-radius:10px;",
+  "  padding:11px 14px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text);",
+  "  background:var(--card); outline:none; transition:border-color .18s; resize:none; width:100%; }",
+  ".field input:focus, .field textarea:focus, .field select:focus { border-color:var(--text); }",
+  ".field textarea { min-height:80px; }",
+  ".modal-actions { display:flex; flex-direction:column; gap:10px; margin-top:8px; }",
+  ".btn-save { background:var(--blue); color:#fff; padding:13px; font-family:'Syne',sans-serif;",
+  "  font-size:15px; font-weight:800; border-radius:10px; border:none; cursor:pointer; width:100%; transition:background .18s; }",
+  ".btn-save:hover { background:var(--blue-h); }",
+  ".btn-close { background:var(--danger); color:#fff; padding:13px; font-family:'Syne',sans-serif;",
+  "  font-size:15px; font-weight:800; border-radius:10px; border:none; cursor:pointer; width:100%; transition:background .18s; }",
+  ".btn-close:hover { background:var(--danger-h); }",
+  ".empty { text-align:center; color:var(--muted); font-size:14px; padding:32px 0; }"
+].join('\n');
+document.head.appendChild(style);
+
 
 
