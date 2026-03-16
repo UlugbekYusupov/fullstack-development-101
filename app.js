@@ -663,25 +663,274 @@
 // console.log(getBestTeam(teams));
 
 // task 6
-const inventory = [
-  { itemName: "Laptop", category: "Electronics", stock: 5 },
-  { itemName: "Phone", category: "Electronics", stock: 10 },
-  { itemName: "Shirt", category: "Clothing", stock: 20 },
-  { itemName: "Jeans", category: "Clothing", stock: 8 },
-  { itemName: "Apple", category: "Food", stock: 30 }
+// const inventory = [
+//   { itemName: "Laptop", category: "Electronics", stock: 5 },
+//   { itemName: "Phone", category: "Electronics", stock: 10 },
+//   { itemName: "Shirt", category: "Clothing", stock: 20 },
+//   { itemName: "Jeans", category: "Clothing", stock: 8 },
+//   { itemName: "Apple", category: "Food", stock: 30 }
+// ];
+// function totalStockByCategory(category) {
+//   return inventory
+//     .filter(item => item.category === category)
+//     .reduce((sum, item) => sum + item.stock, 0);
+// }
+
+// console.log(totalStockByCategory("Electronics"));
+// console.log(totalStockByCategory("Clothing"));
+
+// function lowStockItems(threshold = 10) {
+//   return inventory.filter(item => item.stock < threshold);
+// }
+
+// console.log(lowStockItems());
+document.body.style.margin = "0";
+document.body.style.fontFamily = "Arial, sans-serif";
+document.body.style.background = "#f5f5f5";
+
+const tasks = [
+  {
+    id: 1,
+    title: "Task 1",
+    description: "Description for Task 1",
+    status: "pending",
+  },
+  {
+    id: 2,
+    title: "Task 2",
+    description: "Description for Task 2",
+    status: "in progress",
+  },
+  {
+    id: 3,
+    title: "Task 3",
+    description: "Description for Task 3",
+    status: "completed",
+  },
 ];
-function totalStockByCategory(category) {
-  return inventory
-    .filter(item => item.category === category)
-    .reduce((sum, item) => sum + item.stock, 0);
+
+const statusColors = {
+  pending: "#f5a623",
+  "in progress": "#1a28ff",
+  completed: "#168a1f",
+};
+
+const app = document.createElement("div");
+app.style.width = "700px";
+app.style.margin = "30px auto";
+app.style.background = "#fff";
+app.style.padding = "24px";
+app.style.borderRadius = "14px";
+app.style.boxShadow = "0 2px 10px rgba(0,0,0,0.08)";
+document.body.appendChild(app);
+
+const title = document.createElement("h1");
+title.textContent = "Interactive To-Do List";
+title.style.textAlign = "center";
+title.style.marginBottom = "25px";
+title.style.fontSize = "28px";
+app.appendChild(title);
+
+const taskList = document.createElement("div");
+taskList.style.display = "flex";
+taskList.style.flexDirection = "column";
+taskList.style.gap = "14px";
+app.appendChild(taskList);
+
+const addBtn = document.createElement("button");
+addBtn.textContent = "Add Task";
+addBtn.style.width = "100%";
+addBtn.style.marginTop = "20px";
+addBtn.style.padding = "14px";
+addBtn.style.fontSize = "16px";
+addBtn.style.border = "none";
+addBtn.style.borderRadius = "8px";
+addBtn.style.background = "#1877f2";
+addBtn.style.color = "#fff";
+addBtn.style.cursor = "pointer";
+app.appendChild(addBtn);
+
+const overlay = document.createElement("div");
+overlay.style.position = "fixed";
+overlay.style.top = "0";
+overlay.style.left = "0";
+overlay.style.width = "100%";
+overlay.style.height = "100%";
+overlay.style.background = "rgba(0,0,0,0.45)";
+overlay.style.display = "none";
+overlay.style.justifyContent = "center";
+overlay.style.alignItems = "center";
+document.body.appendChild(overlay);
+
+const modal = document.createElement("div");
+modal.style.width = "420px";
+modal.style.background = "#fff";
+modal.style.padding = "20px";
+modal.style.borderRadius = "12px";
+modal.style.boxShadow = "0 4px 18px rgba(0,0,0,0.2)";
+overlay.appendChild(modal);
+
+const modalTitle = document.createElement("h2");
+modalTitle.textContent = "Add Task";
+modalTitle.style.textAlign = "center";
+modalTitle.style.marginBottom = "16px";
+modal.appendChild(modalTitle);
+
+const inputTitle = document.createElement("input");
+inputTitle.placeholder = "Task Title";
+inputTitle.style.width = "100%";
+inputTitle.style.padding = "12px";
+inputTitle.style.marginBottom = "12px";
+inputTitle.style.border = "1px solid #ccc";
+inputTitle.style.borderRadius = "6px";
+inputTitle.style.boxSizing = "border-box";
+modal.appendChild(inputTitle);
+
+const inputDesc = document.createElement("textarea");
+inputDesc.placeholder = "Task Description";
+inputDesc.style.width = "100%";
+inputDesc.style.padding = "12px";
+inputDesc.style.marginBottom = "12px";
+inputDesc.style.border = "1px solid #ccc";
+inputDesc.style.borderRadius = "6px";
+inputDesc.style.boxSizing = "border-box";
+inputDesc.style.resize = "none";
+inputDesc.rows = 3;
+modal.appendChild(inputDesc);
+
+const statusSelect = document.createElement("select");
+statusSelect.style.width = "100%";
+statusSelect.style.padding = "12px";
+statusSelect.style.marginBottom = "12px";
+statusSelect.style.border = "1px solid #ccc";
+statusSelect.style.borderRadius = "6px";
+statusSelect.style.boxSizing = "border-box";
+
+["pending", "in progress", "completed"].forEach((status) => {
+  const option = document.createElement("option");
+  option.value = status;
+  option.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+  statusSelect.appendChild(option);
+});
+modal.appendChild(statusSelect);
+
+const saveBtn = document.createElement("button");
+saveBtn.textContent = "Save Task";
+saveBtn.style.width = "100%";
+saveBtn.style.padding = "12px";
+saveBtn.style.marginBottom = "10px";
+saveBtn.style.border = "none";
+saveBtn.style.borderRadius = "6px";
+saveBtn.style.background = "#1877f2";
+saveBtn.style.color = "#fff";
+saveBtn.style.fontSize = "16px";
+saveBtn.style.cursor = "pointer";
+modal.appendChild(saveBtn);
+
+const closeBtn = document.createElement("button");
+closeBtn.textContent = "Close";
+closeBtn.style.width = "100%";
+closeBtn.style.padding = "12px";
+closeBtn.style.border = "none";
+closeBtn.style.borderRadius = "6px";
+closeBtn.style.background = "red";
+closeBtn.style.color = "#fff";
+closeBtn.style.fontSize = "16px";
+closeBtn.style.cursor = "pointer";
+modal.appendChild(closeBtn);
+
+function renderTasks() {
+  taskList.innerHTML = "";
+
+  tasks.forEach((task) => {
+    const card = document.createElement("div");
+    card.style.background = "#fff";
+    card.style.border = "1px solid #eee";
+    card.style.borderRadius = "12px";
+    card.style.padding = "18px";
+    card.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
+    card.style.position = "relative";
+
+    const taskTitle = document.createElement("h3");
+    taskTitle.textContent = task.title;
+    taskTitle.style.margin = "0 0 6px 0";
+    taskTitle.style.fontSize = "20px";
+    card.appendChild(taskTitle);
+
+    const taskDesc = document.createElement("p");
+    taskDesc.textContent = task.description;
+    taskDesc.style.margin = "0 0 14px 0";
+    taskDesc.style.fontSize = "16px";
+    card.appendChild(taskDesc);
+
+    const badge = document.createElement("span");
+    badge.textContent = task.status;
+    badge.style.position = "absolute";
+    badge.style.top = "16px";
+    badge.style.right = "16px";
+    badge.style.padding = "6px 12px";
+    badge.style.borderRadius = "8px";
+    badge.style.color = "#fff";
+    badge.style.fontSize = "14px";
+    badge.style.background = statusColors[task.status];
+    card.appendChild(badge);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.style.padding = "10px 16px";
+    deleteBtn.style.border = "none";
+    deleteBtn.style.borderRadius = "6px";
+    deleteBtn.style.background = "red";
+    deleteBtn.style.color = "#fff";
+    deleteBtn.style.cursor = "pointer";
+
+    deleteBtn.addEventListener("click", () => {
+      const index = tasks.findIndex((t) => t.id === task.id);
+      if (index !== -1) {
+        tasks.splice(index, 1);
+        renderTasks();
+      }
+    });
+
+    card.appendChild(deleteBtn);
+    taskList.appendChild(card);
+  });
 }
 
-console.log(totalStockByCategory("Electronics"));
-console.log(totalStockByCategory("Clothing"));
+addBtn.addEventListener("click", () => {
+  overlay.style.display = "flex";
+});
 
+closeBtn.addEventListener("click", () => {
+  overlay.style.display = "none";
+  inputTitle.value = "";
+  inputDesc.value = "";
+  statusSelect.value = "pending";
+});
 
-function lowStockItems(threshold = 10) {
-  return inventory.filter(item => item.stock < threshold);
-}
+saveBtn.addEventListener("click", () => {
+  const title = inputTitle.value.trim();
+  const description = inputDesc.value.trim();
+  const status = statusSelect.value;
 
-console.log(lowStockItems()); 
+  if (!title || !description) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  tasks.push({
+    id: Date.now(),
+    title,
+    description,
+    status,
+  });
+
+  renderTasks();
+
+  inputTitle.value = "";
+  inputDesc.value = "";
+  statusSelect.value = "pending";
+  overlay.style.display = "none";
+});
+
+renderTasks();
