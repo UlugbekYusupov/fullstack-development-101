@@ -821,32 +821,30 @@
 // console.log(`Most Expensive Item: ${mostExpensive.name}`);
 
 // challange 3
-let inventory = [
-    { id: 1, name: "Laptop", price: 1000, stock: 5 },
-    { id: 2, name: "Mouse", price: 25, stock: 50 }
-];
+// let inventory = [
+//     { id: 1, name: "Laptop", price: 1000, stock: 5 },
+//     { id: 2, name: "Mouse", price: 25, stock: 50 }
+// ];
 
-console.log(inventory);
-
-
-function addProduct(product) {
-    inventory.push(product);
-}
-
-function updateStock(id, newStock) {
-    let product = inventory.find(p => p.id === id);
-    if (product) product.stock = newStock;
-}
-
-function deleteProduct(id) {
-    inventory = inventory.filter(p => p.id !== id);
-}
-
-function findProduct(name) {
-    return inventory.find(p => p.name === name);
-}
+// console.log(inventory);
 
 
+// function addProduct(product) {
+//     inventory.push(product);
+// }
+
+// function updateStock(id, newStock) {
+//     let product = inventory.find(p => p.id === id);
+//     if (product) product.stock = newStock;
+// }
+
+// function deleteProduct(id) {
+//     inventory = inventory.filter(p => p.id !== id);
+// }
+
+// function findProduct(name) {
+//     return inventory.find(p => p.name === name);
+// }
 
 
 
@@ -880,6 +878,16 @@ function getTotalEngagement() {
         return total + post.likes + post.shares + post.comments.length;
     }, 0);
 }
+
+
+const topPost = getMostLiked();
+console.log(`The most liked post is by ${topPost.author} with ${topPost.likes} likes.`);
+
+const totalEngagement = getTotalEngagement();
+console.log("Total Engagement Across All Posts:", totalEngagement);
+
+console.log(`First comment on Alice's post is from ${posts[0].comments[0].user}: "${posts[0].comments[0].message}"`);
+
 // // challange 5
 
 // let teams = [
