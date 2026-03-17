@@ -1,358 +1,356 @@
-// // // // _____________________________Lecture 6 (Arrays)_____________________________
+// // // // // _____________________________Lecture 6 (Arrays)_____________________________
 
-// // const numbers = [1,2,3,10,4,5,6];
-// // console.log(numbers);
+// // // const numbers = [1,2,3,10,4,5,6];
+// // // console.log(numbers);
 
-// // // Push
-// // numbers.push(12);
-// // console.log(numbers);
+// // // // Push
+// // // numbers.push(12);
+// // // console.log(numbers);
 
-// // // Pop
-// // numbers.pop();
-// // console.log(numbers);
+// // // // Pop
+// // // numbers.pop();
+// // // console.log(numbers);
 
-// // // Shift
-// // numbers.shift();
-// // console.log(numbers);
+// // // // Shift
+// // // numbers.shift();
+// // // console.log(numbers);
 
-// // // Unshift
-// // numbers.unshift(1);
-// // console.log(numbers);
+// // // // Unshift
+// // // numbers.unshift(1);
+// // // console.log(numbers);
 
-// // // Map
-// // let number = numbers.map(function(a) {
-// //     console.log(`Then numbers is ${a}`);
-// // });
+// // // // Map
+// // // let number = numbers.map(function(a) {
+// // //     console.log(`Then numbers is ${a}`);
+// // // });
 
-// // // Filter
-// // let even = numbers.filter(a => a % 2 === 0);
-// // console.log(even);
+// // // // Filter
+// // // let even = numbers.filter(a => a % 2 === 0);
+// // // console.log(even);
 
-// // // Reduce
-// // let sum = numbers.reduce((a, b) => a + b);
-// // console.log(sum);
+// // // // Reduce
+// // // let sum = numbers.reduce((a, b) => a + b);
+// // // console.log(sum);
 
-// // // Sort
-// // let sortedNumber = numbers.sort();
-// // console.log(sortedNumber);
+// // // // Sort
+// // // let sortedNumber = numbers.sort();
+// // // console.log(sortedNumber);
 
-// // // Reverse
-// // let reversedNumbers = numbers.reverse();
-// // console.log(reversedNumbers);
+// // // // Reverse
+// // // let reversedNumbers = numbers.reverse();
+// // // console.log(reversedNumbers);
 
-// // // Slice
-// // let numThree = numbers.slice(0, 3);
-// // console.log(numThree);
+// // // // Slice
+// // // let numThree = numbers.slice(0, 3);
+// // // console.log(numThree);
 
-// // // Splice
-// // let splicedNum = numbers.splice(1, 2);
-// // console.log(splicedNum);
-// // console.log(numbers);
+// // // // Splice
+// // // let splicedNum = numbers.splice(1, 2);
+// // // console.log(splicedNum);
+// // // console.log(numbers);
 
-// // // Find
-// // let firstUnderFive = numbers.find(num => num < 5);
-// // console.log(firstUnderFive);
+// // // // Find
+// // // let firstUnderFive = numbers.find(num => num < 5);
+// // // console.log(firstUnderFive);
 
-// // // FindIndex
-// // let indexOfFirstUpperFive = numbers.findIndex(num => num > 5);
-// // console.log(indexOfFirstUpperFive);
+// // // // FindIndex
+// // // let indexOfFirstUpperFive = numbers.findIndex(num => num > 5);
+// // // console.log(indexOfFirstUpperFive);
 
-// // // Includes
-// // let hasFive = numbers.includes(5);
-// // console.log(hasFive);
+// // // // Includes
+// // // let hasFive = numbers.includes(5);
+// // // console.log(hasFive);
 
-// // // Challenges
+// // // // Challenges
 
-// // 1:
+// // // 1:
 
-// numbers = [1,2,3,4,5,6,7,8,9];
+// // numbers = [1,2,3,4,5,6,7,8,9];
 
-// function first(arr,n) {
-//     if (arr.length === 0) {
-//         return[];
-//     }
+// // function first(arr,n) {
+// //     if (arr.length === 0) {
+// //         return[];
+// //     }
 
-//     if (n === undefined) {
-//         return arr[0];
-//     }
+// //     if (n === undefined) {
+// //         return arr[0];
+// //     }
 
-//     if (n < 0) {
-//         return n;
-//     }
-//     return arr.slice(0, n);
-// }
+// //     if (n < 0) {
+// //         return n;
+// //     }
+// //     return arr.slice(0, n);
+// // }
 
-// console.log(first(numbers));
+// // console.log(first(numbers));
 
-// // 2:
+// // // 2:
 
-// numbers = [1,2,3,4,5,6,7,8,9];
+// // numbers = [1,2,3,4,5,6,7,8,9];
 
-// const lastElement = numbers.length - 1
-// function first(arr,n) {
-//     if (arr.length === 0) {
-//         return[];
-//     }
+// // const lastElement = numbers.length - 1
+// // function first(arr,n) {
+// //     if (arr.length === 0) {
+// //         return[];
+// //     }
 
-//     if (n === undefined) {
-//         return arr[lastElement];
-//     }
+// //     if (n === undefined) {
+// //         return arr[lastElement];
+// //     }
 
-//     if (n < 0) {
-//         return n;
-//     }
-//     return arr.slice(-n);
-// }
+// //     if (n < 0) {
+// //         return n;
+// //     }
+// //     return arr.slice(-n);
+// // }
 
-// console.log(first(numbers, 4));
+// // console.log(first(numbers, 4));
 
-// // 3:
+// // // 3:
 
-// const myColor = ["Red", "Green", "White", "Black"];
+// // const myColor = ["Red", "Green", "White", "Black"];
 
-// let all = myColor[0];
+// // let all = myColor[0];
 
-// for (let i = 1; i < myColor.length; i++) {
-//     all += "," + myColor[i];
-// }
+// // for (let i = 1; i < myColor.length; i++) {
+// //     all += "," + myColor[i];
+// // }
 
-// console.log(all);
+// // console.log(all);
 
-// // 4:
+// // // 4:
 
-// // const nums = prompt("Enter a number: ");
-// // let num = nums[0];
+// // // const nums = prompt("Enter a number: ");
+// // // let num = nums[0];
 
-// // for (let i = 1; i < nums.length; i++) {
-// //     num += "-" + nums[i];
+// // // for (let i = 1; i < nums.length; i++) {
+// // //     num += "-" + nums[i];
+// // // };
+
+// // // alert(num);
+
+// // // 5:
+
+// // const arrayNew = [-3, 8, 7, 6, 5, -4, 3, 2, 1 ];
+// // let sortedArray = arrayNew.sort();
+
+// // console.log(sortedArray);
+
+// // // 6:
+
+// // let array1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+
+// // function mostFrequent(arr) {
+// //     let count = {};
+// //     let max = 0;
+// //     let item;
+
+// //     for (let i = 0; i < arr.length; i++) {
+// //         count[arr[i]] = (count[arr[i]] || 0) + 1;
+
+// //         if (count[arr[i]] > max) {
+// //             max = count[arr[i]];
+// //             item = arr[i];
+// //         }
+// //     }
+
+// //     return item + " ( " + max + " times )";
+// // }
+
+
+// // console.log(mostFrequent(array1));
+
+// // // 7:
+
+// // const word = "The Quick Brown Fox";
+
+// // function something(arr) {
+
+// //     let reversedWord = "";
+
+// //     for (let i = 0; i < word.length; i++) {
+// //         if (word[i] === word[i].toUpperCase()) {
+// //             reversedWord += word[i].toLowerCase();
+// //         } else {
+// //             reversedWord += word[i].toUpperCase();
+// //         };
+// //     };
+// //     return reversedWord;
 // // };
 
-// // alert(num);
+// // console.log(something(word));
+
+// // // // 8:
+
+// // const color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+// // const o = ["th","st","nd","rd"];
+// // let index = 0;
+// // let belgi = "";
 
-// // 5:
+// // for (let i = 0; i < color.length; i++) {
+// //     index += 1;
 
-// const arrayNew = [-3, 8, 7, 6, 5, -4, 3, 2, 1 ];
-// let sortedArray = arrayNew.sort();
+// //     if (index === 1){
+// //         belgi = o[0];
+// //         console.log(`${index}${belgi} choice is ${color[i]}`);
+// //     } else if (index === 2) {
+// //         belgi = o[1];
+// //         console.log(`${index}${belgi} choice is ${color[i]}`);
+// //     } else if ( index === 3) {
+// //         belgi = o[2];
+// //         console.log(`${index}${belgi} choice is ${color[i]}`);
+// //     } else {
+// //         belgi = o[3];
+// //         console.log(`${index}${belgi} choice is ${color[i]}`);
+// //     };
+// // };
 
-// console.log(sortedArray);
+// // // 9:
 
-// // 6:
+// // const array1 = [1,0,2,3,4];
+// // const array2 = [3,5,6,7,8,13];
 
-// let array1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+// // function something (arr1, arr2) {
+// //     let combinedArray = [];
 
-// function mostFrequent(arr) {
-//     let count = {};
-//     let max = 0;
-//     let item;
+// //     for (let i = 0; i < array1.length || i < array2.length; i++) {
+// //         let num1 = array1[i] || 0;
+// //         let num2 = array2[i] || 0;
 
-//     for (let i = 0; i < arr.length; i++) {
-//         count[arr[i]] = (count[arr[i]] || 0) + 1;
+// //         combinedArray.push(num1 + num2);
+// //     };
+// //     return combinedArray;
+// // }
 
-//         if (count[arr[i]] > max) {
-//             max = count[arr[i]];
-//             item = arr[i];
-//         }
-//     }
+// // console.log(something(array1, array2));
 
-//     return item + " ( " + max + " times )";
-// }
+// // // // // ____________________________ Lecture 7 (Objects) ________________________________
 
+// // let car = {
+// //     brand: "Tesla",
+// //     model: "Model S",
+// //     year: 2024,
+// //     start: function() {
+// //         console.log("Car is starting...");
+// //     }
+// // };
 
-// console.log(mostFrequent(array1));
+// // console.log(car['brand']);
+// // car.start();
 
-// // 7:
 
-// const word = "The Quick Brown Fox";
+// // // Practises
 
-// function something(arr) {
+// // // 1:
 
-//     let reversedWord = "";
+// // const students = [
+// //     { name: "Alice", scores: [80, 90, 100] },
+// //     { name: "Bob", scores: [50, 60, 70] },
+// //     { name: "Charlie", scores: [30, 40, 20] }
+// // ];
 
-//     for (let i = 0; i < word.length; i++) {
-//         if (word[i] === word[i].toUpperCase()) {
-//             reversedWord += word[i].toLowerCase();
-//         } else {
-//             reversedWord += word[i].toUpperCase();
-//         };
-//     };
-//     return reversedWord;
-// };
+// // function averageGrade() {
+// //     let result = [];
+// //     for (const student of students) {
+// //         let score = 0;
+// //         for (const grade of student.scores) {
+// //             score += grade;
+// //         }
+// //         let average = score / student.scores.length;
+// //         result.push({
+// //             name: student.name,
+// //             average: average
+// //         });
+// //     }
 
-// console.log(something(word));
+// //     return result;
+// // }
 
-// // // 8:
+// // function isPassed() {
 
-// const color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
-// const o = ["th","st","nd","rd"];
-// let index = 0;
-// let belgi = "";
+// //     const averages = averageGrade();
 
-// for (let i = 0; i < color.length; i++) {
-//     index += 1;
+// //     let result = [];
 
-//     if (index === 1){
-//         belgi = o[0];
-//         console.log(`${index}${belgi} choice is ${color[i]}`);
-//     } else if (index === 2) {
-//         belgi = o[1];
-//         console.log(`${index}${belgi} choice is ${color[i]}`);
-//     } else if ( index === 3) {
-//         belgi = o[2];
-//         console.log(`${index}${belgi} choice is ${color[i]}`);
-//     } else {
-//         belgi = o[3];
-//         console.log(`${index}${belgi} choice is ${color[i]}`);
-//     };
-// };
+// //     for (const student of averages) {
 
-// // 9:
+// //         let status = student.average >= 50 ? "Passed" : "Failed";
 
-// const array1 = [1,0,2,3,4];
-// const array2 = [3,5,6,7,8,13];
+// //         result.push({
+// //             name: student.name,
+// //             average: student.average,
+// //             status: status
+// //         });
+// //     }
 
-// function something (arr1, arr2) {
-//     let combinedArray = [];
+// //     return result;
+// // }
 
-//     for (let i = 0; i < array1.length || i < array2.length; i++) {
-//         let num1 = array1[i] || 0;
-//         let num2 = array2[i] || 0;
+// // const result = isPassed();
 
-//         combinedArray.push(num1 + num2);
-//     };
-//     return combinedArray;
-// }
+// // for (const student of result) {
+// //     console.log(student.name, student.average, student.status);
+// // }
 
-// console.log(something(array1, array2));
+// // // 2:
 
-// // // // ____________________________ Lecture 7 (Objects) ________________________________
+// // const cart = [
+// //     { id: 1, name: "Laptop", price: 80, quantity: 1 },
+// //     { id: 2, name: "Mouse", price: 20, quantity: 2 },
+// //     { id: 3, name: "Keyboard", price: 40, quantity: 1 }
+// // ];
 
-// let car = {
-//     brand: "Tesla",
-//     model: "Model S",
-//     year: 2024,
-//     start: function() {
-//         console.log("Car is starting...");
-//     }
-// };
+// // const totalPrice = cart.reduce((total, item) =>
+// //     total + item.price * item.quantity, 0);
 
-// console.log(car['brand']);
-// car.start();
+// // let finalPrice = totalPrice;
 
+// // if (totalPrice > 100) {
+// //     finalPrice = totalPrice - totalPrice * 0.1;
+// // }
 
-// // Practises
+// // const mostExpensive = cart.reduce((max, item) =>
+// //     item.price > max.price ? item : max
+// // );
 
-// // 1:
+// // console.log(`Total: ${totalPrice}`);
+// // console.log(`After Discount: ${finalPrice}`);
+// // console.log('Most Expensive:', mostExpensive);
 
-// const students = [
-//     { name: "Alice", scores: [80, 90, 100] },
-//     { name: "Bob", scores: [50, 60, 70] },
-//     { name: "Charlie", scores: [30, 40, 20] }
-// ];
+// // // 3:
 
-// function averageGrade() {
+// // let products = [
+// //     { id: 1, name: "Phone", price: 500, stock: 10 },
+// //     { id: 2, name: "Tablet", price: 300, stock: 5 }
+// // ];
 
-//     let result = [];
+// // function addProduct(product) {
+// //     products.push(product);
+// // }
 
-//     for (const student of students) {
-//         let score = 0;
+// // function updateStock(id, newStock) {
+// //     const product = products.find(p => p.id === id);
+// //     if (product) product.stock = newStock;
+// // }
 
-//         for (const grade of student.scores) {
-//             score += grade;
-//         }
+// // function deleteProduct(id) {
+// //     products = products.filter(p => p.id !== id);
+// // }
+// // function findProduct(name) {
+// //     return products.find(p => p.name === name);
+// // }
 
-//         let average = score / student.scores.length;
+// // addProduct({ id: 3, name: "Laptop", price: 900, stock: 4 });
+// // updateStock(1, 20);
+// // deleteProduct(2);
+// // addProduct({ id: 4, name: "Lamp", price: 100, stock: 500 });
+// // updateStock(3, 120);
 
-//         result.push({
-//             name: student.name,
-//             average: average
-//         });
-//     }
 
-//     return result;
-// }
+// // console.log(findProduct("Laptop"));
+// // console.log(products);
 
-// function isPassed() {
-
-//     const averages = averageGrade();
-
-//     let result = [];
-
-//     for (const student of averages) {
-
-//         let status = student.average >= 50 ? "Passed" : "Failed";
-
-//         result.push({
-//             name: student.name,
-//             average: student.average,
-//             status: status
-//         });
-//     }
-
-//     return result;
-// }
-
-// const result = isPassed();
-
-// for (const student of result) {
-//     console.log(student.name, student.average, student.status);
-// }
-
-// // 2:
-
-// const cart = [
-//     { id: 1, name: "Laptop", price: 80, quantity: 1 },
-//     { id: 2, name: "Mouse", price: 20, quantity: 2 },
-//     { id: 3, name: "Keyboard", price: 40, quantity: 1 }
-// ];
-
-// const totalPrice = cart.reduce((total, item) =>
-//     total + item.price * item.quantity, 0);
-
-// let finalPrice = totalPrice;
-
-// if (totalPrice > 100) {
-//     finalPrice = totalPrice - totalPrice * 0.1;
-// }
-
-// const mostExpensive = cart.reduce((max, item) =>
-//     item.price > max.price ? item : max
-// );
-
-// console.log(`Total: ${totalPrice}`);
-// console.log(`After Discount: ${finalPrice}`);
-// console.log('Most Expensive:', mostExpensive);
-
-// // 3:
-
-// let products = [
-//     { id: 1, name: "Phone", price: 500, stock: 10 },
-//     { id: 2, name: "Tablet", price: 300, stock: 5 }
-// ];
-
-// function addProduct(product) {
-//     products.push(product);
-// }
-
-// function updateStock(id, newStock) {
-//     const product = products.find(p => p.id === id);
-//     if (product) product.stock = newStock;
-// }
-
-// function deleteProduct(id) {
-//     products = products.filter(p => p.id !== id);
-// }
-// function findProduct(name) {
-//     return products.find(p => p.name === name);
-// }
-
-// addProduct({ id: 3, name: "Laptop", price: 900, stock: 4 });
-// updateStock(1, 20);
-// deleteProduct(2);
-
-// console.log(findProduct("Laptop"));
-// console.log(products);
-
-// // 4:
+// // // 4:
 
 // const posts = [
 //     { author: "Ali", likes: 120, comments: 30, shares: 10 },
@@ -370,36 +368,61 @@
 // console.log("Most liked:", mostLiked);
 // console.log("Total engagement:", totalEngagement);
 
-// // 5:
+// // // 5:
 
-// const teams = [
-//     { name: "Team A", wins: 5, losses: 1, points: 15 },
-//     { name: "Team B", wins: 4, losses: 2, points: 12 },
-//     { name: "Team C", wins: 6, losses: 0, points: 18 }
-// ];
+// // const teams = [
+// //     { name: "Team A", wins: 5, losses: 1, points: 15 },
+// //     { name: "Team B", wins: 4, losses: 2, points: 12 },
+// //     { name: "Team C", wins: 6, losses: 0, points: 18 }
+// // ];
 
-// const ranking = teams.sort((a, b) => b.points - a.points);
+// // const ranking = teams.sort((a, b) => b.points - a.points);
 
-// const bestTeam = ranking[0];
+// // const bestTeam = ranking[0];
 
-// console.log("Ranking:", ranking);
-// console.log("Best Team:", bestTeam);
+// // console.log("Ranking:", ranking);
+// // console.log("Best Team:", bestTeam);
 
-// // 6:
+// // // 6:
 
-// const inventory = [
-//     { itemName: "Apple", category: "Food", stock: 50 },
-//     { itemName: "Banana", category: "Food", stock: 20 },
-//     { itemName: "Laptop", category: "Electronics", stock: 5 },
-//     { itemName: "Mouse", category: "Electronics", stock: 15 }
-// ];
+// // const inventory = [
+// //     { itemName: "Apple", category: "Food", stock: 50 },
+// //     { itemName: "Banana", category: "Food", stock: 20 },
+// //     { itemName: "Laptop", category: "Electronics", stock: 5 },
+// //     { itemName: "Mouse", category: "Electronics", stock: 15 }
+// // ];
 
-// const stockByCategory = inventory.reduce((acc, item) => {
-//     acc[item.category] = (acc[item.category] || 0) + item.stock;
-//     return acc;
-// }, {});
+// // const stockByCategory = inventory.reduce((acc, item) => {
+// //     acc[item.category] = (acc[item.category] || 0) + item.stock;
+// //     return acc;
+// // }, {});
 
-// const lowStock = inventory.filter(item => item.stock < 10);
+// // const lowStock = inventory.filter(item => item.stock < 10);
 
-// console.log("Stock by Category:", stockByCategory);
-// console.log("Low Stock Items:", lowStock);
+// // console.log("Stock by Category:", stockByCategory);
+// // console.log("Low Stock Items:", lowStock);
+
+// // // ___________________________________Lecture 8 (DOM)______________________________________
+
+// console.log(window.innerWidth);
+// console.log(window.location.href);
+// // alert("Hello");
+// console.log(window.navigator);
+
+const box = document.getElementById('box');
+const newParentContainer = document.createElement("div");
+
+box.innerHTML = `
+    <h2 id="title">Salom</h2>
+    <p id="description">Dunyo</p>`;
+
+const title = document.getElementById('title');
+const desc = document.getElementById('description');
+
+
+// childni boshqa oarentga o'tkazish
+newParentContainer.append(box);
+// uni global DOMga qo'shish
+document.body.append(newParentContainer);
+// Elementlarga classlar qo'shish
+newParentContainer.classList.add('container', 'text-center', 'text-primary', 'fw-bolder');
