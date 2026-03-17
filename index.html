@@ -7,8 +7,315 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>fsdsd34thiugriungijnlj3g4f</h1>
-    <script src="app.js"></script>
+    <div class="container">
+
+    <!--  ==========  PRACTICE 1 - INTERACTIVE TO-DO LIST (with delete) ==========  -->
+    <div class="card">
+        <h2>📋 Interactive To-Do List</h2>
+        <div id="todoListContainer">
+            <!-- three default items as in screenshot -->
+            <div class="todo-item" id="todo1">
+                <div class="todo-info">
+                    <div class="todo-title">Task 1</div>
+                    <div class="todo-desc">Description for Task 1</div>
+                </div>
+                <div class="todo-actions">
+                    <button class="delete-btn" onclick="deleteTodoItem('todo1')">Delete</button>
+                </div>
+            </div>
+            <div class="todo-item" id="todo2">
+                <div class="todo-info">
+                    <div class="todo-title">Task 2</div>
+                    <div class="todo-desc">Description for Task 2</div>
+                </div>
+                <div class="todo-actions">
+                    <button class="delete-btn" onclick="deleteTodoItem('todo2')">Delete</button>
+                </div>
+            </div>
+            <div class="todo-item" id="todo3">
+                <div class="todo-info">
+                    <div class="todo-title">Task 3</div>
+                    <div class="todo-desc">Description for Task 3</div>
+                </div>
+                <div class="todo-actions">
+                    <button class="delete-btn" onclick="deleteTodoItem('todo3')">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-task-area">
+            <input type="text" id="newTaskInput" placeholder="e.g., Task 4">
+            <button onclick="addNewTask()">Add Task</button>
+        </div>
+
+        <hr>
+
+        <!-- second style: pending / in progress / completed tasks (static as per screenshot) -->
+        <h2 style="margin-top: 8px;">📌 Interactive To-Do List</h2>
+        <div class="todo-item">
+            <div class="todo-info">
+                <div class="todo-title">Task 1</div>
+                <div class="todo-desc">Description</div>
+            </div>
+            <span class="status-badge status-pending">pending</span>
+        </div>
+        <div class="todo-item">
+            <div class="todo-info">
+                <div class="todo-title">Task 2</div>
+            </div>
+            <span class="status-badge status-progress">in progress</span>
+        </div>
+        <div class="todo-item">
+            <div class="todo-info">
+                <div class="todo-title">Task 3</div>
+            </div>
+            <span class="status-badge status-completed">completed</span>
+        </div>
+        <div style="margin-top: 16px;">
+            <button style="background:#3b82f6; color:white;">Add Task</button>
+        </div>
+    </div>
+
+    <!--  ==========  PRACTICE 2 - PASSWORD STRENGTH CHECKER ==========  -->
+    <div class="card password-card">
+        <h2>🔐 Password Strength Checker</h2>
+        <input type="text" id="passwordInput" placeholder="Enter password" oninput="checkPasswordStrength()" value="">
+
+        <!-- weak state by default (first screenshot shows "Weak") -->
+        <div id="strengthSection1" class="strength-blocks">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <span class="strength-label" id="strengthText1">Weak</span>
+        </div>
+
+        <hr>
+
+        <!-- second example: Medium & Strong side by side (two separate sections) -->
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between;">
+            <span style="font-weight: 500;">Medium</span>
+            <div class="strength-blocks" style="flex:1; margin-bottom:0;">
+                <div class="block" style="background:#f59e0b;"></div>
+                <div class="block" style="background:#f59e0b;"></div>
+                <div class="block" style="background:#e3eaf2;"></div>
+                <span class="strength-label">Medium</span>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-top: 10px;">
+            <span style="font-weight: 500;">Strong</span>
+            <div class="strength-blocks" style="flex:1; margin-bottom:0;">
+                <div class="block" style="background:#10b981;"></div>
+                <div class="block" style="background:#10b981;"></div>
+                <div class="block" style="background:#10b981;"></div>
+                <span class="strength-label">Strong</span>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- two side by side again (matching third screenshot) -->
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between;">
+            <span style="font-weight: 500;">Medium</span>
+            <div class="strength-blocks" style="flex:1; margin-bottom:0;">
+                <div class="block" style="background:#f59e0b;"></div>
+                <div class="block" style="background:#f59e0b;"></div>
+                <div class="block" style="background:#e3eaf2;"></div>
+                <span class="strength-label">Medium</span>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-top: 10px;">
+            <span style="font-weight: 500;">Strong</span>
+            <div class="strength-blocks" style="flex:1; margin-bottom:0;">
+                <div class="block" style="background:#10b981;"></div>
+                <div class="block" style="background:#10b981;"></div>
+                <div class="block" style="background:#10b981;"></div>
+                <span class="strength-label">Strong</span>
+            </div>
+        </div>
+        <div class="university-tag">PDP University</div>
+    </div>
+
+    <!--  ==========  PRACTICE 3 & 4 - CALCULATOR ==========  -->
+    <div class="card">
+        <h2>🧮 Practice – 3,4</h2>
+        <div class="calculator-display">
+            <div class="calc-display" id="calcDisplay">0</div>
+        </div>
+        <div class="calculator-grid">
+            <button class="calc-btn" onclick="clearCalc()">C</button>
+            <button class="calc-btn" onclick="deleteLast()">DEL</button>
+            <button class="calc-btn operator" onclick="appendOperator('%')">%</button>
+            <button class="calc-btn operator" onclick="appendOperator('+')">+</button>
+
+            <button class="calc-btn" onclick="appendNumber('7')">7</button>
+            <button class="calc-btn" onclick="appendNumber('8')">8</button>
+            <button class="calc-btn" onclick="appendNumber('9')">9</button>
+            <button class="calc-btn operator" onclick="appendOperator('*')">x</button>
+
+            <button class="calc-btn" onclick="appendNumber('4')">4</button>
+            <button class="calc-btn" onclick="appendNumber('5')">5</button>
+            <button class="calc-btn" onclick="appendNumber('6')">6</button>
+            <button class="calc-btn operator" onclick="appendOperator('-')">-</button>
+
+            <button class="calc-btn" onclick="appendNumber('1')">1</button>
+            <button class="calc-btn" onclick="appendNumber('2')">2</button>
+            <button class="calc-btn" onclick="appendNumber('3')">3</button>
+            <button class="calc-btn operator" onclick="appendOperator('+')" style="font-size:1.5rem;">+</button>
+
+            <button class="calc-btn zero" onclick="appendNumber('0')">0</button>
+            <button class="calc-btn" onclick="appendDot()">.</button>
+            <button class="calc-btn equals" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+</div>
+    <script src="app.js">
+    
+    // ---------- PRACTICE 1 : DYNAMIC TO-DO WITH DELETE / ADD ----------
+    function deleteTodoItem(elementId) {
+        const item = document.getElementById(elementId);
+        if (item) item.remove();
+    }
+
+    function addNewTask() {
+        const input = document.getElementById('newTaskInput');
+        const newTitle = input.value.trim();
+        if (newTitle === '') return;
+
+        const container = document.getElementById('todoListContainer');
+        const newId = 'todo_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+
+        const newItem = document.createElement('div');
+        newItem.className = 'todo-item';
+        newItem.id = newId;
+        newItem.innerHTML = `
+            <div class="todo-info">
+                <div class="todo-title">${newTitle}</div>
+                <div class="todo-desc">New description</div>
+            </div>
+            <div class="todo-actions">
+                <button class="delete-btn" onclick="deleteTodoItem('${newId}')">Delete</button>
+            </div>
+        `;
+        container.appendChild(newItem);
+        input.value = '';
+    }
+
+    // ---------- PRACTICE 2 : PASSWORD STRENGTH CHECKER (dynamic weak/medium/strong) ----------
+    function checkPasswordStrength() {
+        const pwd = document.getElementById('passwordInput').value;
+        const strengthBlocks = document.querySelectorAll('#strengthSection1 .block');
+        const strengthText = document.getElementById('strengthText1');
+
+        let strengthLevel = 0; // 0=weak, 1=medium, 2=strong
+        if (pwd.length === 0) {
+            strengthLevel = 0; // weak
+        } else if (pwd.length < 4) {
+            strengthLevel = 0; // weak
+        } else if (pwd.length < 8) {
+            strengthLevel = 1; // medium
+        } else {
+            strengthLevel = 2; // strong
+        }
+
+        // reset blocks
+        strengthBlocks.forEach(block => block.style.background = '#e3eaf2');
+
+        if (strengthLevel === 0) {
+            strengthBlocks[0].style.background = '#f44336';
+            strengthText.innerText = 'Weak';
+        } else if (strengthLevel === 1) {
+            strengthBlocks[0].style.background = '#f59e0b';
+            strengthBlocks[1].style.background = '#f59e0b';
+            strengthText.innerText = 'Medium';
+        } else {
+            strengthBlocks[0].style.background = '#10b981';
+            strengthBlocks[1].style.background = '#10b981';
+            strengthBlocks[2].style.background = '#10b981';
+            strengthText.innerText = 'Strong';
+        }
+    }
+
+    // run on page load to set "Weak" as default (input empty)
+    window.addEventListener('DOMContentLoaded', () => {
+        checkPasswordStrength();
+    });
+
+    // ---------- PRACTICE 3 & 4 : SIMPLE CALCULATOR ----------
+    let calcDisplay = document.getElementById('calcDisplay');
+    let currentInput = '0';
+    let lastResult = null;
+
+    function updateCalcDisplay(value) {
+        calcDisplay.innerText = value || '0';
+    }
+
+    function appendNumber(num) {
+        if (currentInput === '0' || currentInput === '0') {
+            currentInput = num;
+        } else {
+            currentInput += num;
+        }
+        updateCalcDisplay(currentInput);
+    }
+
+    function appendOperator(op) {
+        const lastChar = currentInput[currentInput.length - 1];
+        if (['+', '-', '*', '%'].includes(lastChar)) {
+            currentInput = currentInput.slice(0, -1) + op;
+        } else {
+            currentInput += op;
+        }
+        updateCalcDisplay(currentInput);
+    }
+
+    function appendDot() {
+        // simple dot: avoid multiple dots in last number
+        const parts = currentInput.split(/[\+\-\*\%]/);
+        const lastPart = parts[parts.length - 1];
+        if (!lastPart.includes('.')) {
+            currentInput += '.';
+            updateCalcDisplay(currentInput);
+        }
+    }
+
+    function clearCalc() {
+        currentInput = '0';
+        updateCalcDisplay(currentInput);
+    }
+
+    function deleteLast() {
+        if (currentInput.length > 1) {
+            currentInput = currentInput.slice(0, -1);
+        } else {
+            currentInput = '0';
+        }
+        updateCalcDisplay(currentInput);
+    }
+
+    function calculateResult() {
+        try {
+            // replace 'x' with '*' for eval
+            let expression = currentInput.replace(/x/g, '*');
+            // restrict to safe characters
+            if (!/^[0-9+\-*%.()]+$/.test(expression)) throw new Error('invalid');
+            // handle percentage: replace e.g. 5% as 5/100 ? simple approach: % as modulo? we treat it as percentage of previous? but for simplicity keep as % (modulo) but in screenshot % is operator. We'll treat % as modulo.
+            // But for beginner we just eval directly. Use Function to be slightly safer.
+            const result = new Function('return ' + expression)();
+            if (isNaN(result) || !isFinite(result)) throw new Error('math error');
+            currentInput = String(result);
+            updateCalcDisplay(currentInput);
+        } catch {
+            currentInput = 'Error';
+            updateCalcDisplay(currentInput);
+            setTimeout(() => {
+                currentInput = '0';
+                updateCalcDisplay(currentInput);
+            }, 900);
+        }
+    }
+    </script>
   </body>
 </html>
 
