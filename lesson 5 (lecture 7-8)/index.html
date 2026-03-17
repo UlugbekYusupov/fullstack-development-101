@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplified DOM Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <button class="nav-btn active" data-target="todo-section">To-Do List</button>
+        <button class="nav-btn" data-target="pass-section">Password Checker</button>
+        <button class="nav-btn" data-target="calc-section">Calculator</button>
+        <button class="nav-btn" data-target="traffic-section">Traffic Light</button>
+        <button class="nav-btn" data-target="auth-section">Auth Forms</button>
+        <button class="nav-btn" data-target="leader-section">Leaderboard</button>
+    </nav>
+
+    <main class="container">
+        <section id="todo-section" class="content-section">
+            <h2>To-Do List</h2>
+            <div id="task-container"></div>
+            <button id="open-modal-btn">Add Task</button>
+        </section>
+
+        <section id="pass-section" class="content-section hidden">
+            <h2>Password Strength Checker</h2>
+            <input type="password" id="password-input" placeholder="Enter password">
+            <div id="strength-meter"><div id="strength-bar"></div></div>
+            <p id="strength-text"></p>
+        </section>
+
+        <section id="calc-section" class="content-section hidden">
+            <h2>Calculator</h2>
+            <div class="calc-display" id="calc-display">0</div>
+            <div class="calc-buttons">
+                <button class="btn-clear text-red">C</button>
+                <button class="btn-op" data-op="delete">DEL</button>
+                <button class="btn-op" data-op="%">%</button>
+                <button class="btn-op" data-op="/">÷</button>
+                <button class="btn-num">7</button>
+                <button class="btn-num">8</button>
+                <button class="btn-num">9</button>
+                <button class="btn-op" data-op="*">×</button>
+                <button class="btn-num">4</button>
+                <button class="btn-num">5</button>
+                <button class="btn-num">6</button>
+                <button class="btn-op" data-op="-">−</button>
+                <button class="btn-num">1</button>
+                <button class="btn-num">2</button>
+                <button class="btn-num">3</button>
+                <button class="btn-op" data-op="+">+</button>
+                <button class="btn-num">0</button>
+                <button class="btn-num">.</button>
+                <button class="btn-equals text-green">=</button>
+            </div>
+        </section>
+
+        <section id="traffic-section" class="content-section hidden">
+            <h2>Traffic Light</h2>
+            <div class="traffic-box">
+                <div class="light red" id="light-red"></div>
+                <div class="light yellow" id="light-yellow"></div>
+                <div class="light green active" id="light-green"></div>
+            </div>
+            <button id="cycle-light-btn">Cycle Light</button>
+        </section>
+
+        <section id="auth-section" class="content-section hidden">
+            <div class="auth-box">
+                <div class="auth-tabs">
+                    <button id="btn-show-signup" class="active">Sign Up</button>
+                    <button id="btn-show-login">Login</button>
+                </div>
+                <form id="signup-form">
+                    <input type="text" placeholder="Username" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+                <form id="login-form" class="hidden">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="leader-section" class="content-section hidden">
+            <h2>Tournament Leaderboard</h2>
+            <div class="table-actions">
+                <button id="open-team-modal">Add Team</button>
+                <button id="sort-ranking">Sort</button>
+                <button id="highlight-best">Highlight Best</button>
+            </div>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr><th>Rank</th><th>Team</th><th>W</th><th>L</th><th>Pts</th><th>Diff</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="todo-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>New Task</h3>
+            <input type="text" id="task-title" placeholder="Title">
+            <textarea id="task-desc" placeholder="Description"></textarea>
+            <select id="task-status">
+                <option value="pending">Pending</option>
+                <option value="in progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+            <div class="modal-btns">
+                <button id="save-task-btn" class="btn-primary">Save</button>
+                <button id="close-todo-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="team-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Add New Team</h3>
+            <input type="text" id="team-name" placeholder="Team Name">
+            <input type="number" id="team-wins" placeholder="Wins">
+            <input type="number" id="team-losses" placeholder="Losses">
+            <input type="number" id="team-scored" placeholder="Goals Scored">
+            <input type="number" id="team-conceded" placeholder="Goals Conceded">
+            <div class="modal-btns">
+                <button id="save-team-btn" class="btn-primary">Add</button>
+                <button id="close-team-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
