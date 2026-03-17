@@ -521,262 +521,313 @@
 // console.log(final_array);
 // console.log(array_1);
 // console.log(array_2);
-// Taksks
-// Five types of functions
 
-// 1.
+// OBJECTS
+// challange 1
+// const students = [
+//   {
+//     name: "Alice",
+//     scores: [80, 90, 100],
+//   },
+//   {
+//     name: "Bob",
+//     scores: [50, 60, 70],
+//   },
+//   {
+//     name: "Charlie",
+//     scores: [30, 40, 20],
+//   },
+// ];
+// let result = [];
+// for (let i = 0; i < students.length; i++) {
+//   let average = 0;
+//   for (let j = 0; j < students[i].scores.length; j++) {
+//     average += students[i].scores[j];
+//   }
+//   average = average / students[i].scores.length;
+//   result.push(average);
+// }
+// console.log(result);
 
-// function greet(name) {
-//     console.log(`Hello, ${name}!`)
+// challange 2
+// const cart = [
+//   {
+//     id: 1,
+//     name: "Laptop",
+//     price: 900,
+//     quantity: 1,
+//   },
+//   {
+//     id: 2,
+//     name: "Mouse",
+//     price: 50,
+//     quantity: 2,
+//   },
+//   {
+//     id: 3,
+//     name: "Keyboard",
+//     price: 100,
+//     quantity: 1,
+//   },
+// ];
+
+// let total_price = 0;
+// for (let i = 0; i < cart.length; i++) {
+//   let price = 0;
+//   price = cart[i].price * cart[i].quantity;
+//   total_price = total_price + price;
+// }
+// if (total_price > 100) {
+//   total_price = total_price * 0.9;
+// }
+// console.log(total_price);
+
+// Challenge 2
+
+// const cart = [
+//   { id: 1, name: "laptop", price: 900, quantity: 1 },
+//   { id: 2, name: "Mouse", price: 50, quantity: 2 },
+//   { id: 3, name: "laptop", price: 100, quantity: 1 },
+// ];
+
+// totalPrice = 0;
+
+// for (let item of cart) {
+//   totalPrice = totalPrice + item.price * item.quantity;
 // }
 
-// greet("Alice")
+// console.log("\nTotal Price: $" + totalPrice);
 
-// //2.
+// if (totalPrice > 100) {
+//   totalPrice = totalPrice * 0.9;
+// }
+// console.log("Total Price after discount: $" + totalPrice);
 
-// let greet  = function(name) {
-//     console.log(`Hello, ${name}!`)
+// mostExpensiveItem = cart[0];
+
+// for (let item of cart) {
+//   if (item.price > mostExpensiveItem.price) {
+//     mostExpensiveItem = item;
+//   }
+// }
+// console.log(
+//   "Most Expensive Item: " +
+//     mostExpensiveItem.name +
+//     " ($" +
+//     mostExpensiveItem.price +
+//     ")",
+// );
+
+// items = [];
+// for (let item of cart) {
+//   console.log(item.name, item.price);
 // }
 
-// greet("Bob")
+// Challa`nge 3
 
-// //3.
+// Product Inventory Management
 
-// let greet = (name) => {
-//     console.log(`Hello, ${name}!`)
+// const products = [
+//   { id: 1, name: "Laptop", price: 900, quantity: 10 },
+//   { id: 2, name: "Mouse", price: 50, quantity: 50 },
+//   { id: 3, name: "Keyboard", price: 80, quantity: 30 },
+// ];
+
+// function addProduct(newProduct) {
+//   products.push(newProduct);
+// }
+// console.log("Products before adding new product:");
+// for (let product of products) {
+//   console.log(product.name, product.price, product.quantity);
 // }
 
-// greet("Charlie")
+// addProduct({ id: 4, name: "Monitor", price: 200, quantity: 20 });
+// console.log("\nProducts after adding new product:");
+// for (let product of products) {
+//   console.log(product.name, product.price, product.quantity);
+// }
 
-// //4.
-
-// let greet = new Function(
-//     "name",
-//     "console.log(`Hello, ${name}!`)"
-// )
-
-// greet("Dave")
-
-//////////////////////////////////////////////////////////////////////////////
-
-//Challenge2.
-
-// function isPrime(num) {
-//     if (num <=1) {
-//         return false;
-//     } else {
-//         for (let i = 2; i < num; i ++) {
-//             if (num % i == 0) {
-//                 return false;
-//             }
-
-//         }
-//         return true;
-
+// function updateStock(productId, newQuantity) {
+//   for (let product of products) {
+//     if (product.id === productId) {
+//       product.quantity = newQuantity;
 //     }
+//   }
 // }
 
-// console.log(isPrime(11))
-
-// // Challenge3.
-
-// function countDigits(num) {
-//     const numStr = num.toString();
-//     return numStr.length;
+// console.log("\nProducts after updating stock:");
+// updateStock(2, 40);
+// for (let product of cart) {
+//   console.log(product.name, product.price, product.quantity);
 // }
 
-// console.log(countDigits(1948595))
-
-// //Challenge4.
-
-// function isPalindrome(text) {
-//     const reversedStr = text.split("").reverse().join("");
-//     return reversedStr === text;
+// function deleteProduct(productId) {
+//   for (let i = 0; i < products.length; i++) {
+//     if (products[i].id === productId) {
+//       delete products[i];
+//       break;
+//     }
+//   }
 // }
 
-// console.log(isPalindrome("true"))
-
-// //Challenge5.
-
-// function isArmstrong(num) {
-//     const numStr = num.toString();
-//     const numDigits = numStr.length;
-//     let sum = 0;
-//     for (let i = 0; i < numDigits; i++) {
-//         sum += Math.pow(Number(numStr[i]), numDigits);
-//     }
-//     return sum === num;
+// deleteProduct(3);
+// console.log("\nProducts after deleting a product:");
+// for (let product of products) {
+//   console.log(product.name, product.price, product.quantity);
 // }
 
-// console.log(isArmstrong(153))
-
-// //Challenge6.
-
-// function createCounter(start) {
-//     let count = start;
-//     let increment = function() {
-//         count++;
+// function findProduct(productName) {
+//   for (let product of products) {
+//     if (product.name === productName) {
+//       return product;
 //     }
-//     let decrement = function() {
-//         count--;
-//     }
-//     let getCount = function() {
-//         return count;
-//     }
-//     return {
-//         increment,
-//         decrement,
-//         getCount
-//     }
-
+//   }
+//   return null;
 // }
 
-// const counter = createCounter(5);
-// counter.increment();
-// counter.increment();
-// console.log(counter.getCount())
+// findProduct("Laptop");
 
-// //Challenge7.
+// Challenge 4
+// const posts = [
+//   { author: "Alice", content: "Hello World!", likes: 150, comments: 20, shares: 10 },
+//   { author: "Bob", content: "JavaScript is awesome!", likes: 200, comments: 30, shares: 5 },
+//   { author: "Charlie", content: "I love coding!", likes: 180, comments: 25, shares: 8 },
+// ];
 
-// // function orderFood(name, address, item) {
-// //     name = prompt("Enter your name: ");
-// //     address = prompt("Enter your address: ");
-// //     item = prompt("Enter the food item you want to order: ");
-
-// //     return `Dear ${name}, your ordered food item ${item} will be ready in 15 minutes and will be delivered to ${address} soon.`
-// // }
-
-// // console.log(orderFood())
-
-// //Challenge8.
-
-// function lazyAdder(a) {
-//     return function(b) {
-//         return a + b;
+// function mostLikedPost() {
+//   let topPost = posts[0];
+//   for (let post of posts) {
+//     if (post.likes > topPost.likes) {
+//       topPost = post;
 //     }
-
+//   }
+//   return topPost;
 // }
 
-// const add5 = lazyAdder(5);
-// console.log(add5(10))
-// console.log(add5(20))
+// console.log("\nMost Liked Post:");
+// let topPost = mostLikedPost();
+// console.log("Author: " + topPost.author);
+// console.log("Content: " + topPost.content);
+// console.log("Likes: " + topPost.likes);
 
-//////////////////////////////////////////////////////////
+// function totalEngagement(post) {
+//   return post.likes + post.comments + post.shares;
+// }
 
-//Assignments
+// console.log("\nTotal Engagement for each post:");
+// for (let post of posts) {
+//   console.log("Author: " + post.author + ", Total Engagement: " + totalEngagement(post));
+// }
 
-//Challenge1
+// Challenge 5
+// Sport Tournament Leaderboard
+// const teams = [
+//   { name: "Team A", wins: 10, losses: 5, draws: 2 , points: 16},
+//   { name: "Team B", wins: 12, losses: 3, draws: 1 , points: 18},
+//   { name: "Team C", wins: 8, losses: 7, draws: 3 , points: 38},
+// ];
 
-// task 1
-function DynamicPricingCalculation(carts) {
-  let countOfCarts = 0;
-  let totatSum = 0;
-  carts.forEach(({ price, id, count }) => {
-    countOfCarts += count;
-    totatSum += price * count;
-  });
-  if (countOfCarts > 5) {
-    return `20% discount for 5+ is ${totatSum * 0.8}`;
-  } else if (countOfCarts > 3) {
-    return `10% discount for 3+ is ${totatSum * 0.9}`;
-  } else {
-    return `total sum is ${totatSum}`;
+// function SortTeamsByRangking(teams) {
+//   teams.sort((a, b) => b.points - a.points);
+// }
+
+// console.log("\nLeaderboard:");
+// SortTeamsByRangking(teams);
+// console.log("ID\tTeam\tWins\tLosses\tDraws\tPoints");
+// for (let i = 0; i < teams.length; i++) {
+//   let team = teams[i];
+//   console.log(i+1,team.name ,"", team.wins ,"     ",team.losses ,"     ",team.draws ,"     ", team.points);
+// }
+
+// function BestPerformingTeam(teams) {
+//   let bestTeam = teams[0];
+//   for (let team of teams) {
+//     if (team.points > bestTeam.points) {
+//       bestTeam = team;
+//     }
+//   }
+//   return bestTeam;
+// }
+
+// console.log("\nBest Performing Team:");
+// let bestTeam = BestPerformingTeam(teams);
+// console.log("Team: " + bestTeam.name);
+// console.log("Points: " + bestTeam.points);
+
+// Challenge 6
+// Warehouse Stock Management
+// const inventory = [
+//   { itemName: "Laptop", category: "Electronics", stock:50},
+//   { itemName: "Chair", category: "Furniture", stock: 100 },
+//   { itemName: "Table", category: "Furniture", stock: 75 },
+//   { itemName: "Headphones", category: "Electronics", stock: 200 },
+// ];
+
+// function totalStockByCategory(category) {
+//   let totalStock = 0;
+//   for (let item of inventory) {
+//     if (item.category === category) {
+//       totalStock = totalStock + item.stock;
+//     }
+//   }
+//   return totalStock;
+// }
+// console.log("\nTotal Stock in Electronics: " + totalStockByCategory("Electronics"));
+// console.log("Total Stock in Furniture: " + totalStockByCategory("Furniture"));
+
+const body = document.body;
+
+body.innerHTML = `
+  <div class="container">
+    <h1>Interactive To-Do List</h1>
+    <div id="taskList"></div>
+    <button id="addBtn" class="add-btn">Add Task</button>
+  </div>
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Add Task</h2>
+      <input id="title" placeholder="Task Title">
+      <textarea id="desc" placeholder="Task Description"></textarea>
+      <select id="status">
+        <option value="pending">Pending</option>
+        <option value="progress">In Progress</option>
+        <option value="done">Completed</option>
+      </select>
+      <button id="saveBtn" class="save">Save Task</button>
+      <button id="closeBtn" class="close">Close</button>
+    </div>
+  </div>
+`;
+
+const modal = document.getElementById("modal");
+const addBtn = document.getElementById("addBtn");
+const closeBtn = document.getElementById("closeBtn");
+const saveBtn = document.getElementById("saveBtn");
+const taskList = document.getElementById("taskList");
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
+const status = document.getElementById("status");
+addBtn.onclick = () => modal.classList.remove("hidden");
+closeBtn.onclick = () => modal.classList.add("hidden");
+
+saveBtn.onclick = () => {
+  const task = `
+    <div class="task">
+      <h3>
+        ${title.value}
+        <span class="status ${status.value}">${status.value}</span>
+      </h3>
+      <p>${desc.value}</p>
+      <button class="delete">Delete</button>
+    </div>
+  `;
+  taskList.innerHTML += task;
+  modal.classList.add("hidden");
+  title.value = "";
+  desc.value = "";
+};
+taskList.onclick = (e) => {
+  if (e.target.classList.contains("delete")) {
+    e.target.parentElement.remove();
   }
-}
-
-console.log(
-  DynamicPricingCalculation([
-    {
-      price: 4000,
-      id: 1,
-      count: 1,
-    },
-    {
-      price: 6400,
-      id: 2,
-      count: 1,
-    },
-    {
-      price: 14000,
-      id: 3,
-      count: 1,
-    },
-    {
-      price: 4000,
-      id: 4,
-      count: 1,
-    },
-  ]),
-);
-
-// task 2
-// function checkPassword(password) {
-//    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-//    if (regex.test(password)) {
-//       console.log('password is strong');
-//    } else {
-//       console.log('password is weak');
-
-//    }
-// }
-// checkPassword('1231!Asas')
-
-// task 3
-// function withdrawATM(amount) {
-//   if (amount % 10 !== 0) {
-//     return "Error: Amount must be a multiple of $10.";
-//   }
-
-//   const bills = [100, 50, 20, 10];
-//   let result = {};
-//   let remaining = amount;
-
-//   bills.forEach(bill => {
-//     let count = Math.floor(remaining / bill);
-//     if (count > 0) {
-//       result[`$${bill}`] = count;
-//       remaining -= count * bill;
-//     }
-//   });
-
-//   return result;
-// }
-
-// task 6
-
-// function bankAccount(balance) {
-//    return {
-//       balance: balance,
-//       deposit: (e)=>balance + e,
-//       withdraw: (e)=>balance - e,
-//       viewBalange: ()=>balance,
-//    }
-// }
-// console.log(bankAccount(1000).withdraw(10))
-
-// TASK 7
-// function RoleBasedAccessSystem(role) {
-//    switch (role) {
-//       case 'admin':
-//          console.log('can add, edit, delete content');
-//          break;
-//       case 'editor':
-//          console.log('can add, view');
-//          break;
-//       default:
-//          console.log('can only view');
-//          break;
-//    }
-// }
-
-// task 9
-
-// function dinamicTaxCalculator(income) {
-//     if (income > 10000) {
-//       console.log("no tax");
-//     } else if (income > 5000) {
-//       console.log("10% tax");
-//     } else {
-//       console.log(`20% tax`);
-//     }
-//   }
+};
