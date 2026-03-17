@@ -594,166 +594,250 @@ if the requested amount is not in multiples of 10, return an error.
 // const array2 = [3, 5, 6, 7, 8, 13];
 // console.log(sumArrayIndices(array1, array2));
 
+//
+//
+// // challenge 1
+// const students = [
+//     { name: "Alice", scores: [85, 92, 78] },
+//     { name: "Bob", scores: [90, 88, 94] },
+//     { name: "Charlie", scores: [76, 82, 79] }
+// ];
+//
+// function calculateAverage(scores) {
+//     const sum = scores.reduce((total, score) => total + score, 0);
+//     return sum / scores.length;
+// }
+//
+// function hasPassed(average) {
+//     return average >= 50;
+// }
+//
+// function findTopStudent(students) {
+//     let topStudent = null;
+//     let highestAverage = -1;
+//
+//     students.forEach(student => {
+//         const average = calculateAverage(student.scores);
+//         if (average > highestAverage) {
+//             highestAverage = average;
+//             topStudent = student;
+//         }
+//     });
+//
+//     return {
+//         student: topStudent,
+//         average: highestAverage
+//     };
+// }
+//
+// students.forEach(student => {
+//     const average = calculateAverage(student.scores);
+//     const passed = hasPassed(average);
+//
+//     console.log(`${student.name}:`);
+//     console.log(`  Scores: ${student.scores.join(', ')}`);
+//     console.log(`  Average: ${average.toFixed(2)}`);
+//     console.log(`  Status: ${passed ? 'Passed' : 'Failed'}`);
+//     console.log('---');
+// });
+//
+// const topStudent = findTopStudent(students);
+// console.log(`\nTop Student: ${topStudent.student.name}`);
+// console.log(`Average Score: ${topStudent.average.toFixed(2)}`);
+//
+//
+// //task 2
+// const cart = [
+//   { id: 1, name: "Laptop", price: 900, quantity: 1 },
+//   { id: 2, name: "Mouse", price: 50, quantity: 2 },
+//   { id: 3, name: "Keyboard", price: 100, quantity: 1 }
+// ];
+//
+// let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+//
+// if (total > 100) {
+//   total = total * 0.9;
+// }
+//
+// const mostExpensive = cart.reduce((max, item) =>
+//   item.price > max.price ? item : max
+// );
+//
+// console.log("Total Price:", `$${total}`);
+// console.log("Most Expensive Item:", mostExpensive.name);
+//
+// //task 3
+//
+// let products = [
+//   { id: 1, name: "Laptop", price: 1200, stock: 10 },
+//   { id: 2, name: "Phone", price: 700, stock: 15 }
+// ];
+//
+// function addProduct(product) {
+//   products = [...products, product];
+// }
+//
+// function updateStock(id, newStock) {
+//   products = products.map(p =>
+//     p.id === id ? { ...p, stock: newStock } : p
+//   );
+// }
+//
+// function deleteProduct(id) {
+//   products = products.filter(p => p.id !== id);
+// }
+//
+// function findProduct(name) {
+//   return products.find(p => p.name.toLowerCase() === name.toLowerCase());
+// }
+//
+// addProduct({ id: 3, name: "Tablet", price: 500, stock: 8 });
+// updateStock(1, 20);
+// deleteProduct(2);
+//
+// console.log(products);
+// console.log(findProduct("Laptop"));
+//
+// //task 4
+// const posts = [
+//   { author: "Alice", likes: 100, comments: 20, shares: 5 },
+//   { author: "Bob", likes: 200, comments: 50, shares: 10 }
+// ];
+//
+// function mostLikedPost(posts) {
+//   return posts.reduce((max, post) =>
+//     post.likes > max.likes ? post : max
+//   );
+// }
+//
+// function totalEngagement(posts) {
+//   return posts.reduce(
+//     (sum, post) => sum + post.likes + post.comments + post.shares,
+//     0
+//   );
+// }
+//
+// console.log(mostLikedPost(posts));
+// console.log(totalEngagement(posts));
+// //task 5
+// const teams = [
+//   { name: "Team A", wins: 5, losses: 2, points: 15 },
+//   { name: "Team B", wins: 6, losses: 1, points: 18 }
+// ];
+//
+// function sortTeamsByRanking(teams) {
+//   return [...teams].sort((a, b) => b.points - a.points);
+// }
+//
+// function bestTeam(teams) {
+//   return teams.reduce((best, team) =>
+//     team.points > best.points ? team : best
+//   );
+// }
+//
+// console.log(sortTeamsByRanking(teams));
+// console.log(bestTeam(teams));
+//
+//
+// // task 6
+// const inventory = [
+//   { itemName: "Laptop", category: "Electronics", stock: 5 },
+//   { itemName: "Phone", category: "Electronics", stock: 10 }
+// ];
+//
+// function totalStockByCategory(category) {
+//   return inventory
+//     .filter(item => item.category === category)
+//     .reduce((sum, item) => sum + item.stock, 0);
+// }
+//
+// function lowStockItems(limit) {
+//   return inventory.filter(item => item.stock < limit);
+// }
+//
+// console.log(totalStockByCategory("Electronics"));
+// console.log(lowStockItems(6));
 
 
-// challenge 1
-const students = [
-    { name: "Alice", scores: [85, 92, 78] },
-    { name: "Bob", scores: [90, 88, 94] },
-    { name: "Charlie", scores: [76, 82, 79] }
-];
+let tasks = [];
+let editIndex = null;
 
-function calculateAverage(scores) {
-    const sum = scores.reduce((total, score) => total + score, 0);
-    return sum / scores.length;
+function render() {
+  const container = document.getElementById("tasks");
+  container.innerHTML = "";
+
+  tasks.forEach((t, i) => {
+    container.innerHTML += `
+      <div class="task">
+        <b>${t.title}</b>
+        <p>${t.desc}</p>
+
+        <select onchange="changeStatus(${i}, this.value)">
+          <option value="pending" ${t.status==="pending"?"selected":""}>Pending</option>
+          <option value="progress" ${t.status==="progress"?"selected":""}>In Progress</option>
+          <option value="done" ${t.status==="done"?"selected":""}>Completed</option>
+        </select>
+
+        <span class="status ${t.status}">
+          ${t.status}
+        </span>
+
+        <br>
+        <button onclick="editTask(${i})">Edit</button>
+        <button class="delete" onclick="deleteTask(${i})">Delete</button>
+      </div>
+    `;
+  });
 }
 
-function hasPassed(average) {
-    return average >= 50;
+function addTask() {
+  const title = document.getElementById("title").value;
+  const desc = document.getElementById("desc").value;
+  const status = document.getElementById("status").value;
+
+  if (!title) return;
+
+  if (editIndex === null) {
+    tasks.push({ title, desc, status });
+  } else {
+    tasks[editIndex] = { title, desc, status };
+    editIndex = null;
+  }
+
+  closeModal();
+  render();
 }
 
-function findTopStudent(students) {
-    let topStudent = null;
-    let highestAverage = -1;
+function editTask(i) {
+  const t = tasks[i];
+  document.getElementById("title").value = t.title;
+  document.getElementById("desc").value = t.desc;
+  document.getElementById("status").value = t.status;
 
-    students.forEach(student => {
-        const average = calculateAverage(student.scores);
-        if (average > highestAverage) {
-            highestAverage = average;
-            topStudent = student;
-        }
-    });
-
-    return {
-        student: topStudent,
-        average: highestAverage
-    };
+  editIndex = i;
+  openModal();
 }
 
-students.forEach(student => {
-    const average = calculateAverage(student.scores);
-    const passed = hasPassed(average);
-
-    console.log(`${student.name}:`);
-    console.log(`  Scores: ${student.scores.join(', ')}`);
-    console.log(`  Average: ${average.toFixed(2)}`);
-    console.log(`  Status: ${passed ? 'Passed' : 'Failed'}`);
-    console.log('---');
-});
-
-const topStudent = findTopStudent(students);
-console.log(`\nTop Student: ${topStudent.student.name}`);
-console.log(`Average Score: ${topStudent.average.toFixed(2)}`);
-
-
-//task 2
-const cart = [
-  { id: 1, name: "Laptop", price: 900, quantity: 1 },
-  { id: 2, name: "Mouse", price: 50, quantity: 2 },
-  { id: 3, name: "Keyboard", price: 100, quantity: 1 }
-];
-
-let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-if (total > 100) {
-  total = total * 0.9;
+function changeStatus(i, newStatus) {
+  tasks[i].status = newStatus;
+  render();
 }
 
-const mostExpensive = cart.reduce((max, item) =>
-  item.price > max.price ? item : max
-);
-
-console.log("Total Price:", `$${total}`);
-console.log("Most Expensive Item:", mostExpensive.name);
-
-//task 3
-
-let products = [
-  { id: 1, name: "Laptop", price: 1200, stock: 10 },
-  { id: 2, name: "Phone", price: 700, stock: 15 }
-];
-
-function addProduct(product) {
-  products = [...products, product];
+function deleteTask(i) {
+  tasks.splice(i, 1);
+  render();
 }
 
-function updateStock(id, newStock) {
-  products = products.map(p =>
-    p.id === id ? { ...p, stock: newStock } : p
-  );
+function openModal() {
+  document.getElementById("modal").style.display = "flex";
 }
 
-function deleteProduct(id) {
-  products = products.filter(p => p.id !== id);
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+
+  document.getElementById("title").value = "";
+  document.getElementById("desc").value = "";
+  document.getElementById("status").value = "pending";
+
+  editIndex = null;
 }
-
-function findProduct(name) {
-  return products.find(p => p.name.toLowerCase() === name.toLowerCase());
-}
-
-addProduct({ id: 3, name: "Tablet", price: 500, stock: 8 });
-updateStock(1, 20);
-deleteProduct(2);
-
-console.log(products);
-console.log(findProduct("Laptop"));
-
-//task 4
-const posts = [
-  { author: "Alice", likes: 100, comments: 20, shares: 5 },
-  { author: "Bob", likes: 200, comments: 50, shares: 10 }
-];
-
-function mostLikedPost(posts) {
-  return posts.reduce((max, post) =>
-    post.likes > max.likes ? post : max
-  );
-}
-
-function totalEngagement(posts) {
-  return posts.reduce(
-    (sum, post) => sum + post.likes + post.comments + post.shares,
-    0
-  );
-}
-
-console.log(mostLikedPost(posts));
-console.log(totalEngagement(posts));
-//task 5
-const teams = [
-  { name: "Team A", wins: 5, losses: 2, points: 15 },
-  { name: "Team B", wins: 6, losses: 1, points: 18 }
-];
-
-function sortTeamsByRanking(teams) {
-  return [...teams].sort((a, b) => b.points - a.points);
-}
-
-function bestTeam(teams) {
-  return teams.reduce((best, team) =>
-    team.points > best.points ? team : best
-  );
-}
-
-console.log(sortTeamsByRanking(teams));
-console.log(bestTeam(teams));
-
-
-// task 6
-const inventory = [
-  { itemName: "Laptop", category: "Electronics", stock: 5 },
-  { itemName: "Phone", category: "Electronics", stock: 10 }
-];
-
-function totalStockByCategory(category) {
-  return inventory
-    .filter(item => item.category === category)
-    .reduce((sum, item) => sum + item.stock, 0);
-}
-
-function lowStockItems(limit) {
-  return inventory.filter(item => item.stock < limit);
-}
-
-console.log(totalStockByCategory("Electronics"));
-console.log(lowStockItems(6));
