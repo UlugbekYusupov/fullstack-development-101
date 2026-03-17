@@ -1005,45 +1005,142 @@ const button3 = document.getElementById("button3");
 // ! Password strenth check
 // * Practice 3
 
-const calcContainer = document.createElement("div");
-const calcDisplay = document.createElement("span");
-const calcButtonGrid = document.createElement("div");
+// const calcContainer = document.createElement("div");
+// const calcDisplay = document.createElement("span");
+// const calcButtonGrid = document.createElement("div");
 
-document.body.append(calcContainer);
-calcContainer.append(calcDisplay, calcButtonGrid);
+// let currentInput = "";
+// let previousInput = "";
+// let operator = null;
 
-for (i = 0; calcButtonGrid.childElementCount < 19; i++) {
-  const calcBtn = document.createElement("button");
-  calcButtonGrid.append(calcBtn);
-  calcBtn.style.width = "100%";
-  calcBtn.style.height = "60px";
-  calcBtn.style.cursor = "pointer";
+// document.body.append(calcContainer);
+// calcContainer.append(calcDisplay, calcButtonGrid);
+
+// const labels = [
+//   "7",
+//   "8",
+//   "9",
+//   "/",
+//   "4",
+//   "5",
+//   "6",
+//   "*",
+//   "1",
+//   "2",
+//   "3",
+//   "-",
+//   "0",
+//   "(",
+//   ")",
+//   "+",
+//   ".",
+//   "c",
+//   "=",
+// ];
+
+// labels.forEach((label) => {
+//   const calcBtn = document.createElement("button");
+//   calcBtn.textContent = label;
+//   calcBtn.style.width = "100%";
+//   calcBtn.style.height = "60px";
+//   calcBtn.style.cursor = "pointer";
+//   calcBtn.style.borderRadius = "8px";
+//   calcBtn.style.border = "1px solid #0003";
+//   calcBtn.style.fontSize = "1.3rem";
+//   calcBtn.style.fontWeight = "700";
+
+//   calcBtn.style.boxShadow = "0 3px 8px #0001";
+
+//   calcButtonGrid.append(calcBtn);
+// });
+
+// function uiSetup() {
+//   calcContainer.style.width = "400px";
+//   calcContainer.style.background = "#fff";
+//   calcContainer.style.padding = "20px";
+//   calcContainer.style.display = "grid";
+//   calcContainer.style.gap = "10px";
+//   calcContainer.style.boxShadow = "0 5px 15px -3px #0002";
+//   calcContainer.style.borderRadius = "10px";
+
+//   calcDisplay.style.width = "100%";
+//   calcDisplay.style.height = "70px";
+//   calcDisplay.style.background = "#0002";
+//   calcDisplay.style.boxShadow = "inset 3px 5px 10px #0002";
+//   calcDisplay.style.fontSize = "1.3rem";
+//   calcDisplay.style.padding = "6px";
+//   calcDisplay.style.borderRadius = "8px";
+
+//   calcButtonGrid.style.width = "100%";
+//   calcButtonGrid.style.display = "grid";
+//   calcButtonGrid.style.gridTemplateColumns = "repeat(4, 1fr)";
+//   calcButtonGrid.style.gap = "6px";
+//   calcButtonGrid.style.marginTop = "10px";
+
+//   calcButtonGrid.lastElementChild.style.gridColumn = "3/5";
+//   calcButtonGrid.lastElementChild.style.background = "orange";
+// }
+
+// uiSetup();
+
+// ! Traffic light simulator
+// * Practice 4
+
+// ? UI
+const light_container = document.createElement("div");
+const greenLight = document.createElement("div");
+const yellowLight = document.createElement("div");
+const redLight = document.createElement("div");
+
+document.body.appendChild(light_container);
+light_container.append(greenLight, yellowLight, redLight);
+
+function lightUi() {
+  light_container.style.width = "200px";
+  light_container.style.display = "grid";
+  light_container.style.gap = "1rem";
+  light_container.style.padding = "20px";
+  light_container.style.borderRadius = "10px";
+  light_container.style.background = "#121212";
+
+  greenLight.style.width = "100%";
+  greenLight.style.aspectRatio = "1";
+  greenLight.style.borderRadius = "50%";
+  greenLight.style.background = "#14ff2b";
+
+  yellowLight.style.width = "100%";
+  yellowLight.style.aspectRatio = "1";
+  yellowLight.style.borderRadius = "50%";
+  yellowLight.style.background = "#ffda1e";
+
+  redLight.style.width = "100%";
+  redLight.style.aspectRatio = "1";
+  redLight.style.borderRadius = "50%";
+  redLight.style.background = "#ff1024";
 }
 
-function uiSetup() {
-  calcContainer.style.width = "400px";
-  calcContainer.style.background = "#fff";
-  calcContainer.style.padding = "20px";
-  calcContainer.style.display = "grid";
-  calcContainer.style.gap = "10px";
-  calcContainer.style.boxShadow = "0 5px 15px -3px #0002";
-  calcContainer.style.borderRadius = "10px";
+lightUi();
 
-  calcDisplay.style.width = "100%";
-  calcDisplay.style.height = "70px";
-  calcDisplay.style.background = "#0003";
-  calcDisplay.style.fontSize = "1.3rem";
-  calcDisplay.style.padding = "6px";
-  calcDisplay.style.borderRadius = "8px";
+function startTrafficCycle() {
+  greenLight.style.opacity = "1";
+  yellowLight.style.opacity = "0.2";
+  redLight.style.opacity = "0.2";
 
-  calcButtonGrid.style.width = "100%";
-  calcButtonGrid.style.display = "grid";
-  calcButtonGrid.style.gridTemplateColumns = "repeat(4, 1fr)";
-  calcButtonGrid.style.gap = "6px";
-  calcButtonGrid.style.marginTop = "10px";
+  setTimeout(() => {
+    greenLight.style.opacity = "0.2";
+    yellowLight.style.opacity = "1";
+    redLight.style.opacity = "0.2";
 
-  calcButtonGrid.lastElementChild.style.gridColumn = "3/5";
-  calcButtonGrid.lastElementChild.style.background = "orange";
+    setTimeout(() => {
+      greenLight.style.opacity = "0.2";
+      yellowLight.style.opacity = "0.2";
+      redLight.style.opacity = "1";
+
+      setTimeout(() => {
+        startTrafficCycle();
+      }, 3000);
+    }, 1000);
+  }, 3000);
 }
 
-uiSetup();
+startTrafficCycle();
