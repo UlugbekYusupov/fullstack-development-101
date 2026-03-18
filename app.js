@@ -1086,61 +1086,228 @@ const button3 = document.getElementById("button3");
 // ! Traffic light simulator
 // * Practice 4
 
-// ? UI
-const light_container = document.createElement("div");
-const greenLight = document.createElement("div");
-const yellowLight = document.createElement("div");
-const redLight = document.createElement("div");
+// // ? UI
+// const light_container = document.createElement("div");
+// const greenLight = document.createElement("div");
+// const yellowLight = document.createElement("div");
+// const redLight = document.createElement("div");
 
-document.body.appendChild(light_container);
-light_container.append(greenLight, yellowLight, redLight);
+// document.body.appendChild(light_container);
+// light_container.append(greenLight, yellowLight, redLight);
 
-function lightUi() {
-  light_container.style.width = "200px";
-  light_container.style.display = "grid";
-  light_container.style.gap = "1rem";
-  light_container.style.padding = "20px";
-  light_container.style.borderRadius = "10px";
-  light_container.style.background = "#121212";
+// function lightUi() {
+//   light_container.style.width = "200px";
+//   light_container.style.display = "grid";
+//   light_container.style.gap = "1rem";
+//   light_container.style.padding = "20px";
+//   light_container.style.borderRadius = "10px";
+//   light_container.style.background = "#121212";
 
-  greenLight.style.width = "100%";
-  greenLight.style.aspectRatio = "1";
-  greenLight.style.borderRadius = "50%";
-  greenLight.style.background = "#14ff2b";
+//   greenLight.style.width = "100%";
+//   greenLight.style.aspectRatio = "1";
+//   greenLight.style.borderRadius = "50%";
+//   greenLight.style.background = "#14ff2b";
 
-  yellowLight.style.width = "100%";
-  yellowLight.style.aspectRatio = "1";
-  yellowLight.style.borderRadius = "50%";
-  yellowLight.style.background = "#ffda1e";
+//   yellowLight.style.width = "100%";
+//   yellowLight.style.aspectRatio = "1";
+//   yellowLight.style.borderRadius = "50%";
+//   yellowLight.style.background = "#ffda1e";
 
-  redLight.style.width = "100%";
-  redLight.style.aspectRatio = "1";
-  redLight.style.borderRadius = "50%";
-  redLight.style.background = "#ff1024";
+//   redLight.style.width = "100%";
+//   redLight.style.aspectRatio = "1";
+//   redLight.style.borderRadius = "50%";
+//   redLight.style.background = "#ff1024";
+// }
+// lightUi();
+
+// function startTrafficCycle() {
+//   greenLight.style.opacity = "1";
+//   yellowLight.style.opacity = "0.2";
+//   redLight.style.opacity = "0.2";
+
+//   setTimeout(() => {
+//     greenLight.style.opacity = "0.2";
+//     yellowLight.style.opacity = "1";
+//     redLight.style.opacity = "0.2";
+
+//     setTimeout(() => {
+//       greenLight.style.opacity = "0.2";
+//       yellowLight.style.opacity = "0.2";
+//       redLight.style.opacity = "1";
+
+//       setTimeout(() => {
+//         startTrafficCycle();
+//       }, 3000);
+//     }, 1000);
+//   }, 3000);
+// }
+
+// startTrafficCycle();
+
+// ! homework
+// ? authentication
+
+const authCont = document.createElement("form");
+const authContTitle = document.createElement("h1");
+const authNameInp = document.createElement("input");
+const authEmailInp = document.createElement("input");
+const authPasswordInp = document.createElement("input");
+const authSubmitBtn = document.createElement("button");
+const authSwitchBtn = document.createElement("button");
+
+let users = [];
+
+document.body.appendChild(authCont);
+authCont.append(
+  authContTitle,
+  authNameInp,
+  authEmailInp,
+  authPasswordInp,
+  authSubmitBtn,
+  authSwitchBtn,
+);
+
+const allInputs = [authNameInp, authEmailInp, authPasswordInp];
+const allbuttons = [authSubmitBtn, authSwitchBtn];
+
+function authUI() {
+  authCont.style.width = "450px";
+  authCont.style.borderRadius = "15px";
+  authCont.style.padding = "20px";
+  authCont.style.background = "#fff";
+  authCont.style.display = "grid";
+  authCont.style.gap = "6px";
+  authCont.style.border = "1px solid #0002";
+  authCont.style.boxShadow = "0 5px 15px #0001";
+
+  authContTitle.textContent = "Sign up";
+  authContTitle.style.textAlign = "center";
+  authContTitle.style.paddingBottom = "20px";
+
+  authNameInp.placeholder = "Enter Name";
+  authNameInp.type = "text";
+  authEmailInp.placeholder = "Enter Email";
+  authEmailInp.type = "email";
+  authPasswordInp.placeholder = "Enter Password";
+  authPasswordInp.type = "password";
+
+  allInputs.forEach((inpElement) => {
+    inpElement.style.width = "100%";
+    inpElement.style.height = "40px";
+    inpElement.style.border = "2px solid #0003";
+    inpElement.style.borderRadius = "10px";
+    inpElement.style.paddingLeft = "10px";
+    inpElement.style.outlineColor = "#256eff";
+    inpElement.style.marginBlock = "3px";
+    inpElement.style.boxShadow = "0 0 10px #0001";
+  });
+
+  authSubmitBtn.textContent = "Submit";
+  authSubmitBtn.style.width = "100%";
+  authSubmitBtn.style.height = "45px";
+  authSubmitBtn.style.borderRadius = "10px";
+  authSubmitBtn.style.background = "#256eff";
+  authSubmitBtn.style.color = "#fff";
+  authSubmitBtn.style.fontSize = "1rem";
+  authSubmitBtn.style.fontWeight = "700";
+  authSubmitBtn.style.border = "none";
+  authSubmitBtn.style.marginTop = "20px";
+  authSubmitBtn.style.cursor = "pointer";
+
+  authSwitchBtn.textContent = "Already have an account?";
+  authSwitchBtn.style.height = "45px";
+  authSwitchBtn.style.color = "#256eff";
+  authSwitchBtn.style.fontSize = "1rem";
+  authSwitchBtn.style.fontWeight = "700";
+  authSwitchBtn.style.border = "none";
+  authSwitchBtn.style.borderRadius = "10px";
+  authSwitchBtn.style.cursor = "pointer";
+
+  allbuttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+    });
+
+    button.addEventListener("mouseenter", () => {
+      button.style.filter = "brightness(0.9)";
+    });
+    button.addEventListener("mouseleave", () => {
+      button.style.filter = "brightness(1)";
+    });
+
+    button.addEventListener("mousedown", () => {
+      button.style.scale = "0.95";
+      button.style.transitionDuration = "50ms";
+    });
+    button.addEventListener("mouseup", () => {
+      button.style.transitionDuration = "0.3s";
+      button.style.scale = "1";
+    });
+  });
 }
 
-lightUi();
+authUI();
 
-function startTrafficCycle() {
-  greenLight.style.opacity = "1";
-  yellowLight.style.opacity = "0.2";
-  redLight.style.opacity = "0.2";
+function switchToLogIn() {
+  authCont.classList.toggle("active");
 
-  setTimeout(() => {
-    greenLight.style.opacity = "0.2";
-    yellowLight.style.opacity = "1";
-    redLight.style.opacity = "0.2";
-
-    setTimeout(() => {
-      greenLight.style.opacity = "0.2";
-      yellowLight.style.opacity = "0.2";
-      redLight.style.opacity = "1";
-
-      setTimeout(() => {
-        startTrafficCycle();
-      }, 3000);
-    }, 1000);
-  }, 3000);
+  if (authCont.classList.contains("active")) {
+    authContTitle.textContent = "Sign up";
+    authNameInp.style.display = "block";
+    authSwitchBtn.textContent = "Already have an account?";
+  } else {
+    authSwitchBtn.textContent = "Don't have an account?";
+    authContTitle.textContent = "Log in";
+    authNameInp.style.display = "none";
+  }
 }
 
-startTrafficCycle();
+authSubmitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (authCont.classList.contains("active")) {
+    checkAuth();
+  } else {
+    addUser();
+  }
+});
+
+function checkAuth() {
+  const emailInp = authEmailInp.value.trim();
+  const passwInp = authPasswordInp.value.trim();
+
+  const user = users.find((u) => u.email === emailInp && u.pass === passwInp);
+
+  if (user) {
+    alert("Welcome back, " + user.name);
+  } else {
+    alert("Account not found or password incorrect.");
+    authPasswordInp.value = "";
+  }
+}
+
+function addUser() {
+  const nameInp = authNameInp.value.trim();
+  const emailInp = authEmailInp.value.trim();
+  const passwInp = authPasswordInp.value.trim();
+
+  if (!nameInp || !emailInp || !passwInp) {
+    alert("Please fill all the inputs.");
+    return;
+  }
+
+  const newUser = {
+    name: nameInp,
+    email: emailInp,
+    pass: passwInp,
+  };
+
+  users.push(newUser);
+  alert("Account created successfully!");
+
+  authNameInp.value = "";
+  authEmailInp.value = "";
+  authPasswordInp.value = "";
+}
+
+authSwitchBtn.addEventListener("click", switchToLogIn);
