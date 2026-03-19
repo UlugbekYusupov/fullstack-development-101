@@ -17,86 +17,79 @@ cardsParent.classList.add('my-2', 'mx-3');
 // cards
 
 let tasks = [
-    { id:1, title:"Task 1", description:"Description for Task 1", status:"pending"},
-    { id:2, title:"Task 2", description:"Description for Task 2", status:"in progress"},
-    { id:3, title:"Task 3", description:"Description for Task 3", status:"completed"}
+    { id: 1, title: "Task 1", description: "Description for Task 1", status: "pending" },
+    { id: 2, title: "Task 2", description: "Description for Task 2", status: "in progress" },
+    { id: 3, title: "Task 3", description: "Description for Task 3", status: "completed" }
 ];
 
-tasks.forEach(task => {
+// ─── renderTasks: renders all tasks into cardsParent ─────────────────────── (this task done by agility)
+function renderTasks() {
 
-    const card = document.createElement('div');
-    card.classList.add(
-        'd-flex',
-        'justify-content-between',
-        'align-items-center',
-        'p-3',
-        'mb-3',
-        'shadow-sm',
-        'rounded',
-        'bg-light', 'w-75', 'mx-auto'
-    );
+    // Clear existing cards before re-rendering
+    cardsParent.innerHTML = '';
 
-    // Card text parent
-    const cardTextContainer = document.createElement('div');
-    cardTextContainer.classList.add('text-start');
-    
+    tasks.forEach(task => {
 
-    // Card Title
-    const cardTitle = document.createElement('h4');
-    cardTitle.textContent = task.title;
-    cardTitle.classList.add('mb-0', 'fw-bolder');
+        const card = document.createElement('div');
+        card.classList.add(
+            'd-flex',
+            'justify-content-between',
+            'align-items-center',
+            'p-3',
+            'mb-3',
+            'shadow-sm',
+            'rounded',
+            'bg-light', 'w-75', 'mx-auto'
+        );
 
-    // Card description
-    const cardDesc = document.createElement('p');
-    cardDesc.textContent = task.description;
-    cardDesc.classList.add('mb-0', 'fw-medium', 'text-muted');
+        // Card text parent
+        const cardTextContainer = document.createElement('div');
+        cardTextContainer.classList.add('text-start');
 
-    // Card Button
-    const cardBtn = document.createElement('button');
-    cardBtn.textContent = "Delete";
-    cardBtn.classList.add('btn', 'btn-danger', 'border', 'rounded-2', 'py-1', 'px-3', 
-        'text-white', 'mt-1');
+        // Card Title
+        const cardTitle = document.createElement('h4');
+        cardTitle.textContent = task.title;
+        cardTitle.classList.add('mb-0', 'fw-bolder');
 
-    // Delete button function
-    function deleteTask(id){
-        tasks = tasks.filter(t => t.id !== id);
-    };
+        // Card description
+        const cardDesc = document.createElement('p');
+        cardDesc.textContent = task.description;
+        cardDesc.classList.add('mb-0', 'fw-medium', 'text-muted');
 
-    cardBtn.addEventListener("click", () => {
-        deleteTask(task.id);
-        card.remove();
-    })
+        // Delete button
+        const cardBtn = document.createElement('button');
+        cardBtn.textContent = 'Delete';
+        cardBtn.classList.add('btn', 'btn-danger', 'border', 'rounded-2', 'py-1', 'px-3',
+            'text-white', 'mt-1');
 
-    cardTextContainer.append(cardTitle, cardDesc, cardBtn)
+        cardBtn.addEventListener('click', () => {
+            tasks = tasks.filter(t => t.id !== task.id);
+            renderTasks(); // re-render after deletion
+        });
 
-    // Card Status
-    const cardStatus = document.createElement('p');
-    cardStatus.textContent = task.status;
-    cardStatus.classList.add('px-3', 'py-1', 'rounded-pill', 'text-white');
+        cardTextContainer.append(cardTitle, cardDesc, cardBtn);
 
-    // function of color changing for status
-    function cardStatusColorChanger(cardStatus, status){
-        if(status === "pending"){
-            cardStatus.classList.add('bg-warning');
+        // Card Status badge
+        const cardStatus = document.createElement('p');
+        cardStatus.textContent = task.status;
+        cardStatus.classList.add('px-3', 'py-1', 'rounded-pill', 'text-white', 'mb-0');
+
+        // Color the status badge based on value
+        function cardStatusColorChanger(badge, status) {
+            if (status === 'pending') badge.classList.add('bg-warning');
+            if (status === 'in progress') badge.classList.add('bg-primary');
+            if (status === 'completed') badge.classList.add('bg-success');
         }
 
-        if(status === "in progress"){
-            cardStatus.classList.add('bg-primary');
-        }
+        cardStatusColorChanger(cardStatus, task.status);
 
-        if(status === "completed"){
-            cardStatus.classList.add('bg-success');
-        }
-    }
+        card.append(cardTextContainer, cardStatus);
+        cardsParent.append(card);
+    });
+}
 
-// functionni chaqirish
-cardStatusColorChanger(cardStatus, task.status);
-
-    card.append(cardTextContainer, cardStatus);
-
-    // cardni parentga qo'shish
-    cardsParent.append(card);
-});
+// Initial render
+renderTasks();
 
 // Add task button
 
@@ -106,7 +99,7 @@ addTaskBtn.classList.add('btn', 'btn-primary', 'w-75', 'mx-auto', 'd-block');
 
 // // modal
 const modal = document.createElement("div");
-modal.classList.add('modal','fade');
+modal.classList.add('modal', 'fade');
 
 modal.innerHTML = `
 <div class="modal-dialog">
@@ -145,7 +138,7 @@ modal.innerHTML = `
     </div>
 </div>`;
 
-document.body.append(modal); 
+document.body.append(modal);
 
 // modal tugmalari funksiyalari
 
@@ -165,6 +158,8 @@ saveBtn.addEventListener("click", () => {
     };
 
     tasks.push(newTask);
+    renderTasks(); // re-render so the new task appears immediately
+
     const modalInstance = bootstrap.Modal.getInstance(modal);
     modalInstance.hide();
 
@@ -190,7 +185,7 @@ document.body.append(mainContainer);
 // Practice 2
 
 const mainPasswordContainer = document.createElement('div');
-mainPasswordContainer.classList.add("container","w-75","mx-auto","my-5", 'text-center');
+mainPasswordContainer.classList.add("container", "w-75", "mx-auto", "my-5", 'text-center');
 
 // Title
 const practice2Title = document.createElement('h1');
@@ -217,36 +212,36 @@ passwordInput.addEventListener("input", () => {
 
     resultBadge.textContent = strength;
 
-    resultBadge.classList.remove("bg-danger","bg-warning","bg-success","text-white","px-3","py-2","rounded");
+    resultBadge.classList.remove("bg-danger", "bg-warning", "bg-success", "text-white", "px-3", "py-2", "rounded");
 
-    if(strength === "Weak"){
-        resultBadge.classList.add("bg-danger","text-white","px-3","py-2","rounded");
+    if (strength === "Weak") {
+        resultBadge.classList.add("bg-danger", "text-white", "px-3", "py-2", "rounded");
     }
 
-    else if(strength === "Medium"){
-        resultBadge.classList.add("bg-warning","text-white","px-3","py-2","rounded");
+    else if (strength === "Medium") {
+        resultBadge.classList.add("bg-warning", "text-white", "px-3", "py-2", "rounded");
     }
 
-    else{
-        resultBadge.classList.add("bg-success","text-white","px-3","py-2","rounded");
+    else {
+        resultBadge.classList.add("bg-success", "text-white", "px-3", "py-2", "rounded");
     }
 
-    });
+});
 
 function checkPassword(password) {
 
     let hasLength = password.length >= 8;
 
     let hasUpperCase = false;
-    for (let i=0; i<password.length; i++) {
+    for (let i = 0; i < password.length; i++) {
         let char = password[i];
-        if(char >= 'A' && char <= 'Z') {
+        if (char >= 'A' && char <= 'Z') {
             hasUpperCase = true;
         }
     }
 
     let hasNumber = false;
-    for(let i = 0; i<password.length; i++) {
+    for (let i = 0; i < password.length; i++) {
         let char = password[i];
         if (char >= '0' && char <= '9') {
             hasNumber = true;
@@ -256,10 +251,10 @@ function checkPassword(password) {
     let hasSpecial = false;
     let specialChars = "!@#$%^&_*";
 
-    for (let i=0; i<password.length; i++) {
+    for (let i = 0; i < password.length; i++) {
         let char = password[i];
 
-        for (let j=0; j<specialChars.length; j++) {
+        for (let j = 0; j < specialChars.length; j++) {
             if (char === specialChars[j]) {
                 hasSpecial = true;
             }
@@ -359,7 +354,7 @@ seven.append(sevenElement);
 const eight = document.createElement('div');
 const eightElement = document.createElement('button');
 eight.classList.add('col-3');
-eightElement.classList.add('card','text-center','p-3','bg-light','text-black','w-100', 'btn');
+eightElement.classList.add('card', 'text-center', 'p-3', 'bg-light', 'text-black', 'w-100', 'btn');
 eightElement.textContent = '8';
 eight.append(eightElement);
 
@@ -367,7 +362,7 @@ eight.append(eightElement);
 const nine = document.createElement('div');
 const nineElement = document.createElement('button');
 nine.classList.add('col-3');
-nineElement.classList.add('card','text-center','p-3','bg-light','text-black','w-100', 'btn');
+nineElement.classList.add('card', 'text-center', 'p-3', 'bg-light', 'text-black', 'w-100', 'btn');
 nineElement.textContent = '9';
 nine.append(nineElement);
 
@@ -487,7 +482,7 @@ fourthRow.append(one, two, three, plus);
 fifthRow.append(zero, dot, equal);
 
 // container pusher
-practice3Container.append(calcScreen,firstRow,secondRow, thirdRow, fourthRow, fifthRow);
+practice3Container.append(calcScreen, firstRow, secondRow, thirdRow, fourthRow, fifthRow);
 
 
 // body pusher
@@ -506,17 +501,17 @@ buttons.forEach(button => {
 
         if (value === "C") {
             display.value = "0";
-        } 
-        
+        }
+
         else if (value === "DEL") {
             display.value = display.value.slice(0, -1);
 
             if (display.value === "") {
                 display.value = "0";
             }
-        }else if (value === "=") {
+        } else if (value === "=") {
             display.value = eval(display.value.replace(/x/g, "*")); // eval va replaceni ham suniy intellektdan oldim
-        }else {
+        } else {
             // operator ketma-ket kelmasligi (Suniy intellektdan oldim)
             if (operators.includes(value) && operators.includes(lastChar)) {
                 return;
@@ -564,28 +559,38 @@ practiseContainer4.append(circle1, circle2, circle3);
 // dom push
 document.body.append(practiseContainer4);
 
-// Svetafor function for color change
+// Svetafor (traffic light) — each color has its own active duration:
+//   Red    → 5 seconds (agility Ai)
+//   Yellow → 2 seconds (agility Ai)
+//   Green  → 3 seconds (agility Ai)
 
-let index = 0;
+// Durations in milliseconds for each step [red, yellow, green]
+const lightDurations = [5000, 2000, 3000];
 
-setInterval(() => {
+let lightIndex = 0;
+
+function runTrafficLight() {
+
+    // Turn off all lights first
     circle1.classList.remove("bg-danger");
     circle2.classList.remove("bg-warning");
     circle3.classList.remove("bg-success");
 
-    if(index === 0){
-        circle1.classList.add("bg-danger");
+    // Turn on the current light
+    if (lightIndex === 0) {
+        circle1.classList.add("bg-danger");   // Red — 5 s
+    } else if (lightIndex === 1) {
+        circle2.classList.add("bg-warning");  // Yellow — 2 s
+    } else if (lightIndex === 2) {
+        circle3.classList.add("bg-success");  // Green — 3 s
     }
-    
-    if(index === 1){
-        circle2.classList.add("bg-warning");
-    }
-    if(index === 2){
-        circle3.classList.add("bg-success");
-    }
-    index++;
 
-    if(index > 2){
-        index = 0;
-    }
-}, 2000);
+    // Schedule the next light after the current light's duration
+    const currentDuration = lightDurations[lightIndex];
+    lightIndex = (lightIndex + 1) % 3;
+
+    setTimeout(runTrafficLight, currentDuration);
+}
+
+// Kick off the sequence
+runTrafficLight();

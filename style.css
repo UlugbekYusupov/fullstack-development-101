@@ -16,3 +16,11 @@
 .bottom_font_size {
     font-size: 2rem;
 }
+
+.bg-grey {
+    background-color: #ddd;
+}
+
+i {
+    background-color: yellow;
+}
