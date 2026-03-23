@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Ways to Create Objects</h1>
+
+  <h2>1. Object Literal ({})</h2>
+  <pre><code>const person = {
+  name: "Ali",
+  age: 20,
+  greet() {
+    return `Hi, I'm ${this.name}`;
+  }
+};
+</code></pre>
+
+  <h2>2. Using new Object()</h2>
+  <pre><code>const person = new Object();
+person.name = "Ali";
+person.age = 20;
+person.greet = function () {
+  return `Hi, I'm ${this.name}`;
+};
+</code></pre>
+
+  <h2>3. Factory Function</h2>
+  <pre><code>function createPerson(name, age) {
+  return {
+    name,
+    age,
+    greet() {
+      return `Hi, I'm ${this.name}`;
+    }
+  };
+}
+
+const p1 = createPerson("Ali", 20);
+const p2 = createPerson("Lola", 22);
+</code></pre>
+
+  <h2>4. Constructor Function</h2>
+  <pre><code>function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.greet = function () {
+  return `Hi, I'm ${this.name}`;
+};
+
+const p1 = new Person("Ali", 20);
+</code></pre>
+
+  <h2>5. Object.create(prototype)</h2>
+  <pre><code>const personProto = {
+  greet() {
+    return `Hi, I'm ${this.name}`;
+  }
+};
+
+const person = Object.create(personProto);
+person.name = "Ali";
+person.age = 20;
+</code></pre>
+
+  <h2>6. ES6 Class</h2>
+  <pre><code>class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    return `Hi, I'm ${this.name}`;
+  }
+}
+
+const p1 = new Person("Ali", 20);
+</code></pre>
+
+  <h2>7. Singleton Object (Object.freeze())</h2>
+  <pre><code>const CONFIG = Object.freeze({
+  apiUrl: "https://api.example.com",
+  timeout: 5000
+});
+</code></pre>
+
+  <hr>
+
+  <h1>Interactive To-Do List</h1>
+
+  <div id="taskList">
+    <div class="task">
+      <div class="task-info">
+        <h3>Task 1</h3>
+        <p>Description for Task 1</p>
+      </div>
+      <span class="status">pending</span>
+      <button class="delete-btn">Delete</button>
+    </div>
+
+    <div class="task">
+      <div class="task-info">
+        <h3>Task 2</h3>
+        <p>Description for Task 2</p>
+      </div>
+      <span class="status">in progress</span>
+      <button class="delete-btn">Delete</button>
+    </div>
+
+    <div class="task">
+      <div class="task-info">
+        <h3>Task 3</h3>
+        <p>Description for Task 3</p>
+      </div>
+      <span class="status">completed</span>
+      <button class="delete-btn">Delete</button>
+    </div>
+  </div>
+
+  <h2>Add Task</h2>
+  <form id="taskForm">
+    <input type="text" id="taskTitle" placeholder="Task Title" required>
+    <input type="text" id="taskDesc" placeholder="Task Description" required>
+    <select id="taskStatus">
+      <option value="pending">pending</option>
+      <option value="in progress">in progress</option>
+      <option value="completed">completed</option>
+    </select>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <script>
+    const taskList = document.getElementById("taskList");
+    const taskForm = document.getElementById("taskForm");
+    const taskTitle = document.getElementById("taskTitle");
+    const taskDesc = document.getElementById("taskDesc");
+    const taskStatus = document.getElementById("taskStatus");
+
+    function addDeleteHandler(button) {
+      button.addEventListener("click", function () {
+        button.parentElement.remove();
+      });
+    }
+
+    document.querySelectorAll(".delete-btn").forEach(addDeleteHandler);
+
+    taskForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const title = taskTitle.value.trim();
+      const desc = taskDesc.value.trim();
+      const status = taskStatus.value;
+
+      if (!title || !desc) return;
+
+      const task = document.createElement("div");
+      task.className = "task";
+      task.innerHTML = `
+        <div class="task-info">
+          <h3>${title}</h3>
+          <p>${desc}</p>
+        </div>
+        <span class="status">${status}</span>
+        <button class="delete-btn">Delete</button>
+      `;
+
+      const deleteBtn = task.querySelector(".delete-btn");
+      addDeleteHandler(deleteBtn);
+
+      taskList.appendChild(task);
+      taskForm.reset();
+    });
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
