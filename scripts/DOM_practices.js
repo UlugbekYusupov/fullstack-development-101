@@ -585,7 +585,6 @@ function runTrafficLight() {
         circle3.classList.add("bg-success");  // Green — 3 s
     }
 
-    // Schedule the next light after the current light's duration
     const currentDuration = lightDurations[lightIndex];
     lightIndex = (lightIndex + 1) % 3;
 
