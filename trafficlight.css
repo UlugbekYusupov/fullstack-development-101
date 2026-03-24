@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.traffic-label {
+  color: #aaaaaa;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.traffic-box {
+  background-color: #111111;
+  border-radius: 20px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  box-shadow:
+    0 0 0 4px #222222,
+    0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.light {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;       /* makes it a circle */
+  background-color: #2a2a2a; /* dim color — light is OFF */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-red.active {
+  background-color: #ff3b30;
+  box-shadow: 0 0 30px 10px rgba(255, 59, 48, 0.6);
+}
+
+.light-yellow.active {
+  background-color: #ffcc00;
+  box-shadow: 0 0 30px 10px rgba(255, 204, 0, 0.6);
+}
+
+.light-green.active {
+  background-color: #34c759;
+  box-shadow: 0 0 30px 10px rgba(52, 199, 89, 0.6);
+}
+
+.status-text {
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #555555;
+  transition: color 0.3s ease;
+}
+
+.status-text.red    { color: #ff3b30; }
+.status-text.yellow { color: #ffcc00; }
+.status-text.green  { color: #34c759; }

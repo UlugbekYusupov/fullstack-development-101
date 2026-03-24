@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page base  */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+}
+
+/*  Status badge colors */
+.badge-pending      { background: #ff9800; color: #fff; }
+.badge-in-progress  { background: #2196f3; color: #fff; }
+.badge-completed    { background: #4caf50; color: #fff; }
+
+/* Overlay dim  */
+.overlay-visible {
+  display: flex !important;
+}

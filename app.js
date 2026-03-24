@@ -861,3 +861,6 @@
 // calculateTax(5000);   
 // calculateTax(30000);  
 // calculateTax(80000);
+
+
+const h2 = document.getElementById("ID")

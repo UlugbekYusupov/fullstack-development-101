@@ -230,28 +230,28 @@ console.log(findProduct("Laptop"));
 
 //    Challenge 4
 
-let posts = [
-    { author: "Ali", likes: 10, comments: 5, shares: 2},
-    { author: "Vali", likes: 50, comments: 10, shares: 4},
-    { author: "Ali", likes: 20, comments: 8, shares: 4},
-]
+// let posts = [
+//     { author: "Ali", likes: 10, comments: 5, shares: 2},
+//     { author: "Vali", likes: 50, comments: 10, shares: 4},
+//     { author: "Ali", likes: 20, comments: 8, shares: 4},
+// ]
 
-let mostliked = posts[0];
+// let mostliked = posts[0];
 
-posts.forEach(function(post) {
-    if(post.likes > mostliked.likes) {
-        mostliked = post
-    }
-})
+// posts.forEach(function(post) {
+//     if(post.likes > mostliked.likes) {
+//         mostliked = post
+//     }
+// })
 
-console.log("Most liked post:", mostliked);
+// console.log("Most liked post:", mostliked);
 
-let totalEngagement = 0
-posts.forEach(function(post) {
-    totalEngagement += post.likes + post.comments + post.shares;
-})
+// let totalEngagement = 0
+// posts.forEach(function(post) {
+//     totalEngagement += post.likes + post.comments + post.shares;
+// })
 
-console.log("Total engagement:", totalEngagement);
+// console.log("Total engagement:", totalEngagement);
 
 
 //     Challenge 5
@@ -267,7 +267,7 @@ teams.sort(function(a, b) {
 })
 
 console.log("Ranking:", teams);
-console.log("Best team:", teams[0])
+console.log("Best team:", teams[0].name)
 
 
 //    Challenge  6
@@ -288,6 +288,33 @@ inventory.forEach(function(item) {
 })
 
 console.log(categoryStock);
+
+
+
+//   Real Challenge 4
+let posts = [
+    {author: "Alice", likes: 100, comments: 20, shares: 5},
+    {author: "Bob", likes: 200, comments: 50, shares: 10},
+];
+
+let mostliked = posts[0]
+
+posts.forEach(function(post) {
+    if(post.likes > mostliked.likes) {
+        mostliked = post;
+    }
+})
+
+console.log("Most likes post:", mostliked);
+
+let totalEngagement = 0
+posts.forEach(function(post) {
+    totalEngagement += post.likes + post.comments + post.shares
+})
+
+console.log("Total Engagement:", totalEngagement);
+
+
 
 
 

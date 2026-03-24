@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #e8e8e8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Outer white card */
+.calculator {
+  background: #f5f5f5;
+  border-radius: 28px;
+  padding: 20px;
+  width: 320px;
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.15),
+    -4px -4px 12px rgba(255, 255, 255, 0.9);
+}
+
+/* Display area */
+.display {
+  background: #ececec;
+  border-radius: 16px;
+  padding: 16px 18px 12px;
+  margin-bottom: 16px;
+  text-align: right;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.08);
+}
+
+.display-expression {
+  font-size: 13px;
+  color: #aaaaaa;
+  min-height: 18px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display-value {
+  font-size: 38px;
+  font-weight: 400;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Button grid — 4 equal columns */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Base button style */
+.btn {
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 20px 10px;
+  transition: transform 0.08s, box-shadow 0.08s;
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.94);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15) !important;
+}
+
+/* White number buttons */
+.btn-number {
+  background: #ffffff;
+  color: #333333;
+  box-shadow:
+    3px 3px 8px rgba(0,0,0,0.12),
+    -2px -2px 6px rgba(255,255,255,0.9);
+}
+.btn-number:hover {
+  background: #f0f0f0;
+}
+
+/* Orange operator buttons (÷, ×, −, +) */
+.btn-operator {
+  background: #ff9500;
+  color: #ffffff;
+  box-shadow:
+    3px 3px 8px rgba(255,149,0,0.4),
+    -2px -2px 6px rgba(255,200,100,0.3);
+}
+.btn-operator:hover {
+  background: #e88800;
+}
+
+/* Orange action buttons (C, DEL, %) */
+.btn-action {
+  background: #ff9500;
+  color: #ffffff;
+  box-shadow:
+    3px 3px 8px rgba(255,149,0,0.4),
+    -2px -2px 6px rgba(255,200,100,0.3);
+}
+.btn-action:hover {
+  background: #e88800;
+}
+
+/* Green equals button — spans 1 column only */
+.btn-equals {
+  background: #34a853;
+  color: #ffffff;
+  font-size: 24px;
+  box-shadow:
+    3px 3px 8px rgba(52,168,83,0.4),
+    -2px -2px 6px rgba(100,220,120,0.3);
+}
+.btn-equals:hover {
+  background: #2d9447;
+}
