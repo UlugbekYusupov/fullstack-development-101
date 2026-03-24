@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="teams.css">
+    <title>Teams</title>
+</head>
+<body>
+    <div class="addt">
+        <h3>🏆 Add New Team</h3>
+        <input type="text" id="teamname" placeholder="Team Name" required>
+        <input type="number" id="wins" placeholder="Wins" required>
+        <input type="number" id="losses" placeholder="Losses" required>
+        <input type="number" id="goals" placeholder="Goals Scored" required>
+        <input type="number" id="goals2" placeholder="Goals Conceded" required>
+        <button type="button" onclick="addTeam()">Add Team</button>
+    </div>
+    <div class="display">
+        <h3>🏆 Sports Tournament Leaderboard</h3>
+        <button onclick="sortTeams()">Sort by Ranking</button>
+        <button onclick="highlightBest()">Highlight Best Team</button>
+        
+        <table id="leaderboard">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Team</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Points</th>
+                    <th>Goal Diff</th>
+                </tr>
+            </thead>
+            <tbody id="teamBody">
+                </tbody>
+        </table>
+    </div>
+    <script src="teams.js"></script>
+</body>
+</html>
