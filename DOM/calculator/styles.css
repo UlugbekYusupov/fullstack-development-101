@@ -1,0 +1,198 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #3b82f6;
+    --operator-color: #f59e0b;
+    --action-color: #ef4444;
+    --equals-color: #10b981;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%),
+        radial-gradient(at 50% 0%, rgba(139, 92, 246, 0.1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0, transparent 50%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 10;
+}
+
+.calculator-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.brand {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+.display-container {
+    width: 100%;
+}
+
+#resultInput {
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: right;
+    padding: 0 20px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#resultInput::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    aspect-ratio: 1/1;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-operator {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--operator-color);
+    border-color: rgba(245, 158, 11, 0.2);
+    font-weight: 600;
+}
+
+.btn-operator:hover {
+    background: var(--operator-color);
+    color: white;
+}
+
+.btn-action {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--action-color);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.btn-action:hover {
+    background: var(--action-color);
+    color: white;
+}
+
+.btn-equals {
+    background: var(--equals-color);
+    color: white;
+    grid-column: span 1;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.btn-equals:hover {
+    background: #0ea271;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+.zero {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    height: 100%;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .calculator-card {
+        padding: 18px;
+    }
+
+    #resultInput {
+        font-size: 2rem;
+        height: 70px;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+    }
+}

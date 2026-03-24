@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <main class="container">
+        <div class="calculator-card">
+            <header class="calculator-header">
+                <div class="header-dots">
+                </div>
+            </header>
+
+            <div class="display-container">
+                <input type="text" id="resultInput" readonly placeholder="0">
+            </div>
+
+            <div class="keypad">
+                <button class="btn btn-action" id="clearBtn">C</button>
+                <button class="btn btn-action" id="delBtn">DEL</button>
+                <button class="btn btn-action" id="percentBtn">%</button>
+                <button class="btn btn-operator" id="devisionBtn">/</button>
+
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn btn-operator" id="multiplyBtn">×</button>
+
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn btn-operator" id="subtractBtn">−</button>
+
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn btn-operator" id="addBtn">+</button>
+
+                <button class="btn zero">0</button>
+                <button class="btn" id="dot">.</button>
+                <button class="btn btn-equals" id="resultBtn">=</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
