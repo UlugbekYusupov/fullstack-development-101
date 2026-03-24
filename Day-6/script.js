@@ -48,6 +48,20 @@
 
 // console.log(mostExpensive);
 
+const cart = [
+  { id: 1, name: "Laptop", price: 800, quantity: 1 },
+  { id: 2, name: "Mouse", price: 20, quantity: 2 },
+  { id: 3, name: "Keyboard", price: 50, quantity: 1 }
+];
+
+const totalPrice = cart.reduce((total, item) => {
+  return total + item.price + item.quantity;
+}, 0);
+
+console.log(totalPrice);
+
+const finalPrice = 
+
 // // Challenge 3
 // let products = [
 //   { id: 1, name: "Phone", price: 500, stock: 10 },
@@ -119,3 +133,31 @@
 //   );
 // }
 
+// // Challenge 6
+// const inventory = [
+//   { itemName: "Apple", category: "Fruit", stock: 50 },
+//   { itemName: "Banana", category: "Fruit", stock: 10 },
+//   { itemName: "Carrot", category: "Vegetable", stock: 30 }
+// ];
+
+// function totalStockByCategory(items) {
+//   return items.reduce((acc, item) => {
+
+//     if (!acc[item.category]) {
+//       acc[item.category] = 0;
+//     }
+
+//     acc[item.category] += item.stock;
+
+//     return acc;
+
+//   }, {});
+// }
+
+// console.log(totalStockByCategory(inventory));
+
+// function lowStock(items, threshold = 20) {
+//   return items.filter(item => item.stock < threshold);
+// }
+
+// console.log(lowStock(inventory));

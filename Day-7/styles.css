@@ -1,0 +1,63 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background: #fafafa;
+}
+
+.container {
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-left: 35%;
+    margin-top: 15%;
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.input-row {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: rgb(10, 79, 176);
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.del-btn {
+    color: red;
+    border: none;
+    background: none;
+    font-size: 20px;
+}

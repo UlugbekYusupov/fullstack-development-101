@@ -1,0 +1,54 @@
+body {
+    font-family: sans-serif;
+    margin: 40px;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+
+.strength-meter {
+    height: 10px;
+    background: #eee;
+    margin-bottom: 10px;
+}
+
+.fill {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s, background 0.3s;
+}
+
+.weak { background: red; width: 33%; }
+.medium { background: orange; width: 66%; }
+.strong { background: green; width: 100%; }
+
+.rules {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.rules li.valid {
+    color: green;
+    font-weight: bold;
+}
