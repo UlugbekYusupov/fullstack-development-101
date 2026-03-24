@@ -775,59 +775,136 @@
 // console.log("\nTotal Stock in Electronics: " + totalStockByCategory("Electronics"));
 // console.log("Total Stock in Furniture: " + totalStockByCategory("Furniture"));
 
+// const body = document.body;
+
+// body.innerHTML = `
+//   <div class="container">
+//     <h1>Interactive To-Do List</h1>
+//     <div id="taskList"></div>
+//     <button id="addBtn" class="add-btn">Add Task</button>
+//   </div>
+//   <div id="modal" class="modal hidden">
+//     <div class="modal-content">
+//       <h2>Add Task</h2>
+//       <input id="title" placeholder="Task Title">
+//       <textarea id="desc" placeholder="Task Description"></textarea>
+//       <select id="status">
+//         <option value="pending">Pending</option>
+//         <option value="progress">In Progress</option>
+//         <option value="done">Completed</option>
+//       </select>
+//       <button id="saveBtn" class="save">Save Task</button>
+//       <button id="closeBtn" class="close">Close</button>
+//     </div>
+//   </div>
+// `;
+
+// const modal = document.getElementById("modal");
+// const addBtn = document.getElementById("addBtn");
+// const closeBtn = document.getElementById("closeBtn");
+// const saveBtn = document.getElementById("saveBtn");
+// const taskList = document.getElementById("taskList");
+// const title = document.getElementById("title");
+// const desc = document.getElementById("desc");
+// const status = document.getElementById("status");
+// addBtn.onclick = () => modal.classList.remove("hidden");
+// closeBtn.onclick = () => modal.classList.add("hidden");
+
+// saveBtn.onclick = () => {
+//   const task = `
+//     <div class="task">
+//       <h3>
+//         ${title.value}
+//         <span class="status ${status.value}">${status.value}</span>
+//       </h3>
+//       <p>${desc.value}</p>
+//       <button class="delete">Delete</button>
+//     </div>
+//   `;
+//   taskList.innerHTML += task;
+//   modal.classList.add("hidden");
+//   title.value = "";
+//   desc.value = "";
+// };
+// taskList.onclick = (e) => {
+//   if (e.target.classList.contains("delete")) {
+//     e.target.parentElement.remove();
+//   }
+// };
+
 const body = document.body;
 
 body.innerHTML = `
-  <div class="container">
-    <h1>Interactive To-Do List</h1>
-    <div id="taskList"></div>
-    <button id="addBtn" class="add-btn">Add Task</button>
-  </div>
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h2>Add Task</h2>
-      <input id="title" placeholder="Task Title">
-      <textarea id="desc" placeholder="Task Description"></textarea>
-      <select id="status">
-        <option value="pending">Pending</option>
-        <option value="progress">In Progress</option>
-        <option value="done">Completed</option>
-      </select>
-      <button id="saveBtn" class="save">Save Task</button>
-      <button id="closeBtn" class="close">Close</button>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+
+    <div class="buttons">
+      <button class="btn clear" value="C" onclick="clear()">C</button>
+      <button class="btn operator" value="/" onclick="Operator(this.value)">/</button>
+      <button class="btn operator" value="*" onclick="Operator(this.value)">*</button>
+      <button class="btn operator" value="-" onclick="Operator(this.value)">-</button>
+      <button class="btn" value="7" onclick="append(this.value)">7</button>
+      <button class="btn" value="8" onclick="append(this.value)">8</button>
+      <button class="btn" value="9" onclick="append(this.value)">9</button>
+      <button class="btn operator" value="+" onclick="Operator(this.value)">+</button>
+      <button class="btn" value="4" onclick="append(this.value)">4</button>
+      <button class="btn" value="5" onclick="append(this.value)">5</button>
+      <button class="btn" value="6" onclick="append(this.value)">6</button>
+      <button class="btn equal" value="=" onclick="calculate()">=</button>
+      <button class="btn" value="1" onclick="append(this.value)">1</button>
+      <button class="btn" value="2" onclick="append(this.value)">2</button>
+      <button class="btn" value="3" onclick="append(this.value)">3</button>
+      <button class="btn zero" value="0" onclick="append(this.value)">0</button>
     </div>
   </div>
 `;
 
-const modal = document.getElementById("modal");
-const addBtn = document.getElementById("addBtn");
-const closeBtn = document.getElementById("closeBtn");
-const saveBtn = document.getElementById("saveBtn");
-const taskList = document.getElementById("taskList");
-const title = document.getElementById("title");
-const desc = document.getElementById("desc");
-const status = document.getElementById("status");
-addBtn.onclick = () => modal.classList.remove("hidden");
-closeBtn.onclick = () => modal.classList.add("hidden");
+const display = document.querySelector(".display");
+let values = [];
+let operators = [];
+let result = 0;
+let count = 0;
+operators[count] = "";
+values[count] = 0;
 
-saveBtn.onclick = () => {
-  const task = `
-    <div class="task">
-      <h3>
-        ${title.value}
-        <span class="status ${status.value}">${status.value}</span>
-      </h3>
-      <p>${desc.value}</p>
-      <button class="delete">Delete</button>
-    </div>
-  `;
-  taskList.innerHTML += task;
-  modal.classList.add("hidden");
-  title.value = "";
-  desc.value = "";
+const clear = function () {
+  display.innerText = `0`;
+  values = [];
+  result = 0;
 };
-taskList.onclick = (e) => {
-  if (e.target.classList.contains("delete")) {
-    e.target.parentElement.remove();
+const append = function (value) {
+  values[count] = values[count] * 10 + Number(value);
+
+  if (display.innerText === "0") {
+    display.innerText = value;
+  } else {
+    display.innerText += value;
+  }
+  console.log(values[count]);
+};
+const Operator = function (value) {
+  operators[count] = value;
+  if (display.innerText === "0") {
+    display.innerText = "0";
+  } else {
+    display.innerText += value;
+  }
+  console.log(operators[count]);
+  count++;
+  values[count] = 0;
+};
+
+const calculate = function () {
+  console.log(values);
+  console.log(operators);
+  if(operators.includes("*")){
+    values[operators.indexOf("*")] = values[operators.indexOf("*")] * values[operators.indexOf("*")+1]
+    operators.splice(operators.indexOf("*"), 1);
+    values.splice(operators.indexOf("*")+1, 1);
+  }
+  else if(operators.includes("/")){
+    values[operators.indexOf("/")] = values[operators.indexOf("/")] * values[operators.indexOf("*")+1]
+    operators.splice(operators.indexOf("*"), 1);
+    values.splice(operators.indexOf("*")+1, 1);
   }
 };
