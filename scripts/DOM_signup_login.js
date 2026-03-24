@@ -277,18 +277,16 @@ document.getElementById('addTeamToLeaderboard').addEventListener('click', () => 
         return;
     }
 
-    const points = wins * 3;          // 3 pts per win
+    const points = wins * 3;         
     const goalDiff = gFor - gAg;
     const rank = teamData.length + 1;
 
     teamData.push([rank, name, wins, losses, points, goalDiff]);
     renderTableBody();
 
-    // Clear inputs
     ['inputTeamName', 'inputWins', 'inputLosses', 'inputGoalsFor', 'inputGoalsAgainst']
         .forEach(id => document.getElementById(id).value = '');
 
-    // Close modal via Bootstrap API
     const bsModal = bootstrap.Modal.getInstance(document.getElementById('teamModal'));
     if (bsModal) bsModal.hide();
 });
@@ -297,7 +295,7 @@ document.getElementById('addTeamToLeaderboard').addEventListener('click', () => 
 // teamData row layout: [rank, name, wins, losses, points, goalDiff]
 //                        [0]   [1]   [2]    [3]     [4]      [5]
 sortBTn.addEventListener('click', () => {
-    teamData.sort((a, b) => b[4] - a[4]); // sort by points desc
+    teamData.sort((a, b) => b[4] - a[4]); 
     renderTableBody();
 });
 
@@ -308,11 +306,9 @@ bestTeamBtn.addEventListener('click', () => {
         return;
     }
 
-    // Find team with highest points (already sorted or not — always recalculate)
     const best = teamData.reduce((prev, curr) => (curr[4] > prev[4] ? curr : prev));
     const [, name, wins, losses, points, goalDiff] = best;
 
-    // Build modal if not already present
     let bestModal = document.getElementById('bestTeamModal');
     if (!bestModal) {
         bestModal = document.createElement('div');
