@@ -1,5 +1,7 @@
-body {
-    background-color: #f4f4f9; /* Light gray background */
+/* PRACTICE 1 TO DO LIST CSS */
+
+/* body {
+    background-color: #f4f4f9; 
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -11,7 +13,7 @@ body {
     max-width: 500px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Adds that nice shadow from the screenshot */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
 }
 
 .modal-overlay {
@@ -170,4 +172,129 @@ textarea.modal-input {
 
 .close-btn:hover {
     background-color: #c53030;
+} */
+
+/* PRACTICE 2 PASSWORD CHECKER */
+
+/* body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
 }
+
+.pass-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    width: 400px;
+}
+
+.pass-input {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    border: 2px solid #2563eb;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.strength-badge {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    min-width: 100px;
+    transition: 0.3s;
+} */
+
+/* PRACTICE 3 CALCULATOR */
+/* 
+.calculator {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 320px;
+}
+
+.display {
+    width: 100%;
+    height: 60px;
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    padding: 10px 20px;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    height: 60px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.btn-orange { background-color: #ed8936; color: white; }
+.btn-green { background-color: #48bb78; color: white; }
+
+
+.btn:nth-child(17) {
+    grid-column: span 2;
+} */
+
+
+/* PRACTICE 4 TRAFFIC LIGHT */
+/* 
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.traffic-light {
+    background-color: black;
+    width: 120px;
+    height: 320px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.light {
+    width: 80px;
+    height: 80px;
+    background-color: #555; 
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+
+.red.active { background-color: #ff3b3b; box-shadow: 0 0 20px #ff3b3b; }
+.yellow.active { background-color: #ffcc00; box-shadow: 0 0 20px #ffcc00; }
+.green.active { background-color: #4cd137; box-shadow: 0 0 20px #4cd137; } */
