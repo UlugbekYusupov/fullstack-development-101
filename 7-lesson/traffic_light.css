@@ -1,0 +1,24 @@
+.light {
+    width: 100px;
+    height: 320px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.gre, .yel, .red {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #111;
+    transition: 0.3s;
+}
+
+.active-red { background-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+.active-yel { background-color: #ffcc00; box-shadow: 0 0 20px #ffcc00; }
+.active-gre { background-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
