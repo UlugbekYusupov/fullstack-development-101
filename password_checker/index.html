@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Password Strength Checker</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        width: 400px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        border-color: #007bff;
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        display: inline-block;
+        color: #fff;
+    }
+
+    .weak {
+        background: red;
+    }
+
+    .medium {
+        background: orange;
+    }
+
+    .strong {
+        background: green;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Password Strength Checker</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <div id="result"></div>
+</div>
+
+<script>
+const input = document.getElementById("password");
+const result = document.getElementById("result");
+
+input.addEventListener("input", () => {
+    const value = input.value;
+    let strength = 0;
+
+    if (value.length >= 6) strength++;
+    if (value.match(/[A-Z]/)) strength++;
+    if (value.match(/[0-9]/)) strength++;
+    if (value.match(/[@$!%*?&]/)) strength++;
+
+    result.className = "result";
+
+    if (value.length === 0) {
+        result.textContent = "";
+        return;
+    }
+
+    if (strength <= 1) {
+        result.textContent = "Weak";
+        result.classList.add("weak");
+    } else if (strength === 2 || strength === 3) {
+        result.textContent = "Medium";
+        result.classList.add("medium");
+    } else {
+        result.textContent = "Strong";
+        result.classList.add("strong");
+    }
+});
+</script>
+
+</body>
+</html>

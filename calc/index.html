@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Calculator</title>
+
+</head>
+
+<body>
+
+<div id="app"></div>
+<script>
+document.getElementById("app").innerHTML = `
+<style>
+body {
+    margin: 0;
+    background: #f2f2f2;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.calculator {
+    background: #eaeaea;
+    padding: 20px;
+    border-radius: 20px;
+    width: 320px;
+}
+.display {
+    height: 70px;
+    background: #dcdcdc;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: right;
+    padding: 15px;
+    font-size: 28px;
+}
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+button {
+    height: 60px;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+}
+.gray { background: #d6d6d6; }
+.orange { background: #ff8c00; color: white; }
+.green { background: #28a745; color: white; }
+.zero { grid-column: span 2; }
+</style>
+
+<div class="calculator">
+    <div id="display" class="display">0</div>
+
+    <div class="buttons">
+        <button class="orange" onclick="clearAll()">C</button>
+        <button class="orange" onclick="del()">DEL</button>
+        <button class="orange" onclick="percent()">%</button>
+        <button class="orange" onclick="append('/')">÷</button>
+
+        <button class="gray" onclick="append('7')">7</button>
+        <button class="gray" onclick="append('8')">8</button>
+        <button class="gray" onclick="append('9')">9</button>
+        <button class="orange" onclick="append('*')">×</button>
+
+        <button class="gray" onclick="append('4')">4</button>
+        <button class="gray" onclick="append('5')">5</button>
+        <button class="gray" onclick="append('6')">6</button>
+        <button class="orange" onclick="append('-')">−</button>
+
+        <button class="gray" onclick="append('1')">1</button>
+        <button class="gray" onclick="append('2')">2</button>
+        <button class="gray" onclick="append('3')">3</button>
+        <button class="orange" onclick="append('+')">+</button>
+
+        <button class="gray zero" onclick="append('0')">0</button>
+        <button class="gray" onclick="append('.')">.</button>
+        <button class="green" onclick="calculate()">=</button>
+    </div>
+</div>
+`;
+
+let display = document.getElementById("display");
+
+function append(v) {
+    display.innerText = display.innerText === "0" ? v : display.innerText + v;
+}
+
+function clearAll() {
+    display.innerText = "0";
+}
+
+function del() {
+    display.innerText = display.innerText.slice(0, -1) || "0";
+}
+
+function percent() {
+    display.innerText = eval(display.innerText) / 100;
+}
+
+function calculate() {
+    try {
+        display.innerText = eval(display.innerText);
+    } catch {
+        display.innerText = "Error";
+    }
+}
+</script>
+</body>
+</html>
