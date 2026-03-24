@@ -866,7 +866,8 @@
 
 
 // Homework 
-const tasks = [
+// Task 1
+let tasks = [
   { id: 1, title: 'Task 1', desc: 'Description for Task 1', status: 'pending' },
   { id: 2, title: 'Task 2', desc: 'Description for Task 2', status: 'in progress' },
   { id: 3, title: 'Task 3', desc: 'Description for Task 3', status: 'completed' }
@@ -975,22 +976,19 @@ function render(){
     descEl.className = 'task-desc';
     descEl.textContent = t.desc;
 // Delate 
-    const del = document.createElement('button');
+    const del = document.createElement('button')
     del.className = 'btn-delete';
     del.textContent = 'Delete';
-    del.onclick = (function(id) {
-      return function() {
-				
-        const c = document.getElementById('task-' + id);
-        if (c) {
-          c.style.display = 'none';
-            tasks = tasks.filter(function(x) { return x.id !== id; });
-            render();
-        }
-console.log(tasks)
-
-      };
-    })(t.id);
+		del.onclick = () => {
+			const c = document.getElementById('task-' + t.id);
+		
+			if (c) {
+				c.style.display = 'none';
+				tasks = tasks.filter(function(x){return x.id !== t.id});
+				render();
+			}
+			console.log(tasks);
+		};
  
     card.appendChild(header);
     card.appendChild(descEl);
@@ -1034,7 +1032,7 @@ style.textContent = [
   "  --danger:#ef4444; --danger-h:#dc2626;",
   "  --blue:#2563eb; --blue-h:#1d4ed8; }",
   "body { font-family:'DM Sans',sans-serif; background:var(--bg); min-height:100vh;",
-  "  display:flex; align-items:flex-start; justify-content:center; padding:48px 16px; color:var(--text); }",
+  "  display:flex; align-items:flex-start; gap:20px; padding:48px 16px; color:var(--text); }",
   ".app { width:100%; max-width:520px; background-color:var(--app-bg);padding: 14px;",
    "border-radius: 12px; }",
   "h1 { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; text-align:center; margin-bottom:28px; }",
@@ -1064,7 +1062,7 @@ style.textContent = [
   "  backdrop-filter:blur(3px); z-index:100; align-items:center; justify-content:center; padding:16px; }",
   ".overlay.open { display:flex; }",
   ".modal { background:var(--bg); border-radius:16px; padding:32px 28px; width:100%; max-width:440px;",
-  "  box-shadow:0 20px 60px rgba(0,0,0,.2); animation:popIn .22s cubic-bezier(.34,1.4,.64,1); }",
+  "  box-shadow:0 20px 60px rgba(0, 0, 0, 0.2); animation:popIn .22s cubic-bezier(.34,1.4,.64,1); }",
   "@keyframes popIn { from{opacity:0;transform:scale(.93) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }",
   ".modal h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; text-align:center; margin-bottom:24px; }",
   ".field { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }",
@@ -1086,4 +1084,198 @@ style.textContent = [
 document.head.appendChild(style);
 
 
+// Task 2
+document.body.style.display = "flex"
 
+const passDiv = document.createElement("div")
+passDiv.className = "pass-div"
+
+passDiv.style.backgroundColor = "white"
+passDiv.style.display = "flex"
+passDiv.style.flexDirection = "column"
+passDiv.style.alignItems = "center"
+
+
+passDiv.style.padding = "20px 16px"
+passDiv.style.borderRadius = "6px"
+
+
+document.body.appendChild(passDiv);
+const passTitle = document.createElement("p")
+passTitle.textContent = "Password Strength Checker"
+passTitle.style.fontSize = "20px"
+passTitle.style.textAlign = "center"
+
+passTitle.style.fontWeight = "bold"
+
+passDiv.append(passTitle)
+
+const passInput = document.createElement("input");
+passInput.placeholder = "Password Checker";
+passInput.style.padding = "12px 20px";
+passInput.style.width = "330px";
+passInput.style.borderRadius = "6px";
+passInput.style.border = "1px solid #333";
+passInput.style.transition = "border-color 0.2s";
+
+const defaultColor = "#333";
+
+passInput.addEventListener("mouseenter", () => {
+  passInput.style.borderColor = "#1d4ed8";
+  passInput.style.border = "2px solid #1d4ed8";
+
+});
+passInput.addEventListener("mouseleave", () => {
+  passInput.style.borderColor = defaultColor;
+});
+
+document.body.appendChild(passInput);
+
+
+
+passInput.style.marginBlock = "14px"
+passDiv.append(passInput)
+
+
+const stat = document.createElement("div")
+stat.textContent = "Hello"
+stat.style.width = "100px"
+stat.style.textAlign = "center"
+stat.style.color = "white";
+
+stat.style.borderRadius = "6px";
+
+stat.style.padding = "12px 6px"
+stat.style.background = "gray"
+passDiv.appendChild(stat)
+
+passInput.addEventListener("input", () => {
+  const val = passInput.value;
+  let strength = 0;
+
+  if (val.length >= 6) strength++;
+  if (/[A-Z]/.test(val)) strength++;
+  if (/[0-9]/.test(val)) strength++;
+  if (/[\W_]/.test(val)) strength++;
+
+  if (strength === 0) {
+    stat.textContent = "";
+    stat.style.background = "transparent";
+  } else if (strength <= 1) {
+    stat.textContent = "Weak";
+    stat.style.background = "red";
+  } else if (strength === 2 || strength === 3) {
+    stat.textContent = "Medium";
+    stat.style.background = "orange";
+  } else if (strength === 4) {
+    stat.textContent = "Strong";
+    stat.style.background = "green";
+  }
+});
+
+// Task 3
+const calculatorDiv = document.createElement("div");
+calculatorDiv.style.backgroundColor = "white";
+calculatorDiv.style.display = "flex";
+calculatorDiv.style.flexDirection = "column";
+calculatorDiv.style.alignItems = "center";
+calculatorDiv.style.padding = "20px 16px";
+calculatorDiv.style.borderRadius = "6px";
+calculatorDiv.style.width = "fit-content";
+
+const calcTitle = document.createElement("p");
+calcTitle.textContent = "Calculator";
+calcTitle.style.fontSize = "20px";
+calcTitle.style.paddingBottom = "20px";
+
+calcTitle.style.fontWeight = "bold";
+calcTitle.style.textAlign = "center";
+calculatorDiv.appendChild(calcTitle);
+
+
+const buttons = [
+  ["C", "DEL", "%", "÷"],
+  ["7", "8", "9", "×"],
+  ["4", "5", "6", "-"],
+  ["1", "2", "3", "+"],
+  ["0", ".", "="]
+]
+
+const display = document.createElement("input")
+display.type = "text"
+display.readOnly = true
+display.style.width = "220px"
+display.style.height = "50px"
+display.style.fontSize = "24px"
+display.style.marginBottom = "10px"
+display.style.textAlign = "right"
+display.style.paddingRight = "10px"
+display.style.border = "1px solid #333"
+display.style.borderRadius = "6px"
+calculatorDiv.appendChild(display)
+
+buttons.forEach(row => {
+  const rowDiv = document.createElement("div")
+  rowDiv.style.display = "flex"
+  rowDiv.style.gap = "5px"
+  rowDiv.style.marginBottom = "5px"
+
+  row.forEach(label => {
+    const btn = document.createElement("button")
+    btn.textContent = label
+    btn.style.width = label === "0" ? "105px" : "50px"
+    btn.style.height = "50px"
+    btn.style.fontSize = "18px"
+    btn.style.border = "1px solid #ccc"
+    btn.style.borderRadius = "6px"
+    btn.style.cursor = "pointer"
+
+    if (["C", "DEL", "%", "÷", "×", "-", "+"].includes(label)) {
+      btn.style.backgroundColor = "orange"
+    } else if (label === "=") {
+      btn.style.backgroundColor = "green"
+    } else {
+      btn.style.backgroundColor = "rgba(195, 97, 64, 0.2)"
+    }
+
+    btn.addEventListener("mouseenter", () => {
+      btn.style.backgroundColor = "#e0e0e0"
+    })
+    btn.addEventListener("mouseleave", () => {
+      if (["C", "DEL", "%", "÷", "×", "-", "+"].includes(label)) {
+        btn.style.backgroundColor = "orange"
+      } else if (label === "=") {
+        btn.style.backgroundColor = "green"
+      } else {
+        btn.style.backgroundColor = "rgba(195, 97, 64, 0.2)"
+      }
+    })
+
+    btn.addEventListener("click", () => {
+      handleInput(label)
+    })
+
+    rowDiv.appendChild(btn)
+  })
+
+  calculatorDiv.appendChild(rowDiv)
+})
+
+function handleInput(label) {
+  let current = display.value
+  if (label === "C") {
+    display.value = ""
+  } else if (label === "DEL") {
+    display.value = current.slice(0, -1)
+  } else if (label === "=") {
+      let result = current.replace(/÷/g, "/").replace(/×/g, "*").replace(/%/g, "/100*")
+      display.value = eval(result)
+ } 
+  else {
+    display.value += label
+  }
+}
+
+document.body.appendChild(calculatorDiv);
+
+// Task 4
