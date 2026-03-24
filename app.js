@@ -1331,7 +1331,7 @@ Container.append(
   addTeamBtn,
 );
 
-let buttons = [tableRankSortBtn, tableBestSortBtn, addTeamBtn];
+const buttons = document.querySelectorAll("button");
 
 let tableData = [
   {
@@ -1371,7 +1371,8 @@ function styleUI() {
   Container.style.boxShadow = "0 5px 15px -5px #0001";
   Container.style.display = "flex";
   Container.style.flexDirection = "column";
-  Container.style.gap = "1rem";
+  Container.style.background = "#fff";
+  Container.style.gap = "10px";
 
   tableTitle.textContent = "Tournament Leaderboard 🏆";
   tableTitle.style.fontSize = "2rem";
@@ -1418,6 +1419,7 @@ function fillTable() {
   tableCont.style.borderCollapse = "collapse";
   tableCont.style.overflow = "hidden";
   tableCont.style.borderRadius = "10px";
+  tableCont.style.marginBlock = "10px";
   tableCont.style.boxShadow = "0 5px 15px -3px #0001";
   tableCont.innerHTML = "";
 
@@ -1451,3 +1453,173 @@ function fillTable() {
 }
 
 fillTable();
+
+function newTeamCont() {
+  const modalBackdrop = document.createElement("div");
+  const newTeamModal = document.createElement("div");
+  const newTeamModalTitle = document.createElement("h1");
+  const newTeamInpName = document.createElement("input");
+  const newTeamInpWins = document.createElement("input");
+  const newTeamInpLosses = document.createElement("input");
+  const newTeamInpPoints = document.createElement("input");
+  const addBtn = document.createElement("button");
+  const exitModalBtn = document.createElement("button");
+
+  document.body.appendChild(modalBackdrop);
+  modalBackdrop.append(newTeamModal, exitModalBtn);
+  newTeamModal.append(
+    newTeamModalTitle,
+    newTeamInpName,
+    newTeamInpWins,
+    newTeamInpLosses,
+    newTeamInpPoints,
+    addBtn,
+  );
+
+  let inputs = [
+    newTeamInpName,
+    newTeamInpWins,
+    newTeamInpLosses,
+    newTeamInpPoints,
+  ];
+
+  let numInputs = [newTeamInpWins, newTeamInpLosses, newTeamInpPoints];
+
+  modalBackdrop.style.position = "fixed";
+  modalBackdrop.style.zIndex = "10";
+  modalBackdrop.style.inset = "0";
+  modalBackdrop.style.background = "#0003";
+  modalBackdrop.style.backdropFilter = "blur(20px)";
+  modalBackdrop.style.display = "none";
+  modalBackdrop.style.placeContent = "center";
+  modalBackdrop.style.overflow = "hidden";
+  modalBackdrop.style.overscrollBehavior = "contain";
+
+  newTeamModal.style.background = "#fff";
+  newTeamModal.style.display = "flex";
+  newTeamModal.style.width = "400px";
+  newTeamModal.style.flexDirection = "column";
+  newTeamModal.style.padding = "20px";
+  newTeamModal.style.borderRadius = "10px";
+  newTeamModal.style.gap = "10px";
+  newTeamModal.style.border = "1px solid #0003";
+  newTeamModal.style.boxShadow = "0 5px 15px -5px #0002";
+
+  newTeamModalTitle.textContent = "Add new team";
+  newTeamModalTitle.style.fontSize = "2rem";
+  newTeamModalTitle.style.lineHeight = "1.6";
+  newTeamModalTitle.style.textAlign = "center";
+  newTeamModalTitle.style.textTransform = "capitlize";
+
+  inputs.forEach((input) => {
+    input.style.width = "100%";
+    input.style.height = "35px";
+    input.style.borderRadius = "8px";
+    input.style.outline = "none";
+    input.style.border = "1px solid gray";
+    input.style.paddingLeft = "8px";
+  });
+
+  numInputs.forEach((numput) => {
+    numput.type = "number";
+  });
+
+  newTeamInpName.placeholder = "Team Name";
+  newTeamInpWins.placeholder = "Wins";
+  newTeamInpName.type = "text";
+  newTeamInpLosses.placeholder = "Losses";
+  newTeamInpPoints.placeholder = "Points";
+
+  addBtn.textContent = "Add team";
+  addBtn.style.width = "100%";
+  addBtn.style.padding = "10px";
+  addBtn.style.background = "#256eff";
+  addBtn.style.color = "#fff";
+  addBtn.style.fontSize = "1rem";
+  addBtn.style.fontWeight = "600";
+  addBtn.style.borderRadius = "10px";
+  addBtn.style.boxShadow = "0 5px 10px #0001";
+  addBtn.style.border = "none";
+  addBtn.style.cursor = "pointer";
+  addBtn.style.textTransform = "capitalize";
+
+  addBtn.addEventListener("mouseover", () => {
+    addBtn.style.background = "#1555d6";
+  });
+  addBtn.addEventListener("mouseout", () => {
+    addBtn.style.background = "#256eff";
+  });
+  addBtn.addEventListener("mousedown", () => {
+    addBtn.style.scale = "0.95";
+    addBtn.style.transitionDuration = "50ms";
+  });
+  addBtn.addEventListener("mouseup", () => {
+    addBtn.style.scale = "1";
+    addBtn.style.transitionDuration = "300ms";
+  });
+
+  exitModalBtn.textContent = "X";
+  exitModalBtn.style.position = "absolute";
+  exitModalBtn.style.zIndex = "1";
+  exitModalBtn.style.top = "20px";
+  exitModalBtn.style.right = "20px";
+  exitModalBtn.style.background = "red";
+  exitModalBtn.style.color = "#fff";
+  exitModalBtn.style.borderRadius = "50%";
+  exitModalBtn.style.width = "30px";
+  exitModalBtn.style.aspectRatio = "1";
+  exitModalBtn.style.border = "none";
+  exitModalBtn.style.fontWeight = "700";
+  exitModalBtn.style.cursor = "pointer";
+
+  function toggleNewTeam() {
+    if (modalBackdrop.classList.contains("active")) {
+      modalBackdrop.style.display = "none";
+      modalBackdrop.classList.remove("active");
+    } else {
+      modalBackdrop.style.display = "grid";
+      modalBackdrop.classList.add("active");
+    }
+  }
+
+  function addTeam() {
+    let nameInput = newTeamInpName.value;
+    let winsInput = newTeamInpWins.value;
+    let lossInput = newTeamInpLosses.value;
+    let pointInput = newTeamInpPoints.value;
+
+    if (
+      nameInput.trim() === "" ||
+      winsInput.trim() === "" ||
+      lossInput.trim() === "" ||
+      pointInput.trim() === ""
+    ) {
+      alert("Please fill all the inputs");
+    } else {
+      const newTeam = {
+        id: tableData.length + 1,
+        team: nameInput,
+        wins: Number(winsInput),
+        loss: Number(lossInput),
+        points: Number(pointInput),
+      };
+
+      tableData.push(newTeam);
+
+      fillTable();
+
+      newTeamInpName.value = "";
+      newTeamInpWins.value = "";
+      newTeamInpLosses.value = "";
+      newTeamInpPoints.value = "";
+
+      toggleNewTeam();
+    }
+  }
+
+  addTeamBtn.addEventListener("click", toggleNewTeam);
+  exitModalBtn.addEventListener("click", toggleNewTeam);
+  addBtn.addEventListener("click", addTeam);
+}
+
+newTeamCont();
