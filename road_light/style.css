@@ -1,0 +1,41 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #eee;
+}
+
+.traffic-light {
+  width: 120px;
+  padding: 20px;
+  background: black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.light {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #555;
+  margin: 0 auto;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.red.active {
+  background: red;
+  box-shadow: 0 0 20px red;
+}
+
+.yellow.active {
+  background: yellow;
+  box-shadow: 0 0 20px yellow;
+}
+
+.green.active {
+  background: green;
+  box-shadow: 0 0 20px green;
+}
