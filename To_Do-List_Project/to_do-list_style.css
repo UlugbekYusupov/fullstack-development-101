@@ -1,0 +1,176 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Main Card */
+#todo-card {
+  background-color: #fff;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Title */
+#todo-card h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Task Card */
+.task-card {
+  background-color: #f9f9f9;
+  border-left: 5px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Task Title */
+.task-card .title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Task Description */
+.task-card .description {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Status Badge */
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.badge.pending { background-color: orange; }
+.badge.in-progress { background-color: blue; }
+.badge.completed { background-color: green; }
+
+/* Delete Button */
+.delete-btn {
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.delete-btn:hover {
+  opacity: 0.8;
+}
+
+/* Add Task Button */
+#add-task-btn {
+  display: block;
+  margin: 20px auto 0;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+#add-task-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Modal Background */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: fadeIn 0.3s;
+}
+
+/* Modal Content */
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  position: relative;
+  animation: slideDown 0.3s;
+}
+
+.modal h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.modal input, .modal textarea, .modal select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.save-btn { background-color: #007bff; color: #fff; }
+.close-btn { background-color: red; color: #fff; }
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-20px);}
+  to {transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  #todo-card {
+    padding: 15px;
+  }
+}
