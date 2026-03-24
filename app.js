@@ -1147,167 +1147,307 @@ const button3 = document.getElementById("button3");
 // ! homework
 // ? authentication
 
-const authCont = document.createElement("form");
-const authContTitle = document.createElement("h1");
-const authNameInp = document.createElement("input");
-const authEmailInp = document.createElement("input");
-const authPasswordInp = document.createElement("input");
-const authSubmitBtn = document.createElement("button");
-const authSwitchBtn = document.createElement("button");
+// const authCont = document.createElement("form");
+// const authContTitle = document.createElement("h1");
+// const authNameInp = document.createElement("input");
+// const authEmailInp = document.createElement("input");
+// const authPasswordInp = document.createElement("input");
+// const authSubmitBtn = document.createElement("button");
+// const authSwitchBtn = document.createElement("button");
 
-let users = [];
+// let users = [];
 
-document.body.appendChild(authCont);
-authCont.append(
-  authContTitle,
-  authNameInp,
-  authEmailInp,
-  authPasswordInp,
-  authSubmitBtn,
-  authSwitchBtn,
+// document.body.appendChild(authCont);
+// authCont.append(
+//   authContTitle,
+//   authNameInp,
+//   authEmailInp,
+//   authPasswordInp,
+//   authSubmitBtn,
+//   authSwitchBtn,
+// );
+
+// const allInputs = [authNameInp, authEmailInp, authPasswordInp];
+// const allbuttons = [authSubmitBtn, authSwitchBtn];
+
+// function authUI() {
+//   authCont.style.width = "450px";
+//   authCont.style.borderRadius = "15px";
+//   authCont.style.padding = "20px";
+//   authCont.style.background = "#fff";
+//   authCont.style.display = "grid";
+//   authCont.style.gap = "6px";
+//   authCont.style.border = "1px solid #0002";
+//   authCont.style.boxShadow = "0 5px 15px #0001";
+
+//   authContTitle.textContent = "Sign up";
+//   authContTitle.style.textAlign = "center";
+//   authContTitle.style.paddingBottom = "20px";
+
+//   authNameInp.placeholder = "Enter Name";
+//   authNameInp.type = "text";
+//   authEmailInp.placeholder = "Enter Email";
+//   authEmailInp.type = "email";
+//   authPasswordInp.placeholder = "Enter Password";
+//   authPasswordInp.type = "password";
+
+//   allInputs.forEach((inpElement) => {
+//     inpElement.style.width = "100%";
+//     inpElement.style.height = "40px";
+//     inpElement.style.border = "2px solid #0003";
+//     inpElement.style.borderRadius = "10px";
+//     inpElement.style.paddingLeft = "10px";
+//     inpElement.style.outlineColor = "#256eff";
+//     inpElement.style.marginBlock = "3px";
+//     inpElement.style.boxShadow = "0 0 10px #0001";
+//   });
+
+//   authSubmitBtn.textContent = "Submit";
+//   authSubmitBtn.style.width = "100%";
+//   authSubmitBtn.style.height = "45px";
+//   authSubmitBtn.style.borderRadius = "10px";
+//   authSubmitBtn.style.background = "#256eff";
+//   authSubmitBtn.style.color = "#fff";
+//   authSubmitBtn.style.fontSize = "1rem";
+//   authSubmitBtn.style.fontWeight = "700";
+//   authSubmitBtn.style.border = "none";
+//   authSubmitBtn.style.marginTop = "20px";
+//   authSubmitBtn.style.cursor = "pointer";
+
+//   authSwitchBtn.textContent = "Already have an account?";
+//   authSwitchBtn.style.height = "45px";
+//   authSwitchBtn.style.color = "#256eff";
+//   authSwitchBtn.style.fontSize = "1rem";
+//   authSwitchBtn.style.fontWeight = "700";
+//   authSwitchBtn.style.border = "none";
+//   authSwitchBtn.style.borderRadius = "10px";
+//   authSwitchBtn.style.cursor = "pointer";
+
+//   allbuttons.forEach((button) => {
+//     button.addEventListener("click", (event) => {
+//       event.preventDefault();
+//     });
+
+//     button.addEventListener("mouseenter", () => {
+//       button.style.filter = "brightness(0.9)";
+//     });
+//     button.addEventListener("mouseleave", () => {
+//       button.style.filter = "brightness(1)";
+//     });
+
+//     button.addEventListener("mousedown", () => {
+//       button.style.scale = "0.95";
+//       button.style.transitionDuration = "50ms";
+//     });
+//     button.addEventListener("mouseup", () => {
+//       button.style.transitionDuration = "0.3s";
+//       button.style.scale = "1";
+//     });
+//   });
+// }
+
+// authUI();
+
+// function switchToLogIn() {
+//   authCont.classList.toggle("active");
+
+//   if (authCont.classList.contains("active")) {
+//     authContTitle.textContent = "Sign up";
+//     authNameInp.style.display = "block";
+//     authSwitchBtn.textContent = "Already have an account?";
+//   } else {
+//     authSwitchBtn.textContent = "Don't have an account?";
+//     authContTitle.textContent = "Log in";
+//     authNameInp.style.display = "none";
+//   }
+// }
+
+// authSubmitBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   if (authCont.classList.contains("active")) {
+//     checkAuth();
+//   } else {
+//     addUser();
+//   }
+// });
+
+// function checkAuth() {
+//   const emailInp = authEmailInp.value.trim();
+//   const passwInp = authPasswordInp.value.trim();
+
+//   const user = users.find((u) => u.email === emailInp && u.pass === passwInp);
+
+//   if (user) {
+//     alert("Welcome back, " + user.name);
+//   } else {
+//     alert("Account not found or password incorrect.");
+//     authPasswordInp.value = "";
+//   }
+// }
+
+// function addUser() {
+//   const nameInp = authNameInp.value.trim();
+//   const emailInp = authEmailInp.value.trim();
+//   const passwInp = authPasswordInp.value.trim();
+
+//   if (!nameInp || !emailInp || !passwInp) {
+//     alert("Please fill all the inputs.");
+//     return;
+//   }
+
+//   const newUser = {
+//     name: nameInp,
+//     email: emailInp,
+//     pass: passwInp,
+//   };
+
+//   users.push(newUser);
+//   alert("Account created successfully!");
+
+//   authNameInp.value = "";
+//   authEmailInp.value = "";
+//   authPasswordInp.value = "";
+// }
+
+// authSwitchBtn.addEventListener("click", switchToLogIn);
+
+// ! homework 2
+// ? team ranking table
+
+const Container = document.createElement("div");
+const tableTitle = document.createElement("h1");
+const tableRankSortBtn = document.createElement("button");
+const tableBestSortBtn = document.createElement("button");
+const tableCont = document.createElement("table");
+const addTeamBtn = document.createElement("button");
+
+document.body.appendChild(Container);
+Container.append(
+  tableTitle,
+  tableRankSortBtn,
+  tableBestSortBtn,
+  tableCont,
+  addTeamBtn,
 );
 
-const allInputs = [authNameInp, authEmailInp, authPasswordInp];
-const allbuttons = [authSubmitBtn, authSwitchBtn];
+let buttons = [tableRankSortBtn, tableBestSortBtn, addTeamBtn];
 
-function authUI() {
-  authCont.style.width = "450px";
-  authCont.style.borderRadius = "15px";
-  authCont.style.padding = "20px";
-  authCont.style.background = "#fff";
-  authCont.style.display = "grid";
-  authCont.style.gap = "6px";
-  authCont.style.border = "1px solid #0002";
-  authCont.style.boxShadow = "0 5px 15px #0001";
+let tableData = [
+  {
+    id: "Rank",
+    team: "Team",
+    wins: "Wins",
+    loss: "Losses",
+    points: "Points",
+  },
+  {
+    id: "1",
+    team: "Team A",
+    wins: "5",
+    loss: "2",
+    points: "15",
+  },
+  {
+    id: "2",
+    team: "Team B",
+    wins: "3",
+    loss: "4",
+    points: "9",
+  },
+  {
+    id: "3",
+    team: "Team C",
+    wins: "7",
+    loss: "1",
+    points: "21",
+  },
+];
 
-  authContTitle.textContent = "Sign up";
-  authContTitle.style.textAlign = "center";
-  authContTitle.style.paddingBottom = "20px";
+function styleUI() {
+  Container.style.padding = "20px";
+  Container.style.border = "1px solid #0003";
+  Container.style.borderRadius = "20px";
+  Container.style.boxShadow = "0 5px 15px -5px #0001";
+  Container.style.display = "flex";
+  Container.style.flexDirection = "column";
+  Container.style.gap = "1rem";
 
-  authNameInp.placeholder = "Enter Name";
-  authNameInp.type = "text";
-  authEmailInp.placeholder = "Enter Email";
-  authEmailInp.type = "email";
-  authPasswordInp.placeholder = "Enter Password";
-  authPasswordInp.type = "password";
+  tableTitle.textContent = "Tournament Leaderboard 🏆";
+  tableTitle.style.fontSize = "2rem";
+  tableTitle.style.lineHeight = "1.6";
+  tableTitle.style.textAlign = "center";
 
-  allInputs.forEach((inpElement) => {
-    inpElement.style.width = "100%";
-    inpElement.style.height = "40px";
-    inpElement.style.border = "2px solid #0003";
-    inpElement.style.borderRadius = "10px";
-    inpElement.style.paddingLeft = "10px";
-    inpElement.style.outlineColor = "#256eff";
-    inpElement.style.marginBlock = "3px";
-    inpElement.style.boxShadow = "0 0 10px #0001";
-  });
+  buttons.forEach((button) => {
+    button.style.width = "100%";
+    button.style.padding = "10px";
+    button.style.background = "#256eff";
+    button.style.color = "#fff";
+    button.style.fontSize = "1rem";
+    button.style.fontWeight = "600";
+    button.style.borderRadius = "10px";
+    button.style.boxShadow = "0 5px 10px #0001";
+    button.style.border = "none";
+    button.style.cursor = "pointer";
+    button.style.textTransform = "capitalize";
 
-  authSubmitBtn.textContent = "Submit";
-  authSubmitBtn.style.width = "100%";
-  authSubmitBtn.style.height = "45px";
-  authSubmitBtn.style.borderRadius = "10px";
-  authSubmitBtn.style.background = "#256eff";
-  authSubmitBtn.style.color = "#fff";
-  authSubmitBtn.style.fontSize = "1rem";
-  authSubmitBtn.style.fontWeight = "700";
-  authSubmitBtn.style.border = "none";
-  authSubmitBtn.style.marginTop = "20px";
-  authSubmitBtn.style.cursor = "pointer";
-
-  authSwitchBtn.textContent = "Already have an account?";
-  authSwitchBtn.style.height = "45px";
-  authSwitchBtn.style.color = "#256eff";
-  authSwitchBtn.style.fontSize = "1rem";
-  authSwitchBtn.style.fontWeight = "700";
-  authSwitchBtn.style.border = "none";
-  authSwitchBtn.style.borderRadius = "10px";
-  authSwitchBtn.style.cursor = "pointer";
-
-  allbuttons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
+    button.addEventListener("mouseover", () => {
+      button.style.background = "#1555d6";
     });
-
-    button.addEventListener("mouseenter", () => {
-      button.style.filter = "brightness(0.9)";
+    button.addEventListener("mouseout", () => {
+      button.style.background = "#256eff";
     });
-    button.addEventListener("mouseleave", () => {
-      button.style.filter = "brightness(1)";
-    });
-
     button.addEventListener("mousedown", () => {
       button.style.scale = "0.95";
       button.style.transitionDuration = "50ms";
     });
     button.addEventListener("mouseup", () => {
-      button.style.transitionDuration = "0.3s";
       button.style.scale = "1";
+      button.style.transitionDuration = "300ms";
     });
+  });
+
+  tableRankSortBtn.textContent = "Sort by ranking";
+  tableBestSortBtn.textContent = "Highlight best team";
+  addTeamBtn.textContent = "Add Team";
+}
+
+styleUI();
+
+function fillTable() {
+  tableCont.style.borderCollapse = "collapse";
+  tableCont.style.overflow = "hidden";
+  tableCont.style.borderRadius = "10px";
+  tableCont.style.boxShadow = "0 5px 15px -3px #0001";
+  tableCont.innerHTML = "";
+
+  tableData.forEach((data) => {
+    tableCont.innerHTML += `
+    <tr>
+      <td>${data.id}</td>
+      <td>${data.team}</td>
+      <td>${data.wins}</td>
+      <td>${data.loss}</td>
+      <td>${data.points}</td>
+    </tr>
+    `;
+  });
+
+  const tableRow = tableCont.querySelectorAll("tr");
+  const frstTableRow = tableCont.querySelectorAll("tr")[0];
+  const tableDataa = tableCont.querySelectorAll("td");
+
+  frstTableRow.style.background = "#256eff";
+  frstTableRow.style.color = "#fff";
+  frstTableRow.style.fontWeight = "700";
+
+  tableRow.forEach((tr) => {
+    tr.style.borderCollapse = "collapse";
+  });
+  tableDataa.forEach((td) => {
+    td.style.border = "1px solid #0002";
+    td.style.padding = "5px 10px";
   });
 }
 
-authUI();
-
-function switchToLogIn() {
-  authCont.classList.toggle("active");
-
-  if (authCont.classList.contains("active")) {
-    authContTitle.textContent = "Sign up";
-    authNameInp.style.display = "block";
-    authSwitchBtn.textContent = "Already have an account?";
-  } else {
-    authSwitchBtn.textContent = "Don't have an account?";
-    authContTitle.textContent = "Log in";
-    authNameInp.style.display = "none";
-  }
-}
-
-authSubmitBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  if (authCont.classList.contains("active")) {
-    checkAuth();
-  } else {
-    addUser();
-  }
-});
-
-function checkAuth() {
-  const emailInp = authEmailInp.value.trim();
-  const passwInp = authPasswordInp.value.trim();
-
-  const user = users.find((u) => u.email === emailInp && u.pass === passwInp);
-
-  if (user) {
-    alert("Welcome back, " + user.name);
-  } else {
-    alert("Account not found or password incorrect.");
-    authPasswordInp.value = "";
-  }
-}
-
-function addUser() {
-  const nameInp = authNameInp.value.trim();
-  const emailInp = authEmailInp.value.trim();
-  const passwInp = authPasswordInp.value.trim();
-
-  if (!nameInp || !emailInp || !passwInp) {
-    alert("Please fill all the inputs.");
-    return;
-  }
-
-  const newUser = {
-    name: nameInp,
-    email: emailInp,
-    pass: passwInp,
-  };
-
-  users.push(newUser);
-  alert("Account created successfully!");
-
-  authNameInp.value = "";
-  authEmailInp.value = "";
-  authPasswordInp.value = "";
-}
-
-authSwitchBtn.addEventListener("click", switchToLogIn);
+fillTable();
