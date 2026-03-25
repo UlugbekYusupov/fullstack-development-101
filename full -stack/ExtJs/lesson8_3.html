@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<H1>THE CALCULATOR</H1>
+<html>
+<head>
+    <style>
+    
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .calculator {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 340px;
+        }
+
+        /* The Screen */
+        #display {
+            width: 100%;
+            height: 70px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: right;
+            padding: 15px;
+            font-size: 32px;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        /* Grid for buttons */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        button {
+            height: 65px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            box-shadow: 0 4px 0 #ddd; /* Makes it look 3D */
+            transition: all 0.1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Shaking effect when cursor is near (Hover) */
+        button:hover {
+            background: #fdfdfd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #ccc;
+        }
+
+        /* When actually clicked */
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #ccc;
+        }
+
+        .pink { background: #f17fde; color: rgb(198, 22, 22); box-shadow: 0 4px 0 #882789; }
+        .pink:hover { background: #e055cb; box-shadow: 0 6px 0 #882784; }
+        
+        .babyblue { background: #68c1ee; color: rgb(205, 10, 10); box-shadow: 0 4px 0 #0db4da; }
+        .babyblue:hover { background: #5cabff; box-shadow: 0 6px 0 #1f97d4; }
+    </style>
+</head>
+<body>
+<h1 style="color: #ec37a0;text-decoration: line-through;text-shadow: #882789;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">THE CALCULATOR</h1>
+<div class="calculator">
+    <input type="text" id="display" readonly value="0">
+    
+    <div class="buttons-grid">
+        <button class="pink" onclick="clearScreen()">C</button>
+        <button class="pink" onclick="backspace()">DEL</button>
+        <button class="pink" onclick="press('%')">%</button>
+        <button class="pink" onclick="press('/')">÷</button>
+
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button class="pink" onclick="press('*')">×</button>
+
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button class="pink" onclick="press('-')">-</button>
+
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button class="pink" onclick="press('+')">+</button>
+
+        <button style="grid-column: span 2" onclick="press('0')">0</button>
+        <button onclick="press('.')">.</button>
+        <button class="babyblue" onclick="solve()">=</button>
+    </div>
+</div>
+
+<script>
+    const screen = document.getElementById('display');
+
+    function press(num) {
+        // Remove the initial 0 if a number is pressed
+        if (screen.value === "0") {
+            screen.value = num;
+        } else {
+            screen.value += num;
+        }
+    }
+
+    function clearScreen() {
+        screen.value = "0";
+    }
+
+    function backspace() {
+        if (screen.value.length > 1) {
+            screen.value = screen.value.slice(0, -1);
+        } else {
+            screen.value = "0";
+        }
+    }
+
+    function solve() {
+        try {
+            // This does the math
+            screen.value = eval(screen.value);
+        } catch {
+            screen.value = "Error";
+            setTimeout(clearScreen, 1000);
+        }
+    }
+</script>
+
+</body>
+</html>
+<H1 style="color: #ec37a0;text-decoration: wavy;text-shadow: #882789;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" >THE SVETAFOR</H1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svetofor Project</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        /* The Black Housing */
+        .traffic-light {
+            background-color: #1a1a1a;
+            width: 120px;
+            height: 320px;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* The Individual Lights */
+        .light {
+            width: 80px;
+            height: 80px;
+            background-color: #333; /* Default "Off" color */
+            border-radius: 50%;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Active Colors with Glow (Box-Shadow) */
+        .red.active {
+            background-color: #ff3b30;
+            box-shadow: 0 0 40px #ff3b30;
+        }
+
+        .yellow.active {
+            background-color: #ffcc00;
+            box-shadow: 0 0 40px #ffcc00;
+        }
+
+        .green.active {
+            background-color: #4cd964;
+            box-shadow: 0 0 40px #4cd964;
+        }
+
+        /* Controls */
+        .controls {
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+            background-color: #ec37a0;
+            color: white;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #e13a88;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="traffic-light">
+        <div id="red" class="light red"></div>
+        <div id="yellow" class="light yellow"></div>
+        <div id="green" class="light green"></div>
+    </div>
+
+    <div class="controls">
+        <button onclick="startSvetofor()">Start Auto Mode</button>
+    </div>
+
+    <script>
+        const redLight = document.getElementById('red');
+        const yellowLight = document.getElementById('yellow');
+        const greenLight = document.getElementById('green');
+
+        function clearLights() {
+            redLight.classList.remove('active');
+            yellowLight.classList.remove('active');
+            greenLight.classList.remove('active');
+        }
+
+        function startSvetofor() {
+            // Step 1: Red Light
+            clearLights();
+            redLight.classList.add('active');
+
+            // Step 2: Yellow Light (after 3 seconds)
+            setTimeout(() => {
+                clearLights();
+                yellowLight.classList.add('active');
+            }, 3000);
+
+            // Step 3: Green Light (after 5 seconds total)
+            setTimeout(() => {
+                clearLights();
+                greenLight.classList.add('active');
+            }, 5000);
+
+            // Repeat the cycle every 8 seconds
+            setTimeout(startSvetofor, 8000);
+        }
+    </script>
+</body>
+</html>

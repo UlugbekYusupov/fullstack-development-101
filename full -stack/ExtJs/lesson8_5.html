@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tournament Leaderboard</title>
+    <style>
+        body {
+            background-color: #9fcdfa;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 50px;
+            margin: 0;
+        }
+
+        .card {
+            background: rgb(195, 225, 242);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(62, 175, 200, 0.468);
+            width: 400px;
+        }
+
+        h2 { text-align: center; font-size: 20px; margin-bottom: 20px; }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #a3c1e1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .btn:hover { background: #0056b3; }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        th { background: #007bff; color: white; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+        
+        tr:nth-child(even) { background: #fdfdfd; }
+        
+        /* Highlight Style */
+        .best-team { background-color: #e7f3ff !important; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2> Add New Team</h2>
+        <input type="text" id="teamName" placeholder="Team Name">
+        <input type="number" id="wins" placeholder="Wins">
+        <input type="number" id="losses" placeholder="Losses">
+        <input type="number" id="goalsScored" placeholder="Goals Scored">
+        <input type="number" id="goalsConceded" placeholder="Goals Conceded">
+        <button class="btn" onclick="addTeam()">Add Team</button>
+    </div>
+
+    <div class="card" style="width: 600px;">
+        <h2> Sports Tournament Leaderboard</h2>
+        <button class="btn" onclick="sortTeams()">Sort by Ranking (Points)</button>
+        <button class="btn" style="margin-top: 5px;" onclick="highlightBest()">Highlight Best Team</button>
+        
+        <table id="leaderboardTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Team</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Points</th>
+                    <th>Goal Diff</th>
+                </tr>
+            </thead>
+            <tbody id="teamRows">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        let teams = [];
+
+        function addTeam() {
+            const name = document.getElementById('teamName').value;
+            const w = parseInt(document.getElementById('wins').value) || 0;
+            const l = parseInt(document.getElementById('losses').value) || 0;
+            const gs = parseInt(document.getElementById('goalsScored').value) || 0;
+            const gc = parseInt(document.getElementById('goalsConceded').value) || 0;
+
+            if(!name) return alert("Please enter a team name");
+
+            const newTeam = {
+                name: name,
+                wins: w,
+                losses: l,
+                points: w * 3, // 3 points per win
+                goalDiff: gs - gc
+            };
+
+            teams.push(newTeam);
+            renderTable();
+            
+            // Clear inputs
+            document.querySelectorAll('input').forEach(i => i.value = "");
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('teamRows');
+            tbody.innerHTML = "";
+
+            teams.forEach((team, index) => {
+                const row = `
+                    <tr id="row-${index}">
+                        <td>${index + 1}</td>
+                        <td>${team.name}</td>
+                        <td>${team.wins}</td>
+                        <td>${team.losses}</td>
+                        <td>${team.points}</td>
+                        <td>${team.goalDiff}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function sortTeams() {
+            // Sort by points (highest first)
+            teams.sort((a, b) => b.points - a.points);
+            renderTable();
+        }
+
+        function highlightBest() {
+            // Reset all rows
+            renderTable(); 
+            // Highlight row 0 (the first one)
+            const firstRow = document.getElementById('row-0');
+            if(firstRow) firstRow.classList.add('best-team');
+        }
+    </script>
+</body>
+</html>

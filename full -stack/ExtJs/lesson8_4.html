@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Toggle</title>
+    <style>
+        /* CSS SECTION */
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        h1 { margin-bottom: 25px; font-size: 24px; }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /* Hover effect for Inputs */
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        /* Hover effect for buttons when cursor is near */
+        .btn-submit:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #007bff;
+            border: 2px solid #007bff;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .toggle-text {
+            color: #007bff;
+            cursor: pointer;
+            margin-top: 25px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .toggle-text:hover { text-decoration: underline; }
+
+        /* THE TRICK: This hides the element */
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="signup-box" class="form-box">
+        <h1>Sign Up</h1>
+        <input type="text" placeholder="Username">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button class="btn-submit" onclick="alert('Signed Up!')">Submit</button>
+        <a class="toggle-text" onclick="toggleForm()">Already have an account? Login</a>
+    </div>
+
+    <div id="login-box" class="form-box hidden">
+        <h1>Login</h1>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button class="btn-submit" onclick="alert('Logged In!')">Submit</button>
+        <button class="btn-outline" onclick="toggleForm()">Don't have an account? Sign Up</button>
+    </div>
+
+    <script>
+        // JAVASCRIPT SECTION
+        function toggleForm() {
+            const signup = document.getElementById('signup-box');
+            const login = document.getElementById('login-box');
+
+            // Toggle the 'hidden' class
+            if (signup.classList.contains('hidden')) {
+                signup.classList.remove('hidden');
+                login.classList.add('hidden');
+            } else {
+                signup.classList.add('hidden');
+                login.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Modern, clean styling based on your image */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        .card-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            width: 400px;
+            border: 1px solid #eee;
+        }
+
+        h2 { 
+            margin-top: 0;
+            color: #222;
+            font-size: 24px;
+        }
+
+        .input-wrapper {
+            margin: 20px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box; /* Ensures padding doesn't break width */
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        /* Changes the border to blue when you click inside */
+        input:focus {
+            border-color: #199e36;
+        }
+
+        /* The dynamic button */
+        #statusBtn {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        /* Initial state: Hidden until typing starts */
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <h2>Password Strength Checker</h2>
+        
+        <div class="input-wrapper">
+            <input type="password" id="passField" placeholder="Enter password">
+        </div>
+
+        <button id="statusBtn" class="hidden">Weak</button>
+    </div>
+
+    <script>
+        const passField = document.getElementById('passField');
+        const statusBtn = document.getElementById('statusBtn');
+
+        // This function runs every time you type a letter
+        passField.addEventListener('input', function() {
+            const secret = passField.value;
+            const len = secret.length;
+
+            // 1. Show or Hide the button
+            if (len > 0) {
+                statusBtn.classList.remove('hidden');
+            } else {
+                statusBtn.classList.add('hidden');
+            }
+
+            // 2. Change logic based on length
+            if (len > 0 && len < 5) {
+                statusBtn.textContent = "Weak";
+                statusBtn.style.backgroundColor = "#ff0000"; // Red
+            } 
+            else if (len >= 5 && len < 10) {
+                statusBtn.textContent = "Medium";
+                statusBtn.style.backgroundColor = "#ffa500"; // Orange
+            } 
+            else if (len >= 10) {
+                statusBtn.textContent = "Strong";
+                statusBtn.style.backgroundColor = "#058a1c"; // Green
+            }
+        });
+    </script>
+
+</body>
+</html>

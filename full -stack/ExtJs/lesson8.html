@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My DOM App</title>
+</head>
+<body>
+    <link rel="stylesheet" href="lesson8.css">
+    <div class="container"how >
+    <h1>Interactive To-Do List</h1>
+    
+    <div id="task-list">
+        </div>
+
+    <button id="open-modal-btn" class="add-main-btn">Add Task</button>
+</div>
+
+<div id="modal-overlay" class="hidden">
+    <div class="modal">
+        <h2>Add Task</h2>
+        <input type="text" id="task-title" placeholder="Task Title">
+        <textarea id="task-desc" placeholder="Task Description"></textarea>
+        
+        <select id="task-status">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+
+        <button id="save-task-btn" class="save-btn">Save Task</button>
+        <button id="close-modal-btn" class="close-btn">Close</button>
+    </div>
+</div>
+
+<script src="lesson8.js"></script>
+
+</body>
+</body>
+</html>
