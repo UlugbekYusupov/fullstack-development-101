@@ -980,3 +980,42 @@ const child = document.getElementById("child");
 //   },
 //   true,
 // );
+
+const signup = document.getElementById("signup");
+const login = document.getElementById("login");
+let isLogin = false;
+const isLoginFunc = () => {
+  isLogin = !isLogin;
+  if (isLogin) {
+    login.style.display = "none";
+    signup.style.display = "block";
+  } else {
+    login.style.display = "block";
+    signup.style.display = "none";
+  }
+};
+isLoginFunc();
+
+signup.lastElementChild.addEventListener("click", (e) => {
+  e.preventDefault();
+  isLoginFunc();
+  signup.querySelector("form").reset();
+});
+console.log(login.lastElementChild);
+
+login.lastElementChild.lastElementChild.addEventListener("click", (e) => {
+  e.preventDefault();
+  isLoginFunc();
+
+  login.querySelector("form").reset();
+});
+signup.querySelector('button[type="submit"]').addEventListener("click", (e) => {
+  e.preventDefault();
+
+  signup.querySelector("form").reset();
+});
+login.querySelector('button[type="submit"]').addEventListener("click", (e) => {
+  e.preventDefault();
+
+  login.querySelector("form").reset();
+});
