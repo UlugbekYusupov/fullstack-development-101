@@ -1,0 +1,75 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn {
+            color: blue;
+        }
+        
+        
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="btn"> Click Me</button>
+    <div id="box" class="red">I am a box</div>
+
+
+
+
+
+    <script src="./app.js"></script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+<div class="container">
+    <h1>Interactive To-Do List</h1>
+    <div class="task-list"></div>
+
+    <button id="openModal">Add Task</button>
+
+</div>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Add Task</h2>
+
+        <input type="text" id="title" placeholder="Task Title">
+        <textarea  id="desc" placeholder="Task Description"></textarea>
+
+        <select id="status">
+            <option value="pending">Pending</option>
+            <option value="progress">In progress</option>
+            <option value="completed">Completed</option>
+        </select>
+
+        <button id="saveTask">Save Task</button>
+        <button id="closeModal" class="close-btn">Close</button>
+    </div>
+</div>
+
+
+<script src="./app.js"></script>
+</body>
+</html>
+
+
+
