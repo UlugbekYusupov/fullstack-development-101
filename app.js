@@ -1,6 +1,6 @@
-																			///////////////////////////
-																				// Lesson 1 Start
-																			///////////////////////////
+///////////////////////////
+// Lesson 1 Start
+///////////////////////////
 
 // console.log('5' + 5) // 55
 // console.log('5' - 5) // 0
@@ -145,19 +145,19 @@
 
 // while (num > 0) {
 // 	let digit = num % 10
-	
+
 // 	sum = sum + digit
 // 	num = Math.floor(num / 10)
 // }
 
 // console.log(sum) // 10
-																			///////////////////////////
-																				// Lesson 1 End
-																			///////////////////////////
+///////////////////////////
+// Lesson 1 End
+///////////////////////////
 
-																			///////////////////////////
-																				// Lesson 2 Start
-																			///////////////////////////
+///////////////////////////
+// Lesson 2 Start
+///////////////////////////
 
 // Task 1
 
@@ -175,7 +175,7 @@
 // for (const element of num) {
 // 	if(element < 0)
 // 		alert(element)
-	
+
 // }
 // // Task 3
 // // alert(num1.sort())
@@ -261,14 +261,14 @@
 // for (const [name, score] of Object.entries(users)) {
 //   console.log(`${name} grade is ${getGrade(score)}`)
 // }
-																			///////////////////////////
-																				// Lesson 2 End
-																			///////////////////////////
+///////////////////////////
+// Lesson 2 End
+///////////////////////////
 
-																			///////////////////////////
-																				// Lesson 3 Start
-																			///////////////////////////
-	
+///////////////////////////
+// Lesson 3 Start
+///////////////////////////
+
 
 
 // console.log(first(1,2))		
@@ -637,9 +637,9 @@
 
 // input.addEventListener("input", calcTax);
 
-																			///////////////////////////
-																				// Lecture 6 Start
-																			///////////////////////////
+///////////////////////////
+// Lecture 6 Start
+///////////////////////////
 
 // array = [6, 47, 7, 6, 5, 4, 3];
 
@@ -867,415 +867,443 @@
 
 // Homework 
 // Task 1
-let tasks = [
-  { id: 1, title: 'Task 1', desc: 'Description for Task 1', status: 'pending' },
-  { id: 2, title: 'Task 2', desc: 'Description for Task 2', status: 'in progress' },
-  { id: 3, title: 'Task 3', desc: 'Description for Task 3', status: 'completed' }
-];
- 
-
-const app = document.createElement('div');
-app.className = 'app';
-document.body.appendChild(app);
- 
-const h1 = document.createElement('h1');
-h1.textContent = 'Interactive To-Do List';
-app.appendChild(h1);
- 
-const taskList = document.createElement('div');
-taskList.className = 'task-list';
-app.appendChild(taskList);
- 
-const btnAdd = document.createElement('button');
-btnAdd.className = 'btn-add';
-btnAdd.textContent = '+ Add Task';
-btnAdd.onclick = openModal;
-app.appendChild(btnAdd);
- 
-const overlay = document.createElement('div');
-overlay.className = 'overlay';
-overlay.onclick = function(e) { if(e.target == "Add") closeModal()};
-document.body.appendChild(overlay);
-const modal = document.createElement('div');
-modal.className = 'modal';
-overlay.appendChild(modal);
- 
-const mTitle = document.createElement('h2');
-mTitle.textContent = 'Add Task';
-modal.appendChild(mTitle);
- 
-function makeField(labelText, el) {
-  const wrap = document.createElement('div');
-  wrap.className = 'field';
-  const lbl = document.createElement('label');
-  lbl.textContent = labelText;
-  wrap.appendChild(lbl);
-  wrap.appendChild(el);
-  modal.appendChild(wrap);
-  return el;
-}
- 
-const inputTitle = makeField('Title', document.createElement('input'), { type: 'text', placeholder: 'Task title' });
-const inputDesc  = makeField('Description', document.createElement('textarea'), { placeholder: 'Task description' });
-const inputStatus = makeField('Status', document.createElement('select'));
-const progresses = [['pending','Pending'], ['in progress','In Progress'], ['completed','Completed']]
-progresses.forEach(function(s) {
-  const opt = document.createElement('option');
-  opt.value = s[0]; opt.textContent = s[1];
-  inputStatus.appendChild(opt);
-});
- 
-const actions = document.createElement('div');
-actions.className = 'modal-actions';
-modal.appendChild(actions);
- 
-const btnSave = document.createElement('button');
-btnSave.className = 'btn-save';
-btnSave.textContent = 'Save Task';
-btnSave.onclick = saveTask;
-actions.appendChild(btnSave);
- 
-const btnClose = document.createElement('button');
-btnClose.className = 'btn-close';
-btnClose.textContent = 'Close';
-btnClose.onclick = closeModal;
-actions.appendChild(btnClose);
- 
-function badgeClass(s) {
-  return s === 'pending' ? 'badge-pending' : s === 'in progress' ? 'badge-progress' : 'badge-completed';
-}
-function render(){
-  taskList.innerHTML = '';
-  if (!tasks.length) {
-    const empty = document.createElement('p');
-    empty.className = 'empty';
-    empty.textContent = 'No tasks yet. Add one!';
-    taskList.appendChild(empty);
-    return;
-  }
-  tasks.forEach(function(t) {
-    const card = document.createElement('div');
-    card.className = 'task-card';
-    card.id = 'task-' + t.id;
- 
-    const header = document.createElement('div');
-    header.className = 'task-header';
- 
-    const titleEl = document.createElement('span');
-    titleEl.className = 'task-title';
-    titleEl.textContent = t.title;
- 
-    const badge = document.createElement('span');
-    badge.className = 'badge ' + badgeClass(t.status);
-    badge.textContent = t.status;
- 
-    header.appendChild(titleEl);
-    header.appendChild(badge);
- 
-    const descEl = document.createElement('p');
-    descEl.className = 'task-desc';
-    descEl.textContent = t.desc;
-// Delate 
-    const del = document.createElement('button')
-    del.className = 'btn-delete';
-    del.textContent = 'Delete';
-		del.onclick = () => {
-			const c = document.getElementById('task-' + t.id);
-		
-			if (c) {
-				c.style.display = 'none';
-				tasks = tasks.filter(function(x){return x.id !== t.id});
-				render();
-			}
-			console.log(tasks);
-		};
- 
-    card.appendChild(header);
-    card.appendChild(descEl);
-    card.appendChild(del);
-    taskList.appendChild(card);
-  });
-}
-function openModal() {
-  inputTitle.value = '';
-  inputDesc.value = '';
-  inputStatus.value = 'pending';
-  overlay.classList.add('open');
-}
- 
-function closeModal() {
-  overlay.classList.remove('open');
-}
-var newId = 4;
-
-function saveTask() {
-  const title = inputTitle.value;
-  if (!title) { return false; }
-  tasks.push({ id: newId++, title: title, desc: inputDesc.value.trim(), status: inputStatus.value });
-  render();
-  closeModal();
-console.log(tasks)
-
-}
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal();if(e.key === 'Enter') saveTask() });
-render()
- 
-console.log(tasks)
-
-const style = document.createElement('style');
-style.textContent = [
-  "*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }",
-  ":root { --bg:#387e; --card:#fff; --text:#1a1a1a; --muted:#888; --border:#e8e4dc;--app-bg:#e0eeff;",
-  "   --pending-c:#b45309;",
-  "   --progress-c:#1d4ed8;",
-  "   --done-c:#166534;",
-  "  --danger:#ef4444; --danger-h:#dc2626;",
-  "  --blue:#2563eb; --blue-h:#1d4ed8; }",
-  "body { font-family:'DM Sans',sans-serif; background:var(--bg); min-height:100vh;",
-  "  display:flex; align-items:flex-start; gap:20px; padding:48px 16px; color:var(--text); }",
-  ".app { width:100%; max-width:520px; background-color:var(--app-bg);padding: 14px;",
-   "border-radius: 12px; }",
-  "h1 { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; text-align:center; margin-bottom:28px; }",
-  ".task-list {max-height:500px; display:flex; flex-direction:column; gap:12px; margin-bottom:20px;overflow:auto }",
-  ".task-card { background:var(--card); border-radius:16px; border:1px solid var(--border);",
-  "  padding:18px 20px; box-shadow:0 2px 16px rgba(0,0,0,.07); display:flex; flex-direction:column;",
-  "  gap:10px; animation:slideIn .25s ease; transition:box-shadow .2s; }",
-  ".task-card:hover { box-shadow:0 4px 24px rgba(0,0,0,.11); }",
-  "@keyframes slideIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }",
-  ".task-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }",
-  ".task-title { font-family:'Syne',sans-serif; font-weight:700; font-size:16px; }",
-  ".task-desc { font-size:14px; color:var(--muted); line-height:1.5; }",
-  ".badge { display:inline-block; padding:6px 12px; border-radius:10px; font-size:13px; font-weight:500; white-space:nowrap; flex-shrink:0; }",
-  ".badge-pending { background:var(--pending-c); color:var(--card); }",
-  ".badge-progress { background:var(--progress-c); color:var(--card); }",
-  ".badge-completed { background:var(--done-c); color:var(--card); }",
-  ".btn-delete { background:var(--danger); color:#fff; border:none; border-radius:10px;",
-  "  padding:7px 18px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;",
-  "  cursor:pointer; align-self:flex-start; transition:background .18s,transform .1s; }",
-  ".btn-delete:hover { background:var(--danger-h); }",
-  ".btn-delete:active { transform:scale(.97); }",
-  ".btn-add { width:100%; background:var(--blue-h); color:#fff; border:none; border-radius:16px;",
-  "  padding:15px; font-family:'Syne',sans-serif; font-size:15px; font-weight:800; cursor:pointer;",
-  "  transition:background .18s,transform .1s; box-shadow:0 2px 10px rgba(42, 52, 190, 0.13); }",
-  ".btn-add:hover { background:#333; box-shadow:0 4px 20px rgba(0,0,0,.18); }",
-  ".overlay { display:none; position:fixed; inset:0; background:rgba(20,20,20,.55);",
-  "  backdrop-filter:blur(3px); z-index:100; align-items:center; justify-content:center; padding:16px; }",
-  ".overlay.open { display:flex; }",
-  ".modal { background:var(--bg); border-radius:16px; padding:32px 28px; width:100%; max-width:440px;",
-  "  box-shadow:0 20px 60px rgba(0, 0, 0, 0.2); animation:popIn .22s cubic-bezier(.34,1.4,.64,1); }",
-  "@keyframes popIn { from{opacity:0;transform:scale(.93) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }",
-  ".modal h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; text-align:center; margin-bottom:24px; }",
-  ".field { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }",
-  ".field label { font-size:12px; font-weight:500; color:var(--card); text-transform:uppercase; letter-spacing:.5px; }",
-  ".field input, .field textarea, .field select { border:1.5px solid var(--border); border-radius:10px;",
-  "  padding:11px 14px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text);",
-  "  background:var(--card); outline:none; transition:border-color .18s; resize:none; width:100%; }",
-  ".field input:focus, .field textarea:focus, .field select:focus { border-color:var(--text); }",
-  ".field textarea { min-height:80px; }",
-  ".modal-actions { display:flex; flex-direction:column; gap:10px; margin-top:8px; }",
-  ".btn-save { background:var(--blue); color:#fff; padding:13px; font-family:'Syne',sans-serif;",
-  "  font-size:15px; font-weight:800; border-radius:10px; border:none; cursor:pointer; width:100%; transition:background .18s; }",
-  ".btn-save:hover { background:var(--blue-h); }",
-  ".btn-close { background:var(--danger); color:#fff; padding:13px; font-family:'Syne',sans-serif;",
-  "  font-size:15px; font-weight:800; border-radius:10px; border:none; cursor:pointer; width:100%; transition:background .18s; }",
-  ".btn-close:hover { background:var(--danger-h); }",
-  ".empty { text-align:center; color:var(--muted); font-size:14px; padding:32px 0; }"
-].join('\n');
-document.head.appendChild(style);
+// let tasks = [
+//   { id: 1, title: 'Task 1', desc: 'Description for Task 1', status: 'pending' },
+//   { id: 2, title: 'Task 2', desc: 'Description for Task 2', status: 'in progress' },
+//   { id: 3, title: 'Task 3', desc: 'Description for Task 3', status: 'completed' }
+// ];
 
 
-// Task 2
-document.body.style.display = "flex"
+// const app = document.createElement('div');
+// app.className = 'app';
+// document.body.appendChild(app);
 
-const passDiv = document.createElement("div")
-passDiv.className = "pass-div"
+// const h1 = document.createElement('h1');
+// h1.textContent = 'Interactive To-Do List';
+// app.appendChild(h1);
 
-passDiv.style.backgroundColor = "white"
-passDiv.style.display = "flex"
-passDiv.style.flexDirection = "column"
-passDiv.style.alignItems = "center"
+// const taskList = document.createElement('div');
+// taskList.className = 'task-list';
+// app.appendChild(taskList);
+
+// const btnAdd = document.createElement('button');
+// btnAdd.className = 'btn-add';
+// btnAdd.textContent = '+ Add Task';
+// btnAdd.onclick = openModal;
+// app.appendChild(btnAdd);
+
+// const overlay = document.createElement('div');
+// overlay.className = 'overlay';
+// overlay.onclick = function(e) { if(e.target == "Add") closeModal()};
+// document.body.appendChild(overlay);
+// const modal = document.createElement('div');
+// modal.className = 'modal';
+// overlay.appendChild(modal);
+
+// const mTitle = document.createElement('h2');
+// mTitle.textContent = 'Add Task';
+// modal.appendChild(mTitle);
+
+// function makeField(labelText, el) {
+//   const wrap = document.createElement('div');
+//   wrap.className = 'field';
+//   const lbl = document.createElement('label');
+//   lbl.textContent = labelText;
+//   wrap.appendChild(lbl);
+//   wrap.appendChild(el);
+//   modal.appendChild(wrap);
+//   return el;
+// }
+
+// const inputTitle = makeField('Title', document.createElement('input'), { type: 'text', placeholder: 'Task title' });
+// const inputDesc  = makeField('Description', document.createElement('textarea'), { placeholder: 'Task description' });
+// const inputStatus = makeField('Status', document.createElement('select'));
+// const progresses = [['pending','Pending'], ['in progress','In Progress'], ['completed','Completed']]
+// progresses.forEach(function(s) {
+//   const opt = document.createElement('option');
+//   opt.value = s[0]; opt.textContent = s[1];
+//   inputStatus.appendChild(opt);
+// });
+
+// const actions = document.createElement('div');
+// actions.className = 'modal-actions';
+// modal.appendChild(actions);
+
+// const btnSave = document.createElement('button');
+// btnSave.className = 'btn-save';
+// btnSave.textContent = 'Save Task';
+// btnSave.onclick = saveTask;
+// actions.appendChild(btnSave);
+
+// const btnClose = document.createElement('button');
+// btnClose.className = 'btn-close';
+// btnClose.textContent = 'Close';
+// btnClose.onclick = closeModal;
+// actions.appendChild(btnClose);
+
+// function badgeClass(s) {
+//   return s === 'pending' ? 'badge-pending' : s === 'in progress' ? 'badge-progress' : 'badge-completed';
+// }
+// function render(){
+//   taskList.innerHTML = '';
+//   if (!tasks.length) {
+//     const empty = document.createElement('p');
+//     empty.className = 'empty';
+//     empty.textContent = 'No tasks yet. Add one!';
+//     taskList.appendChild(empty);
+//     return;
+//   }
+//   tasks.forEach(function(t) {
+//     const card = document.createElement('div');
+//     card.className = 'task-card';
+//     card.id = 'task-' + t.id;
+
+//     const header = document.createElement('div');
+//     header.className = 'task-header';
+
+//     const titleEl = document.createElement('span');
+//     titleEl.className = 'task-title';
+//     titleEl.textContent = t.title;
+
+//     const badge = document.createElement('span');
+//     badge.className = 'badge ' + badgeClass(t.status);
+//     badge.textContent = t.status;
+
+//     header.appendChild(titleEl);
+//     header.appendChild(badge);
+
+//     const descEl = document.createElement('p');
+//     descEl.className = 'task-desc';
+//     descEl.textContent = t.desc;
+// // Delate 
+//     const del = document.createElement('button')
+//     del.className = 'btn-delete';
+//     del.textContent = 'Delete';
+// 		del.onclick = () => {
+// 			const c = document.getElementById('task-' + t.id);
+
+// 			if (c) {
+// 				c.style.display = 'none';
+// 				tasks = tasks.filter(function(x){return x.id !== t.id});
+// 				render();
+// 			}
+// 			console.log(tasks);
+// 		};
+
+//     card.appendChild(header);
+//     card.appendChild(descEl);
+//     card.appendChild(del);
+//     taskList.appendChild(card);
+//   });
+// }
+// function openModal() {
+//   inputTitle.value = '';
+//   inputDesc.value = '';
+//   inputStatus.value = 'pending';
+//   overlay.classList.add('open');
+// }
+
+// function closeModal() {
+//   overlay.classList.remove('open');
+// }
+// var newId = 4;
+
+// function saveTask() {
+//   const title = inputTitle.value;
+//   if (!title) { return false; }
+//   tasks.push({ id: newId++, title: title, desc: inputDesc.value.trim(), status: inputStatus.value });
+//   render();
+//   closeModal();
+// console.log(tasks)
+
+// }
+// document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal();if(e.key === 'Enter') saveTask() });
+// render()
+
+// console.log(tasks)
+
+// const style = document.createElement('style');
+// style.textContent = [
+//   "*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }",
+//   ":root { --bg:#387e; --card:#fff; --text:#1a1a1a; --muted:#888; --border:#e8e4dc;--app-bg:#e0eeff;",
+//   "   --pending-c:#b45309;",
+//   "   --progress-c:#1d4ed8;",
+//   "   --done-c:#166534;",
+//   "  --danger:#ef4444; --danger-h:#dc2626;",
+//   "  --blue:#2563eb; --blue-h:#1d4ed8; }",
+//   "body { font-family:'DM Sans',sans-serif; background:var(--bg); min-height:100vh;",
+//   "  display:flex; align-items:flex-start; gap:20px; padding:48px 16px; color:var(--text); }",
+//   ".app { width:100%; max-width:520px; background-color:var(--app-bg);padding: 14px;",
+//    "border-radius: 12px; }",
+//   "h1 { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; text-align:center; margin-bottom:28px; }",
+//   ".task-list {max-height:500px; display:flex; flex-direction:column; gap:12px; margin-bottom:20px;overflow:auto }",
+//   ".task-card { background:var(--card); border-radius:16px; border:1px solid var(--border);",
+//   "  padding:18px 20px; box-shadow:0 2px 16px rgba(0,0,0,.07); display:flex; flex-direction:column;",
+//   "  gap:10px; animation:slideIn .25s ease; transition:box-shadow .2s; }",
+//   ".task-card:hover { box-shadow:0 4px 24px rgba(0,0,0,.11); }",
+//   "@keyframes slideIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }",
+//   ".task-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }",
+//   ".task-title { font-family:'Syne',sans-serif; font-weight:700; font-size:16px; }",
+//   ".task-desc { font-size:14px; color:var(--muted); line-height:1.5; }",
+//   ".badge { display:inline-block; padding:6px 12px; border-radius:10px; font-size:13px; font-weight:500; white-space:nowrap; flex-shrink:0; }",
+//   ".badge-pending { background:var(--pending-c); color:var(--card); }",
+//   ".badge-progress { background:var(--progress-c); color:var(--card); }",
+//   ".badge-completed { background:var(--done-c); color:var(--card); }",
+//   ".btn-delete { background:var(--danger); color:#fff; border:none; border-radius:10px;",
+//   "  padding:7px 18px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;",
+//   "  cursor:pointer; align-self:flex-start; transition:background .18s,transform .1s; }",
+//   ".btn-delete:hover { background:var(--danger-h); }",
+//   ".btn-delete:active { transform:scale(.97); }",
+//   ".btn-add { width:100%; background:var(--blue-h); color:#fff; border:none; border-radius:16px;",
+//   "  padding:15px; font-family:'Syne',sans-serif; font-size:15px; font-weight:800; cursor:pointer;",
+//   "  transition:background .18s,transform .1s; box-shadow:0 2px 10px rgba(42, 52, 190, 0.13); }",
+//   ".btn-add:hover { background:#333; box-shadow:0 4px 20px rgba(0,0,0,.18); }",
+//   ".overlay { display:none; position:fixed; inset:0; background:rgba(20,20,20,.55);",
+//   "  backdrop-filter:blur(3px); z-index:100; align-items:center; justify-content:center; padding:16px; }",
+//   ".overlay.open { display:flex; }",
+//   ".modal { background:var(--bg); border-radius:16px; padding:32px 28px; width:100%; max-width:440px;",
+//   "  box-shadow:0 20px 60px rgba(0, 0, 0, 0.2); animation:popIn .22s cubic-bezier(.34,1.4,.64,1); }",
+//   "@keyframes popIn { from{opacity:0;transform:scale(.93) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }",
+//   ".modal h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; text-align:center; margin-bottom:24px; }",
+//   ".field { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }",
+//   ".field label { font-size:12px; font-weight:500; color:var(--card); text-transform:uppercase; letter-spacing:.5px; }",
+//   ".field input, .field textarea, .field select { border:1.5px solid var(--border); border-radius:10px;",
+//   "  padding:11px 14px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text);",
+//   "  background:var(--card); outline:none; transition:border-color .18s; resize:none; width:100%; }",
+//   ".field input:focus, .field textarea:focus, .field select:focus { border-color:var(--text); }",
+//   ".field textarea { min-height:80px; }",
+//   ".modal-actions { display:flex; flex-direction:column; gap:10px; margin-top:8px; }",
+//   ".btn-save { background:var(--blue); color:#fff; padding:13px; font-family:'Syne',sans-serif;",
+//   "  font-size:15px; font-weight:800; border-radius:10px; border:none; cursor:pointer; width:100%; transition:background .18s; }",
+//   ".btn-save:hover { background:var(--blue-h); }",
+//   ".btn-close { background:var(--danger); color:#fff; padding:13px; font-family:'Syne',sans-serif;",
+//   "  font-size:15px; font-weight:800; border-radius:10px; border:none; cursor:pointer; width:100%; transition:background .18s; }",
+//   ".btn-close:hover { background:var(--danger-h); }",
+//   ".empty { text-align:center; color:var(--muted); font-size:14px; padding:32px 0; }"
+// ].join('\n');
+// document.head.appendChild(style);
 
 
-passDiv.style.padding = "20px 16px"
-passDiv.style.borderRadius = "6px"
+// // Task 2
+// document.body.style.display = "flex"
+
+// const passDiv = document.createElement("div")
+// passDiv.className = "pass-div"
+
+// passDiv.style.backgroundColor = "white"
+// passDiv.style.display = "flex"
+// passDiv.style.flexDirection = "column"
+// passDiv.style.alignItems = "center"
 
 
-document.body.appendChild(passDiv);
-const passTitle = document.createElement("p")
-passTitle.textContent = "Password Strength Checker"
-passTitle.style.fontSize = "20px"
-passTitle.style.textAlign = "center"
-
-passTitle.style.fontWeight = "bold"
-
-passDiv.append(passTitle)
-
-const passInput = document.createElement("input");
-passInput.placeholder = "Password Checker";
-passInput.style.padding = "12px 20px";
-passInput.style.width = "330px";
-passInput.style.borderRadius = "6px";
-passInput.style.border = "1px solid #333";
-passInput.style.transition = "border-color 0.2s";
-
-const defaultColor = "#333";
-
-passInput.addEventListener("mouseenter", () => {
-  passInput.style.borderColor = "#1d4ed8";
-  passInput.style.border = "2px solid #1d4ed8";
-
-});
-passInput.addEventListener("mouseleave", () => {
-  passInput.style.borderColor = defaultColor;
-});
-
-document.body.appendChild(passInput);
+// passDiv.style.padding = "20px 16px"
+// passDiv.style.borderRadius = "6px"
 
 
+// document.body.appendChild(passDiv);
+// const passTitle = document.createElement("p")
+// passTitle.textContent = "Password Strength Checker"
+// passTitle.style.fontSize = "20px"
+// passTitle.style.textAlign = "center"
 
-passInput.style.marginBlock = "14px"
-passDiv.append(passInput)
+// passTitle.style.fontWeight = "bold"
 
+// passDiv.append(passTitle)
 
-const stat = document.createElement("div")
-stat.textContent = "Hello"
-stat.style.width = "100px"
-stat.style.textAlign = "center"
-stat.style.color = "white";
+// const passInput = document.createElement("input");
+// passInput.placeholder = "Password Checker";
+// passInput.style.padding = "12px 20px";
+// passInput.style.width = "330px";
+// passInput.style.borderRadius = "6px";
+// passInput.style.border = "1px solid #333";
+// passInput.style.transition = "border-color 0.2s";
 
-stat.style.borderRadius = "6px";
+// const defaultColor = "#333";
 
-stat.style.padding = "12px 6px"
-stat.style.background = "gray"
-passDiv.appendChild(stat)
+// passInput.addEventListener("mouseenter", () => {
+//   passInput.style.borderColor = "#1d4ed8";
+//   passInput.style.border = "2px solid #1d4ed8";
 
-passInput.addEventListener("input", () => {
-  const val = passInput.value;
-  let strength = 0;
+// });
+// passInput.addEventListener("mouseleave", () => {
+//   passInput.style.borderColor = defaultColor;
+// });
 
-  if (val.length >= 6) strength++;
-  if (/[A-Z]/.test(val)) strength++;
-  if (/[0-9]/.test(val)) strength++;
-  if (/[\W_]/.test(val)) strength++;
-
-  if (strength === 0) {
-    stat.textContent = "";
-    stat.style.background = "transparent";
-  } else if (strength <= 1) {
-    stat.textContent = "Weak";
-    stat.style.background = "red";
-  } else if (strength === 2 || strength === 3) {
-    stat.textContent = "Medium";
-    stat.style.background = "orange";
-  } else if (strength === 4) {
-    stat.textContent = "Strong";
-    stat.style.background = "green";
-  }
-});
-
-// Task 3
-const calculatorDiv = document.createElement("div");
-calculatorDiv.style.backgroundColor = "white";
-calculatorDiv.style.display = "flex";
-calculatorDiv.style.flexDirection = "column";
-calculatorDiv.style.alignItems = "center";
-calculatorDiv.style.padding = "20px 16px";
-calculatorDiv.style.borderRadius = "6px";
-calculatorDiv.style.width = "fit-content";
-
-const calcTitle = document.createElement("p");
-calcTitle.textContent = "Calculator";
-calcTitle.style.fontSize = "20px";
-calcTitle.style.paddingBottom = "20px";
-
-calcTitle.style.fontWeight = "bold";
-calcTitle.style.textAlign = "center";
-calculatorDiv.appendChild(calcTitle);
+// document.body.appendChild(passInput);
 
 
-const buttons = [
-  ["C", "DEL", "%", "÷"],
-  ["7", "8", "9", "×"],
-  ["4", "5", "6", "-"],
-  ["1", "2", "3", "+"],
-  ["0", ".", "="]
-]
 
-const display = document.createElement("input")
-display.type = "text"
-display.readOnly = true
-display.style.width = "220px"
-display.style.height = "50px"
-display.style.fontSize = "24px"
-display.style.marginBottom = "10px"
-display.style.textAlign = "right"
-display.style.paddingRight = "10px"
-display.style.border = "1px solid #333"
-display.style.borderRadius = "6px"
-calculatorDiv.appendChild(display)
+// passInput.style.marginBlock = "14px"
+// passDiv.append(passInput)
 
-buttons.forEach(row => {
-  const rowDiv = document.createElement("div")
-  rowDiv.style.display = "flex"
-  rowDiv.style.gap = "5px"
-  rowDiv.style.marginBottom = "5px"
 
-  row.forEach(label => {
-    const btn = document.createElement("button")
-    btn.textContent = label
-    btn.style.width = label === "0" ? "105px" : "50px"
-    btn.style.height = "50px"
-    btn.style.fontSize = "18px"
-    btn.style.border = "1px solid #ccc"
-    btn.style.borderRadius = "6px"
-    btn.style.cursor = "pointer"
+// const stat = document.createElement("div")
+// stat.textContent = "Hello"
+// stat.style.width = "100px"
+// stat.style.textAlign = "center"
+// stat.style.color = "white";
 
-    if (["C", "DEL", "%", "÷", "×", "-", "+"].includes(label)) {
-      btn.style.backgroundColor = "orange"
-    } else if (label === "=") {
-      btn.style.backgroundColor = "green"
-    } else {
-      btn.style.backgroundColor = "rgba(195, 97, 64, 0.2)"
-    }
+// stat.style.borderRadius = "6px";
 
-    btn.addEventListener("mouseenter", () => {
-      btn.style.backgroundColor = "#e0e0e0"
-    })
-    btn.addEventListener("mouseleave", () => {
-      if (["C", "DEL", "%", "÷", "×", "-", "+"].includes(label)) {
-        btn.style.backgroundColor = "orange"
-      } else if (label === "=") {
-        btn.style.backgroundColor = "green"
-      } else {
-        btn.style.backgroundColor = "rgba(195, 97, 64, 0.2)"
-      }
-    })
+// stat.style.padding = "12px 6px"
+// stat.style.background = "gray"
+// passDiv.appendChild(stat)
 
-    btn.addEventListener("click", () => {
-      handleInput(label)
-    })
+// passInput.addEventListener("input", () => {
+//   const val = passInput.value;
+//   let strength = 0;
 
-    rowDiv.appendChild(btn)
-  })
+//   if (val.length >= 6) strength++;
+//   if (/[A-Z]/.test(val)) strength++;
+//   if (/[0-9]/.test(val)) strength++;
+//   if (/[\W_]/.test(val)) strength++;
 
-  calculatorDiv.appendChild(rowDiv)
-})
+//   if (strength === 0) {
+//     stat.textContent = "";
+//     stat.style.background = "transparent";
+//   } else if (strength <= 1) {
+//     stat.textContent = "Weak";
+//     stat.style.background = "red";
+//   } else if (strength === 2 || strength === 3) {
+//     stat.textContent = "Medium";
+//     stat.style.background = "orange";
+//   } else if (strength === 4) {
+//     stat.textContent = "Strong";
+//     stat.style.background = "green";
+//   }
+// });
 
-function handleInput(label) {
-  let current = display.value
-  if (label === "C") {
-    display.value = ""
-  } else if (label === "DEL") {
-    display.value = current.slice(0, -1)
-  } else if (label === "=") {
-      let result = current.replace(/÷/g, "/").replace(/×/g, "*").replace(/%/g, "/100*")
-      display.value = eval(result)
- } 
-  else {
-    display.value += label
-  }
-}
+// // Task 3
+// const calculatorDiv = document.createElement("div");
+// calculatorDiv.style.backgroundColor = "white";
+// calculatorDiv.style.display = "flex";
+// calculatorDiv.style.flexDirection = "column";
+// calculatorDiv.style.alignItems = "center";
+// calculatorDiv.style.padding = "20px 16px";
+// calculatorDiv.style.borderRadius = "6px";
+// calculatorDiv.style.width = "fit-content";
 
-document.body.appendChild(calculatorDiv);
+// const calcTitle = document.createElement("p");
+// calcTitle.textContent = "Calculator";
+// calcTitle.style.fontSize = "20px";
+// calcTitle.style.paddingBottom = "20px";
 
-// Task 4
+// calcTitle.style.fontWeight = "bold";
+// calcTitle.style.textAlign = "center";
+// calculatorDiv.appendChild(calcTitle);
+
+
+// const buttons = [
+//   ["C", "DEL", "%", "÷"],
+//   ["7", "8", "9", "×"],
+//   ["4", "5", "6", "-"],
+//   ["1", "2", "3", "+"],
+//   ["0", ".", "="]
+// ]
+
+// const display = document.createElement("input")
+// display.type = "text"
+// display.readOnly = true
+// display.style.width = "220px"
+// display.style.height = "50px"
+// display.style.fontSize = "24px"
+// display.style.marginBottom = "10px"
+// display.style.textAlign = "right"
+// display.style.paddingRight = "10px"
+// display.style.border = "1px solid #333"
+// display.style.borderRadius = "6px"
+// calculatorDiv.appendChild(display)
+
+// buttons.forEach(row => {
+//   const rowDiv = document.createElement("div")
+//   rowDiv.style.display = "flex"
+//   rowDiv.style.gap = "5px"
+//   rowDiv.style.marginBottom = "5px"
+
+//   row.forEach(label => {
+//     const btn = document.createElement("button")
+//     btn.textContent = label
+//     btn.style.width = label === "0" ? "105px" : "50px"
+//     btn.style.height = "50px"
+//     btn.style.fontSize = "18px"
+//     btn.style.border = "1px solid #ccc"
+//     btn.style.borderRadius = "6px"
+//     btn.style.cursor = "pointer"
+
+//     if (["C", "DEL", "%", "÷", "×", "-", "+"].includes(label)) {
+//       btn.style.backgroundColor = "orange"
+//     } else if (label === "=") {
+//       btn.style.backgroundColor = "green"
+//     } else {
+//       btn.style.backgroundColor = "rgba(195, 97, 64, 0.2)"
+//     }
+
+//     btn.addEventListener("mouseenter", () => {
+//       btn.style.backgroundColor = "#e0e0e0"
+//     })
+//     btn.addEventListener("mouseleave", () => {
+//       if (["C", "DEL", "%", "÷", "×", "-", "+"].includes(label)) {
+//         btn.style.backgroundColor = "orange"
+//       } else if (label === "=") {
+//         btn.style.backgroundColor = "green"
+//       } else {
+//         btn.style.backgroundColor = "rgba(195, 97, 64, 0.2)"
+//       }
+//     })
+
+//     btn.addEventListener("click", () => {
+//       handleInput(label)
+//     })
+
+//     rowDiv.appendChild(btn)
+//   })
+
+//   calculatorDiv.appendChild(rowDiv)
+// })
+
+// function handleInput(label) {
+//   let current = display.value
+//   if (label === "C") {
+//     display.value = ""
+//   } else if (label === "DEL") {
+//     display.value = current.slice(0, -1)
+//   } else if (label === "=") {
+//       let result = current.replace(/÷/g, "/").replace(/×/g, "*").replace(/%/g, "/100*")
+//       display.value = eval(result)
+//  } 
+//   else {
+//     display.value += label
+//   }
+// }
+
+// document.body.appendChild(calculatorDiv);
+
+///////////////////////////
+// Lecture 8 Part 3 Start
+///////////////////////////
+
+const parent = document.getElementById('parent')
+const child = document.getElementById('child')
+const btn = document.getElementById('btn')
+// 🔵 CAPTURING
+parent.addEventListener('click', () => console.log('p - capturing'))
+btn.addEventListener('click', () => { console.log('b - capturing') })
+
+child.addEventListener(
+	'click',
+	(e) => {
+		console.log('c - capturing')
+		// 💣 остановим событие прямо тут
+	}
+
+)
+
+parent.addEventListener('click', () => console.log('PARENT - bubbling'), true)
+child.addEventListener('click', (e) => {
+	console.log('CHILD - bubbling')
+	e.stopPropagation()
+
+}, true)
+btn.addEventListener('click', () => console.log('BUTTON - bubbling'), true)
+// 🔴 BUBBLING
+
