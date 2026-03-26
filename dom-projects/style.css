@@ -1,0 +1,146 @@
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.hidden{
+  display: none;
+}
+.visible{
+  display: inline;
+}
+
+
+#taskList {
+  list-style-type: none;
+  padding: 0;
+}
+#taskList li {
+  background: #eee;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.task-header h6 {
+  margin: 0;
+  padding: 5px;
+}
+
+
+
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+
+
+/* Add Task Button */
+.add-btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.5s;
+  width: 100%;
+}
+
+.add-btn:hover {
+  background: darkgreen;
+}
+
+
+
+
+/* Modal Styles */
+#modal {
+  /* inset: 0; */
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}   
+#modal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#modal .modal-btns {
+  display: flex;
+  justify-content: flex-end;
+}
+#modal .modal-btns button {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-left: 10px;
+}
+#modal .modal-btns button:hover {
+  background: darkblue;
+}
+
+
+#selectStatus {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 4px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #FFF;
+}
+.cancel-btn {
+  background: red;
+}
+.save-btn {
+  background: green;
+}
+
+
+

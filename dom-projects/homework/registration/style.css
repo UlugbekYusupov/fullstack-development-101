@@ -1,0 +1,92 @@
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  box-sizing: border-box;
+} 
+#loginForm {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+}
+#loginForm input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#loginForm #login {
+  width: 100%;
+  padding: 10px;
+  background: #1e4ac4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-bottom:10px;
+}
+#loginForm #login:hover {
+  background: #133182;
+}
+
+#showRegister{
+  width: 100%;
+  padding: 10px;
+  color: #1e4ac4;
+  border-radius: 5px;
+  border: 3px solid #1e4ac4;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+#showRegister:hover {
+  background: #1e4ac4;
+  color:white;
+}
+
+
+
+#SignupForm {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+  display: none;
+}
+#SignupForm input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#SignupForm #signup {
+  width: 100%;
+  padding: 10px;
+  background: #1e4ac4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-bottom: 10px;
+}
+#SignupForm #signup:hover {
+  background: #133182;
+}
+#showLogin{
+  width: 100%;
+  padding: 10px;
+  color: #1e4ac4;
+  border-radius: 5px;
+  border:none;
+  background: none;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+

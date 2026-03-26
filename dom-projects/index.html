@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>To-Do List</h1>
+
+    <ul id="taskList"></ul>
+
+    <button class="add-btn" onclick="addTask()">Add Task</button>
+  </div>
+
+  <div id="modal" class="hidden">
+    <input id="title" type="text" placeholder="Enter title">
+    <input id="description" type="text" placeholder="Enter description">
+    <select name="" id="selectStatus">
+      <option value="pending">Pending</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button class="save-btn" onclick="saveTask()">Save</button>
+    <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+  </div>
+
+
+
+  <script src="app.js"></script>
+</body>
+</html>
