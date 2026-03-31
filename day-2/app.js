@@ -19,9 +19,6 @@ for (let i = 0; i < array.length; i++) {
     console.log("-")
     break
   }
-
-  
-  
 }
 
 if (minus == 0) {

@@ -6,92 +6,131 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="style.css">
+  <style>
+    .todo-actions {
+      margin: 16px 0;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      width: 360px;
+      max-width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal input,
+    .modal select {
+      padding: 8px 10px;
+    }
+
+    .modal button {
+      padding: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+
+
+
+    .calculator-div {
+      width: 300px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 7px 15px -5px #0003;
+      border: 1px solid #0001;
+    }
+
+    .calculator-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .calculator-input input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #0001;
+      background: #0001;
+      box-shadow: 0 5px 10px -3px #0002;
+    }
+
+    .calculator-buttons .calc-btn {
+      padding: 15px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #0001;
+      background: #0001;
+      box-shadow: 0 5px 10px -3px #0002;
+      cursor: pointer;
+    }
+
+
+
+
+    /* Traffic Light */
+
+    .traffic-light-div {
+      width: 80px;
+      background: #333;
+      padding: 10px;
+      border-radius: 20px;
+      margin: 40px auto;
+    }
+
+    .light {
+      width: 60px;
+      height: 60px;
+      background: #0001;
+      border-radius: 50%;
+      margin: 10px auto;
+      box-shadow: 0 5px 10px -3px #0002;
+    }
+
+    .red {
+      background: red;
+    }
+    .yellow {
+      background: yellow;
+    }
+    .green {   
+      background: green;
+    }
+
+
+
+
+  </style>
 </head>
 <body>
-  <h1>Ways to Create Objects</h1>
-
-  <h2>1. Object Literal ({})</h2>
-  <pre><code>const person = {
-  name: "Ali",
-  age: 20,
-  greet() {
-    return `Hi, I'm ${this.name}`;
-  }
-};
-</code></pre>
-
-  <h2>2. Using new Object()</h2>
-  <pre><code>const person = new Object();
-person.name = "Ali";
-person.age = 20;
-person.greet = function () {
-  return `Hi, I'm ${this.name}`;
-};
-</code></pre>
-
-  <h2>3. Factory Function</h2>
-  <pre><code>function createPerson(name, age) {
-  return {
-    name,
-    age,
-    greet() {
-      return `Hi, I'm ${this.name}`;
-    }
-  };
-}
-
-const p1 = createPerson("Ali", 20);
-const p2 = createPerson("Lola", 22);
-</code></pre>
-
-  <h2>4. Constructor Function</h2>
-  <pre><code>function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
-
-Person.prototype.greet = function () {
-  return `Hi, I'm ${this.name}`;
-};
-
-const p1 = new Person("Ali", 20);
-</code></pre>
-
-  <h2>5. Object.create(prototype)</h2>
-  <pre><code>const personProto = {
-  greet() {
-    return `Hi, I'm ${this.name}`;
-  }
-};
-
-const person = Object.create(personProto);
-person.name = "Ali";
-person.age = 20;
-</code></pre>
-
-  <h2>6. ES6 Class</h2>
-  <pre><code>class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  greet() {
-    return `Hi, I'm ${this.name}`;
-  }
-}
-
-const p1 = new Person("Ali", 20);
-</code></pre>
-
-  <h2>7. Singleton Object (Object.freeze())</h2>
-  <pre><code>const CONFIG = Object.freeze({
-  apiUrl: "https://api.example.com",
-  timeout: 5000
-});
-</code></pre>
-
-  <hr>
 
   <h1>Interactive To-Do List</h1>
 
@@ -124,17 +163,70 @@ const p1 = new Person("Ali", 20);
     </div>
   </div>
 
-  <h2>Add Task</h2>
-  <form id="taskForm">
-    <input type="text" id="taskTitle" placeholder="Task Title" required>
-    <input type="text" id="taskDesc" placeholder="Task Description" required>
-    <select id="taskStatus">
-      <option value="pending">pending</option>
-      <option value="in progress">in progress</option>
-      <option value="completed">completed</option>
-    </select>
-    <button type="submit">Add Task</button>
-  </form>
+  <div class="todo-actions">
+    <button id="openModalBtn">Add Task</button>
+  </div>
+
+  <div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>Add Task</h2>
+      <form id="taskForm">
+        <input type="text" id="taskTitle" placeholder="Task Title" required>
+        <input type="text" id="taskDesc" placeholder="Task Description" required>
+        <select id="taskStatus">
+          <option value="pending">Pending</option>
+          <option value="in progress">In progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        <button type="submit">Save Task</button>
+        <button type="button" id="closeModalBtn">Close</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Calculator app -->
+
+  <div class="calculator-div">
+    <div class="calculator-input">
+      <input type="text" id="calcInput" placeholder="Enter expression">
+    </div>
+
+    <!-- calculator buttons -->
+    <div class="calculator-buttons">
+      <button class="calc-btn">7</button>
+      <button class="calc-btn">8</button>
+      <button class="calc-btn">9</button> 
+      <button class="calc-btn">/</button>
+      <button class="calc-btn">4</button>
+      <button class="calc-btn">5</button>
+      <button class="calc-btn">6</button>
+      <button class="calc-btn">*</button>
+      <button class="calc-btn">1</button>
+      <button class="calc-btn">2</button>
+      <button class="calc-btn">3</button>
+      <button class="calc-btn">-</button>
+
+      <button class="calc-btn">0</button>
+      <button class="calc-btn">.</button>
+      <button class="calc-btn">=</button>
+      <button class="calc-btn">+</button>
+      
+  </div>
+
+
+  </div>
+
+  
+
+
+  <!-- Traffic Light -->
+  <div class="traffic-light-div">
+    <div class="light red"></div>
+    <div class="light yellow"></div>
+    <div class="light green"></div>
+
+ </div>
 
   <script>
     const taskList = document.getElementById("taskList");
@@ -142,6 +234,9 @@ const p1 = new Person("Ali", 20);
     const taskTitle = document.getElementById("taskTitle");
     const taskDesc = document.getElementById("taskDesc");
     const taskStatus = document.getElementById("taskStatus");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalOverlay = document.getElementById("modalOverlay");
 
     function addDeleteHandler(button) {
       button.addEventListener("click", function () {
@@ -150,6 +245,24 @@ const p1 = new Person("Ali", 20);
     }
 
     document.querySelectorAll(".delete-btn").forEach(addDeleteHandler);
+
+    function openModal() {
+      modalOverlay.classList.remove("hidden");
+      taskTitle.focus();
+    }
+
+    function closeModal() {
+      modalOverlay.classList.add("hidden");
+    }
+
+    openModalBtn.addEventListener("click", openModal);
+    closeModalBtn.addEventListener("click", closeModal);
+
+    modalOverlay.addEventListener("click", function (e) {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
 
     taskForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -176,7 +289,149 @@ const p1 = new Person("Ali", 20);
 
       taskList.appendChild(task);
       taskForm.reset();
+      closeModal();
     });
+
+
+
+
+
+
+
+
+
+
+
+
+    // Password Strength Checker
+    const passwordContainer = document.createElement("div");
+    const appTitle = document.createElement("h1");
+    const passwordInp = document.createElement("input");
+    const passwordStatus = document.createElement("span");
+
+    document.body.append(passwordContainer);
+    passwordContainer.append(appTitle, passwordInp, passwordStatus);
+
+    function UiInit() {
+      passwordContainer.style.width = "400px";
+      passwordContainer.style.padding = "20px";
+      passwordContainer.style.boxShadow = "0 7px 15px -5px #0003";
+      passwordContainer.style.borderRadius = "10px";
+      passwordContainer.style.background = "#fff";
+      passwordContainer.style.border = "1px solid #0001";
+      passwordContainer.style.display = "grid";
+      passwordContainer.style.gap = "1rem";
+
+      appTitle.textContent = "Password checker";
+      appTitle.style.textAlign = "center";
+      appTitle.style.fontFamily = "Arial";
+
+      passwordInp.style.height = "35px";
+      passwordInp.style.borderRadius = "8px";
+      passwordInp.style.background = "#0001";
+      passwordInp.style.boxShadow = "0 5px 10px -3px #0002";
+      passwordInp.style.border = "1px solid #0001";
+      passwordInp.style.paddingLeft = "7px";
+      passwordInp.style.fontSize = "1rem";
+
+      passwordStatus.textContent = "Weak";
+      passwordStatus.style.width = "fit-content";
+      passwordStatus.style.padding = "8px 25px";
+      passwordStatus.style.margin = "auto";
+      passwordStatus.style.borderRadius = "8px";
+      passwordStatus.style.background = "#fd2c3d";
+      passwordStatus.style.fontFamily = "Arial";
+      passwordStatus.style.fontWeight = "700";
+      passwordStatus.style.color = "#fff";
+    }
+    UiInit();
+
+    function checkPasswordInit() {
+      const password = passwordInp.value;
+      let strength = 0;
+
+      if (password.length >= 8) {
+        strength++;
+      }
+
+      let hasUpper = false;
+      let hasNumber = false;
+      let hasSpecial = false;
+
+      const specialChars = "!@#$%^&*()-+";
+
+      for (let i = 0; i < password.length; i++) {
+        let char = password[i];
+
+        if (char >= "A" && char <= "Z") {
+          hasUpper = true;
+        } else if (char >= "0" && char <= "9") {
+          hasNumber = true;
+        } else if (specialChars.includes(char)) {
+          hasSpecial = true;
+        }
+      }
+
+      if (hasUpper) strength++;
+      if (hasNumber) strength++;
+      if (hasSpecial) strength++;
+
+      if (password.length === 0) {
+        passwordStatus.textContent = "Empty";
+        passwordStatus.style.background = "#aaa";
+      } else if (strength <= 2) {
+        passwordStatus.textContent = "Weak";
+        passwordStatus.style.background = "#fd2c3d";
+      } else if (strength === 3) {
+        passwordStatus.textContent = "Medium";
+        passwordStatus.style.background = "#fedf42";
+      } else {
+        passwordStatus.textContent = "Strong";
+        passwordStatus.style.background = "#2aff3f";
+      }
+    }
+
+    passwordInp.addEventListener("input", () => {
+      checkPasswordInit();
+    });
+
+
+
+    // Calculator App
+    const calcInput = document.getElementById("calcInput");
+    const calcButtons = document.querySelectorAll(".calc-btn");
+    calcButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.textContent;
+
+        if (value === "=") {
+          try {
+            calcInput.value = eval(calcInput.value);
+          } catch (e) {
+            alert("Invalid expression");
+          }
+        } else {
+          calcInput.value += value;
+        }
+      });
+    });
+
+    
+
+    // Traffic Light
+    const lights = document.querySelectorAll(".light");
+    let currentLight = 0;
+    function changeLight() {
+      lights.forEach((light, index) => {
+        light.style.opacity = index === currentLight ? "1" : "0.3";
+      });
+
+      currentLight = (currentLight + 1) % lights.length;
+    }
+
+    changeLight();
+    setInterval(changeLight, 3000);
+
   </script>
 
   <script src="app.js"></script>

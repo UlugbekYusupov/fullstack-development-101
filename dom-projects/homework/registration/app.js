@@ -15,14 +15,13 @@ const confirmNewPasswordInput = document.getElementById('confirmNewPassword');
 
 
 showRegister.addEventListener('click', () => {
-  loginForm.append(newUsernameInput);
   loginForm.classList.add('hidden');
-  // signupForm.classList.remove('hidden');
+  signupForm.classList.remove('hidden');
 
 });
 
-// showLogin.addEventListener('click', () => {
-//   signupForm.classList.add('hidden');
-//   loginForm.classList.remove('hidden');
-// });
+showLogin.addEventListener('click', () => {
+  signupForm.classList.add('hidden');
+  loginForm.classList.remove('hidden');
+});
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Homework 2</h1>
+
+  <div class="container">
+
+    <!-- LEFT: FORM -->
+    <div class="form-card">
+      <h3>🏆 Add New Team</h3>
+
+      <input type="text" id="name" placeholder="Team Name">
+      <input type="number" id="wins" placeholder="Wins">
+      <input type="number" id="losses" placeholder="Losses">
+      <input type="number" id="scored" placeholder="Goals Scored">
+      <input type="number" id="conceded" placeholder="Goals Conceded">
+
+      <button onclick="addTeam()">Add Team</button>
+    </div>
+
+    <!-- RIGHT: TABLE -->
+    <div class="lead-card">
+      <h3>🏆 Leaderboard</h3>
+
+      <button onclick="sortTeams()">Sort by Ranking</button>
+      <button onclick="highlightBest()">Highlight Best Team</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Team</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Points</th>
+            <th>Goal Diff</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

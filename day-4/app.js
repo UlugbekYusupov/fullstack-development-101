@@ -111,7 +111,7 @@ console.log(last([7, 9, 0, -2]));
 console.log(last([7, 9, 0, -2],6));
 console.log(last([7, 9, 0, -2],3)); 
 
-
+// Challenge 3
 myColor = ["Red", "Green", "White", "Black"]; 
 console.log(myColor.join(","));
 
@@ -137,6 +137,32 @@ console.log(arr1.sort((a, b) => a - b));
 
 // Challenge 6
 
+function mostFrequent(arr) {
+  let maxCount = 0;
+  let mostItem;
+
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0;
+
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        count++;
+      }
+    }
+
+    if (count > maxCount) {
+      maxCount = count;
+      mostItem = arr[i];
+    }
+  }
+
+  return mostItem + " ( " + maxCount + " times )";
+}
+
+var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+
+console.log(mostFrequent(arr1));
+
 // Challenge 7
 
 let string = prompt("Enter any string: ");
@@ -151,3 +177,40 @@ for (let i = 0; i < string.length; i++) {
 }
 
 console.log(new_str);
+
+
+
+
+function swapString(str) {
+  let string = String(str);
+  let new_str = "";
+  for (let i = 0; i < string.length; i++) {
+    const str = string[i];
+    if (str === str.toUpperCase()) {
+      new_str+=str.toLowerCase()
+    }else{
+      new_str+=str.toUpperCase()
+    }
+    
+  }
+
+  return new_str;
+}
+
+console.log(swapString("AsALOMu alaYkum"));
+
+
+// Challenge 8
+
+
+
+
+
+// Challenge 9
+
+//Student Grade Management System
+
+let students = [
+  
+]
+
