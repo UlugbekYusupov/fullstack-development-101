@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Pipeline – Web to AI Dataset</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #3b82f6;
+      --green: #22c55e;
+      --yellow: #f59e0b;
+      --purple: #a855f7;
+      --pink: #ec4899;
+      --border: #334155;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem; }
+    .tagline { color: var(--muted); text-align: center; margin-bottom: 2rem; font-size: 1.1rem; }
+
+    .progress-bar {
+      display: flex;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+    }
+    .progress-step {
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      background: transparent;
+      border-right: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .progress-step:last-child { border-right: none; }
+    .progress-step.active { background: rgba(59,130,246,0.2); font-weight: bold; }
+    .progress-step.done   { background: rgba(34,197,94,0.12); }
+
+    .step-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    input, select, button {
+      font: inherit;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text);
+      width: 100%;
+      margin: 0.6rem 0;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    button.primary { background: var(--accent); color: white; }
+    button.primary:hover { background: #2563eb; }
+    button.danger { background: #ef4444; color: white; }
+    button.secondary { background: #334155; color: var(--muted); }
+    button.secondary:hover { background: #475569; }
+
+    .log-box, .preview-box {
+      background: #020817;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      max-height: 260px;
+      overflow-y: auto;
+      font-family: 'Consolas', monospace;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #1e293b;
+    }
+    th { background: #0f172a; color: var(--muted); position: sticky; top: 0; }
+    .highlight { background: rgba(34,197,94,0.08); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <h1 style="font-size:1.8rem; margin:0;">Data Pipeline</h1>
+      <div style="color:var(--muted); font-size:0.95rem;">Web → Clean → AI-ready dataset</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="progress-bar">
+    <div class="progress-step" data-step="0">1. Collect</div>
+    <div class="progress-step" data-step="1">2. Clean</div>
+    <div class="progress-step" data-step="2">3. Transform</div>
+    <div class="progress-step" data-step="3">4. Dataset</div>
+  </div>
+
+  <!-- STEP 1: COLLECT -->
+  <div class="step-card" id="step-collect">
+    <div class="step-header" style="color:#3b82f6;">
+      <span>🌐</span> Data Collection
+    </div>
+
+    <label>Mode</label>
+    <select id="scrape-mode">
+      <option value="demo">Demo (fake data)</option>
+      <option value="real">Real webpage</option>
+    </select>
+
+    <div id="real-options" class="hidden">
+      <label>URL</label>
+      <input type="url" id="scrape-url" placeholder="https://stat.uz/en/58-useful-information/5903-permanent-population" />
+
+      <label>CSS Selector (optional)</label>
+      <input type="text" id="css-selector" placeholder="table, .statistics-table tr, .table-responsive tr" />
+    </div>
+
+    <label>Rows to collect (max 200)</label>
+    <input type="number" id="row-count" value="30" min="5" max="200" />
+
+    <div style="display:flex; gap:1rem; margin:1.5rem 0;">
+      <button class="primary" id="btn-start">▶ Start</button>
+      <button class="danger hidden" id="btn-stop">■ Stop</button>
+      <button class="secondary" id="btn-reset-collect">Reset</button>
+    </div>
+
+    <div class="log-box" id="scrape-log">Waiting...</div>
+
+    <div class="preview-box">
+      <strong>Collected preview:</strong>
+      <div id="collect-preview"></div>
+    </div>
+
+    <button class="primary hidden" id="btn-to-clean">→ Go to Clean</button>
+  </div>
+
+  <!-- STEP 2: CLEAN -->
+  <div class="step-card hidden" id="step-clean">
+    <div class="step-header" style="color:#22c55e;">
+      <span>🧹</span> Data Cleaning
+    </div>
+
+    <div style="margin:1rem 0; display:flex; gap:1rem;">
+      <button class="primary" id="btn-run-clean">1. Standardize Data</button>
+      <button class="secondary" id="btn-manage-cols">2. Manage Columns</button>
+      <button class="secondary" id="btn-reset-clean">Reset</button>
+    </div>
+
+    <div id="col-mgmt-ui" class="hidden" style="background:#020817; padding:1.2rem; border-radius:8px; border:1px solid var(--border); margin-bottom:1rem;">
+      <h3 style="margin-bottom:0.8rem; font-size:1.1rem;">Column Manager</h3>
+      <div id="col-list" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;"></div>
+      <div style="display:flex; gap:0.5rem;">
+        <input type="text" id="new-col-name" placeholder="New Column Name" style="width:200px; margin:0;"/>
+        <button class="primary" id="btn-add-col" style="width:auto; margin:0;">+ Add Column</button>
+      </div>
+    </div>
+
+    <div id="clean-steps"></div>
+
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div>
+        <strong>Before</strong>
+        <div class="preview-box" id="before-clean"></div>
+      </div>
+      <div>
+        <strong>After</strong>
+        <div class="preview-box" id="after-clean"></div>
+      </div>
+    </div>
+
+    <button class="primary hidden" id="btn-to-transform">→ Go to Transform</button>
+  </div>
+
+  <!-- STEP 3: TRANSFORM -->
+  <div class="step-card hidden" id="step-transform">
+    <div class="step-header" style="color:#a855f7;">
+      <span>⚙️</span> Feature Transformation
+    </div>
+
+    <div id="transform-controls"></div>
+
+    <div style="margin:1.5rem 0;">
+      <button class="primary" id="btn-apply-transform">Apply All</button>
+      <button class="secondary" id="btn-reset-transform">Reset</button>
+    </div>
+
+    <div class="preview-box">
+      <strong>Transformed preview:</strong>
+      <div id="transform-preview"></div>
+    </div>
+
+    <button class="primary hidden" id="btn-to-dataset">→ Go to Dataset</button>
+  </div>
+
+  <!-- STEP 4: DATASET -->
+  <div class="step-card hidden" id="step-dataset">
+    <div class="step-header" style="color:#ec4899;">
+      <span>📦</span> Final Dataset
+    </div>
+
+    <div class="grid-3" style="margin:1.5rem 0;">
+      <div>
+        <label>Train %</label>
+        <input type="range" id="train-pct" min="50" max="90" value="70" />
+        <div id="train-val">70% (~21 rows)</div>
+      </div>
+      <div>
+        <label>Val %</label>
+        <input type="range" id="val-pct" min="5" max="30" value="15" />
+        <div id="val-val">15% (~4 rows)</div>
+      </div>
+      <div>
+        <label>Format</label>
+        <select id="export-format">
+          <option value="csv">CSV</option>
+          <option value="json">JSON</option>
+          <option value="xml">XML</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin:1.5rem 0;">
+      <button class="primary" id="btn-download-full">⬇ Download Full</button>
+      <button class="secondary" id="btn-download-train">Train only</button>
+      <button class="secondary" id="btn-download-val">Validation only</button>
+    </div>
+
+    <div class="preview-box">
+      <strong>Preview (first 20 rows):</strong>
+      <div id="dataset-preview"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ──────────────────────────────────────────────────────────────
+// Global state
+// ──────────────────────────────────────────────────────────────
+let currentData = [];
+let cleanedData = [];
+let transformedData = [];
+let currentStep = 0;
+
+const proxy = "https://api.allorigins.win/raw?url=";
+
+// ──────────────────────────────────────────────────────────────
+// Helpers
+// ──────────────────────────────────────────────────────────────
+function showStep(n) {
+  document.querySelectorAll('.step-card').forEach((el,i)=>el.classList.toggle('hidden', i!==n));
+  document.querySelectorAll('.progress-step').forEach((el,i)=>{
+    el.classList.toggle('active', i===n);
+    el.classList.toggle('done',   i < n);
+  });
+  currentStep = n;
+}
+
+function renderTable(el, data, limit=15, highlight=false) {
+  if (!data?.length) {
+    el.innerHTML = "<div style='padding:1rem; color:#64748b;'>No data</div>";
+    return;
+  }
+  const keys = Object.keys(data[0]);
+  let html = "<table><thead><tr>";
+  keys.forEach(k=>{
+    html+=`<th><div style="display:flex; justify-content:space-between; align-items:center;">
+      <span>${k}</span>
+      ${currentStep === 1 ? `<button onclick="dropColumn('${k}')" style="padding:2px 5px; font-size:10px; width:auto; margin:0; background:#ef4444;">×</button>` : ''}
+    </div></th>`;
+  });
+  html += "</tr></thead><tbody>";
+  data.slice(0,limit).forEach(row=>{
+    html += `<tr${highlight?' class="highlight"':''}>`;
+    keys.forEach(k=>{
+      let v = row[k];
+      if (v==null) v="—";
+      else if (typeof v==='number') v = v.toFixed ? v.toFixed(3) : v;
+      html += `<td>${v}</td>`;
+    });
+    html += "</tr>";
+  });
+  html += "</tbody></table>";
+  el.innerHTML = html;
+}
+
+function toXML(data) {
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<dataset>\n';
+  data.forEach(item => {
+    xml += '  <record>\n';
+    for (let key in item) {
+      const cleanKey = key.replace(/[^a-zA-Z0-9]/g, '_');
+      xml += `    <${cleanKey}>${item[key]}</${cleanKey}>\n`;
+    }
+    xml += '  </record>\n';
+  });
+  xml += '</dataset>';
+  return xml;
+}
+
+// ──────────────────────────────────────────────────────────────
+// Step 1 – Collect
+// ──────────────────────────────────────────────────────────────
+async function startCollecting() {
+  const mode = document.getElementById("scrape-mode").value;
+  const log = document.getElementById("scrape-log");
+  const preview = document.getElementById("collect-preview");
+  const count = Math.min(200, Math.max(5, +document.getElementById("row-count").value || 30));
+
+  log.innerHTML = "";
+  currentData = [];
+
+  if (mode === "demo") {
+    log.innerHTML += "<div>Generating demo data...</div>";
+    await new Promise(r=>setTimeout(r,600));
+
+    for (let i = 0; i < count; i++) {
+      currentData.push({
+        id: i+1,
+        name: ["Sanjar","Ali","Jasur","Nodira","Zilola"][i%5] + (Math.random()>0.8?" (dup)":""),
+        age: Math.random()>0.15 ? 18 + Math.floor(Math.random()*20) : null,
+        salary: +(400 + Math.random()*1200).toFixed(0),
+        city: ["Tashkent","Samarkand","Bukhara","Andijan","Fergana","Namangan"][Math.floor(Math.random()*6)],
+        status: Math.random()>0.4 ? "Active" : "Inactive"
+      });
+      log.innerHTML += `<div>[${new Date().toLocaleTimeString()}] Row ${i+1}</div>`;
+      log.scrollTop = log.scrollHeight;
+      renderTable(preview, currentData);
+      await new Promise(r=>setTimeout(r,60));
+    }
+  } else {
+    // ── REAL SCRAPING ────────────────────────────────────────
+    const url = document.getElementById("scrape-url").value.trim();
+    let selector = document.getElementById("css-selector").value.trim();
+
+    if (!url) {
+      log.innerHTML = "<div style='color:#ef4444'>Enter URL</div>";
+      return;
+    }
+
+    log.innerHTML = "<div>Connecting via proxy...</div>";
+
+    try {
+      const res = await fetch(proxy + encodeURIComponent(url));
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const html = await res.text();
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+
+      let elements = [];
+      if (selector) {
+        elements = doc.querySelectorAll(selector);
+      }
+
+      // Fallbacks especially useful for stat.uz and similar Uzbek sites
+      if (elements.length < 4) {
+        log.innerHTML += "<div style='color:#f59e0b'>Trying common selectors for stat.uz & tables...</div>";
+        const fallbacks = [
+          "table tr",
+          ".statistics-table tr",
+          ".table-responsive table tr",
+          "div.table table tr",
+          ".dataTable tr",
+          "tbody tr",
+          "table.wikitable tr",
+          ".list-group-item, .card, ul > li"
+        ];
+        for (const fb of fallbacks) {
+          elements = doc.querySelectorAll(fb);
+          if (elements.length > 5) {
+            log.innerHTML += `<div style='color:#22c55e'>Found ${elements.length} items with: ${fb}</div>`;
+            break;
+          }
+        }
+      }
+
+      if (elements.length < 4) {
+        log.innerHTML += "<div style='color:#ef4444'>No repeating data found. Try selector like: table tr or .statistics-table tr</div>";
+        return;
+      }
+
+      let items = [];
+
+      function extractStructuredData(elements) {
+        let results = [];
+        elements.forEach(container => {
+          let row = {};
+          // If it's a table row
+          if (container.tagName === "TR") {
+            const cells = container.querySelectorAll("td, th");
+            cells.forEach((c, i) => row[`col_${i}`] = c.textContent.trim().replace(/\s+/g," "));
+          } else {
+            // Cards / Grids logic: find all text-bearing descendants
+            const texts = Array.from(container.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, b, strong, a, div"))
+              .filter(el => el.children.length === 0 && el.textContent.trim().length > 0);
+            
+            texts.forEach((el, i) => {
+              const label = el.tagName.toLowerCase() + (el.className ? "_" + el.className.split(" ")[0] : "");
+              row[label + "_" + i] = el.textContent.trim().replace(/\s+/g," ");
+            });
+            // If no small elements found, just get the whole container text
+            if (Object.keys(row).length === 0) row["content"] = container.textContent.trim().replace(/\s+/g," ");
+          }
+          if (Object.keys(row).length > 0) results.push(row);
+        });
+        return results;
+      }
+
+      // Initial structural detection if no selector
+      if (!selector) {
+        log.innerHTML += "<div>Detecting repeating structures...</div>";
+        const body = doc.body;
+        // Search for elements that have many similar siblings
+        const tagMap = {};
+        doc.querySelectorAll('*').forEach(el => {
+          if (el.children.length > 2) {
+            const childTags = Array.from(el.children).map(c => c.tagName).join(",");
+            tagMap[childTags] = (tagMap[childTags] || 0) + 1;
+          }
+        });
+        // This is a naive heuristic but works surprisingly well for grids/lists
+        items = extractStructuredData(elements); 
+      } else {
+        items = extractStructuredData(elements);
+      }
+
+      if (items.length === 0) {
+        log.innerHTML += "<div style='color:#f59e0b'>Elements found but no data extracted</div>";
+        return;
+      }
+
+      const max = Math.min(count, items.length);
+      for (let i = 0; i < max; i++) {
+        currentData.push(items[i]);
+        log.innerHTML += `<div>[${new Date().toLocaleTimeString()}] Row ${i+1}/${max}</div>`;
+        log.scrollTop = log.scrollHeight;
+        renderTable(preview, currentData);
+        await new Promise(r=>setTimeout(r,80 + Math.random()*60));
+      }
+
+      log.innerHTML += `<div style='color:#22c55e'>Success! ${currentData.length} rows collected.</div>`;
+      document.getElementById("btn-to-clean").classList.remove("hidden");
+
+    } catch (err) {
+      log.innerHTML += `<div style='color:#ef4444'>Error: ${err.message}</div>`;
+    }
+  }
+
+  document.getElementById("btn-to-clean").classList.remove("hidden");
+}
+
+// ──────────────────────────────────────────────────────────────
+// Event listeners
+// ──────────────────────────────────────────────────────────────
+
+document.getElementById("btn-start").onclick = startCollecting;
+
+document.getElementById("scrape-mode").onchange = e => {
+  document.getElementById("real-options").classList.toggle("hidden", e.target.value !== "real");
+};
+
+document.getElementById("btn-reset-collect").onclick = () => {
+  currentData = [];
+  document.getElementById("scrape-log").innerHTML = "Waiting...";
+  document.getElementById("collect-preview").innerHTML = "";
+  document.getElementById("btn-to-clean").classList.add("hidden");
+};
+
+document.getElementById("btn-to-clean").onclick = () => showStep(1);
+
+// ──────────────────────────────────────────────────────────────
+// CLEANING
+// ──────────────────────────────────────────────────────────────
+function runCleaning() {
+  if (!currentData.length) return alert("No data to clean");
+
+  cleanedData = currentData.map(r => ({...r}));
+
+  const steps = [
+    {name:"Missing → fill", fixed:0},
+    {name:"Remove duplicates", fixed:0},
+    {name:"Normalize text", fixed:0}
+  ];
+
+  // Missing
+  const keys = Object.keys(cleanedData[0]);
+  cleanedData.forEach(row => {
+    keys.forEach(k => {
+      if (row[k] == null || row[k] === "") {
+        row[k] = typeof row[k] === "number" ? 0 : "Unknown";
+        steps[0].fixed++;
+      }
+    });
+  });
+
+  // Dedup
+  const seen = new Set();
+  cleanedData = cleanedData.filter(row => {
+    const str = JSON.stringify(row);
+    if (seen.has(str)) { steps[1].fixed++; return false; }
+    seen.add(str);
+    return true;
+  });
+
+  // Text normalize
+  cleanedData.forEach(row => {
+    keys.forEach(k => {
+      if (typeof row[k] === "string") {
+        const orig = row[k];
+        row[k] = row[k].trim().toLowerCase().replace(/^\w/, c=>c.toUpperCase());
+        if (row[k] !== orig) steps[2].fixed++;
+      }
+    });
+  });
+
+  let html = "";
+  steps.forEach(s => {
+    html += `<div style="padding:0.6rem; background:rgba(34,197,94,0.1); margin:0.4rem 0; border-radius:6px;">
+      ${s.name} — fixed ${s.fixed}
+    </div>`;
+  });
+  document.getElementById("clean-steps").innerHTML = html;
+
+  renderTable(document.getElementById("before-clean"), currentData, 15);
+  renderTable(document.getElementById("after-clean"), cleanedData, 15, true);
+
+  document.getElementById("btn-to-transform").classList.remove("hidden");
+}
+
+window.dropColumn = (key) => {
+  cleanedData.forEach(r => delete r[key]);
+  renderTable(document.getElementById("after-clean"), cleanedData, 15, true);
+};
+
+document.getElementById("btn-manage-cols").onclick = () => {
+  document.getElementById("col-mgmt-ui").classList.toggle("hidden");
+  if (!document.getElementById("col-mgmt-ui").classList.contains("hidden")) {
+    const keys = Object.keys(cleanedData[0] || {});
+    const list = document.getElementById("col-list");
+    list.innerHTML = keys.map(k => `
+      <div style="background:var(--card); border:1px solid var(--border); padding:0.3rem 0.6rem; border-radius:4px; display:flex; align-items:center; gap:0.5rem;">
+        <span>${k}</span>
+        <button onclick="dropColumn('${k}')" style="background:none; border:none; color:#ef4444; font-size:1.2rem; cursor:pointer;">×</button>
+      </div>`).join("");
+  }
+};
+
+document.getElementById("btn-add-col").onclick = () => {
+  const name = document.getElementById("new-col-name").value.trim();
+  if (!name) return;
+  cleanedData.forEach(r => r[name] = "New Data");
+  document.getElementById("new-col-name").value = "";
+  renderTable(document.getElementById("after-clean"), cleanedData, 15, true);
+  document.getElementById("btn-manage-cols").click(); // Refresh list
+  document.getElementById("btn-manage-cols").click(); 
+};
+
+document.getElementById("btn-run-clean").onclick = runCleaning;
+document.getElementById("btn-reset-clean").onclick = () => {
+  cleanedData = currentData.map(r => ({...r}));
+  document.getElementById("clean-steps").innerHTML = "";
+  renderTable(document.getElementById("before-clean"), currentData, 15);
+  renderTable(document.getElementById("after-clean"), cleanedData, 15, true);
+  document.getElementById("btn-to-transform").classList.remove("hidden");
+};
+document.getElementById("btn-to-transform").onclick = () => showStep(2);
+
+// ──────────────────────────────────────────────────────────────
+// TRANSFORM
+// ──────────────────────────────────────────────────────────────
+function renderTransformControls() {
+  if (!cleanedData.length) return;
+  const keys = Object.keys(cleanedData[0]);
+  let html = "<div style='margin-bottom:1rem;'><strong>Transform each column:</strong></div>";
+  keys.forEach(k => {
+    const sample = cleanedData[0][k];
+    const isNum = typeof sample === "number";
+    html += `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:0.8rem 0; padding:0.6rem; background:#0f172a; border-radius:6px;">
+        <div><strong>${k}</strong> <small style="color:#94a3b8;">(${isNum?'numeric':'text'})</small></div>
+        <select id="trans-${k}">
+          <option value="none">None</option>
+          ${isNum ? `
+            <option value="minmax">Min-Max (0–1)</option>
+            <option value="zscore">Z-Score</option>
+          ` : `
+            <option value="label">Label Encode</option>
+          `}
+        </select>
+      </div>`;
+  });
+  document.getElementById("transform-controls").innerHTML = html;
+}
+
+function applyTransforms() {
+  if (!cleanedData.length) return;
+  transformedData = cleanedData.map(r => ({...r}));
+  const keys = Object.keys(transformedData[0]);
+
+  keys.forEach(k => {
+    const sel = document.getElementById(`trans-${k}`);
+    if (!sel || sel.value === "none") return;
+    const method = sel.value;
+
+    if (method === "minmax") {
+      const vals = transformedData.map(r => r[k]).filter(v=>typeof v==="number");
+      const min = Math.min(...vals), max = Math.max(...vals);
+      transformedData.forEach(r => {
+        if (typeof r[k]==="number") r[k] = +((r[k]-min)/(max-min||1)).toFixed(4);
+      });
+    } else if (method === "zscore") {
+      const vals = transformedData.map(r => r[k]).filter(v=>typeof v==="number");
+      const mean = vals.reduce((a,b)=>a+b,0)/vals.length;
+      const std = Math.sqrt(vals.reduce((a,b)=>a+(b-mean)**2,0)/vals.length) || 1;
+      transformedData.forEach(r => {
+        if (typeof r[k]==="number") r[k] = +((r[k]-mean)/std).toFixed(4);
+      });
+    } else if (method === "label") {
+      const uniq = [...new Set(transformedData.map(r => r[k]))];
+      const map = Object.fromEntries(uniq.map((v,i)=>[v,i]));
+      transformedData.forEach(r => { if (r[k] in map) r[k] = map[r[k]]; });
+    }
+  });
+
+  renderTable(document.getElementById("transform-preview"), transformedData, 15, true);
+  document.getElementById("btn-to-dataset").classList.remove("hidden");
+}
+
+document.getElementById("btn-apply-transform").onclick = applyTransforms;
+document.getElementById("btn-reset-transform").onclick = () => {
+  transformedData = [];
+  document.getElementById("transform-preview").innerHTML = "";
+  document.getElementById("btn-to-dataset").classList.add("hidden");
+};
+document.getElementById("btn-to-dataset").onclick = () => {
+  showStep(3);
+  renderTable(document.getElementById("dataset-preview"), transformedData.length ? transformedData : cleanedData, 20);
+};
+
+// ──────────────────────────────────────────────────────────────
+// DATASET & EXPORT
+// ──────────────────────────────────────────────────────────────
+function updateSplitInfo() {
+  const total = (transformedData.length || cleanedData.length || currentData.length);
+  const t = Math.round(total * (+document.getElementById("train-pct").value / 100));
+  const v = Math.round(total * (+document.getElementById("val-pct").value / 100));
+  document.getElementById("train-val").textContent = `${document.getElementById("train-pct").value}% (~${t} rows)`;
+  document.getElementById("val-val").textContent = `${document.getElementById("val-pct").value}% (~${v} rows)`;
+}
+
+document.getElementById("train-pct").oninput = updateSplitInfo;
+document.getElementById("val-pct").oninput = updateSplitInfo;
+
+function download(content, name, type) {
+  const blob = new Blob([content], {type});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function toCSV(data) {
+  if (!data.length) return "";
+  const keys = Object.keys(data[0]);
+  return [keys.join(","), ...data.map(r => keys.map(k => `"${(r[k]??'').toString().replace(/"/g,'""')}"`).join(","))].join("\n");
+}
+
+document.getElementById("btn-download-full").onclick = () => {
+  const data = transformedData.length ? transformedData : cleanedData.length ? cleanedData : currentData;
+  const fmt = document.getElementById("export-format").value;
+  if (fmt === "csv") download(toCSV(data), "full_dataset.csv", "text/csv");
+  else if (fmt === "xml") download(toXML(data), "full_dataset.xml", "text/xml");
+  else download(JSON.stringify(data, null, 2), "full_dataset.json", "application/json");
+};
+
+["train","val"].forEach(part => {
+  document.getElementById(`btn-download-${part}`).onclick = () => {
+    const data = transformedData.length ? transformedData : cleanedData.length ? cleanedData : currentData;
+    const total = data.length;
+    const tSize = Math.round(total * (+document.getElementById("train-pct").value / 100));
+    const slice = part === "train" ? data.slice(0, tSize) : data.slice(tSize);
+    const fmt = document.getElementById("export-format").value;
+    const name = part === "train" ? "train" : "validation";
+    if (fmt === "csv") download(toCSV(slice), `${name}.csv`, "text/csv");
+    else if (fmt === "xml") download(toXML(slice), `${name}.xml`, "text/xml");
+    else download(JSON.stringify(slice, null, 2), `${name}.json`, "application/json");
+    };
+  });
+
+// ──────────────────────────────────────────────────────────────
+// Init
+// ──────────────────────────────────────────────────────────────
+showStep(0);
+document.querySelectorAll('.progress-step').forEach(el => {
+  el.onclick = () => showStep(+el.dataset.step);
+});
+updateSplitInfo();
+</script>
+</body>
+</html>
