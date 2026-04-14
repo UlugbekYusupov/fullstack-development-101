@@ -28,54 +28,70 @@ function switcher(a, b, c) {
   }
 }
 
-const users = [
-  {
-    id: 1,
-    username: "Kimdir",
-    email: "kimdir@gmail.com",
-    password: "Password123",
-  },
-];
-
 loginBtn.addEventListener("click", function () {
   if (loginBtn.value === "Sign up") {
-    users.forEach(function (user) {
-      if (
-        user.username === usernameInput.value ||
-        user.email === emailInput.value
-      ) {
-        alert(`${user.username} already exist, Please login!`);
-
-        return;
-      } else {
-        const user = {
-          id: Math.random(),
-          username: usernameInput.value,
-          email: emailInput.value,
-          password: passwordInput.value,
-        };
-        users.push(user);
-        usernameInput.value = "";
-        emailInput.value = "";
-        passwordInput.value = "";
-        alert(`${user.username} created successfully`);
-        switcher("Login", "Don't have an account? Sign up", false);
-      }
-    });
+    register();
   } else {
-    users.forEach(function (user) {
-      if (
-        emailInput.value === user.email &&
-        passwordInput.value === user.password
-      ) {
-        emailInput.value = "";
-        passwordInput.value = "";
-        alert("Successfully logged in!");
-      } else {
-        alert("Credentials do'nt match");
-      }
-    });
+    login();
   }
 });
 
+async function register() {
+  if (!usernameInput.value || !emailInput.value || !passwordInput.value) {
+    alert("All input fields are required");
+    return;
+  } else {
+    const user = {
+      username: usernameInput.value,
+      email: emailInput.value,
+      password: passwordInput.value,
+    };
 
+    // HTTP request
+
+    try {
+      const response = await fetch("http://localhost:3001/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (err) {
+      alert(err.message);
+    }
+
+    usernameInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
+    switcher("Login", "Don't have an account? Sign up", false);
+  }
+}
+
+function login() {
+  console.log("Login");
+}
+
+// function uploadFile(callback) {
+//   setTimeout(() => {
+//     callback();
+//   }, 2000);
+// }
+
+// function callback() {
+//   console.log("Callback is called");
+// }
+
+// uploadFile(callback);
+
+// function outer() {
+//   return function inner() {};
+// }
+
+// const inner = outer();
+// inner();
+
+// fetch().then().catch().finally()
