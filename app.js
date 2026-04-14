@@ -122,7 +122,7 @@
 // }
 // Challenge 3
 // With moduls
-// 
+//
 
 // without moduls
 // let numString = prompt('Enter a number:')
@@ -269,22 +269,20 @@
 // Lesson 3 Start
 ///////////////////////////
 
-
-
-// console.log(first(1,2))		
+// console.log(first(1,2))
 // function first(a,b){
 // 	return a + b
-// }					
+// }
 
 // let second = function(a,b){
 // 	return a + b
-// }						
-// console.log(second(1,2))	
+// }
+// console.log(second(1,2))
 
 // let third = (a,b) => {
 // 	return a + b
-// }						
-// console.log(third(1,2))		
+// }
+// console.log(third(1,2))
 
 // (function(a,b){
 // 	return sum = a + b
@@ -295,7 +293,7 @@
 // 	"b",
 // 	"return a+b"
 // )
-// console.log(sum(1,2))		
+// console.log(sum(1,2))
 // Challenge 1
 
 // greet("Oybek")
@@ -314,7 +312,7 @@
 //   return true
 // }
 
-// console.log(isPrime(7)) 
+// console.log(isPrime(7))
 // console.log(isPrime(10))
 
 // // Challenge 3
@@ -331,15 +329,14 @@
 // // Challenge 4
 // const isPalindrome = (n) => {
 // 	return n == n.toString().split("").reverse().join("")
-// } 
+// }
 // console.log(isPalindrome(1211))
 
 // // Challenge 5
-// function isArmstrong(n){ 
+// function isArmstrong(n){
 // let sum = 0
 // let copy = n.toString()
 // let digits = n.length
-
 
 // for (let digit of n) {
 //   sum += digit ** digits
@@ -370,7 +367,6 @@
 // 			}
 // 	}
 // }
-
 
 // const counter = createCounter(12)
 // counter.increment()
@@ -415,7 +411,7 @@
 // const add5 = lazyAdder(5)
 // console.log(add5())
 
-// Assignment 
+// Assignment
 
 // function calc(){
 // 	let price = 100
@@ -431,7 +427,6 @@
 // 	console.log(`Your total price is $${total}`);
 // }
 // calc()
-
 
 // 3
 
@@ -864,15 +859,13 @@
 // const categoryTotals = getTotalStockByCategory(inventory);
 // console.log("Stock by Category:", categoryTotals);
 
-
-// Homework 
+// Homework
 // Task 1
 // let tasks = [
 //   { id: 1, title: 'Task 1', desc: 'Description for Task 1', status: 'pending' },
 //   { id: 2, title: 'Task 2', desc: 'Description for Task 2', status: 'in progress' },
 //   { id: 3, title: 'Task 3', desc: 'Description for Task 3', status: 'completed' }
 // ];
-
 
 // const app = document.createElement('div');
 // app.className = 'app';
@@ -975,7 +968,7 @@
 //     const descEl = document.createElement('p');
 //     descEl.className = 'task-desc';
 //     descEl.textContent = t.desc;
-// // Delate 
+// // Delate
 //     const del = document.createElement('button')
 //     del.className = 'btn-delete';
 //     del.textContent = 'Delete';
@@ -1083,7 +1076,6 @@
 // ].join('\n');
 // document.head.appendChild(style);
 
-
 // // Task 2
 // document.body.style.display = "flex"
 
@@ -1095,10 +1087,8 @@
 // passDiv.style.flexDirection = "column"
 // passDiv.style.alignItems = "center"
 
-
 // passDiv.style.padding = "20px 16px"
 // passDiv.style.borderRadius = "6px"
-
 
 // document.body.appendChild(passDiv);
 // const passTitle = document.createElement("p")
@@ -1131,11 +1121,8 @@
 
 // document.body.appendChild(passInput);
 
-
-
 // passInput.style.marginBlock = "14px"
 // passDiv.append(passInput)
-
 
 // const stat = document.createElement("div")
 // stat.textContent = "Hello"
@@ -1191,7 +1178,6 @@
 // calcTitle.style.fontWeight = "bold";
 // calcTitle.style.textAlign = "center";
 // calculatorDiv.appendChild(calcTitle);
-
 
 // const buttons = [
 //   ["C", "DEL", "%", "÷"],
@@ -1270,7 +1256,7 @@
 //   } else if (label === "=") {
 //       let result = current.replace(/÷/g, "/").replace(/×/g, "*").replace(/%/g, "/100*")
 //       display.value = eval(result)
-//  } 
+//  }
 //   else {
 //     display.value += label
 //   }
@@ -1287,23 +1273,23 @@ const child = document.getElementById('child')
 const btn = document.getElementById('btn')
 // 🔵 CAPTURING
 parent.addEventListener('click', () => console.log('p - capturing'))
-btn.addEventListener('click', () => { console.log('b - capturing') })
+btn.addEventListener('click', () => {
+	console.log('b - capturing')
+})
 
-child.addEventListener(
-	'click',
-	(e) => {
-		console.log('c - capturing')
-		// 💣 остановим событие прямо тут
-	}
-
-)
+child.addEventListener('click', e => {
+	console.log('c - capturing')
+	// 💣 остановим событие прямо тут
+})
 
 parent.addEventListener('click', () => console.log('PARENT - bubbling'), true)
-child.addEventListener('click', (e) => {
-	console.log('CHILD - bubbling')
-	e.stopPropagation()
-
-}, true)
+child.addEventListener(
+	'click',
+	e => {
+		console.log('CHILD - bubbling')
+		e.stopPropagation()
+	},
+	true,
+)
 btn.addEventListener('click', () => console.log('BUTTON - bubbling'), true)
 // 🔴 BUBBLING
-
