@@ -26,10 +26,65 @@ function checkPassword(password) {
     return 'Weak';
 }
 
-// ─── showSignUp ───────────────────────────────────────────────────────────────
+// ─── Toast notification (Bootstrap 5) ───────────────────────────────────────
+function showToast(message, type = 'success') {
+
+    // Ensure Bootstrap toast container sits in the top-right corner
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        toastContainer.classList.add(
+            'toast-container',
+            'position-fixed',
+            'top-0',
+            'end-0',
+            'p-3'
+        );
+        toastContainer.style.zIndex = 99999;
+        document.body.appendChild(toastContainer);
+    }
+
+    // Map type → Bootstrap bg class + icon
+    const config = {
+        success: { bgClass: 'bg-success', icon: '✓', label: 'Success' },
+        error:   { bgClass: 'bg-danger',  icon: '✕', label: 'Error'   },
+        info:    { bgClass: 'bg-info',    icon: 'ℹ', label: 'Info'    },
+    };
+    const { bgClass, icon, label } = config[type] || config.success;
+
+    // Build Bootstrap toast element
+    const toastEl = document.createElement('div');
+    toastEl.classList.add('toast', 'border-0', 'shadow-lg');
+    toastEl.setAttribute('role', 'alert');
+    toastEl.setAttribute('aria-live', 'assertive');
+    toastEl.setAttribute('aria-atomic', 'true');
+
+    toastEl.innerHTML = `
+        <div class="toast-header ${bgClass} text-white border-0">
+            <span class="me-2 fw-bold fs-5">${icon}</span>
+            <strong class="me-auto">${label}</strong>
+            <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body fw-semibold text-dark bg-light">
+            ${message}
+        </div>
+    `;
+
+    toastContainer.appendChild(toastEl);
+
+    // Show via Bootstrap Toast API (auto-dismiss after 4 s)
+    const bsToast = new bootstrap.Toast(toastEl, { delay: 4000 });
+    bsToast.show();
+
+    // Clean up DOM after it hides
+    toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+}
+
+// ─── showSignUp 
 function showSignUp() {
 
-    hometaskContainer1.innerHTML = ''; // clear container
+    hometaskContainer1.innerHTML = '';
 
     // Form
     const form = document.createElement('form');
@@ -79,6 +134,20 @@ function showSignUp() {
     submitBtn.textContent = 'Sign Up';
     submitBtn.classList.add('btn', 'btn-primary', 'w-100', 'py-2', 'mt-2');
 
+    // Submit click – Sign Up success toast
+    submitBtn.addEventListener('click', () => {
+        const username = usernameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!username || !email || !password) {
+            showToast('Please fill in all fields.', 'error');
+            return;
+        }
+
+        showToast(`Welcome, ${username}! 🎉 Account created successfully.`, 'success');
+    });
+
     // Switch → Login link
     const loginLink = document.createElement('a');
     loginLink.textContent = 'Already have an account? Login';
@@ -88,17 +157,17 @@ function showSignUp() {
     // Switcher click
     loginLink.addEventListener('click', (e) => {
         e.preventDefault();
-        showLogin(); // ← switch to Login form
+        showLogin();
     });
 
     form.append(formTitle, usernameInput, emailInput, passwordInput, strengthBadge, submitBtn, loginLink);
     hometaskContainer1.append(form);
 }
 
-// ─── showLogin ────────────────────────────────────────────────────────────────
+// ─── showLogin 
 function showLogin() {
 
-    hometaskContainer1.innerHTML = ''; // clear container
+    hometaskContainer1.innerHTML = '';
 
     // Form
     const form = document.createElement('form');
@@ -127,6 +196,19 @@ function showLogin() {
     submitBtn.textContent = 'Login';
     submitBtn.classList.add('btn', 'btn-primary', 'w-100', 'py-2', 'mt-2');
 
+    // Submit click – Login success toast
+    submitBtn.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!email || !password) {
+            showToast('Please enter your email and password.', 'error');
+            return;
+        }
+
+        showToast(`Welcome back! 👋 Logged in successfully.`, 'success');
+    });
+
     // Switch → Sign Up link
     const signupLink = document.createElement('a');
     signupLink.textContent = "Don't have an account? Sign Up";
@@ -136,14 +218,14 @@ function showLogin() {
     // Switcher click
     signupLink.addEventListener('click', (e) => {
         e.preventDefault();
-        showSignUp(); // ← switch to Sign Up form
+        showSignUp();
     });
 
     form.append(formTitle, emailInput, passwordInput, submitBtn, signupLink);
     hometaskContainer1.append(form);
 }
 
-// ─── Initial render: start with Sign Up ──────────────────────────────────────
+// ─── Initial render: start with Sign Up 
 showSignUp();
 
 
@@ -277,7 +359,7 @@ document.getElementById('addTeamToLeaderboard').addEventListener('click', () => 
         return;
     }
 
-    const points = wins * 3;         
+    const points = wins * 3;
     const goalDiff = gFor - gAg;
     const rank = teamData.length + 1;
 
@@ -295,7 +377,7 @@ document.getElementById('addTeamToLeaderboard').addEventListener('click', () => 
 // teamData row layout: [rank, name, wins, losses, points, goalDiff]
 //                        [0]   [1]   [2]    [3]     [4]      [5]
 sortBTn.addEventListener('click', () => {
-    teamData.sort((a, b) => b[4] - a[4]); 
+    teamData.sort((a, b) => b[4] - a[4]);
     renderTableBody();
 });
 
