@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Auth Toggle</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+  }
+
+  body {
+    background: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .card {
+    width: 350px;
+    background: #f2f2f2;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+  }
+
+  .link {
+    text-align: center;
+    margin-top: 15px;
+    color: #1976d2;
+    cursor: pointer;
+  }
+
+  .form {
+    transition: 0.4s;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div id="signupForm" class="form">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Username">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button onclick="signUp()">Submit</button>
+    <div class="link" onclick="showLogin()">Already have an account? Login</div>
+  </div>
+
+  <div id="loginForm" class="form hidden">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button onclick="login()">Submit</button>
+    <div class="link" onclick="showSignup()">Don't have an account? Sign Up</div>
+  </div>
+
+</div>
+
+<script>
+  function showLogin() {
+    document.getElementById("signupForm").classList.add("hidden");
+    document.getElementById("loginForm").classList.remove("hidden");
+  }
+
+  function showSignup() {
+    document.getElementById("loginForm").classList.add("hidden");
+    document.getElementById("signupForm").classList.remove("hidden");
+  }
+
+  function signUp() {
+    alert("Sign up working");
+  }
+
+  function login() {
+    alert("Login working");
+  }
+</script>
+
+</body>
+</html>

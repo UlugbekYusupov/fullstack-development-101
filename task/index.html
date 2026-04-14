@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Leaderboard</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #e5e5e5;
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background: #0d5bb5;
+  }
+
+  .leaderboard {
+    flex: 1;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background: #1976d2;
+    color: white;
+  }
+
+  .best {
+    background: #c8f7c5 !important;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- FORM -->
+<div class="card">
+  <h2>🏆 Add New Team</h2>
+  <input id="name" placeholder="Team Name">
+  <input id="wins" type="number" placeholder="Wins">
+  <input id="losses" type="number" placeholder="Losses">
+  <input id="scored" type="number" placeholder="Goals Scored">
+  <input id="conceded" type="number" placeholder="Goals Conceded">
+  <button onclick="addTeam()">Add Team</button>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="card leaderboard">
+  <h2>🏆 Sports Tournament Leaderboard</h2>
+  <button onclick="sortTeams()">Sort by Ranking</button>
+  <button onclick="highlightBest()">Highlight Best Team</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Team</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Points</th>
+        <th>Goal Diff</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+<script>
+  let teams = [];
+
+  function addTeam() {
+    const name = document.getElementById("name").value;
+    const wins = +document.getElementById("wins").value;
+    const losses = +document.getElementById("losses").value;
+    const scored = +document.getElementById("scored").value;
+    const conceded = +document.getElementById("conceded").value;
+
+    if (!name) return alert("Team name required");
+
+    const team = {
+      name,
+      wins,
+      losses,
+      points: wins * 3,
+      goalDiff: scored - conceded
+    };
+
+    teams.push(team);
+    render();
+  }
+
+  function render() {
+    const tbody = document.getElementById("tableBody");
+    tbody.innerHTML = "";
+
+    teams.forEach((t, i) => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${t.name}</td>
+          <td>${t.wins}</td>
+          <td>${t.losses}</td>
+          <td>${t.points}</td>
+          <td>${t.goalDiff}</td>
+        </tr>
+      `;
+    });
+  }
+
+  function sortTeams() {
+    teams.sort((a, b) => {
+      if (b.points === a.points) {
+        return b.goalDiff - a.goalDiff;
+      }
+      return b.points - a.points;
+    });
+    render();
+  }
+
+  function highlightBest() {
+    const rows = document.querySelectorAll("tbody tr");
+    rows.forEach(r => r.classList.remove("best"));
+
+    if (rows.length > 0) {
+      rows[0].classList.add("best");
+    }
+  }
+</script>
+
+</body>
+</html>
