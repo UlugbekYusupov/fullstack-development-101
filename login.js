@@ -28,60 +28,45 @@ function switcher(a, b, c) {
   }
 }
 
-const users = [
-  {
-    id: 1,
-    username: "Kimdir",
-    email: "kimdir@gmail.com",
-    password: "Password123",
-  },
-];
-
 loginBtn.addEventListener("click", function () {
   if (loginBtn.value === "Sign up") {
-    register()
-  } else {
-    login()
-    // users.forEach(function (user) {
-    //   if (
-    //     emailInput.value === user.email &&
-    //     passwordInput.value === user.password
-    //   ) {
-    //     emailInput.value = "";
-    //     passwordInput.value = "";
-    //     alert("Successfully logged in!");
-    //   } else {
-    //     alert("Credentials do'nt match");
-    //   }
-    // });
-  }
-});
+    users.forEach(function (user) {
+      if (
+        user.username === usernameInput.value ||
+        user.email === emailInput.value
+      ) {
+        alert(`${user.username} already exist, Please login!`);
 
-
-function register() {
-    if (!usernameInput.value || !emailInput.value || !passwordInput.value ) {
-        alert(`${emailInput.value} already exist, Please login`);
         return;
-    } else {
+      } else {
         const user = {
-                  id: Math.random(),
-                  username: usernameInput.value,
-                  email: emailInput.value,
-                  password: passwordInput.value,
-                };
-
-        //HTTP request
-
+          id: Math.random(),
+          username: usernameInput.value,
+          email: emailInput.value,
+          password: passwordInput.value,
+        };
+        users.push(user);
         usernameInput.value = "";
         emailInput.value = "";
         passwordInput.value = "";
-        switcher("Login", "Don't have an account? Sign up", false)
-    }
-}
-
-
-function login() {
-    console.log("login")
-}
+        alert(`${user.username} created successfully`);
+        switcher("Login", "Don't have an account? Sign up", false);
+      }
+    });
+  } else {
+    users.forEach(function (user) {
+      if (
+        emailInput.value === user.email &&
+        passwordInput.value === user.password
+      ) {
+        emailInput.value = "";
+        passwordInput.value = "";
+        alert("Successfully logged in!");
+      } else {
+        alert("Credentials do'nt match");
+      }
+    });
+  }
+});
 
 
