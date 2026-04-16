@@ -1044,3 +1044,40 @@
 
 // console.log("Most liked post:", getMostLikedPost(posts));
 // console.log("Total engagement:", getTotalEngagement(posts));
+
+let taskListDB = [
+  { id: 1, title: "Task 1", description: "Buy groceries", status: "completed" },
+  { id: 2, title: "Task 2", description: "Clean the house", status: "pending" },
+  { id: 3, title: "Task 3", description: "Pay bills", status: "in-progress" }
+];
+
+const taskList = document.getElementById("tasklist")
+
+function renderTasks() {
+  const container = document.querySelector(".tasklist");
+  container.innerHTML = "";
+
+  taskListDB.forEach(task => {
+    const div = document.createElement("div");
+    div.classList.add("task");
+
+    div.innerHTML = `
+      <div class="info">
+        <h3>${task.title}</h3>
+        <p>${task.description}</p>
+        <button class="delete" data-id="${task.id}">Delete</button>
+      </div>
+      <div class="right">
+        <span class="status ${task.status}">${task.status}</span>
+        
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+renderTasks();
+
+
+

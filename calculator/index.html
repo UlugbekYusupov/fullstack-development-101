@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f5f6f8;
+    }
+
+    .container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  <h1 class="title">Homework 1</h1>
+
+  <div class="container">
+
+    <!-- SIGN UP -->
+    <div class="card" id="signup-form">
+      <h2>Sign Up</h2>
+
+      <input type="text" placeholder="Username">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+
+      <button class="btn">Submit</button>
+
+      <p class="link">
+        Already have an account?
+        <a href="#" id="go-login">Login</a>
+      </p>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="card hidden" id="login-form">
+      <h2>Login</h2>
+
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+
+      <button class="btn">Submit</button>
+
+      <button class="outline-btn" id="go-signup">
+        Don't have an account? Sign Up
+      </button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
