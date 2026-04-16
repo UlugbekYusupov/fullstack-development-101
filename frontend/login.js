@@ -71,27 +71,30 @@ async function register() {
   }
 }
 
-function login() {
-  console.log("Login");
+async function login() {
+  if (!emailInput.value || !passwordInput.value) {
+    alert("All input fields are required");
+    return;
+  }
+  try {
+    const response = await fetch("http://localhost:3001/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      alert(data.message);
+    }
+  } catch (err) {
+    alert(err.message);
+  }
+  emailInput.value = "";
+  passwordInput.value = "";
+
+  // window.location.replace("http://localhost:3001/dashboard");
 }
-
-// function uploadFile(callback) {
-//   setTimeout(() => {
-//     callback();
-//   }, 2000);
-// }
-
-// function callback() {
-//   console.log("Callback is called");
-// }
-
-// uploadFile(callback);
-
-// function outer() {
-//   return function inner() {};
-// }
-
-// const inner = outer();
-// inner();
-
-// fetch().then().catch().finally()
