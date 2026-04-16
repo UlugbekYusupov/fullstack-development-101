@@ -71,8 +71,33 @@ async function register() {
   }
 }
 
-function login() {
+async function login() {
   console.log("Login");
+  if (!emailInput.value || !passwordInput.value) {
+    alert("All input fields are required");
+    return;
+  }
+
+  try {
+      const response = await fetch("http://localhost:3001/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: emailInput.value,
+          password: passwordInput.value,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (err) {
+      alert(err.message);
+    }
+    emailInput.value = "";
+    passwordInput.value = "";
+
 }
 
 // function uploadFile(callback) {
