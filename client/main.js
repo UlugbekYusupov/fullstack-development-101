@@ -1,154 +1,129 @@
-const title = document.getElementById("form-title");
-const form = document.getElementById("auth-form");
-const submitBtn = document.getElementById("submit-btn");
-const statusMessage = document.getElementById("status-message");
-const modeButtons = document.querySelectorAll(".mode-btn");
-const nameGroup = document.getElementById("name-group");
-const confirmGroup = document.getElementById("confirm-group");
+const textSwitcherBtn = document.getElementById("text-switcher-btn");
+const heading = document.querySelector("h2");
+const loginBtn = document.getElementById("loginBtn");
+const usernameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 
-const fields = {
-  name: document.getElementById("name"),
-  email: document.getElementById("email"),
-  password: document.getElementById("password"),
-  confirmPassword: document.getElementById("confirmPassword"),
-};
+const usernameLabel = document.getElementById("usernameLabel");
 
-const errors = {
-  name: document.getElementById("name-error"),
-  email: document.getElementById("email-error"),
-  password: document.getElementById("password-error"),
-  confirmPassword: document.getElementById("confirm-error"),
-};
+textSwitcherBtn.addEventListener("click", function () {
+  if (heading.textContent === "Login") {
+    switcher("Sign up", "Already have an account? Login", true);
+  } else {
+    switcher("Login", "Don't have an account? Sign up", false);
+  }
+});
 
-let mode = "login";
-const API_BASE = "http://localhost:9000/api/v2";
-
-function setStatus(message, type = "") {
-  statusMessage.textContent = message;
-  statusMessage.className = type ? type : "";
+function switcher(a, b, c) {
+  loginBtn.value = a;
+  heading.textContent = a;
+  textSwitcherBtn.value = b;
+  if (c) {
+    usernameInput.classList.remove("hidden");
+    usernameLabel.classList.remove("hidden");
+  } else {
+    usernameInput.classList.add("hidden");
+    usernameLabel.classList.add("hidden");
+  }
 }
 
-function clearErrors() {
-  Object.keys(errors).forEach((key) => {
-    errors[key].textContent = "";
-    fields[key].classList.remove("invalid");
-  });
-}
-
-function setError(key, message) {
-  errors[key].textContent = message;
-  fields[key].classList.add("invalid");
-}
-
-function switchMode(nextMode) {
-  mode = nextMode;
-  const isSignup = mode === "signup";
-  title.textContent = isSignup ? "Sign Up" : "Login";
-  submitBtn.textContent = isSignup ? "Sign Up" : "Login";
-  nameGroup.classList.toggle("hidden", !isSignup);
-  confirmGroup.classList.toggle("hidden", !isSignup);
-  modeButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.mode === mode);
-  });
-  clearErrors();
-  setStatus("");
-  form.reset();
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-async function postAuth(endpoint, payload) {
-  const response = await fetch(`${API_BASE}/auth/${endpoint}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  let data = {};
-  try {
-    data = await response.json();
-  } catch {
-    data = {};
+loginBtn.addEventListener("click", function () {
+  if (loginBtn.value === "Sign up") {
+    register();
+  } else {
+    login();
   }
+});
 
-  if (!response.ok) {
-    throw new Error(data.message || "Request failed");
-  }
-
-  return data;
-}
-
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  clearErrors();
-  setStatus("");
-
-  let valid = true;
-  const isSignup = mode === "signup";
-  const name = fields.name.value.trim();
-  const email = fields.email.value.trim();
-  const password = fields.password.value;
-  const confirmPassword = fields.confirmPassword.value;
-
-  if (isSignup && name.length < 2) {
-    setError("name", "Name must be at least 2 characters.");
-    valid = false;
-  }
-
-  if (!email) {
-    setError("email", "Email is required.");
-    valid = false;
-  } else if (!isValidEmail(email)) {
-    setError("email", "Invalid email.");
-    valid = false;
-  }
-
-  if (password.length < 6) {
-    setError("password", "Password must be at least 6 characters.");
-    valid = false;
-  }
-
-  if (isSignup) {
-    if (!confirmPassword) {
-      setError("confirmPassword", "Please confirm your password.");
-      valid = false;
-    } else if (confirmPassword !== password) {
-      setError("confirmPassword", "Passwords do not match.");
-      valid = false;
-    }
-  }
-
-  if (!valid) {
-    setStatus("Please fix the errors.", "error");
+async function register() {
+  if (!usernameInput.value || !emailInput.value || !passwordInput.value) {
+    alert("All input fields are required");
     return;
-  }
+  } else {
+    const user = {
+      username: usernameInput.value,
+      email: emailInput.value,
+      password: passwordInput.value,
+    };
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Please wait...";
+    // HTTP request
 
-  try {
-    if (isSignup) {
-      const data = await postAuth("register", { name, email, password });
-      setStatus(data.message || "Registered successfully.", "success");
-    } else {
-      const data = await postAuth("login", { email, password });
-      if (data.token) {
-        localStorage.setItem("token", data.token);
+    try {
+      const response = await fetch(
+        "http://localhost:9000/api/v2/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        },
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
       }
-      setStatus(data.message || "Login successful.", "success");
+    } catch (err) {
+      alert(err.message);
     }
-  } catch (error) {
-    setStatus(error.message || "Something went wrong.", "error");
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = isSignup ? "Sign Up" : "Login";
+
+    usernameInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
+    switcher("Login", "Don't have an account? Sign up", false);
   }
-});
+}
 
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => switchMode(button.dataset.mode));
-});
+async function login() {
+  console.log("Login");
+  if (!emailInput.value || !passwordInput.value) {
+    alert("Email and password are required");
+    return;
+  } else {
+    const user = {
+      email: emailInput.value,
+      password: passwordInput.value,
+    };
+    console.log(user);
+    // HTTP request
 
-switchMode("login");
+    try {
+      const response = await fetch("http://localhost:9000/api/v2/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (err) {
+      alert(err.message);
+    }
+
+    emailInput.value = "";
+    passwordInput.value = "";
+  }
+}
+
+// function uploadFile(callback) {
+//   setTimeout(() => {
+//     callback();
+//   }, 2000);
+// }
+
+// function callback() {
+//   console.log("Callback is called");
+// }
+
+// uploadFile(callback);
+
+// function outer() {
+//   return function inner() {};
+// }
+
+// const inner = outer();
+// inner();
+
+// fetch().then().catch().finally()

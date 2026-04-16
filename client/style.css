@@ -1,123 +1,42 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  min-height: 100vh;
-  padding: 24px 16px;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(160deg, #f2f6ff, #f9fbff);
-}
-
-.container {
-  max-width: 420px;
-  margin: 40px auto;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(20, 43, 90, 0.08);
-  padding: 20px;
-}
-
-h2 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  color: #1f2937;
-}
-
-.switcher {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-  background: #f3f6fb;
-  border: 1px solid #dbe4f0;
-  border-radius: 10px;
-  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
 }
 
-.mode-btn,
-#submit-btn {
-  padding: 8px 10px;
-  border: 1px solid #c6d1df;
-  background: #fff;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: 0.2s ease;
-}
-
-.mode-btn.active {
-  background: #2f6feb;
-  border-color: #2f6feb;
-  color: #fff;
-}
-
-form {
-  display: grid;
+#form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
   gap: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-label {
-  display: block;
-  margin-bottom: 4px;
-}
-
-input {
-  width: 100%;
+input,
+button {
+  border: 1px solid gray;
   padding: 8px;
-  border: 1px solid #c6d1df;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
-input:focus {
-  outline: none;
-  border-color: #2f6feb;
-  box-shadow: 0 0 0 3px rgba(47, 111, 235, 0.18);
+#loginBtn {
+  color: white;
+  background-color: blue;
+}
+#text-switcher-btn {
+  color: blue;
+  background-color: white;
+  border: none;
 }
 
-input.invalid {
-  border-color: #c0392b;
-}
-
-.error-text {
-  color: #c0392b;
-  font-size: 12px;
-  min-height: 14px;
-  display: block;
+h2{
+    margin: 0;
+    text-align: center;
 }
 
 .hidden {
-  display: none;
-}
-
-#submit-btn {
-  margin-top: 4px;
-  background: #2f6feb;
-  border-color: #2f6feb;
-  color: #fff;
-}
-
-#submit-btn:hover {
-  background: #2459bd;
-}
-
-#submit-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-#status-message {
-  margin: 10px 0 0;
-  font-size: 14px;
-  min-height: 18px;
-}
-
-#status-message.success {
-  color: #1e7f3e;
-  font-weight: 600;
-}
-
-#status-message.error {
-  color: #c0392b;
-  font-weight: 600;
+    display: none;
 }

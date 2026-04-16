@@ -1,50 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auth Form</title>
-  <link rel="stylesheet" href="./style.css">
-  <script src="./main.js" defer></script>
-</head>
-<body>
-  <div class="container">
-    <h2 id="form-title">Login</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="form">
+      <h2>Sign Up</h2>
+      <label id="usernameLabel" for="username">Username</label>
+      <input id="username" type="text" />
+      <label for="email">Email</label>
+      <input id="email" type="email" />
+      <label for="password">Password</label>
+      <input id="password" type="password" />
 
-    <div class="switcher">
-      <button type="button" class="mode-btn active" data-mode="login">Login</button>
-      <button type="button" class="mode-btn" data-mode="signup">Sign Up</button>
-    </div>
-
-    <form id="auth-form" novalidate>
-      <div id="name-group" class="hidden">
-        <label for="name">Full name</label>
-        <input id="name" type="text">
-        <small id="name-error" class="error-text"></small>
-      </div>
-
-      <div>
-        <label for="email">Email</label>
-        <input id="email" type="email">
-        <small id="email-error" class="error-text"></small>
-      </div>
-
-      <div>
-        <label for="password">Password</label>
-        <input id="password" type="password">
-        <small id="password-error" class="error-text"></small>
-      </div>
-
-      <div id="confirm-group" class="hidden">
-        <label for="confirmPassword">Confirm password</label>
-        <input id="confirmPassword" type="password">
-        <small id="confirm-error" class="error-text"></small>
-      </div>
-
-      <button id="submit-btn" type="submit">Login</button>
+      <input type="button" id="loginBtn" value="Sign up" />
+      <input
+        type="button"
+        id="text-switcher-btn"
+        value="Already have an account? Login"
+      />
     </form>
-
-    <p id="status-message"></p>
-  </div>
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>
