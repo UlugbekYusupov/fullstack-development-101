@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+input,
+button {
+  border: 1px solid gray;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+#loginBtn {
+  color: white;
+  background-color: blue;
+}
+#text-switcher-btn {
+  color: blue;
+  background-color: white;
+  border: none;
+}
+
+h2{
+    margin: 0;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
