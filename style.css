@@ -212,7 +212,7 @@ textarea.modal-input {
     font-weight: bold;
     min-width: 100px;
     transition: 0.3s;
-} */
+}  */
 
 /* PRACTICE 3 CALCULATOR */
 /* 
@@ -298,3 +298,27 @@ body {
 .red.active { background-color: #ff3b3b; box-shadow: 0 0 20px #ff3b3b; }
 .yellow.active { background-color: #ffcc00; box-shadow: 0 0 20px #ffcc00; }
 .green.active { background-color: #4cd137; box-shadow: 0 0 20px #4cd137; } */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width: 30%;
+
+}
+
+input,
+label, button {
+    display: block;
+    padding: 8px;
+}
+

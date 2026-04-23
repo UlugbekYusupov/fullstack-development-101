@@ -210,6 +210,8 @@
 
 // PRACTICE 2 PASSWORD CHECKER
 
+
+
 // const container = document.createElement('div');
 // container.classList.add('pass-card');
 // document.body.appendChild(container);
@@ -390,6 +392,66 @@
 
 
 
+
+// const button = document.querySelector("button")
+// const div = document.getElementById("container")
+
+// button.addEventListener("click", function(){
+//     console.log("button is clicked");
+// }, true)
+
+
+
+// const mainDiv = document.createElement('div');
+// mainDiv.style.padding = "50px";
+// mainDiv.style.backgroundColor = "lightgray";
+// document.body.appendChild(mainDiv);
+
+// const button = document.createElement('button');
+// button.textContent = "Click Me";
+// mainDiv.appendChild(button);
+
+// // Listener on the Parent
+// mainDiv.addEventListener('click', () => {
+//     alert("Parent Div Clicked!");
+// });
+
+// // Listener on the Child (Button)
+// button.addEventListener('click', () => {
+//     alert("Button Clicked!");
+// });
+
+// button.addEventListener('click', (event) => { // Notice the 'event' parameter
+//     event.stopPropagation(); // "Stop! Don't tell my parents!"
+//     alert("Button Clicked!");
+// });
+
+
+
+// Event Propagation
+
+// const grandparent = document.getElementById("grandparent");
+// const parent = document.getElementById("parent");
+// const child = document.getElementById("child");
+
+
+// parent.addEventListener("click", function (event) {
+//     console.log("Parent is clicked");
+// });
+
+// child.addEventListener("click", function () {
+//     console.log("Child is clicked");
+// });
+
+
+// HOMEWORK 1
+
+const textSwitcherBtn = document.getElementById("text-switcher-btn");
+const heading = document.querySelector("h2");
+const loginBtn = getElementById("loginBtn");
+
+const usernameInput = document.getElementById("username")
+const emailInput = document.getElementById("username-label")
 
 
 
