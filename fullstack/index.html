@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <div class="admin-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <span class="brand-icon">&#9962;</span>
+          <span class="brand-name">TechHouse</span>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="#" class="nav-link active" data-section="dashboard">
+                <span class="nav-icon">&#9732;</span>
+                <span class="nav-label">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-section="orders">
+                <span class="nav-icon">&#128230;</span>
+                <span class="nav-label">Orders</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-section="products">
+                <span class="nav-icon">&#128722;</span>
+                <span class="nav-label">Products</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-section="users">
+                <span class="nav-icon">&#128100;</span>
+                <span class="nav-label">Users</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="../login.html" class="nav-link logout-link">
+            <span class="nav-icon">&#x2715;</span>
+            <span class="nav-label">Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main wrapper: header + content -->
+      <div class="main-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+          <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">&#9776;</button>
+          <div class="header-title" id="headerTitle">Dashboard</div>
+          <div class="header-right">
+            <div class="admin-badge">Superadmin</div>
+            <div class="avatar">SA</div>
+          </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="main-content">
+
+          <!-- Dashboard Section -->
+          <section class="section active" id="section-dashboard">
+            <h2 class="section-title">Dashboard</h2>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon orders-icon">&#128230;</div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-orders">0</span>
+                  <span class="stat-label">Total Orders</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon products-icon">&#128722;</div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-products">0</span>
+                  <span class="stat-label">Total Products</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon users-icon">&#128100;</div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-users">0</span>
+                  <span class="stat-label">Total Users</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon revenue-icon">&#128176;</div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-revenue">$0</span>
+                  <span class="stat-label">Revenue</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Orders Section -->
+          <section class="section" id="section-orders">
+            <div class="section-header">
+              <h2 class="section-title">Orders</h2>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Products</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-tbody">
+                  <tr>
+                    <td colspan="7" class="empty-row">Loading orders...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Products Section -->
+          <section class="section" id="section-products">
+            <div class="section-header">
+              <h2 class="section-title">Products</h2>
+              <button class="btn btn-primary" id="addProductBtn">+ Add Product</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-tbody">
+                  <tr>
+                    <td colspan="6" class="empty-row">Loading products...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Users Section -->
+          <section class="section" id="section-users">
+            <div class="section-header">
+              <h2 class="section-title">Users</h2>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="users-tbody">
+                  <tr>
+                    <td colspan="6" class="empty-row">Loading users...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- ── Product Modal (Create / Edit) ── -->
+    <div class="modal-overlay" id="productModalOverlay">
+      <div class="modal" id="productModal">
+        <div class="modal-header">
+          <h3 class="modal-title" id="productModalTitle">Add Product</h3>
+          <button class="modal-close" id="productModalClose">&times;</button>
+        </div>
+        <form class="modal-form" id="productForm" novalidate>
+          <input type="hidden" id="productId" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productName">Name <span class="required">*</span></label>
+              <input type="text" id="productName" placeholder="e.g. MacBook Pro" required />
+              <span class="field-error" id="err-name"></span>
+            </div>
+            <div class="form-group">
+              <label for="productCategory">Category <span class="required">*</span></label>
+              <input type="text" id="productCategory" placeholder="e.g. Laptops" required />
+              <span class="field-error" id="err-category"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productDescription">Description</label>
+            <textarea id="productDescription" rows="3" placeholder="Short product description..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productPrice">Price ($) <span class="required">*</span></label>
+              <input type="number" id="productPrice" placeholder="0.00" min="0" step="0.01" required />
+              <span class="field-error" id="err-price"></span>
+            </div>
+            <div class="form-group">
+              <label for="productStock">Stock <span class="required">*</span></label>
+              <input type="number" id="productStock" placeholder="0" min="0" step="1" required />
+              <span class="field-error" id="err-stock"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productImageUrl">Image URL</label>
+            <input type="url" id="productImageUrl" placeholder="https://example.com/image.png" />
+            <span class="field-error" id="err-image_url"></span>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="productModalCancel">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="productModalSubmit">Save Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── Delete Confirm Modal ── -->
+    <div class="modal-overlay" id="deleteModalOverlay">
+      <div class="modal modal-sm" id="deleteModal">
+        <div class="modal-header">
+          <h3 class="modal-title">Delete Product</h3>
+          <button class="modal-close" id="deleteModalClose">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="delete-icon">&#128465;</div>
+          <p class="delete-message">
+            Are you sure you want to delete
+            <strong id="deleteProductName"></strong>?
+          </p>
+          <p class="delete-sub">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="deleteModalCancel">Cancel</button>
+          <button type="button" class="btn btn-danger-solid" id="deleteModalConfirm">Yes, Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

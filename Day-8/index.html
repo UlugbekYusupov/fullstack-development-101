@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styless.css" />
+    <title>Auth Page - Login / Sign Up</title>
+</head>
+<body>
+    <main class="auth-card">
+        <section id="loginPanel" class="panel active">
+            <h2>Login</h2>
+            <form id="loginForm" autocomplete="off" novalidate>
+                <div class="input-group">
+                    <label for="loginEmail">Email</label>
+                    <input id="loginEmail" type="email" required />
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" type="password" required />
+                </div>
+                <button type="submit" class="btn">Log In</button>
+            </form>
+            <p class="info-text">Don't have an account? <a href="#" id="linkSignup">Sign up</a></p>
+        </section>
+
+        <section id="signupPanel" class="panel">
+            <h2>Sign Up</h2>
+            <form id="signupForm" autocomplete="off" novalidate>
+                <div class="input-group">
+                    <label for="signupName">Full Name</label>
+                    <input id="signupName" type="text" required />
+                </div>
+                <div class="input-group">
+                    <label for="signupEmail">Email</label>
+                    <input id="signupEmail" type="email" required />
+                </div>
+                <div class="input-group">
+                    <label for="signupPassword">Password</label>
+                    <input id="signupPassword" type="password" required minlength="8" />
+                </div>
+                <div class="input-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input id="signupConfirmPassword" type="password" required minlength="8" />
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p class="info-text">Already have an account? <a href="#" id="linkLogin">Log in</a></p>
+        </section>
+
+        <p id="feedback" class="message" aria-live="polite"></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
