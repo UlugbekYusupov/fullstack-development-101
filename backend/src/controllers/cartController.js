@@ -3,46 +3,122 @@ import { cartItems, products } from '../data/db.js'
 
 export function viewCart(req, res) {
 	const userId = req.headers['x-user-id']
-	const userCart = cartItems.filter(item => item.user.id == userId)
-	const result = userCart.map(item => {
-		const product = products.find(p => p.id == item.product_id)
-		return {
-			...item,
-			product,
+	const userCart = cartItems.find(item => item.user.id == userId)
+	if (!userCart) {
+		newCart = {
+			id: uuidv4(),
+			user_id: userId,
+			products: [],
+			quantity: 0,
 		}
-	})
-	return res.status(200).json(result)
+		cartItems.push(newCart)
+		return res.status(200).json(newCart)
+	}
+	const cartWithProducts = {
+		...userCart,
+		products: userCart.products.map(item => {
+			const product = products.find(p => p.id == item.product_id)
+			return {
+				name: product.name,
+				price: product.price,
+				image_url: product.image_url,
+				quantity: item.quantity,
+			}
+		}),
+	}
+	return res.status(200).json(cartWithProducts)
 }
 
 export function addToCart(req, res) {
 	const userId = req.headers['x-user-id']
 	const { productId, quantity } = req.body
-	const product = products.find(p => p.id == item.product_id)
+	const product = products.find(p => p.id == productId)
 
 	if (!product) {
 		return res.status(404).json({ message: 'Product not found' })
 	}
 
-	if (product.stock < quantity) {
+	let userCart = cartItems.find(item => item.user_id == userId)
+	if (!userCart) {
+		userCart = {
+			id: uuidv4(),
+			user_id: userId,
+			products: [],
+			quantity: 0,
+		}
+		cartItems.push(userCart)
+	}
+	const existingProducts = userCart.products.find(
+		p => p.product_id == productId,
+	)
+
+	if (existingProducts) {
+		existingProducts.quantity += 1
+	} else {
+		userCart.products.push({
+			id: productId,
+			quantity: 1,
+		})
+	}
+	userCart.quantity = userCart.products.reduce(
+		(total, item) => total + item.quantity,
+		0,
+	)
+	return res
+		.status(200)
+		.json({ message: 'Product added to cart successfully!' })
+}
+
+export function updateCartItem(req, res) {
+	const userId = req.headers['x-user-id']
+	const productId = req.params.productId
+	const { quantity } = req.body
+
+	if (quantity < 1 || !quantity) {
+		return res.status(400).json({ message: 'Invalid quantity' })
+	}
+	const product = products.find(p => p.id == productId)
+	if (!product) {
+		return res.status(404).json({ message: 'Product not found' })
+	}
+
+	if (quantity > product.stock) {
 		return res.status(400).json({ message: 'Not enough stock' })
 	}
 
-	const existingCart = cartItems.find(
-		item => item.user.id == user.Id && item.product_id == productId,
-	)
-
-	if (existingCart) {
-		existingCart.quantity += quantity
-	} else {
-		cartItems.push({
-			id: uuidv4(),
-			user_id: userId,
-			products: [{ product_id: productId, quantity }],
-		})
+	const userCart = cartItems.find(item => item.user_id == userId)
+	if (!userCart) {
+		return res.status(404).json({ message: 'Cart not found' })
 	}
-	product.stock -= quantity
-	return res.status(200).json({ message: 'Product added to cart' })
-}
 
-export function updateCartItem(req, res) {}
-export function removeCArtItem(req, res) {}
+	const cartProduct = userCart.products.find(p => p.product_id == productId)
+	if (!cartProduct) {
+		return res.status(404).json({ message: 'Product not in cart' })
+	}
+	cartProduct.quantity = quantity
+
+	userCart.quantity = userCart.products.reduce(
+		(total, item) => total + item.quantity,
+		0,
+	)
+	return res.status(200).json({ message: 'Cart item updated successfully!' })
+}
+export function removeCartItem(req, res) {
+	const userId = req.headers['x-user-id']
+	const productId = req.params.productId
+	if (!cartItems.find(item => item.user_id == userId)) {
+		return res.status(404).json({ message: 'Cart not found' })
+	}
+	const cartProduct = userCart.products.find(p => p.product_id == productId)
+	if (!cartProduct) {
+		return res.status(404).json({ message: 'Product not found in cart' })
+	}
+	userCart.products.splice(cartProductIndex, 1)
+	userCart.quantity = userCart.products.reduce(
+		(total, item) => total + item.quantity,
+		0,
+	)
+	return res
+		.status(200)
+		.json({ message: 'Product removed from cart successfully!' })
+}
