@@ -29,3 +29,4 @@ export const products = [
 		image_url: 'https://via.placeholder.com/150',
 	},
 ]
+export const cartItems = []
